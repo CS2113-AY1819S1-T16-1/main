@@ -2034,6 +2034,42 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manage my module matters more easily</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change the details of my modules after I have created them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete modules that I accidentally created</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">archive modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove modules that I am no longer actively teaching, and keep it as a historical record instead</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find module by module code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if I have already created the module, and view its details if it exists in the system</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list all modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see all the modules I am currently managing</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -2089,6 +2125,463 @@ for <code>RemarkCommandParser</code>.</p>
 <p>3a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-module" class="discrete">Use case: Add module</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher wants to add a module to the system.</p>
+</li>
+<li>
+<p>System successfully adds the module.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Teacher enters the wrong parameter prefix.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System displays the correct format for the command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c. Teacher enters a module code that already exists in the system.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c1. System informs the user of the existence of the module.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2d. Teacher fills in the prerequisites with module codes that don’t exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2d1. System informs the user of the non-existing module codes.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-module" class="discrete">Use case: Edit module</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher wants to edit a module to the system.</p>
+</li>
+<li>
+<p>System successfully saves the changes made to the module.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Teacher enters the wrong parameter prefix.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System displays the correct format for the command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c. Teacher enters a module code that doesn’t exist in the system.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c1. System informs the user that the module doesn’t exist.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2d. Teacher fills in the prerequisites with module codes that don’t exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2d1. System informs the user of the non-existing module codes.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-module" class="discrete">Use case: Delete module</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher wants to delete a module in the system.</p>
+</li>
+<li>
+<p>System prompts for confirmation to delete the module.</p>
+</li>
+<li>
+<p>Teacher confirms the deletion of the module.</p>
+</li>
+<li>
+<p>System successfully deletes the module.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Teacher enters the wrong parameter prefix.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System displays the correct format for the command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c. Teacher enters a module code that doesn’t exist in the system.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c1. System informs the user that the module doesn’t exist.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. Teacher rejects the confirmation to delete the module.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-archive-module" class="discrete">Use case: Archive module</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher wants to archive a module in the system.</p>
+</li>
+<li>
+<p>System prompts for confirmation to archive the module.</p>
+</li>
+<li>
+<p>Teacher confirms archiving of the module.</p>
+</li>
+<li>
+<p>System successfully archives the module.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Teacher enters the wrong parameter prefix.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System displays the correct format for the command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c. Teacher enters a module code that doesn’t exist in the system.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c1. System informs the user that the module doesn’t exist.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. Teacher rejects the confirmation to delete the module.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-finding-a-module-by-module-code" class="discrete">Use case: Finding a module by module code</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher searches for a module with some module codes as keywords.</p>
+</li>
+<li>
+<p>System lists all the active modules that match any of the keywords.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Teacher enters keywords that do not match any modules.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System informs the user that no active modules were found.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c. Teacher enters the <code>--all</code> option in the command</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c1. System displays all matching modules including archived modules.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-listing-modules" class="discrete">Use case: Listing modules</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher wants to see all the active modules in the system.</p>
+</li>
+<li>
+<p>System lists all the active modules.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Teacher enters the <code>--all</code> option in the command</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System displays all matching modules including archived modules.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
 </div>
 </li>
 </ul>
@@ -2285,4 +2778,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-23 16:03:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-24 16:06:08 UTC</div></div></div></body></html>
