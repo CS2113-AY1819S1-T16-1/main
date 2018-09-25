@@ -881,7 +881,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |teacher |mark class attendance list|mark the attendance for every present student
 
-|`* * *` |teacher |mModify class attendance list|alter a wrongly-marked attendance for a specific student
+|`* * *` |teacher |modify class attendance list|alter a wrongly-marked attendance for a specific student
 
 
 |=======================================================================
