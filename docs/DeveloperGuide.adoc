@@ -866,6 +866,24 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |teacher |list all grade components |view all the grade components that I have added to my module
 
 |`* * *` |teacher |assign grades of students |keep track of the grades that I have given out to students
+
+|`* * *` |teacher |create a class|assign students to the class
+
+|`* * *` |teacher |delete a class|remove a class that is created wrongly
+
+|`* * *` |teacher |assign student to class|add students to a class in the event that some students still have not signed up for a slot when classes begin
+
+|`* * *` |teacher |unassign student from class|remove a student from a class to prevent clashes in his/her timetable, or the student has dropped out of school, or if he/she has not paid his/her school fees
+
+|`* * *` |teacher |modify class enrollment limit|set class enrollment limits so that the classes that I’m teaching or my TAs are teaching are not over-subscribed.
+
+|`* * *` |teacher |access class attendance list|access and view the class attendance to see which students are present/absent
+
+|`* * *` |teacher |mark class attendance list|mark the attendance for every present student
+
+|`* * *` |teacher |modify class attendance list|alter a wrongly-marked attendance for a specific student
+
+
 |=======================================================================
 
 _{More to be added}_
@@ -1129,135 +1147,212 @@ Use case resumes at step 1.
 Use case resumes at step 1.
 
 [discrete]
-=== Use case: Add grade component
+=== Use case: Creating a class
+
+*Pre-condition*
+
+Module code exists in data file.
 
 *MSS*
 
-1.  Teacher adds grade component
-2.  System successfully adds grade component.
-+
-Use case ends.
+1.  User enters command to create classroom.
+2.  Classroom is created for the module.
+3.  System displays message of successful creation of class.
 
 *Extensions*
 
 [none]
-* 1a. Module code does not exist.
+* 1a. User entered invalid command.
 +
 [none]
-** 1a1. System outputs error in adding grade item due to wrong module code.
-+
-Use case ends.
+** 1a1. System shows ‘invalid format’ error.
 
-[none]
-* 1b. Invalid command entered.
-+
-[none]
-** 1b1. System outputs an example of a valid input to run the 'add grade' command.
-+
-Use case ends.
+Use case resumes at step 1.
 
 [discrete]
-=== Use case: Edit grade item
+=== Use case: Deleting a class
+
+*Pre-condition*
+
+Module code exists in data file.
 
 *MSS*
 
-1.  Teacher edits grade item.
-2.  System successfully updates grade item.
+1.  User enters command to delete a class from module.
+2.  Classroom is deleted from module.
+3.  System displays message of successful deletion of class from module.
+
 
 *Extensions*
 
 [none]
-* 1a. Module code does not exist.
+* 1a. User entered invalid command.
 +
 [none]
-** 1a1. System outputs error in editing grade item due to wrong module code.
+** 1a1. System shows ‘invalid format’ error.
 +
-Use case ends.
+* 1b. Specified class does not belong to module.
++
+[none]
+** 1b1. System displays specified class does not belong to module error.
 
-[none]
-* 1b. Invalid command entered.
-+
-[none]
-** 1b1. System outputs an example of a valid input to run the 'edit grade' command.
-+
-Use case ends.
+Use case resumes at step 1.
 
 [discrete]
-=== Use case: Delete grade item
+=== Use case: Assigning a student to class
+
+*Pre-condition*
+
+Student exists in data file.
 
 *MSS*
 
-1.  Teacher deletes grade item.
-2.  System successfully deletes grade item.
+1.  User enters command to assign a student to class.
+2.  Student gets assigned to class.
+3.  System displays message of successful assignment of student to class.
 
 *Extensions*
 
 [none]
-* 1a. Module code does not exist.
+* 1a. User entered invalid command.
 +
 [none]
-** 1a1. System outputs error in deleting grade item due to wrong module code.
+** 1a1. System shows ‘invalid format’ error.
 +
-Use case ends.
+* 1b. Class doesn’t exist.
++
+[none]
+** 1b1. System displays class not found error.
 
-[none]
-* 1b. Invalid command entered.
-+
-[none]
-** 1b1. System outputs an example of a valid input to run the 'delete grade' command.
-+
-Use case ends.
+Use case resumes at step 1.
 
 [discrete]
-=== Use case: List grade items
+=== Use case: Unassigning a student from class
+
+*Pre-condition*
+
+Student exists in data file.
 
 *MSS*
 
-1.  Teacher searches all grade item.
-2.  System successfully displays all grade item.
+1.  User enters command to unassign a student from class.
+2.  Student gets unassigned from class.
+3.  System displays message of successful unassignment of student from class.
 
 *Extensions*
 
 [none]
-* 1a. Module code does not exist.
+* 1a. User entered invalid command.
 +
 [none]
-** 1a1. System outputs error in listing grade item due to wrong module code.
+** 1a1. System shows ‘invalid format’ error.
 +
-Use case ends.
+* 1b.  Module code doesn’t exist.
++
+[none]
+** 1b1. System displays module not found error.
++
+* 1c.  Specified student does not belong to class.
++
+[none]
+** 1c1. System displays specified student does not belong to class error.
 
-[none]
-* 1b. Invalid command entered.
-+
-[none]
-** 1b1. System outputs an example of a valid input to run the 'list grades' command.
-+
-Use case ends.
+Use case resumes at step 1.
 
 [discrete]
-=== Use case: Assigning marks to a student
+=== Use case: Modifying class enrollment limits
+
+*Pre-condition*
+
+Class must exist in data file.
 
 *MSS*
 
-1.  Teacher assigns marks to student.
-2.  System successfully saves the marks.
+1.  User enters command to modify class enrollment limits.
+2.  Class enrollment limits gets updated.
+3.  System displays successful modification of class enrollment limits.
 
 *Extensions*
 
 [none]
-* 2a. Module code does not exist.
+* 1a. User entered invalid command.
 +
 [none]
-** 2a1. System outputs error in listing grade item due to wrong module code.
-+
-Use case ends.
+** 1a1. System shows ‘invalid format’ error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Accessing class attendance list
+
+*Pre-condition*
+
+Class must exist in data file.
+
+*MSS*
+
+1.  User enters command to view class attendance list.
+2.  System displays the class attendance list.
+
+*Extensions*
 
 [none]
-* 2b. Invalid command entered.
+* 1a. User entered invalid command.
 +
 [none]
-** 2b1. System outputs an example of a valid input to run the 'list grades' command.
+** 1a1. System shows ‘invalid format’ error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Marking class attendance list
+
+*Pre-condition*
+
+Class must exist in data file.
+
+*MSS*
+
+1.  User enters command to mark class attendance.
+2.  Class attendance is marked for specified student.
+3.  System displays message of successful marking of class attendance list.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
 +
+[none]
+** 1a1. System shows ‘invalid format’ error.
++
+* 1b. Specified student does not belong to class.
++
+[none]
+** 1b1. System displays specified student does not belong to class error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Modifying class attendance list
+
+*Pre-condition*
+
+Class must exist in data file.
+
+*MSS*
+
+1.  User enters command to modify class attendance list.
+2.  The class attendance list is updated.
+3.  System displays message of successful modification of class attendance list.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
+
 Use case resumes at step 1.
 
 _{More to be added}_
