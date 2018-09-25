@@ -866,6 +866,24 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |teacher |list all grade components |view all the grade components that I have added to my module
 
 |`* * *` |teacher |assign grades of students |keep track of the grades that I have given out to students
+
+|`* * *` |teacher |Create a class|I can assign students to the class
+
+|`* * *` |teacher |Delete a class|I can remove a class that is created wrongly
+
+|`* * *` |teacher |Assign student to class|I can add students to a class in the event that some students still have not signed up for a slot when classes begin
+
+|`* * *` |teacher |Unassign student from class|I can remove a student from a class to prevent clashes in his/her timetable, or the student has dropped out of school, or if he/she has not paid his/her school fees
+
+|`* * *` |teacher |Modify class enrollment limit|I can set class enrollment limits so that the classes that I’m teaching or my TAs are teaching are not over-subscribed.
+
+|`* * *` |teacher |Access class attendance list|I can access and view the class attendance to see which students are present/absent
+
+|`* * *` |teacher |Mark class attendance list|I can mark the attendance for every present student
+
+|`* * *` |teacher |Modify class attendance list|I can alter a wrongly-marked attendance for a specific student
+
+
 |=======================================================================
 
 _{More to be added}_
