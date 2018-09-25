@@ -2625,6 +2625,264 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-add-grade-component" class="discrete">Use case: Add grade component</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher adds grade component</p>
+</li>
+<li>
+<p>System successfully adds grade component.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Module code does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System outputs error in adding grade item due to wrong module code.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. Invalid command entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System outputs an example of a valid input to run the 'add grade' command.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-grade-item" class="discrete">Use case: Edit grade item</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher edits grade item.</p>
+</li>
+<li>
+<p>System successfully updates grade item.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Module code does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System outputs error in editing grade item due to wrong module code.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. Invalid command entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System outputs an example of a valid input to run the 'edit grade' command.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-grade-item" class="discrete">Use case: Delete grade item</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher deletes grade item.</p>
+</li>
+<li>
+<p>System successfully deletes grade item.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Module code does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System outputs error in deleting grade item due to wrong module code.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. Invalid command entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System outputs an example of a valid input to run the 'delete grade' command.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-list-grade-items" class="discrete">Use case: List grade items</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher searches all grade item.</p>
+</li>
+<li>
+<p>System successfully displays all grade item.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Module code does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System outputs error in listing grade item due to wrong module code.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. Invalid command entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System outputs an example of a valid input to run the 'list grades' command.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-assigning-marks-to-a-student" class="discrete">Use case: Assigning marks to a student</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher assigns marks to student.</p>
+</li>
+<li>
+<p>System successfully saves the marks.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Module code does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System outputs error in listing grade item due to wrong module code.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Invalid command entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System outputs an example of a valid input to run the 'list grades' command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
@@ -2814,4 +3072,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-25 04:12:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-25 06:23:40 UTC</div></div></div></body></html>
