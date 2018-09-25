@@ -1,4 +1,4 @@
-= AddressBook Level 4 - Developer Guide
+﻿= AddressBook Level 4 - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -854,6 +854,18 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |teacher |find module by module code |check if I have already created the module, and view its details if it exists in the system
 
 |`* * *` |teacher |list all modules |see all the modules I am currently managing
+
+|`* * *` |teacher |add grade componenents |differentiate the grade componenets in a module (E.g. mid term test, finals examination)
+
+|`* * *` |teacher |edit grades of students |change students marks after reviewing
+
+|`* * *` |teacher |delete grade item |remove after an incorrect input of grade item
+
+|`* * *` |teacher |list grades of students |monitor my students progress
+
+|`* *` |teacher |list all grade components |view all the grade components that I have added to my module
+
+|`* * *` |teacher |assign grades of students |keep track of the grades that I have given out to students
 |=======================================================================
 
 _{More to be added}_
