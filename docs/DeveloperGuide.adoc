@@ -1146,6 +1146,215 @@ Use case resumes at step 1.
 +
 Use case resumes at step 1.
 
+[discrete]
+=== Use case: Creating a class
+
+*Pre-condition*
+
+Module code exists in data file.
+
+*MSS*
+
+1.  User enters command to create classroom.
+2.  Classroom is created for the module.
+3.  System displays message of successful creation of class.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Deleting a class
+
+*Pre-condition*
+
+Module code exists in data file.
+
+*MSS*
+
+1.  User enters command to delete a class from module.
+2.  Classroom is deleted from module.
+3.  System displays message of successful deletion of class from module.
+
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
++
+* 1b. Specified class does not belong to module.
++
+[none]
+** 1b1. System displays specified class does not belong to module error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Assigning a student to class
+
+*Pre-condition*
+
+Student exists in data file.
+
+*MSS*
+
+1.  User enters command to assign a student to class.
+2.  Student gets assigned to class.
+3.  System displays message of successful assignment of student to class.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
++
+* 1b. Class doesn’t exist.
++
+[none]
+** 1b1. System displays class not found error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Unassigning a student from class
+
+*Pre-condition*
+
+Student exists in data file.
+
+*MSS*
+
+1.  User enters command to unassign a student from class.
+2.  Student gets unassigned from class.
+3.  System displays message of successful unassignment of student from class.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
++
+* 1b.  Module code doesn’t exist.
++
+[none]
+** 1b1. System displays module not found error.
++
+* 1c.  Specified student does not belong to class.
++
+[none]
+** 1c1. System displays specified student does not belong to class error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Modifying class enrollment limits
+
+*Pre-condition*
+
+Class must exist in data file.
+
+*MSS*
+
+1.  User enters command to modify class enrollment limits.
+2.  Class enrollment limits gets updated.
+3.  System displays successful modification of class enrollment limits.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Accessing class attendance list
+
+*Pre-condition*
+
+Class must exist in data file.
+
+*MSS*
+
+1.  User enters command to view class attendance list.
+2.  System displays the class attendance list.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Marking class attendance list
+
+*Pre-condition*
+
+Class must exist in data file.
+
+*MSS*
+
+1.  User enters command to mark class attendance.
+2.  Class attendance is marked for specified student.
+3.  System displays message of successful marking of class attendance list.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
++
+* 1b. Specified student does not belong to class.
++
+[none]
+** 1b1. System displays specified student does not belong to class error.
+
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Modifying class attendance list
+
+*Pre-condition*
+
+Class must exist in data file.
+
+*MSS*
+
+1.  User enters command to modify class attendance list.
+2.  The class attendance list is updated.
+3.  System displays message of successful modification of class attendance list.
+
+*Extensions*
+
+[none]
+* 1a. User entered invalid command.
++
+[none]
+** 1a1. System shows ‘invalid format’ error.
+
+Use case resumes at step 1.
+
 _{More to be added}_
 
 [appendix]
