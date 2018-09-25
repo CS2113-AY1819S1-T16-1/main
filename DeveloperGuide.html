@@ -2106,6 +2106,54 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">assign grades of students</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the grades that I have given out to students</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create a class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">assign students to the class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete a class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove a class that is created wrongly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">assign student to class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add students to a class in the event that some students still have not signed up for a slot when classes begin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unassign student from class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove a student from a class to prevent clashes in his/her timetable, or the student has dropped out of school, or if he/she has not paid his/her school fees</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">modify class enrollment limit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set class enrollment limits so that the classes that I’m teaching or my TAs are teaching are not over-subscribed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access class attendance list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access and view the class attendance to see which students are present/absent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mark class attendance list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mark the attendance for every present student</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">modify class attendance list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alter a wrongly-marked attendance for a specific student</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -2883,6 +2931,436 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-creating-a-class" class="discrete">Use case: Creating a class</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Module code exists in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to create classroom.</p>
+</li>
+<li>
+<p>Classroom is created for the module.</p>
+</li>
+<li>
+<p>System displays message of successful creation of class.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User entered invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows ‘invalid format’ error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-deleting-a-class" class="discrete">Use case: Deleting a class</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Module code exists in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to delete a class from module.</p>
+</li>
+<li>
+<p>Classroom is deleted from module.</p>
+</li>
+<li>
+<p>System displays message of successful deletion of class from module.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User entered invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows ‘invalid format’ error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Specified class does not belong to module.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System displays specified class does not belong to module error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-assigning-a-student-to-class" class="discrete">Use case: Assigning a student to class</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Student exists in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to assign a student to class.</p>
+</li>
+<li>
+<p>Student gets assigned to class.</p>
+</li>
+<li>
+<p>System displays message of successful assignment of student to class.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User entered invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows ‘invalid format’ error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Class doesn’t exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System displays class not found error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-unassigning-a-student-from-class" class="discrete">Use case: Unassigning a student from class</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Student exists in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to unassign a student from class.</p>
+</li>
+<li>
+<p>Student gets unassigned from class.</p>
+</li>
+<li>
+<p>System displays message of successful unassignment of student from class.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User entered invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows ‘invalid format’ error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b.  Module code doesn’t exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System displays module not found error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c.  Specified student does not belong to class.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. System displays specified student does not belong to class error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-modifying-class-enrollment-limits" class="discrete">Use case: Modifying class enrollment limits</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Class must exist in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to modify class enrollment limits.</p>
+</li>
+<li>
+<p>Class enrollment limits gets updated.</p>
+</li>
+<li>
+<p>System displays successful modification of class enrollment limits.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User entered invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows ‘invalid format’ error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-accessing-class-attendance-list" class="discrete">Use case: Accessing class attendance list</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Class must exist in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to view class attendance list.</p>
+</li>
+<li>
+<p>System displays the class attendance list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User entered invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows ‘invalid format’ error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-marking-class-attendance-list" class="discrete">Use case: Marking class attendance list</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Class must exist in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to mark class attendance.</p>
+</li>
+<li>
+<p>Class attendance is marked for specified student.</p>
+</li>
+<li>
+<p>System displays message of successful marking of class attendance list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User entered invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows ‘invalid format’ error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Specified student does not belong to class.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System displays specified student does not belong to class error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-modifying-class-attendance-list" class="discrete">Use case: Modifying class attendance list</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Class must exist in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to modify class attendance list.</p>
+</li>
+<li>
+<p>The class attendance list is updated.</p>
+</li>
+<li>
+<p>System displays message of successful modification of class attendance list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User entered invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows ‘invalid format’ error.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
@@ -3072,4 +3550,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-25 06:23:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-25 07:56:24 UTC</div></div></div></body></html>
