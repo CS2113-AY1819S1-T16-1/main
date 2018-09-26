@@ -20,15 +20,16 @@
 <li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
 <li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
 <li><a href="#grade-management">3.7. Grade Management</a></li>
-<li><a href="#selecting-a-person-code-select-code">3.8. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.9. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.10. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.12. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.13. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.14. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.15. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#notes-management">3.16. Notes Management</a></li>
+<li><a href="#class-management">3.8. Class Management</a></li>
+<li><a href="#selecting-a-person-code-select-code">3.9. Selecting a person : <code>select</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.15. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#notes-management">3.17. Notes Management</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -493,7 +494,254 @@ Assigns 10 marks to CS2040C student with matric number A0168111.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.8. Selecting a person : <code>select</code></a></h3>
+<h3 id="class-management"><a class="link" href="#class-management">3.8. Class Management</a></h3>
+<div class="sect3">
+<h4 id="creating-a-class-code-class-create-code"><a class="link" href="#creating-a-class-code-class-create-code">3.8.1. Creating a class : <code>class create</code></a></h4>
+<div class="paragraph">
+<p>Creates a class and assigns it to a module for the system.<br>
+Format: <code>class create c/CLASS_NAME m/MODULE_CODE e/MAX_ENROLLMENT</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Module code must exist before creating a class for the module</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class create c/T16 m/CG1111 e/20</code><br>
+Creates a class T16, assigns it to the module CG1111 with the max enrollment size of 20</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-class-code-class-delete-code"><a class="link" href="#deleting-a-class-code-class-delete-code">3.8.2. Deleting a class : <code>class delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes a class with students assigned to it for a module for the system.<br>
+Format: <code>class delete c/CLASS_NAME m/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class must exist in order to be deleted</p>
+</li>
+<li>
+<p>Module code must exist and have a specified class assigned to it before deleting a class for the module</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class delete c/T16 m/CG1111</code><br>
+Deletes the class T16 from the module CG1111</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="assigning-a-student-to-class-code-class-addstudent-code"><a class="link" href="#assigning-a-student-to-class-code-class-addstudent-code">3.8.3. Assigning a student to class : <code>class addstudent</code></a></h4>
+<div class="paragraph">
+<p>Assigns a student to a class for the system.<br>
+Format: <code>class addstudent c/CLASS_NAME m/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class must exist before assigning a student to the class</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class addstudent c/T16 i/A6942069M</code><br>
+Adds a student of the admission number A6942069M to the class T16</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="unassigning-a-student-from-class-code-class-delstudent-code"><a class="link" href="#unassigning-a-student-from-class-code-class-delstudent-code">3.8.4. Unassigning a student from class : <code>class delstudent</code></a></h4>
+<div class="paragraph">
+<p>Unassigns a student from the class for the system.<br>
+Format: <code>class delstudent c/CLASS_NAME i/ADMISSION_NO</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class must exist before unassigning a student from the class</p>
+</li>
+<li>
+<p>Student must be assigned to class in order to unassign them from the class</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class delstudent c/T16 i/A6942069M</code><br>
+Removes a student of the admission number A6942069M from the class T16</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="modifying-class-enrollment-limits-code-class-maxenroll-code"><a class="link" href="#modifying-class-enrollment-limits-code-class-maxenroll-code">3.8.5. Modifying class enrollment limits : <code>class maxenroll</code></a></h4>
+<div class="paragraph">
+<p>Modifies the max enrollment size for a class for the system.<br>
+Format: <code>class maxenroll  c/CLASS_NAME e/NEW_MAX_ENROLLMENT_SIZE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class must exist before being able to modify the class enrollment limits</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class maxenroll c/T16 e/20</code><br>
+Modifies the new max class enrollment size for the class T16 to be 20</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="accessing-class-attendance-list-code-class-listattend-code"><a class="link" href="#accessing-class-attendance-list-code-class-listattend-code">3.8.6. Accessing class attendance list : <code>class listattend</code></a></h4>
+<div class="paragraph">
+<p>Access the class attendance list for the system.<br>
+Format: <code>class listattend c/CLASS_NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class must exist before being able to access the class attendance list</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class listattend c/T16</code><br>
+Displays the class attendance list for the class T16</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="marking-class-attendance-list-code-class-markattend-code"><a class="link" href="#marking-class-attendance-list-code-class-markattend-code">3.8.7. Marking class attendance list : <code>class markattend</code></a></h4>
+<div class="paragraph">
+<p>Mark the class attendance list for a specified student for the system.<br>
+Format: <code>class markattend c/CLASS_NAME i/ADMISSION_NO</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class must exist before being able to mark student available for class attendance</p>
+</li>
+<li>
+<p>Student must be in the specified class in order to mark student present</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class markattend c/T16 i/A6942069M</code><br>
+Marks the attendance of the student of the admission number A6942069M for the class T16</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="modifying-class-attendance-list-code-class-modattend-code"><a class="link" href="#modifying-class-attendance-list-code-class-modattend-code">3.8.8. Modifying class attendance list : <code>class modattend</code></a></h4>
+<div class="paragraph">
+<p>Modifies the class attendance list for the system.<br>
+Format: <code>class modattend c/CLASS_NAME i/ADMISSION_NO</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class must exist before modifying a student’s attendance</p>
+</li>
+<li>
+<p>If current student is present, modifying will mark student as absent, vice versa</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class modattend c/T16 i/A6942069M</code><br>
+Modifies the attendance of the student of the admission number A6942069M for the class T16</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.9. Selecting a person : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the displayed person list.<br>
 Format: <code>select INDEX</code></p>
@@ -534,7 +782,7 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.9. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -555,7 +803,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.10. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -600,7 +848,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -632,36 +880,36 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.12. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.13. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.14. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.15. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="notes-management"><a class="link" href="#notes-management">3.16. Notes Management</a></h3>
+<h3 id="notes-management"><a class="link" href="#notes-management">3.17. Notes Management</a></h3>
 <div class="sect3">
-<h4 id="adding-a-note-code-note-add-code"><a class="link" href="#adding-a-note-code-note-add-code">3.16.1. Adding a note : <code>note add</code></a></h4>
+<h4 id="adding-a-note-code-note-add-code"><a class="link" href="#adding-a-note-code-note-add-code">3.17.1. Adding a note : <code>note add</code></a></h4>
 <div class="paragraph">
 <p>Adds a note to a module.<br>
 Format: <code>note add m/MODULE_CODE [p/PRIORITY_LEVEL] [d/DATE]</code></p>
@@ -715,7 +963,7 @@ This tells the system that the note is to be saved in the CS2113 module with a M
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-notes-from-a-module-code-note-list-code"><a class="link" href="#listing-all-notes-from-a-module-code-note-list-code">3.16.2. Listing all notes from a module : <code>note list</code></a></h4>
+<h4 id="listing-all-notes-from-a-module-code-note-list-code"><a class="link" href="#listing-all-notes-from-a-module-code-note-list-code">3.17.2. Listing all notes from a module : <code>note list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all notes saved in the module.<br>
 Format: <code>note list m/MODULE_CODE [P]</code></p>
@@ -755,7 +1003,7 @@ This is similar to the previous example, except that the system will display the
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-note-code-note-delete-code-code-coming-in-v1-2-code"><a class="link" href="#deleting-a-note-code-note-delete-code-code-coming-in-v1-2-code">3.16.3. Deleting a note : <code>note delete</code> <code>[Coming in v1.2]</code></a></h4>
+<h4 id="deleting-a-note-code-note-delete-code-code-coming-in-v1-2-code"><a class="link" href="#deleting-a-note-code-note-delete-code-code-coming-in-v1-2-code">3.17.3. Deleting a note : <code>note delete</code> <code>[Coming in v1.2]</code></a></h4>
 <div class="paragraph">
 <p>Deletes a specific note.<br>
 Format: <code>note delete m/MODULE_CODE INDEX</code></p>
@@ -788,7 +1036,7 @@ Deletes the note that corresponds to INDEX=1 in the list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-note-code-note-edit-code-code-coming-in-v1-3-code"><a class="link" href="#editing-a-note-code-note-edit-code-code-coming-in-v1-3-code">3.16.4. Editing a note : <code>note edit</code> <code>[Coming in v1.3]</code></a></h4>
+<h4 id="editing-a-note-code-note-edit-code-code-coming-in-v1-3-code"><a class="link" href="#editing-a-note-code-note-edit-code-code-coming-in-v1-3-code">3.17.4. Editing a note : <code>note edit</code> <code>[Coming in v1.3]</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing note.<br>
 Format: <code>note edit m/MODULE_CODE INDEX [p/PRIORITY_LEVEL] [d/DATE]</code></p>
@@ -827,7 +1075,7 @@ The user will now be able to edit the note that corresponds to INDEX=3 in the li
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-a-note-code-note-find-code-code-coming-in-v1-2-code"><a class="link" href="#finding-a-note-code-note-find-code-code-coming-in-v1-2-code">3.16.5. Finding a note : <code>note find</code> <code>[Coming in v1.2]</code></a></h4>
+<h4 id="finding-a-note-code-note-find-code-code-coming-in-v1-2-code"><a class="link" href="#finding-a-note-code-note-find-code-code-coming-in-v1-2-code">3.17.5. Finding a note : <code>note find</code> <code>[Coming in v1.2]</code></a></h4>
 <div class="paragraph">
 <p>Search and display existing notes from a module using keywords.<br>
 Format: <code>note find m/MODULE_CODE k/KEYWORD [k/KEYWORD]..</code></p>
@@ -945,4 +1193,4 @@ e.g. `gradebook assign c/CS2040C i/A0168111 g/Assignment 1 m/10</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-26 13:04:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-26 14:49:28 UTC</div></div></div></body></html>
