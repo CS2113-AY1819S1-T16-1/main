@@ -54,85 +54,88 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 === Viewing help : `help`
 
-Format: `help`
+Format: `help` +
+Shows the help page.
 
-=== Adding a person: `add`
-
-Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
-
-[TIP]
-A person can have any number of tags (including 0)
+=== Student Management
+==== Add Student : `student add`
+Adds a student to the system. +
+Format: student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL a/ADDRESS
 
 Examples:
 
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `student add n/Tristy i/A0169999Z c/CS p/90002334 e/E0111342@u.nus.edu a/522 Tampines North 1`
+* `student add n/Megan Nicole c/CEG e/E0169113@u.nus.edu a/14 Changi South i/A0177897E p/92667921`
 
-=== Listing all persons : `list`
-
-Shows a list of all persons in the address book. +
-Format: `list`
-
-=== Editing a person : `edit`
-
-Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
-
-****
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index *must be a positive integer* 1, 2, 3, ...
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person's tags by typing `t/` without specifying any tags after it.
-****
+==== Editing a student : `student edit`
+Edits an existing student in the system. +
+Format: student edit INDEX [n/NAME] [i/ADMIN_NUMBER] [c/CLASS] [p/MOBILE_NUMBER] [e/EMAIL a/ADDRESS]
 
 Examples:
 
-* `edit 1 p/91234567 e/johndoe@example.com` +
-Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-* `edit 2 n/Betsy Crower t/` +
-Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-
-=== Locating persons by name: `find`
-
-Finds persons whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
+* `student edit 1 p/99887890 a/14 Simei Avenue 1`
+Edits the phone number and home address of the 1st person to be 99887890 and 14 Simei Avenue 1 respectively.
+* `student edit 2 a/14 Jurong East Street 91`
+Edits only the address of the 2nd person to be 14 Jurong East Street 91.
 
 ****
-* The search is case insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Edits the person at the specified INDEX. The index refers to the index number shown in the displayed student list. The index must be a must be a positive integer 1,2,3,...
+* At least one of the optional fields must be provided
+* Existing values will be updated to the input values
 ****
+
+==== Find a student by name/matric no : `student find`
+Find student(s) whose names contain any of the given keywords. +
+Format:  find [n/STUDENT_NAME] [i/MATRIC_NO]
 
 Examples:
 
-* `find John` +
-Returns `john` and `John Doe`
-* `find Betsy Tim John` +
-Returns any person having names `Betsy`, `Tim`, or `John`
-
-=== Deleting a person : `delete`
-
-Deletes the specified person from the address book. +
-Format: `delete INDEX`
+* `find student n/Rachel`
+Returns students whose first name or last name contains 'Rachel'.
+* `find student i/A0168000L`
+Return the student whose matriculation no matches 'A0168000L'.
 
 ****
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index *must be a positive integer* 1, 2, 3, ...
+* The search is case insensitive.
+* The order of the keyword does not matter.
+* Only the name and matric no is searched
+* Students matching at least one keyword will be returned
+* Partial search supported for name
 ****
+
+==== List all students : `student list`
+Shows a list of all students in the system. +
+Format: list students
+
+==== Deleting a student by index : `student delete`
+Deletes the specified student from the system. +
+Format: delete student INDEX
+
 
 Examples:
 
-* `list` +
-`delete 2` +
-Deletes the 2nd person in the address book.
-* `find Betsy` +
-`delete 1` +
-Deletes the 1st person in the results of the `find` command.
+* `student delete 2`
+Deletes the 2nd person in the system
+
+****
+* Deletes the student at the specified INDEX
+* The index refers to the index number shown in the displayed student list.
+* The index must be a must be a positive integer 1,2,3,...
+****
+
+==== Export students : `student export`
+Exports students to a .csv file +
+Format: student export LOCATION
+
+Examples:
+
+* `student export C:\export`
+Exports all students in .csv format to the 'export' folder in C drive.
+
+****
+* Directory must be writable.
+* There must be at least 1 student in the system
+****
 
 === Grade Management
 ==== Add Grade Component
@@ -220,6 +223,7 @@ Examples:
 * `gradebook assign c/CS2040C i/A0168111 g/Assignment 1 m/10` +
 Assigns 10 marks to CS2040C student with matric number A0168111.
 
+=======
 === Class Management
 ==== Creating a class : `class create`
 Creates a class and assigns it to a module for the system. +
@@ -349,6 +353,7 @@ Selects the 2nd person in the address book.
 `select 1` +
 Selects the 1st person in the results of the `find` command.
 
+
 === Listing entered commands : `history`
 
 Lists all the commands that you have entered in reverse chronological order. +
@@ -360,7 +365,7 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 ====
 
 // tag::undoredo[]
-=== Undoing previous command : `undo`
+=== (TO BE REVISED) Undoing previous command : `undo`
 
 Restores the address book to the state before the previous _undoable_ command was executed. +
 Format: `undo`
@@ -386,7 +391,7 @@ The `undo` command fails as there are no undoable commands executed previously.
 `undo` (reverses the `clear` command) +
 `undo` (reverses the `delete 1` command) +
 
-=== Redoing the previously undone command : `redo`
+=== (TO BE REVISED) Redoing the previously undone command : `redo`
 
 Reverses the most recent `undo` command. +
 Format: `redo`
@@ -409,7 +414,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `redo` (reapplies the `clear` command) +
 // end::undoredo[]
 
-=== Clearing all entries : `clear`
+=== (TO BE REVISED) Clearing all entries : `clear`
 
 Clears all entries from the address book. +
 Format: `clear`
@@ -530,23 +535,17 @@ Lists all notes from CS2113 module which contain both keywords "git" and "OOP".
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
 
 == Command Summary
-
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-* *Clear* : `clear`
-* *Delete* : `delete INDEX` +
-e.g. `delete 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
-e.g. `edit 2 n/James Lee e/jameslee@example.com`
-* *Find* : `find KEYWORD [MORE_KEYWORDS]` +
-e.g. `find James Jake`
-* *List* : `list`
-* *Help* : `help`
-* *Select* : `select INDEX` +
-e.g.`select 2`
-* *History* : `history`
-* *Undo* : `undo`
-* *Redo* : `redo`
+* *Add student* : `student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL a/ADDRESS` +
+e.g. `student add n/Megan Nicole c/CEG e/E0169113@u.nus.edu a/14 Changi South i/A0177897E p/92667921`
+* *Edit student* : `student edit INDEX [n/NAME] [i/ADMIN_NUMBER] [c/CLASS] [p/MOBILE_NUMBER] [e/EMAIL a/ADDRESS] ` +
+e.g. `student edit 1 p/99887890 a/14 Simei Avenue 1`
+* *Finding a student by name/matric no* : `student find [n/STUDENT_NAME] [i/MATRIC_NO` +
+e.g. `find student Megan Nicole`
+* *List all students* : `student list` +
+* *Delete student by INDEX* : `student delete` +
+e.g. `student delete 2`
+* *Export students* : `student export` +
+e.g. `student export C:\export`
 * *Add Grade Component* : `gradebook add c/MODULE_CODE i/GRADE_ITEM  m/MAX_MARKS p/PERCENTAGE OF GRADE` +
 e.g. `gradebook add c/CS2040C i/Assignment 1 m/10 p/10`
 * *Edit Grade Item* : `gradebook edit c/MODULE_CODE i/GRADE_ITEM  m/ MAX_MARKS p/PERCENTAGE OF GRADE` +
@@ -559,3 +558,6 @@ e.g. `gradebook list components c/CS2040C`
 e.g. `gradebook list grades c/CS2040C`
 * *Assign Grades* : `gradebook assign c/MODULE_CODE i/MATRIC_NUMBER g/GRADE_ITEM_NAME m/MARKS' +
 e.g. `gradebook assign c/CS2040C i/A0168111 g/Assignment 1 m/10`
+* *History* : `history`
+* *Undo* : `undo`
+* *Redo* : `redo`

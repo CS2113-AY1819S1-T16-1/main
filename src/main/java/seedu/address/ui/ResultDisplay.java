@@ -35,7 +35,7 @@ public class ResultDisplay extends UiPart<Region> {
     @Subscribe
     private void handleNewResultAvailableEvent(NewResultAvailableEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        Platform.runLater(() -> displayed.setValue(event.message));
+        Platform.runLater(() -> displayed.setValue(resultDisplay.getText() + event.message + "\n"));
     }
 
 }
