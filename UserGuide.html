@@ -1477,22 +1477,54 @@ e.g. <code>gradebook add c/CS2040C i/Assignment 1 m/10 p/10</code></p>
 e.g. <code>gradebook edit c/CS2040C i/Assignment 1 m/20 p/10</code></p>
 </li>
 <li>
-<p><strong>Delete Grade Component</strong> : <code>gradebook remove c/MODULE_CODE i/GRADE_ITEM'<br>
-e.g. `gradebook remove m/CS2040C i/Assignment 1</code></p>
+<p><strong>Delete Grade Component</strong> : <code>gradebook remove c/MODULE_CODE i/GRADE_ITEM</code><br>
+e.g. <code>gradebook remove m/CS2040C i/Assignment 1</code></p>
 </li>
 <li>
-<p><strong>List Grade Components</strong> : <code>gradebook list components c/MODULE_CODE'<br>
-e.g. `gradebook list components c/CS2040C</code></p>
+<p><strong>List Grade Components</strong> : <code>gradebook list components c/MODULE_CODE</code><br>
+e.g. <code>gradebook list components c/CS2040C</code></p>
 </li>
 <li>
-<p><strong>List Grade Components</strong> : <code>gradebook list grades c/MODULE_CODE'<br>
-e.g. `gradebook list grades c/CS2040C</code></p>
+<p><strong>List Grade Components</strong> : <code>gradebook list grades c/MODULE_CODE</code><br>
+e.g. <code>gradebook list grades c/CS2040C</code></p>
 </li>
 <li>
-<p><strong>Assign Grades</strong> : <code>gradebook assign c/MODULE_CODE i/MATRIC_NUMBER g/GRADE_ITEM_NAME m/MARKS'<br>
-e.g. `gradebook assign c/CS2040C i/A0168111 g/Assignment 1 m/10</code></p>
+<p><strong>Assign Grades</strong> : <code>gradebook assign c/MODULE_CODE i/MATRIC_NUMBER g/GRADE_ITEM_NAME m/MARKS</code><br>
+e.g. <code>gradebook assign c/CS2040C i/A0168111 g/Assignment 1 m/10</code></p>
+</li>
+<li>
+<p><strong>Creating a class</strong> <code>class create c/CLASS_NAME m/MODULE_CODE e/MAX_ENROLLMENT</code><br>
+e.g. <code>class create c/T16 m/CG1111 e/20</code></p>
+</li>
+<li>
+<p><strong>Deleting a class</strong> <code>class delete c/CLASS_NAME m/MODULE_CODE</code><br>
+e.g. <code>class delete c/T16 m/CG1111</code></p>
+</li>
+<li>
+<p><strong>Assigning a student to class</strong> <code>class addstudent c/CLASS_NAME m/MODULE_CODE</code><br>
+e.g. <code>class addstudent c/T16 i/A6942069M</code></p>
+</li>
+<li>
+<p><strong>Unassigning a student from class</strong> <code>class delstudent c/CLASS_NAME i/ADMISSION_NO</code><br>
+e.g. <code>class delstudent c/T16 i/A6942069M</code></p>
+</li>
+<li>
+<p><strong>Modifying class enrollment limits</strong> <code>class maxenroll c/CLASS_NAME e/NEW_MAX_ENROLLMENT_SIZE</code><br>
+e.g. <code>class maxenroll c/T16 e/20</code></p>
+</li>
+<li>
+<p><strong>Accessing class attendance list</strong> <code>class listattend c/CLASS_NAME</code><br>
+e.g. <code>class listattend c/T16</code></p>
+</li>
+<li>
+<p><strong>Marking class attendance list</strong> <code>class markattend c/CLASS_NAME i/ADMISSION_NO</code><br>
+e.g. <code>class markattend c/T16 i/A6942069M</code></p>
+</li>
+<li>
+<p><strong>Modifying class attendance list</strong> <code>class modattend c/CLASS_NAME i/ADMISSION_NO</code><br>
+e.g. <code>class modattend c/T16 i/A6942069M</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-26 16:27:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-27 07:02:32 UTC</div></div></div></body></html>
