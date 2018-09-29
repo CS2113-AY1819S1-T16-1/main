@@ -2229,6 +2229,12 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">attach deadlines to notes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of upcoming deadlines and important dates</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find specific notes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search for notes quickly without having to go through an entire list</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3899,7 +3905,8 @@ for <code>RemarkCommandParser</code>.</p>
 <p><strong>Pre-condition</strong></p>
 </div>
 <div class="paragraph">
-<p>Module must exist in data file.</p>
+<p>Module must exist in data file.<br>
+Notes must exist in data file.</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -3976,7 +3983,8 @@ for <code>RemarkCommandParser</code>.</p>
 <p><strong>Pre-condition</strong></p>
 </div>
 <div class="paragraph">
-<p>Module must exist in data file.</p>
+<p>Module must exist in data file.<br>
+Note must exist in data file.</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -4093,7 +4101,8 @@ for <code>RemarkCommandParser</code>.</p>
 <p><strong>Pre-condition</strong></p>
 </div>
 <div class="paragraph">
-<p>Module must exist in data file.</p>
+<p>Module must exist in data file.<br>
+Note must exist in data file.</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -4221,6 +4230,84 @@ for <code>RemarkCommandParser</code>.</p>
 <p>5b1. System informs the user that the input is invalid.</p>
 <div class="paragraph">
 <p>Use case resumes at step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-finding-notes" class="discrete">Use case: Finding notes</h3>
+<div class="paragraph">
+<p><strong>Pre-condition</strong></p>
+</div>
+<div class="paragraph">
+<p>Module must exist in data file.<br>
+Notes must exist in data file.</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher requests to find notes which contains a set of keywords from a module.</p>
+</li>
+<li>
+<p>System displays the complete numbered list of notes found with the keyword(s).</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Teacher enters an invalid command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. The module does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System displays a message that the module is not found.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. There are no entries found with the entered keyword(s).</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System displays a message that no entries are found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
@@ -4452,4 +4539,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-28 18:56:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-29 04:38:00 UTC</div></div></div></body></html>
