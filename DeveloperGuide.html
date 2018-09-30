@@ -3124,17 +3124,43 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-grade-component" class="discrete">Use case: Add grade component</h3>
+<h3 id="use-case-create-grade-component" class="discrete">Use case: Create grade component</h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p><strong>Precondition</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Module code must exist.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher adds grade component</p>
+<p>Teacher creates grade component.</p>
 </li>
 <li>
-<p>System successfully adds grade component.</p>
+<p>System requests for confirmation by displaying input.</p>
+</li>
+<li>
+<p>Teacher confirms request.</p>
+</li>
+<li>
+<p>System indicates success message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3142,16 +3168,38 @@ for <code>RemarkCommandParser</code>.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Extensions</strong></p>
+<p><strong>Extensions</strong> :</p>
 </div>
-<div class="ulist none">
-<ul class="none">
+<div class="ulist">
+<ul>
 <li>
-<p>1a. Module code does not exist.</p>
-<div class="ulist none">
-<ul class="none">
+<p>1a. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
 <li>
-<p>1a1. System outputs error in adding grade item due to wrong module code.</p>
+<p>1a1. System displays message and format corresponding to error.</p>
+</li>
+<li>
+<p>1a2. Teacher enters new data.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, teacher chooses to cancel creating a grade component.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System requests to confirm the cancellation.</p>
+</li>
+<li>
+<p>*a2. Teacher confirms request.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3161,34 +3209,46 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. Invalid command entered.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. System outputs an example of a valid input to run the 'add grade' command.</p>
+<h3 id="use-case-remove-grade-component" class="discrete">Use case: Remove grade component</h3>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Precondition</strong> :</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Grade component must exist.</p>
+</li>
+<li>
+<p>Corresponding module must exist.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deleting grade component will also delete any grade items associated to it.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-edit-grade-item" class="discrete">Use case: Edit grade item</h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p><strong>MSS</strong> :</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher edits grade item.</p>
+<p>Teacher removes grade component.</p>
 </li>
 <li>
-<p>System successfully updates grade item.</p>
+<p>System requests for confirmation by displaying input.</p>
+</li>
+<li>
+<p>Teacher confirms request.</p>
+</li>
+<li>
+<p>System indicates success message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3196,16 +3256,38 @@ for <code>RemarkCommandParser</code>.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Extensions</strong></p>
+<p><strong>Extensions</strong> :</p>
 </div>
-<div class="ulist none">
-<ul class="none">
+<div class="ulist">
+<ul>
 <li>
-<p>1a. Module code does not exist.</p>
-<div class="ulist none">
-<ul class="none">
+<p>1a. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
 <li>
-<p>1a1. System outputs error in editing grade item due to wrong module code.</p>
+<p>1a1. System displays message and format corresponding to error.</p>
+</li>
+<li>
+<p>1a2. Teacher enters new data.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, teacher chooses to cancel removing a grade component.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System requests to confirm the cancellation.</p>
+</li>
+<li>
+<p>*a2. Teacher confirms request.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3215,34 +3297,49 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. Invalid command entered.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. System outputs an example of a valid input to run the 'edit grade' command.</p>
+<h3 id="use-case-update-grade-component" class="discrete">Use case: Update grade component</h3>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Precondition</strong> :</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Grade component and corresponding module code must exist.</p>
+</li>
+<li>
+<p>Percentage of grade must not exceed 100%.</p>
+</li>
+<li>
+<p>Total sum of weightage for all grade components must not exceed 100%.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-grade-item" class="discrete">Use case: Delete grade item</h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p><strong>MSS</strong> :</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher deletes grade item.</p>
+<p>Teacher updates grade component.</p>
 </li>
 <li>
-<p>System successfully deletes grade item.</p>
+<p>System requests for confirmation by displaying input.</p>
+</li>
+<li>
+<p>Teacher confirms request.</p>
+</li>
+<li>
+<p>System indicates success message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3250,16 +3347,38 @@ for <code>RemarkCommandParser</code>.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Extensions</strong></p>
+<p><strong>Extensions</strong> :</p>
 </div>
-<div class="ulist none">
-<ul class="none">
+<div class="ulist">
+<ul>
 <li>
-<p>1a. Module code does not exist.</p>
-<div class="ulist none">
-<ul class="none">
+<p>1a. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
 <li>
-<p>1a1. System outputs error in deleting grade item due to wrong module code.</p>
+<p>1a1. System displays message and format corresponding to error.</p>
+</li>
+<li>
+<p>1a2. Teacher enters new data.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, teacher chooses to cancel updating a grade component.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System requests to confirm the cancellation.</p>
+</li>
+<li>
+<p>*a2. Teacher confirms request.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3269,34 +3388,37 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. Invalid command entered.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. System outputs an example of a valid input to run the 'delete grade' command.</p>
+<h3 id="use-case-list-grade-component" class="discrete">Use case: List grade component</h3>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Precondition</strong> :</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Module must exist.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-grade-items" class="discrete">Use case: List grade items</h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p><strong>MSS</strong> :</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher searches all grade item.</p>
+<p>Teacher lists grade component.</p>
 </li>
 <li>
-<p>System successfully displays all grade item.</p>
+<p>System displays list.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3304,16 +3426,38 @@ for <code>RemarkCommandParser</code>.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Extensions</strong></p>
+<p><strong>Extensions</strong> :</p>
 </div>
-<div class="ulist none">
-<ul class="none">
+<div class="ulist">
+<ul>
 <li>
-<p>1a. Module code does not exist.</p>
-<div class="ulist none">
-<ul class="none">
+<p>1a. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
 <li>
-<p>1a1. System outputs error in listing grade item due to wrong module code.</p>
+<p>1a1. System displays message and format corresponding to error.</p>
+</li>
+<li>
+<p>1a2. Teacher enters new data.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, teacher chooses to cancel listing a grade component.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System requests to confirm the cancellation.</p>
+</li>
+<li>
+<p>*a2. Teacher confirms request.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3323,34 +3467,37 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. Invalid command entered.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. System outputs an example of a valid input to run the 'list grades' command.</p>
+<h3 id="use-case-list-students-grades" class="discrete">Use case: List students grades</h3>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Precondition</strong> :</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Students must be enrolled to the module.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-assigning-marks-to-a-student" class="discrete">Use case: Assigning marks to a student</h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p><strong>MSS</strong> :</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher assigns marks to student.</p>
+<p>Teacher lists students grades.</p>
 </li>
 <li>
-<p>System successfully saves the marks.</p>
+<p>System displays list.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3358,16 +3505,38 @@ for <code>RemarkCommandParser</code>.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Extensions</strong></p>
+<p><strong>Extensions</strong> :</p>
 </div>
-<div class="ulist none">
-<ul class="none">
+<div class="ulist">
+<ul>
 <li>
-<p>2a. Module code does not exist.</p>
-<div class="ulist none">
-<ul class="none">
+<p>1a. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
 <li>
-<p>2a1. System outputs error in listing grade item due to wrong module code.</p>
+<p>1a1. System displays message and format corresponding to error.</p>
+</li>
+<li>
+<p>1a2. Teacher enters new data.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, teacher chooses to cancel listing students grades.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System requests to confirm the cancellation.</p>
+</li>
+<li>
+<p>*a2. Teacher confirms request.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3377,16 +3546,166 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2b. Invalid command entered.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2b1. System outputs an example of a valid input to run the 'list grades' command.</p>
+<h3 id="use-case-assigning-students-grade" class="discrete">Use case: Assigning students grade</h3>
 <div class="paragraph">
-<p>Use case resumes at step 1.</p>
+<p><strong>Precondition</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Students must be enrolled to the module</p>
+</li>
+<li>
+<p>Grade item details(MAX_MARKS, PERCENTAGE OF GRADE) must exist.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher assigns student a mark.</p>
+</li>
+<li>
+<p>System requests for confirmation.</p>
+</li>
+<li>
+<p>Teacher confirms request.</p>
+</li>
+<li>
+<p>System indicates success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays message and format corresponding to error.</p>
+</li>
+<li>
+<p>1a2. Teacher enters new data.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, teacher chooses to cancel assigning students grades.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System requests to confirm the cancellation.</p>
+</li>
+<li>
+<p>*a2. Teacher confirms request.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-grade-component" class="discrete">Use case: Find Grade Component</h3>
+<div class="paragraph">
+<p><strong>Precondition</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Grade component must exist.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher finds grade component.</p>
+</li>
+<li>
+<p>System displays details on selected grade component.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays message and format corresponding to error.</p>
+</li>
+<li>
+<p>1a2. Teacher enters new data.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, teacher chooses to cancel finding grade component.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System requests to confirm the cancellation.</p>
+</li>
+<li>
+<p>*a2. Teacher confirms request.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
@@ -4539,4 +4858,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-30 07:02:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-30 08:29:21 UTC</div></div></div></body></html>
