@@ -61,7 +61,7 @@
 <li><a href="#update-grade-component-code-gradebook-update-code-code-coming-in-v1-3-code">3.5.2. Update Grade Component : <code>gradebook update</code> <code>[Coming in v1.3]</code></a></li>
 <li><a href="#remove-grade-component-code-gradebook-remove-code">3.5.3. Remove Grade Component : <code>gradebook remove</code></a></li>
 <li><a href="#find-grade-component-code-gradebook-find-code-code-coming-in-v1-2-code">3.5.4. Find Grade Component : <code>gradebook find</code> <code>[Coming in v1.2]</code></a></li>
-<li><a href="#list-grade-components-code-gradebook-list-components-code-code-coming-in-v1-2-code">3.5.5. List Grade Components : <code>gradebook list components</code> <code>[Coming in v1.2]</code></a></li>
+<li><a href="#list-grade-components-code-gradebook-list-code-code-coming-in-v1-2-code">3.5.5. List Grade Components : <code>gradebook list</code> <code>[Coming in v1.2]</code></a></li>
 <li><a href="#list-students-grades-code-gradebook-list-students-code-code-coming-in-v1-2-code">3.5.6. List Students Grades : <code>gradebook list students</code> <code>[Coming in v1.2]</code></a></li>
 <li><a href="#assign-student-grade-code-gradebook-assign-code-code-coming-in-v1-3-code">3.5.7. Assign Student Grade : <code>gradebook assign</code> <code>[Coming in v1.3]</code></a></li>
 </ul>
@@ -1066,17 +1066,14 @@ Displays the class attendance list for the class T16</p>
 <h4 id="add-grade-component-code-gradebook-add-code"><a class="link" href="#add-grade-component-code-gradebook-add-code">3.5.1. Add Grade Component : <code>gradebook add</code></a></h4>
 <div class="paragraph">
 <p>Creates a grade item to a module code.<br>
-Format: <code>gradebook add c/MODULE_CODE g/GRADE_ITEM [m/MARKS_MAX] [p/GRADE_PERCENTAGE]</code></p>
+Format: <code>gradebook add c/MODULE_CODE i/GRADE_ITEM</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Given percentage cannot exceed total available percentage.</p>
-</li>
-<li>
-<p>No duplicate grade items allowed.</p>
+<p>Module code must exist</p>
 </li>
 </ul>
 </div>
@@ -1088,12 +1085,8 @@ Format: <code>gradebook add c/MODULE_CODE g/GRADE_ITEM [m/MARKS_MAX] [p/GRADE_PE
 <div class="ulist">
 <ul>
 <li>
-<p><code>gradebook add c/CS2040C g/Assignment 1 m/10 p/10</code><br>
-Adds grade component, Assignment 1, to module CS2040C with a maximum of 10 marks and constitutes 10% of overall marks.</p>
-</li>
-<li>
-<p><code>gradebook add c/CS2040C g/Final Examinations</code><br>
-Adds grade component, Final Examinations, to module CS2040C.</p>
+<p><code>gradebook add c/CS2040C g/Assignment 1</code><br>
+Adds gradebook component, Assignment 1, to module CS2040C.</p>
 </li>
 </ul>
 </div>
@@ -1109,13 +1102,13 @@ Format: <code>gradebook update c/MODULE_CODE g/GRADE_ITEM [m/MARKS_MAX] [p/GRADE
 <div class="ulist">
 <ul>
 <li>
-<p>Grade component and module code must exist.</p>
+<p>Gradebook component and module code must exist.</p>
 </li>
 <li>
 <p>Percentage of grade must not exceed 100%.</p>
 </li>
 <li>
-<p>Total sum of weightage for all grade components must not exceed 100%.</p>
+<p>Total sum of weightage for all grade component must not exceed 100%.</p>
 </li>
 </ul>
 </div>
@@ -1161,7 +1154,7 @@ Format: `gradebook remove c/MODULE_CODE g/GRADE_ITEM'</p>
 <ul>
 <li>
 <p><code>gradebook remove m/CS2040C g/Assignment 1</code><br>
-Deletes Assignment 1 component from module CS2040C.</p>
+Deletes Assignment 1 gradebook component from module CS2040C.</p>
 </li>
 </ul>
 </div>
@@ -1190,16 +1183,16 @@ Format: `gradebook find c/MODULE_CODE g/GRADE_ITEM'</p>
 <ul>
 <li>
 <p><code>gradebook find c/CS2040C g/Assignment 1</code><br>
-Finds Assignment 1 component in module CS2040C.</p>
+Finds Assignment 1 gradebook component in module CS2040C.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-grade-components-code-gradebook-list-components-code-code-coming-in-v1-2-code"><a class="link" href="#list-grade-components-code-gradebook-list-components-code-code-coming-in-v1-2-code">3.5.5. List Grade Components : <code>gradebook list components</code> <code>[Coming in v1.2]</code></a></h4>
+<h4 id="list-grade-components-code-gradebook-list-code-code-coming-in-v1-2-code"><a class="link" href="#list-grade-components-code-gradebook-list-code-code-coming-in-v1-2-code">3.5.5. List Grade Components : <code>gradebook list</code> <code>[Coming in v1.2]</code></a></h4>
 <div class="paragraph">
 <p>Lists all the grade items in a certain module.<br>
-Format: `gradebook list components c/MODULE_CODE'</p>
+Format: `gradebook list'</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1218,7 +1211,7 @@ Format: `gradebook list components c/MODULE_CODE'</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>gradebook list components c/CS2040C</code><br>
+<p><code>gradebook list</code><br>
 Lists all the grade items for the module with module code CS2040C.</p>
 </li>
 </ul>
@@ -1652,8 +1645,8 @@ e.g. <code>student delete 2</code></p>
 e.g. <code>student export C:\export</code></p>
 </li>
 <li>
-<p><strong>Add Grade Component</strong> : <code>gradebook add c/MODULE_CODE i/GRADE_ITEM  m/MAX_MARKS p/PERCENTAGE OF GRADE</code><br>
-e.g. <code>gradebook add c/CS2040C i/Assignment 1 m/10 p/10</code></p>
+<p><strong>Add Grade Component</strong> : <code>gradebook add c/MODULE_CODE i/GRADE_ITEM</code><br>
+e.g. <code>gradebook add c/CS2040C i/Assignment 1</code></p>
 </li>
 <li>
 <p><strong>Edit Grade Item</strong> : <code>gradebook edit c/MODULE_CODE i/GRADE_ITEM  m/ MAX_MARKS p/PERCENTAGE OF GRADE</code><br>
@@ -1664,8 +1657,8 @@ e.g. <code>gradebook edit c/CS2040C i/Assignment 1 m/20 p/10</code></p>
 e.g. <code>gradebook remove m/CS2040C i/Assignment 1</code></p>
 </li>
 <li>
-<p><strong>List Grade Components</strong> : <code>gradebook list components c/MODULE_CODE</code><br>
-e.g. <code>gradebook list components c/CS2040C</code></p>
+<p><strong>List Grade Components</strong> : <code>gradebook list c/MODULE_CODE</code><br>
+e.g. <code>gradebook list c/CS2040C</code></p>
 </li>
 <li>
 <p><strong>List Grade Components</strong> : <code>gradebook list grades c/MODULE_CODE</code><br>
@@ -1739,4 +1732,4 @@ e.g. <code>note find m/CS2040C k/bubble</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-05 04:16:59 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-06 16:47:10 UTC</div></div></div></body></html>

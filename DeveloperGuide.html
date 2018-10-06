@@ -20,10 +20,10 @@
 <li><a href="#design">2. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
+<li><a href="#Design-Ui">2.2. UI gradebookComponent</a></li>
+<li><a href="#Design-Logic">2.3. Logic gradebookComponent</a></li>
+<li><a href="#Design-Model">2.4. Model gradebookComponent</a></li>
+<li><a href="#Design-Storage">2.5. Storage gradebookComponent</a></li>
 <li><a href="#Design-Commons">2.6. Common classes</a></li>
 </ul>
 </li>
@@ -64,7 +64,7 @@
 </li>
 <li><a href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a>
 <ul class="sectlevel2">
-<li><a href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></li>
+<li><a href="#GetStartedProgramming-EachComponent">A.1. Improving each gradebookComponent</a></li>
 <li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
 </ul>
 </li>
@@ -301,7 +301,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
 <div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
+<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each gradebookComponent.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -321,20 +321,20 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="ulist">
 <ul>
 <li>
-<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
+<p>At app launch: Initializes the gradebookComponents in the correct sequence, and connects them up with each other.</p>
 </li>
 <li>
-<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
+<p>At shut down: Shuts down the gradebookComponents and invokes cleanup method where necessary.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architecture level.</p>
+<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other gradebookComponents. Two of those classes play important roles at the architecture level.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>EventsCenter</code> : This class (written using <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a>) is used by components to communicate with other components using events (i.e. a form of <em>Event Driven</em> design)</p>
+<p><code>EventsCenter</code> : This class (written using <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a>) is used by gradebookComponents to communicate with other gradebookComponents using events (i.e. a form of <em>Event Driven</em> design)</p>
 </li>
 <li>
 <p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
@@ -342,7 +342,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>The rest of the App consists of four components.</p>
+<p>The rest of the App consists of four gradebookComponents.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -361,7 +361,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of the four components</p>
+<p>Each of the four gradebookComponents</p>
 </div>
 <div class="ulist">
 <ul>
@@ -374,7 +374,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+<p>For example, the <code>Logic</code> gradebookComponent (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -384,7 +384,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 <h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the gradebookComponents interact for the scenario where the user issues the command <code>delete 1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -420,17 +420,17 @@ Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</c
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
+Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between gradebookComponents.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The sections below give more details of each component.</p>
+<p>The sections below give more details of each gradebookComponent.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI gradebookComponent</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
@@ -444,15 +444,15 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> gradebookComponent uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component,</p>
+<p>The <code>UI</code> gradebookComponent,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Executes user commands using the <code>Logic</code> component.</p>
+<p>Executes user commands using the <code>Logic</code> gradebookComponent.</p>
 </li>
 <li>
 <p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
@@ -464,7 +464,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic gradebookComponent</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
@@ -492,7 +492,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> gradebookComponent for the <code>execute("delete 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -502,7 +502,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model gradebookComponent</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
@@ -527,7 +527,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
-<p>does not depend on any of the other three components.</p>
+<p>does not depend on any of the other three gradebookComponents.</p>
 </li>
 </ul>
 </div>
@@ -547,7 +547,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage gradebookComponent</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
@@ -558,7 +558,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Storage</code> component,</p>
+<p>The <code>Storage</code> gradebookComponent,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -574,7 +574,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple gradebookComponents are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -1126,7 +1126,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
 </li>
 <li>
-<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
+<p><em>Unit tests</em> that test the individual gradebookComponents. These are in <code>seedu.address.ui</code> package.</p>
 </li>
 </ol>
 </div>
@@ -1239,19 +1239,19 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, add small local-impact (i.e. the impact of the change does not go beyond the component) enhancements to one component at a time. Some suggestions are given in <a href="#GetStartedProgramming-EachComponent">Section A.1, &#8220;Improving each component&#8221;</a>.</p>
+<p>First, add small local-impact (i.e. the impact of the change does not go beyond the gradebookComponent) enhancements to one gradebookComponent at a time. Some suggestions are given in <a href="#GetStartedProgramming-EachComponent">Section A.1, &#8220;Improving each gradebookComponent&#8221;</a>.</p>
 </li>
 <li>
-<p>Next, add a feature that touches multiple components to learn how to implement an end-to-end feature across all components. <a href="#GetStartedProgramming-RemarkCommand">Section A.2, &#8220;Creating a new command: <code>remark</code>&#8221;</a> explains how to go about adding such a feature.</p>
+<p>Next, add a feature that touches multiple gradebookComponents to learn how to implement an end-to-end feature across all gradebookComponents. <a href="#GetStartedProgramming-RemarkCommand">Section A.2, &#8220;Creating a new command: <code>remark</code>&#8221;</a> explains how to go about adding such a feature.</p>
 </li>
 </ol>
 </div>
 <div class="sect2">
-<h3 id="GetStartedProgramming-EachComponent"><a class="link" href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></h3>
+<h3 id="GetStartedProgramming-EachComponent"><a class="link" href="#GetStartedProgramming-EachComponent">A.1. Improving each gradebookComponent</a></h3>
 <div class="paragraph">
-<p>Each individual exercise in this section is component-based (i.e. you would not need to modify the other components to get it to work).</p>
+<p>Each individual exercise in this section is gradebookComponent-based (i.e. you would not need to modify the other gradebookComponents to get it to work).</p>
 </div>
-<h4 id="code-logic-code-component" class="discrete"><code>Logic</code> component</h4>
+<h4 id="code-logic-code-gradebookcomponent" class="discrete"><code>Logic</code> gradebookComponent</h4>
 <div class="paragraph">
 <p><strong>Scenario:</strong> You are in charge of <code>logic</code>. During dog-fooding, your team realize that it is troublesome for the user to type the whole command in order to execute a command. Your team devise some strategies to help cut down the amount of typing necessary, and one of the suggestions was to implement aliases for the command words. Your job is to implement such aliases.</p>
 </div>
@@ -1262,7 +1262,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8221;</a> before attempting to modify the <code>Logic</code> component.
+Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic gradebookComponent&#8221;</a> before attempting to modify the <code>Logic</code> gradebookComponent.
 </td>
 </tr>
 </table>
@@ -1314,7 +1314,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 </li>
 </ol>
 </div>
-<h4 id="code-model-code-component" class="discrete"><code>Model</code> component</h4>
+<h4 id="code-model-code-gradebookcomponent" class="discrete"><code>Model</code> gradebookComponent</h4>
 <div class="paragraph">
 <p><strong>Scenario:</strong> You are in charge of <code>model</code>. One day, the <code>logic</code>-in-charge approaches you for help. He wants to implement a command such that the user is able to remove a particular tag from everyone in the address book, but the model API does not support such a functionality at the moment. Your job is to implement an API method, so that your teammate can use your API to implement his command.</p>
 </div>
@@ -1325,7 +1325,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8221;</a> before attempting to modify the <code>Model</code> component.
+Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model gradebookComponent&#8221;</a> before attempting to modify the <code>Model</code> gradebookComponent.
 </td>
 </tr>
 </table>
@@ -1380,7 +1380,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 </li>
 </ol>
 </div>
-<h4 id="code-ui-code-component" class="discrete"><code>Ui</code> component</h4>
+<h4 id="code-ui-code-gradebookcomponent" class="discrete"><code>Ui</code> gradebookComponent</h4>
 <div class="paragraph">
 <p><strong>Scenario:</strong> You are in charge of <code>ui</code>. During a beta testing session, your team is observing how the users use your address book application. You realize that one of the users occasionally tries to delete non-existent tags from a contact, because the tags all look the same visually, and the user got confused. Another user made a typing mistake in his command, but did not realize he had done so because the error message wasn&#8217;t prominent enough. A third user keeps scrolling down the list, because he keeps forgetting the index of the last person in the list. Your job is to implement improvements to the UI to solve all these problems.</p>
 </div>
@@ -1391,7 +1391,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</a> before attempting to modify the <code>UI</code> component.
+Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI gradebookComponent&#8221;</a> before attempting to modify the <code>UI</code> gradebookComponent.
 </td>
 </tr>
 </table>
@@ -1601,7 +1601,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </li>
 </ol>
 </div>
-<h4 id="code-storage-code-component" class="discrete"><code>Storage</code> component</h4>
+<h4 id="code-storage-code-gradebookcomponent" class="discrete"><code>Storage</code> gradebookComponent</h4>
 <div class="paragraph">
 <p><strong>Scenario:</strong> You are in charge of <code>storage</code>. For your next project milestone, your team plans to implement a new feature of saving the address book to the cloud. However, the current implementation of the application constantly saves the address book after the execution of each command, which is not ideal if the user is working on limited internet connection. Your team decided that the application should instead save the changes to a temporary local backup file first, and only upload to the cloud after the user closes the application. Your job is to implement a backup API for the address book storage.</p>
 </div>
@@ -1612,7 +1612,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage component&#8221;</a> before attempting to modify the <code>Storage</code> component.
+Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage gradebookComponent&#8221;</a> before attempting to modify the <code>Storage</code> gradebookComponent.
 </td>
 </tr>
 </table>
@@ -1659,7 +1659,7 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <div class="sect2">
 <h3 id="GetStartedProgramming-RemarkCommand"><a class="link" href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></h3>
 <div class="paragraph">
-<p>By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major components of the app.</p>
+<p>By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major gradebookComponents of the app.</p>
 </div>
 <div class="paragraph">
 <p><strong>Scenario:</strong> You are a software maintainer for <code>addressbook</code>, as the former developer team has moved on to new projects. The current users of your application have a list of new feature requests that they hope the software will eventually have. The most popular request is to allow adding additional comments/notes about a particular contact, by providing a flexible <code>remark</code> field for each contact, rather than relying on tags alone. After designing the specification for the <code>remark</code> command, you are convinced that this feature is worth implementing. Your job is to implement the <code>remark</code> command.</p>
@@ -1799,7 +1799,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
+<p>Add <code>Remark</code> to model gradebookComponent (you can copy from <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
 </li>
 <li>
 <p>Modify <code>RemarkCommand</code> to now take in a <code>Remark</code> instead of a <code>String</code>.</p>
@@ -2160,8 +2160,8 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add grade components</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">differentiate the grade components in a module (E.g. mid term test, finals examination)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add grade gradebookComponents</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">differentiate the grade gradebookComponents in a module (E.g. mid term test, finals examination)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2184,8 +2184,8 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list all grade components</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view all the grade components that I have added to my module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list all grade gradebookComponents</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view all the grade gradebookComponents that I have added to my module</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -3497,7 +3497,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher creates grade component.</p>
+<p>Teacher creates grade gradebookComponent.</p>
 </li>
 <li>
 <p>System requests for confirmation by displaying input.</p>
@@ -3538,7 +3538,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 <li>
-<p>*a. At any time, teacher chooses to cancel creating a grade component.</p>
+<p>*a. At any time, teacher chooses to cancel creating a grade gradebookComponent.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3562,13 +3562,13 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Grade component and corresponding module code must exist.</p>
+<p>Grade gradebookComponent and corresponding module code must exist.</p>
 </li>
 <li>
 <p>Percentage of grade must not exceed 100%.</p>
 </li>
 <li>
-<p>Total sum of weightage for all grade components must not exceed 100%.</p>
+<p>Total sum of weightage for all grade gradebookComponents must not exceed 100%.</p>
 </li>
 </ul>
 </div>
@@ -3588,7 +3588,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher updates grade component.</p>
+<p>Teacher updates grade gradebookComponent.</p>
 </li>
 <li>
 <p>System requests for confirmation by displaying input.</p>
@@ -3629,7 +3629,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 <li>
-<p>*a. At any time, teacher chooses to cancel updating a grade component.</p>
+<p>*a. At any time, teacher chooses to cancel updating a grade gradebookComponent.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3653,7 +3653,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Grade component must exist.</p>
+<p>Grade gradebookComponent must exist.</p>
 </li>
 <li>
 <p>Corresponding module must exist.</p>
@@ -3666,7 +3666,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Deleting grade component will also delete any grade items associated to it.</p>
+<p>Deleting grade gradebookComponent will also delete any grade items associated to it.</p>
 </li>
 </ul>
 </div>
@@ -3676,7 +3676,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher removes grade component.</p>
+<p>Teacher removes grade gradebookComponent.</p>
 </li>
 <li>
 <p>System requests for confirmation by displaying input.</p>
@@ -3717,7 +3717,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 <li>
-<p>*a. At any time, teacher chooses to cancel removing a grade component.</p>
+<p>*a. At any time, teacher chooses to cancel removing a grade gradebookComponent.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3741,7 +3741,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Grade component must exist.</p>
+<p>Grade gradebookComponent must exist.</p>
 </li>
 </ul>
 </div>
@@ -3761,10 +3761,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher finds grade component.</p>
+<p>Teacher finds grade gradebookComponent.</p>
 </li>
 <li>
-<p>System displays details on selected grade component.</p>
+<p>System displays details on selected grade gradebookComponent.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3796,7 +3796,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 <li>
-<p>*a. At any time, teacher chooses to cancel finding grade component.</p>
+<p>*a. At any time, teacher chooses to cancel finding grade gradebookComponent.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3840,7 +3840,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher lists grade component.</p>
+<p>Teacher lists grade gradebookComponent.</p>
 </li>
 <li>
 <p>System displays list.</p>
@@ -3875,7 +3875,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 <li>
-<p>*a. At any time, teacher chooses to cancel listing a grade component.</p>
+<p>*a. At any time, teacher chooses to cancel listing a grade gradebookComponent.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -5324,4 +5324,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-05 04:16:59 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-06 16:47:10 UTC</div></div></div></body></html>
