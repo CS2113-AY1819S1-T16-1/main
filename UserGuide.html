@@ -46,13 +46,14 @@
 <li><a href="#add-class-code-class-create-code">3.4.1. Add Class : <code>class create</code></a></li>
 <li><a href="#update-class-enrollment-limits-code-class-maxenroll-code">3.4.2. Update Class Enrollment Limits : <code>class maxenroll</code></a></li>
 <li><a href="#update-class-attendance-list-code-class-modattend-code">3.4.3. Update Class Attendance List : <code>class modattend</code></a></li>
-<li><a href="#remove-class-code-class-delete-code">3.4.4. Remove class : <code>class delete</code></a></li>
-<li><a href="#assign-student-to-class-code-class-addstudent-code">3.4.5. Assign Student To Class : <code>class addstudent</code></a></li>
-<li><a href="#unassigning-student-from-class-code-class-delstudent-code">3.4.6. Unassigning Student From Class : <code>class delstudent</code></a></li>
-<li><a href="#modifying-class-enrollment-limits-code-class-maxenroll-coming-in-v1-2-code">3.4.7. Modifying class enrollment limits : <code>class maxenroll [coming in v1.2]</code></a></li>
-<li><a href="#accessing-class-attendance-list-code-class-listattend-coming-in-v1-3-code">3.4.8. Accessing class attendance list : <code>class listattend [coming in v1.3]</code></a></li>
-<li><a href="#marking-class-attendance-list-code-class-markattend-coming-in-v1-3-code">3.4.9. Marking class attendance list : <code>class markattend [coming in v1.3]</code></a></li>
-<li><a href="#modifying-class-attendance-list-code-class-modattend-coming-in-v1-3-code">3.4.10. Modifying class attendance list : <code>class modattend [coming in v1.3]</code></a></li>
+<li><a href="#list-class-code-class-list-code">3.4.4. List class : <code>class list</code></a></li>
+<li><a href="#remove-class-code-class-delete-code">3.4.5. Remove class : <code>class delete</code></a></li>
+<li><a href="#assign-student-to-class-code-class-addstudent-code">3.4.6. Assign Student To Class : <code>class addstudent</code></a></li>
+<li><a href="#unassigning-student-from-class-code-class-delstudent-code">3.4.7. Unassigning Student From Class : <code>class delstudent</code></a></li>
+<li><a href="#modifying-class-enrollment-limits-code-class-maxenroll-coming-in-v1-2-code">3.4.8. Modifying class enrollment limits : <code>class maxenroll [coming in v1.2]</code></a></li>
+<li><a href="#accessing-class-attendance-list-code-class-listattend-coming-in-v1-3-code">3.4.9. Accessing class attendance list : <code>class listattend [coming in v1.3]</code></a></li>
+<li><a href="#marking-class-attendance-list-code-class-markattend-coming-in-v1-3-code">3.4.10. Marking class attendance list : <code>class markattend [coming in v1.3]</code></a></li>
+<li><a href="#modifying-class-attendance-list-code-class-modattend-coming-in-v1-3-code">3.4.11. Modifying class attendance list : <code>class modattend [coming in v1.3]</code></a></li>
 </ul>
 </li>
 <li><a href="#grade-management">3.5. Grade Management</a>
@@ -848,7 +849,36 @@ Modifies the attendance of the student of the admission number A6942069M for the
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-class-code-class-delete-code"><a class="link" href="#remove-class-code-class-delete-code">3.4.4. Remove class : <code>class delete</code></a></h4>
+<h4 id="list-class-code-class-list-code"><a class="link" href="#list-class-code-class-list-code">3.4.4. List class : <code>class list</code></a></h4>
+<div class="paragraph">
+<p>Lists class(es) with information of the class for the system.<br>
+Format: <code>class list</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class(es) must exist in order to be listed</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class list</code><br>
+Lists all the class(es) created.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remove-class-code-class-delete-code"><a class="link" href="#remove-class-code-class-delete-code">3.4.5. Remove class : <code>class delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes a class with students assigned to it for a module for the system.<br>
 Format: <code>class delete c/CLASS_NAME m/MODULE_CODE</code></p>
@@ -880,7 +910,7 @@ Deletes the class T16 from the module CG1111</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="assign-student-to-class-code-class-addstudent-code"><a class="link" href="#assign-student-to-class-code-class-addstudent-code">3.4.5. Assign Student To Class : <code>class addstudent</code></a></h4>
+<h4 id="assign-student-to-class-code-class-addstudent-code"><a class="link" href="#assign-student-to-class-code-class-addstudent-code">3.4.6. Assign Student To Class : <code>class addstudent</code></a></h4>
 <div class="paragraph">
 <p>Assigns a student to a class for the system.<br>
 Format: <code>class addstudent c/CLASS_NAME m/MODULE_CODE</code></p>
@@ -909,7 +939,7 @@ Adds a student of the admission number A6942069M to the class T16</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="unassigning-student-from-class-code-class-delstudent-code"><a class="link" href="#unassigning-student-from-class-code-class-delstudent-code">3.4.6. Unassigning Student From Class : <code>class delstudent</code></a></h4>
+<h4 id="unassigning-student-from-class-code-class-delstudent-code"><a class="link" href="#unassigning-student-from-class-code-class-delstudent-code">3.4.7. Unassigning Student From Class : <code>class delstudent</code></a></h4>
 <div class="paragraph">
 <p>Unassigns a student from the class for the system.<br>
 Format: <code>class delstudent c/CLASS_NAME i/ADMISSION_NO</code></p>
@@ -941,7 +971,7 @@ Removes a student of the admission number A6942069M from the class T16</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="modifying-class-enrollment-limits-code-class-maxenroll-coming-in-v1-2-code"><a class="link" href="#modifying-class-enrollment-limits-code-class-maxenroll-coming-in-v1-2-code">3.4.7. Modifying class enrollment limits : <code>class maxenroll [coming in v1.2]</code></a></h4>
+<h4 id="modifying-class-enrollment-limits-code-class-maxenroll-coming-in-v1-2-code"><a class="link" href="#modifying-class-enrollment-limits-code-class-maxenroll-coming-in-v1-2-code">3.4.8. Modifying class enrollment limits : <code>class maxenroll [coming in v1.2]</code></a></h4>
 <div class="paragraph">
 <p>Modifies the max enrollment size for a class for the system.<br>
 Format: <code>class maxenroll  c/CLASS_NAME e/NEW_MAX_ENROLLMENT_SIZE</code></p>
@@ -970,7 +1000,7 @@ Modifies the new max class enrollment size for the class T16 to be 20</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="accessing-class-attendance-list-code-class-listattend-coming-in-v1-3-code"><a class="link" href="#accessing-class-attendance-list-code-class-listattend-coming-in-v1-3-code">3.4.8. Accessing class attendance list : <code>class listattend [coming in v1.3]</code></a></h4>
+<h4 id="accessing-class-attendance-list-code-class-listattend-coming-in-v1-3-code"><a class="link" href="#accessing-class-attendance-list-code-class-listattend-coming-in-v1-3-code">3.4.9. Accessing class attendance list : <code>class listattend [coming in v1.3]</code></a></h4>
 <div class="paragraph">
 <p>Access the class attendance list for the system.<br>
 Format: <code>class listattend c/CLASS_NAME</code></p>
@@ -999,7 +1029,7 @@ Displays the class attendance list for the class T16</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-class-attendance-list-code-class-markattend-coming-in-v1-3-code"><a class="link" href="#marking-class-attendance-list-code-class-markattend-coming-in-v1-3-code">3.4.9. Marking class attendance list : <code>class markattend [coming in v1.3]</code></a></h4>
+<h4 id="marking-class-attendance-list-code-class-markattend-coming-in-v1-3-code"><a class="link" href="#marking-class-attendance-list-code-class-markattend-coming-in-v1-3-code">3.4.10. Marking class attendance list : <code>class markattend [coming in v1.3]</code></a></h4>
 <div class="paragraph">
 <p>Mark the class attendance list for a specified student for the system.<br>
 Format: <code>class markattend c/CLASS_NAME i/ADMISSION_NO</code></p>
@@ -1031,7 +1061,7 @@ Marks the attendance of the student of the admission number A6942069M for the cl
 </div>
 </div>
 <div class="sect3">
-<h4 id="modifying-class-attendance-list-code-class-modattend-coming-in-v1-3-code"><a class="link" href="#modifying-class-attendance-list-code-class-modattend-coming-in-v1-3-code">3.4.10. Modifying class attendance list : <code>class modattend [coming in v1.3]</code></a></h4>
+<h4 id="modifying-class-attendance-list-code-class-modattend-coming-in-v1-3-code"><a class="link" href="#modifying-class-attendance-list-code-class-modattend-coming-in-v1-3-code">3.4.11. Modifying class attendance list : <code>class modattend [coming in v1.3]</code></a></h4>
 <div class="paragraph">
 <p>Modifies the class attendance list for the system.<br>
 Format: <code>class modattend c/CLASS_NAME i/ADMISSION_NO</code></p>
@@ -1704,6 +1734,10 @@ e.g. <code>gradebook assign c/CS2040C i/A0168111 g/Assignment 1 m/10</code></p>
 e.g. <code>class create c/T16 m/CG1111 e/20</code></p>
 </li>
 <li>
+<p><strong>List class</strong> <code>class list</code><br>
+e.g. <code>class list</code></p>
+</li>
+<li>
 <p><strong>Deleting a class</strong> <code>class delete c/CLASS_NAME m/MODULE_CODE</code><br>
 e.g. <code>class delete c/T16 m/CG1111</code></p>
 </li>
@@ -1763,4 +1797,4 @@ e.g. <code>note find m/CS2040C k/bubble</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-10 13:54:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-10 14:43:19 UTC</div></div></div></body></html>
