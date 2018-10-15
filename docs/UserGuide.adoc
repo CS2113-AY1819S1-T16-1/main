@@ -70,48 +70,40 @@ Format: student edit INDEX [n/NAME] [i/ADMIN_NUMBER] [c/COURSE_CODE] [p/MOBILE_N
 ****
 Examples:
 
-
-==== Select Student : `select`
-
-Selects the student identified by the index number used in the displayed person list. +
-Format: `select INDEX`
-
 * `student edit 1 p/99887890 a/14 Simei Avenue 1`
 Edits the phone number and home address of the 1st student to be 99887890 and 14 Simei Avenue 1 respectively.
 * `student edit 2 a/14 Jurong East Street 91`
 Edits only the address of the 2nd student to be 14 Jurong East Street 91.
 
+==== Select Student : `select`
+Selects the student identified by the index number used in the displayed person list. +
+Format: `student select INDEX`
 
-==== Find a student by name/matric no : `student find [coming in v1.2]`
+==== Find Student by name/matric no : `student find [coming in v1.2]`
 Find student(s) whose names contain any of the given keywords. +
-Format:  find [n/STUDENT_NAME] [i/MATRIC_NO]
+Format:  student find [n/STUDENT_NAME] [i/MATRIC_NO]
 ****
-* Selects the student and loads the Google search page the student at the specified `INDEX`.
-* The index refers to the index number shown in the displayed student list.
-* The index *must be a positive integer* `1, 2, 3, ...`
+* Display a list of students whose name or matric number matches the given keywords.
 ****
 Examples:
 
-* `find student n/Rachel`
+* `student find n/Rachel`
 Returns students whose first name or last name contains 'Rachel'.
-* `find student i/A0168000L`
+* `student find i/A0168000L`
 Return the student whose matriculation no matches 'A0168000L'.
 
-
-
 Examples:
 
-* `list` +
+* `student list` +
 `select 2` +
 Selects the 2nd student in the address book.
-* `find Betsy` +
+* `student find Betsy` +
 `select 1` +
 Selects the 1st student in the results of the `find` command.
 
 ==== Remove Student : `student delete`
 Deletes the specified student from the system. +
-Format: delete student INDEX
-
+Format: student delete INDEX
 
 Examples:
 
@@ -122,25 +114,6 @@ Deletes the 2nd person in the system
 * Deletes the student at the specified INDEX
 * The index refers to the index number shown in the displayed student list.
 * The index must be a must be a positive integer 1,2,3,...
-****
-
-==== Find Student : `student find [coming in v1.2]`
-Find student(s) whose names contain any of the given keywords. +
-Format:  find [n/STUDENT_NAME] [i/MATRIC_NO]
-
-Examples:
-
-* `find student n/Rachel`
-Returns students whose first name or last name contains 'Rachel'.
-* `find student i/A0168000L`
-Return the student whose matriculation no matches 'A0168000L'.
-
-****
-* The search is case insensitive.
-* The order of the keyword does not matter.
-* Only the name and matric no is searched
-* Students matching at least one keyword will be returned
-* Partial search supported for name
 ****
 
 ==== List Students : `student list`
@@ -158,29 +131,6 @@ Examples:
 
 * `student export C:\export`
 Exports all students in .csv format to the 'export' folder in C drive.
-
-
-
-
-==== Selecting a student : `select`
-
-Selects the student identified by the index number used in the displayed person list. +
-Format: `select INDEX`
-
-****
-* Selects the student and loads the Google search page the student at the specified `INDEX`.
-* The index refers to the index number shown in the displayed student list.
-* The index *must be a positive integer* `1, 2, 3, ...`
-****
-
-Examples:
-
-* `list` +
-`select 2` +
-Selects the 2nd student in the address book.
-* `find Betsy` +
-`select 1` +
-Selects the 1st student in the results of the `find` command.
 
 ==== Add a course : `course add`
 Adds a student to the system. +
