@@ -33,10 +33,7 @@
           </Menu>
         </MenuBar>
 
-
-
-
-        <SplitPane id="splitPane" fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS">
+        <SplitPane id="splitPane" fx:id="splitPane" dividerPositions="0.4, 0.78" VBox.vgrow="ALWAYS">
           <VBox fx:id="personList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
@@ -49,6 +46,13 @@
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
           </StackPane>
+
+          <VBox fx:id="noteList" minWidth="190" prefWidth="190" SplitPane.resizableWithParent="false">
+            <padding>
+              <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <StackPane fx:id="notesListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          </VBox>
         </SplitPane>
 
           <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
@@ -63,7 +67,6 @@
                   <Insets top="5" right="10" bottom="5" left="10" />
               </padding>
           </StackPane>
-
 
           <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>

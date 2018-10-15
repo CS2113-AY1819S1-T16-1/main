@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddNoteCommand;
 import seedu.address.logic.commands.ClassAddCommand;
 import seedu.address.logic.commands.ClassListCommand;
 import seedu.address.logic.commands.ClearCommand;
@@ -26,6 +25,7 @@ import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ModuleAddCommand;
 import seedu.address.logic.commands.ModuleListCommand;
+import seedu.address.logic.commands.NoteAddCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -45,7 +45,7 @@ public class AddressBookParser {
      * Used to separate multiple command words and args
      */
     private static final Pattern ADVANCED_COMMAND_FORMAT =
-            Pattern.compile("(?<commandWords>.*?\\S+((?<=find)|(?=(?: [0-9]| [a-z]\\/))|$))(?<arguments>.*)");
+            Pattern.compile("(?<commandWords>.*?\\S+((?<=find)|(?=(?:\\s+[0-9]|\\s+[a-z]\\/))|$))(?<arguments>.*)");
 
     /**
      * Parses user input into command for execution.
@@ -60,7 +60,8 @@ public class AddressBookParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
-        final String commandWord = matcher.group("commandWords");
+        // final String commandWord = matcher.group("commandWords");
+        final String commandWord = matcher.group("commandWords").trim().replaceAll(" +", " ");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
         case GradebookAddCommand.COMMAND_WORD:
@@ -79,8 +80,8 @@ public class AddressBookParser {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
-        case AddNoteCommand.COMMAND_WORD:
-            return new AddNoteCommandParser().parse(arguments);
+        case NoteAddCommand.COMMAND_WORD:
+            return new NoteAddCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
@@ -131,5 +132,4 @@ public class AddressBookParser {
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }

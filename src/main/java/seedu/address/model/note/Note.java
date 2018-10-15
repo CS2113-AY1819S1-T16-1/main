@@ -1,64 +1,58 @@
 package seedu.address.model.note;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+
 /**
- * This represents a note.
+ * Represents a note data in Trajectory.
  */
 @XmlRootElement(name = "note")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Note {
 
-    public static final String MESSAGE_NOTE_CONSTRAINTS =
-            "Notes can take any values, and it should not be blank";
-
-    public static final String NOTE_VALIDATION_REGEX = "[^\\s].*";
-
-    @XmlElement(name = "note", required = true, nillable = true)
-    private String note;
-
-    @XmlElement(name = "ModuleCode", required = true, nillable = true)
+    @XmlElement(name = "moduleCode")
     private String moduleCode;
+
+    @XmlElement(name = "date")
+    private String date;
+
+    @XmlElement(name = "text")
+    private String noteText;
 
     public Note() {
 
     }
 
-
-    public Note(String note, String moduleCode) {
-        requireNonNull(note);
-
-        // Check if Module Code exists in data file - TO BE IMPLEMENTED
-
-        checkArgument(isValidNote(note), MESSAGE_NOTE_CONSTRAINTS);
-
-        this.note = note;
+    public Note(String moduleCode, String date) {
+        this.noteText = "";
         this.moduleCode = moduleCode;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void editNote(String note) {
-        this.note = note;
+        this.date = date;
     }
 
     public String getModuleCode() {
-        return moduleCode; }
+        return this.moduleCode;
+    }
 
-    public void editModuleCode(String moduleCode) {
+    public void setModuleCode(String moduleCode) {
         this.moduleCode = moduleCode;
     }
 
-    private static boolean isValidNote(String test) {
-        return test.matches(NOTE_VALIDATION_REGEX);
+    public String getDate() {
+        return this.date;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getNoteText() {
+        return this.noteText;
+    }
+
+    public void setNote(String noteText) {
+        this.noteText = noteText;
+    }
 }
