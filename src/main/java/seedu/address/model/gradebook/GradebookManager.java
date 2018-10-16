@@ -18,7 +18,7 @@ public class GradebookManager {
     @XmlElement(name = "gradeItem")
     private ArrayList<GradebookComponent> gradebookComponentsList = new ArrayList<GradebookComponent>();
 
-    public ArrayList<GradebookComponent> getList() {
+    public ArrayList<GradebookComponent> getGradebookComponentsList() {
         return gradebookComponentsList;
     }
     public void setGradebookComponentList(ArrayList<GradebookComponent> gradebookComponentsList) {

@@ -6,31 +6,32 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADEBOOK_MODULE;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.GradebookAddCommand;
+import seedu.address.logic.commands.GradebookDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.gradebook.GradebookComponent;
 
 /**
- * Parses input arguments and creates a new GradebookAddCommand object
+ * Parses input arguments and creates a new GradebookDeleteCommand object
  */
-public class GradebookAddCommandParser implements Parser<GradebookAddCommand> {
+public class GradebookDeleteCommandParser {
     /**
      * Parses the given {@code String} of arguments in the context of the GradebookAddCommand
-     * and returns a GradebookAddCommand object for execution.
+     * and returns a GradebookDeleteCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public GradebookAddCommand parse(String args) throws ParseException {
+    public GradebookDeleteCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_GRADEBOOK_MODULE, PREFIX_GRADEBOOK_ITEM);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_GRADEBOOK_MODULE, PREFIX_GRADEBOOK_ITEM)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GradebookAddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    GradebookDeleteCommand.MESSAGE_USAGE));
         }
 
         String moduleCodeArg = argMultimap.getValue(PREFIX_GRADEBOOK_MODULE).get();
         String gradeItemNameArg = argMultimap.getValue(PREFIX_GRADEBOOK_ITEM).get();
         GradebookComponent gradebookComponent = new GradebookComponent(moduleCodeArg, gradeItemNameArg);
-        return new GradebookAddCommand(gradebookComponent);
+        return new GradebookDeleteCommand(gradebookComponent);
     }
 
     /**

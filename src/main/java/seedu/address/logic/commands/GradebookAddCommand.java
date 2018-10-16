@@ -7,8 +7,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADEBOOK_MODULE;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.StorageController;
 import seedu.address.model.gradebook.GradebookComponent;
+import seedu.address.model.gradebook.GradebookModel;
 
 /**
  * Adds a gradebook component to the address book.
@@ -25,8 +25,7 @@ public class GradebookAddCommand extends Command {
             + PREFIX_GRADEBOOK_MODULE + "CS2113 "
             + PREFIX_GRADEBOOK_ITEM + "Assignment 1";
 
-    public static final String MESSAGE_SUCCESS = "\nSuccessfully Added! \nModule Code: %2$s \nGradebook Item: %1$s";
-    public static final String MESSAGE_DUPLICATE_COMPONENT = "This grade component already exist in Trajectory.";
+    //public static final String MESSAGE_SUCCESS = "\nSuccessfully Added! \nModule Code: %1$s \nGradebook Item: %2$s";
 
     private final GradebookComponent toAddGradebookItem;
 
@@ -37,12 +36,9 @@ public class GradebookAddCommand extends Command {
     @Override
     public CommandResult execute (Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        StorageController.retrieveData();
-        StorageController.getGradebookStorage().add(new GradebookComponent(toAddGradebookItem.getGradeItemName(),
-                toAddGradebookItem.getModuleCode()));
-        StorageController.storeData();
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAddGradebookItem.getGradeItemName(),
-                toAddGradebookItem.getModuleCode()));
+        CommandResult result = GradebookModel.addGradebookComponent(toAddGradebookItem.getModuleCode(),
+                toAddGradebookItem.getGradeItemName());
+        return result;
     }
 
     @Override
