@@ -366,90 +366,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="class-add-feature"><a class="link" href="#class-add-feature">Class Add feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The add mechanism is facilitated by <code>ClassroomManager</code> supported by <code>StorageController</code>.
-It makes use of the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>ClassroomManager#addClassroom()</code>&#8201;&#8212;&#8201;Adds a new classroomList to the in-memory array list.</p>
-</li>
-<li>
-<p><code>ClassroomManager#readClassroomList()</code>&#8201;&#8212;&#8201;Gets the classroom list from storage and converts it to a Classroom array list.</p>
-</li>
-<li>
-<p><code>ClassroomManager#saveClassroomList()</code>&#8201;&#8212;&#8201;Converts the classroom array list and invokes the StorageController to save the current classroom list to file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are used in the <code>ClassAddCommand</code> class under <code>ClassAddCommand#execute()</code>.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the add/list mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>StorageController#retrieveData()</code> will retrieve all datasets saved locally.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>class add c/16&#8230;&#8203;</code> command to add a new classroom to Trajectory. The <code>class add</code> command calls the <code>ClassAddCommand#execute()</code>. The <code>ClassroomManager</code> will be instantiated and read the classroom list from the storage and converts the data from XmlAdaptedClassroom to the Classroom data type.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The <code>classroomManager#saveClassroomList()</code> will be called to converts the classroom array list and invokes the StorageController to save the current classroom list to file. This is done by first converting our <code>Classroom</code> object into <code>XmlAdaptedClassroom</code> objects and saving it.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="class-list-feature"><a class="link" href="#class-list-feature">Class List feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The list mechanism is facilitated by <code>ClassroomManager</code> supported by <code>StorageController</code>.
-It makes use the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>ClassroomManager#readClassroomList()</code>&#8201;&#8212;&#8201;Gets the classroom list from storage and converts it to a Classroom array list.</p>
-</li>
-<li>
-<p><code>ClassroomManager#saveClassroomList()</code>&#8201;&#8212;&#8201;Converts the classroom array list and invokes the StorageController to save the current classroom list to file.</p>
-</li>
-<li>
-<p><code>ClassroomManager#getClassroomList()</code>&#8201;&#8212;&#8201;Gets the classroom list from the in-memory array list.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are used in the <code>ClassListCommand</code> class under <code>ClassListCommand#execute()</code>..</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the add/list mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>StorageController#retrieveData()</code> will retrieve all datasets saved locally.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>class list</code> command to list all classrooms to Trajectory. The <code>class list</code> command calls the <code>ClassListCommand#execute()</code>. The <code>ClassroomManager</code> will be instantiated and read the classroom list from the storage and converts the data from XmlAdaptedClassroom to the Classroom data type.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The classroom list with the corresponding classroom information will be appended to the with the support of the <code>StringBuilder</code> and displayed as a message successfully.</p>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/classaddlist.PNG" alt="classaddlist" width="800">
-</div>
-</div>
-</div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
@@ -536,4 +452,4 @@ It makes use the following operations:</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 17:03:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 17:09:53 UTC</div></div></div></body></html>
