@@ -3729,6 +3729,9 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>Module code must exist.</p>
 </li>
+<li>
+<p>Component name must not already exist in Trajectory.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -3737,7 +3740,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>TBC</p>
+<p>Gradebook component will not be added if it does not meet validation requirements (Duplicate results, empty inputs etc)</p>
 </li>
 </ul>
 </div>
@@ -3748,12 +3751,6 @@ for <code>RemarkCommandParser</code>.</p>
 <ol class="arabic">
 <li>
 <p>Teacher creates grade component.</p>
-</li>
-<li>
-<p>System requests for confirmation by displaying input.</p>
-</li>
-<li>
-<p>Teacher confirms request.</p>
 </li>
 <li>
 <p>System indicates success message.</p>
@@ -3769,35 +3766,65 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. System detects an error in the entered data.</p>
+<p>2a. Teacher enters an invalid command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a1. System displays message and format corresponding to error.</p>
-</li>
-<li>
-<p>1a2. Teacher enters new data.</p>
+<p>2a1. System displays the list of valid commands.</p>
 <div class="paragraph">
-<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
-</div>
-<div class="paragraph">
-<p>Use case resumes from step 2.</p>
+<p>Use case resumes at step 1.</p>
 </div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>*a. At any time, teacher chooses to cancel creating a grade component.</p>
+<p>2b. Teacher enters the wrong parameter prefix.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>*a1. System requests to confirm the cancellation.</p>
+<p>2b1. System displays the correct format for the command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>*a2. Teacher confirms request.</p>
+<p>2c. Teacher enters a component name that already exists to module code.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2c1. System informs the user that component name already exists to module code.</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2d. Teacher enters a non-integer input for maximum marks and weightage.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2d1. System informs the user of incorrect input.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2d. Teacher does not enter any inputs after prefix.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2d1. System informs the user of invalid input.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
 </div>
 </li>
 </ul>
@@ -4027,35 +4054,26 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. System detects an error in the entered data.</p>
+<p>1a. Teacher enters an invalid command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a1. System displays message and format corresponding to error.</p>
-</li>
-<li>
-<p>1a2. Teacher enters new data.</p>
+<p>1a1. System displays the list of valid commands.</p>
 <div class="paragraph">
-<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
-</div>
-<div class="paragraph">
-<p>Use case resumes from step 2.</p>
+<p>Use case resumes at step 1.</p>
 </div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>*a. At any time, teacher chooses to cancel finding grade component.</p>
+<p>1b. Teacher enters the wrong parameter prefix.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>*a1. System requests to confirm the cancellation.</p>
-</li>
-<li>
-<p>*a2. Teacher confirms request.</p>
+<p>1b1. System displays the correct format for the command.</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case resumes at step 1.</p>
 </div>
 </li>
 </ul>
@@ -4080,7 +4098,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>TBC</p>
+<p>NIL</p>
 </li>
 </ul>
 </div>
@@ -4111,30 +4129,8 @@ for <code>RemarkCommandParser</code>.</p>
 <ul>
 <li>
 <p>1a1. System displays message and format corresponding to error.</p>
-</li>
-<li>
-<p>1a2. Teacher enters new data.</p>
 <div class="paragraph">
-<p>Steps 1a1-1a2 are repeated until the data entered is correct.</p>
-</div>
-<div class="paragraph">
-<p>Use case resumes from step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>*a. At any time, teacher chooses to cancel listing a grade component.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>*a1. System requests to confirm the cancellation.</p>
-</li>
-<li>
-<p>*a2. Teacher confirms request.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case resumes from step 1.</p>
 </div>
 </li>
 </ul>
@@ -5634,4 +5630,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-15 16:28:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 07:13:56 UTC</div></div></div></body></html>
