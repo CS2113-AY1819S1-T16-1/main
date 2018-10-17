@@ -19,14 +19,12 @@
 <li><a href="#add-student-code-student-add-code">3.2.1. Add Student : <code>student add</code></a></li>
 <li><a href="#update-student-code-student-edit-code">3.2.2. Update Student : <code>student edit</code></a></li>
 <li><a href="#select-student-code-select-code">3.2.3. Select Student : <code>select</code></a></li>
-<li><a href="#find-a-student-by-name-matric-no-code-student-find-coming-in-v1-2-code">3.2.4. Find a student by name/matric no : <code>student find [coming in v1.2]</code></a></li>
+<li><a href="#find-student-by-name-matric-no-code-student-find-coming-in-v1-2-code">3.2.4. Find Student by name/matric no : <code>student find [coming in v1.2]</code></a></li>
 <li><a href="#remove-student-code-student-delete-code">3.2.5. Remove Student : <code>student delete</code></a></li>
-<li><a href="#find-student-code-student-find-coming-in-v1-2-code">3.2.6. Find Student : <code>student find [coming in v1.2]</code></a></li>
-<li><a href="#list-students-code-student-list-code">3.2.7. List Students : <code>student list</code></a></li>
-<li><a href="#export-student-code-student-export-coming-in-v1-3-code">3.2.8. Export Student : <code>student export [coming in v1.3]</code></a></li>
-<li><a href="#selecting-a-student-code-select-code">3.2.9. Selecting a student : <code>select</code></a></li>
-<li><a href="#add-a-course-code-course-add-code">3.2.10. Add a course : <code>course add</code></a></li>
-<li><a href="#list-all-courses-code-course-list-code">3.2.11. List all courses : <code>course list</code></a></li>
+<li><a href="#list-students-code-student-list-code">3.2.6. List Students : <code>student list</code></a></li>
+<li><a href="#export-student-code-student-export-coming-in-v1-3-code">3.2.7. Export Student : <code>student export [coming in v1.3]</code></a></li>
+<li><a href="#add-a-course-code-course-add-code">3.2.8. Add a course : <code>course add</code></a></li>
+<li><a href="#list-all-courses-code-course-list-code">3.2.9. List all courses : <code>course list</code></a></li>
 </ul>
 </li>
 <li><a href="#module-management">3.3. Module Management</a>
@@ -211,13 +209,6 @@ Format: student edit INDEX [n/NAME] [i/ADMIN_NUMBER] [c/COURSE_CODE] [p/MOBILE_N
 <div class="paragraph">
 <p>Examples:</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="select-student-code-select-code"><a class="link" href="#select-student-code-select-code">3.2.3. Select Student : <code>select</code></a></h4>
-<div class="paragraph">
-<p>Selects the student identified by the index number used in the displayed person list.<br>
-Format: <code>select INDEX</code></p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -232,23 +223,24 @@ Edits only the address of the 2nd student to be 14 Jurong East Street 91.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-a-student-by-name-matric-no-code-student-find-coming-in-v1-2-code"><a class="link" href="#find-a-student-by-name-matric-no-code-student-find-coming-in-v1-2-code">3.2.4. Find a student by name/matric no : <code>student find [coming in v1.2]</code></a></h4>
+<h4 id="select-student-code-select-code"><a class="link" href="#select-student-code-select-code">3.2.3. Select Student : <code>select</code></a></h4>
+<div class="paragraph">
+<p>Selects the student identified by the index number used in the displayed person list.<br>
+Format: <code>student select INDEX</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-student-by-name-matric-no-code-student-find-coming-in-v1-2-code"><a class="link" href="#find-student-by-name-matric-no-code-student-find-coming-in-v1-2-code">3.2.4. Find Student by name/matric no : <code>student find [coming in v1.2]</code></a></h4>
 <div class="paragraph">
 <p>Find student(s) whose names contain any of the given keywords.<br>
-Format:  find [n/STUDENT_NAME] [i/MATRIC_NO]</p>
+Format:  student find [n/STUDENT_NAME] [i/MATRIC_NO]</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the student and loads the Google search page the student at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed student list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+<p>Display a list of students whose name or matric number matches the given keywords.</p>
 </li>
 </ul>
 </div>
@@ -260,11 +252,11 @@ Format:  find [n/STUDENT_NAME] [i/MATRIC_NO]</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find student n/Rachel</code>
+<p><code>student find n/Rachel</code>
 Returns students whose first name or last name contains 'Rachel'.</p>
 </li>
 <li>
-<p><code>find student i/A0168000L</code>
+<p><code>student find i/A0168000L</code>
 Return the student whose matriculation no matches 'A0168000L'.</p>
 </li>
 </ul>
@@ -275,12 +267,12 @@ Return the student whose matriculation no matches 'A0168000L'.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
+<p><code>student list</code><br>
 <code>select 2</code><br>
 Selects the 2nd student in the address book.</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
+<p><code>student find Betsy</code><br>
 <code>select 1</code><br>
 Selects the 1st student in the results of the <code>find</code> command.</p>
 </li>
@@ -291,7 +283,7 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 <h4 id="remove-student-code-student-delete-code"><a class="link" href="#remove-student-code-student-delete-code">3.2.5. Remove Student : <code>student delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified student from the system.<br>
-Format: delete student INDEX</p>
+Format: student delete INDEX</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -323,59 +315,14 @@ Deletes the 2nd person in the system</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-student-code-student-find-coming-in-v1-2-code"><a class="link" href="#find-student-code-student-find-coming-in-v1-2-code">3.2.6. Find Student : <code>student find [coming in v1.2]</code></a></h4>
-<div class="paragraph">
-<p>Find student(s) whose names contain any of the given keywords.<br>
-Format:  find [n/STUDENT_NAME] [i/MATRIC_NO]</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find student n/Rachel</code>
-Returns students whose first name or last name contains 'Rachel'.</p>
-</li>
-<li>
-<p><code>find student i/A0168000L</code>
-Return the student whose matriculation no matches 'A0168000L'.</p>
-</li>
-</ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive.</p>
-</li>
-<li>
-<p>The order of the keyword does not matter.</p>
-</li>
-<li>
-<p>Only the name and matric no is searched</p>
-</li>
-<li>
-<p>Students matching at least one keyword will be returned</p>
-</li>
-<li>
-<p>Partial search supported for name</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="list-students-code-student-list-code"><a class="link" href="#list-students-code-student-list-code">3.2.7. List Students : <code>student list</code></a></h4>
+<h4 id="list-students-code-student-list-code"><a class="link" href="#list-students-code-student-list-code">3.2.6. List Students : <code>student list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students in the system.<br>
 Format: list students</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="export-student-code-student-export-coming-in-v1-3-code"><a class="link" href="#export-student-code-student-export-coming-in-v1-3-code">3.2.8. Export Student : <code>student export [coming in v1.3]</code></a></h4>
+<h4 id="export-student-code-student-export-coming-in-v1-3-code"><a class="link" href="#export-student-code-student-export-coming-in-v1-3-code">3.2.7. Export Student : <code>student export [coming in v1.3]</code></a></h4>
 <div class="paragraph">
 <p>Exports students to a .csv file<br>
 Format: student export LOCATION</p>
@@ -407,48 +354,7 @@ Exports all students in .csv format to the 'export' folder in C drive.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.2.9. Selecting a student : <code>select</code></a></h4>
-<div class="paragraph">
-<p>Selects the student identified by the index number used in the displayed person list.<br>
-Format: <code>select INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the student and loads the Google search page the student at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed student list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd student in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st student in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="add-a-course-code-course-add-code"><a class="link" href="#add-a-course-code-course-add-code">3.2.10. Add a course : <code>course add</code></a></h4>
+<h4 id="add-a-course-code-course-add-code"><a class="link" href="#add-a-course-code-course-add-code">3.2.8. Add a course : <code>course add</code></a></h4>
 <div class="paragraph">
 <p>Adds a student to the system.<br>
 Format: course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME</p>
@@ -468,7 +374,7 @@ Format: course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-all-courses-code-course-list-code"><a class="link" href="#list-all-courses-code-course-list-code">3.2.11. List all courses : <code>course list</code></a></h4>
+<h4 id="list-all-courses-code-course-list-code"><a class="link" href="#list-all-courses-code-course-list-code">3.2.9. List all courses : <code>course list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all courses in the system.<br>
 Format: course list</p>
@@ -1789,4 +1695,4 @@ e.g. <code>note find m/CS2040C k/bubble</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 07:13:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 08:31:53 UTC</div></div></div></body></html>
