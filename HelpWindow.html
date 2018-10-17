@@ -1623,24 +1623,24 @@ e.g. <code>module enrol i/A0167263X i/A0179821B</code></p>
 e.g. <code>module assign i/A0171234B</code></p>
 </li>
 <li>
-<p><strong>Add Grade Component</strong> : <code>gradebook add c/MODULE_CODE i/GRADE_ITEM</code><br>
-e.g. <code>gradebook add c/CS2040C i/Assignment 1</code></p>
+<p><strong>Add Grade Component</strong> : <code>gradebook add m/MODULE_CODE i/ITEM mm/[MAX MARKS] w/[WEIGHTAGE]</code><br>
+e.g. <code>gradebook add m/CS2040C i/Assignment 1 mm/20 w/10</code></p>
 </li>
 <li>
 <p><strong>Edit Grade Item</strong> : <code>gradebook edit c/MODULE_CODE i/GRADE_ITEM  m/ MAX_MARKS p/PERCENTAGE OF GRADE</code><br>
 e.g. <code>gradebook edit c/CS2040C i/Assignment 1 m/20 p/10</code></p>
 </li>
 <li>
-<p><strong>Delete Grade Component</strong> : <code>gradebook remove c/MODULE_CODE i/GRADE_ITEM</code><br>
-e.g. <code>gradebook remove m/CS2040C i/Assignment 1</code></p>
+<p><strong>Delete Grade Component</strong> : <code>gradebook delete m/MODULE_CODE i/GRADE_ITEM</code><br>
+e.g. <code>gradebook delete m/CS2040C i/Assignment 1</code></p>
 </li>
 <li>
-<p><strong>List Grade Components</strong> : <code>gradebook list c/MODULE_CODE</code><br>
-e.g. <code>gradebook list c/CS2040C</code></p>
+<p><strong>List Grade Components</strong> : <code>gradebook list</code><br>
+e.g. <code>gradebook list</code></p>
 </li>
 <li>
-<p><strong>List Grade Components</strong> : <code>gradebook list grades c/MODULE_CODE</code><br>
-e.g. <code>gradebook list grades c/CS2040C</code></p>
+<p><strong>Find Grade Components</strong> : <code>gradebook find m/MODULE_CODE i/ITEM</code><br>
+e.g. <code>gradebook find m/CS2040C i/finals</code></p>
 </li>
 <li>
 <p><strong>Assign Grades</strong> : <code>gradebook assign c/MODULE_CODE i/MATRIC_NUMBER g/GRADE_ITEM_NAME m/MARKS</code><br>
@@ -1714,4 +1714,4 @@ e.g. <code>note find k/bubble k/queue</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 16:59:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 17:03:02 UTC</div></div></div></body></html>
