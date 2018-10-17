@@ -69,9 +69,9 @@
 <li><a href="#notes-management">3.6. Notes Management</a>
 <ul class="sectlevel3">
 <li><a href="#add-note-code-note-add-code">3.6.1. Add Note : <code>note add</code></a></li>
-<li><a href="#update-note-code-note-edit-coming-in-v1-3-code">3.6.2. Update note : <code>note edit [coming in v1.3]</code></a></li>
-<li><a href="#remove-note-code-note-delete-coming-in-v1-2-code">3.6.3. Remove note : <code>note delete [coming in v1.2]</code></a></li>
-<li><a href="#find-note-code-note-find-coming-in-v1-2-code">3.6.4. Find note : <code>note find [coming in v1.2]</code></a></li>
+<li><a href="#edit-note-code-note-edit-coming-in-v1-3-code">3.6.2. Edit note : <code>note edit [coming in v1.3]</code></a></li>
+<li><a href="#delete-note-code-note-delete-code">3.6.3. Delete note : <code>note delete</code></a></li>
+<li><a href="#find-note-code-note-find-coming-in-v1-3-code">3.6.4. Find note : <code>note find [coming in v1.3]</code></a></li>
 <li><a href="#list-notes-code-note-list-code">3.6.5. List notes : <code>note list</code></a></li>
 </ul>
 </li>
@@ -1244,10 +1244,10 @@ Format: <code>note add m/MODULE_CODE [p/PRIORITY_LEVEL] [d/DATE]</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code><strong>The optional parameters PRIORITY_LEVEL and DATE will be available from v1.3</strong></code><br>
+<code><strong>The optional parameter PRIORITY_LEVEL will be available from v1.4</strong></code><br>
 - PRIORITY_LEVEL = { 1 = LOW, 2 = MEDIUM, 3 = HIGH }<br>
 - If the PRIORITY_LEVEL is omitted, a default value of 1 (LOW) will be assigned to the created note.<br>
-- The DATE parameter follows the <code>DD.MM.YYYY</code> formatting only.
+- The DATE parameter follows the <code>DD.MM.YYYY</code> formatting only. <strong>(Validation coming in v1.3)</strong>
 </td>
 </tr>
 </table>
@@ -1273,20 +1273,20 @@ Format: <code>note add m/MODULE_CODE [p/PRIORITY_LEVEL] [d/DATE]</code></p>
 <ul>
 <li>
 <p><code>note add m/CS2113</code><br>
-This tells the system that the note is to be saved in the CS2113 module with a LOW priority and it has no date.</p>
+This tells the system that the note is to be saved in the CS2113 module with no date.</p>
 </li>
 <li>
-<p><code>note add m/CS2113 p/2 d/31.12.2113</code><br>
-This tells the system that the note is to be saved in the CS2113 module with a MEDIUM priority and a date (31 Dec 2113).</p>
+<p><code>note add m/CS2113 d/31.12.2113</code><br>
+This tells the system that the note is to be saved in the CS2113 module with a date (31 Dec 2113).</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-note-code-note-edit-coming-in-v1-3-code"><a class="link" href="#update-note-code-note-edit-coming-in-v1-3-code">3.6.2. Update note : <code>note edit [coming in v1.3]</code></a></h4>
+<h4 id="edit-note-code-note-edit-coming-in-v1-3-code"><a class="link" href="#edit-note-code-note-edit-coming-in-v1-3-code">3.6.2. Edit note : <code>note edit [coming in v1.3]</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing note.<br>
-Format: <code>note edit m/MODULE_CODE INDEX [p/PRIORITY_LEVEL] [d/DATE]</code></p>
+Format: <code>note edit INDEX m/MODULE_CODE [d/DATE]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1294,7 +1294,7 @@ Format: <code>note edit m/MODULE_CODE INDEX [p/PRIORITY_LEVEL] [d/DATE]</code></
 <p>Edits the note with the specified INDEX.</p>
 </li>
 <li>
-<p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is used.</p>
+<p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is invoked.</p>
 </li>
 <li>
 <p>Upon entering the <code>note edit</code> command, the system will prompt the user to type his/her modifications to the note.</p>
@@ -1312,17 +1312,17 @@ Format: <code>note edit m/MODULE_CODE INDEX [p/PRIORITY_LEVEL] [d/DATE]</code></
 <li>
 <p><code>note list m/CS1010</code><br>
 A list of all notes saved in CS1010 module is displayed.<br>
-<code>note edit m/CS1010 3 d/10.10.2019</code><br>
-The user will now be able to edit the note that corresponds to INDEX=3 in the list. The modified note will be saved with its assigned DATE changed to 10/10/2019 while its PRIORITY_LEVEL remains unchanged.</p>
+<code>note edit 3 m/CS1010 d/10.10.2019</code><br>
+The user will now be able to edit the note that corresponds to INDEX=3 in the list. The modified note will be saved with its assigned DATE changed to 10/10/2019.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-note-code-note-delete-coming-in-v1-2-code"><a class="link" href="#remove-note-code-note-delete-coming-in-v1-2-code">3.6.3. Remove note : <code>note delete [coming in v1.2]</code></a></h4>
+<h4 id="delete-note-code-note-delete-code"><a class="link" href="#delete-note-code-note-delete-code">3.6.3. Delete note : <code>note delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes a specific note.<br>
-Format: <code>note delete m/MODULE_CODE INDEX</code></p>
+Format: <code>note delete INDEX</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1330,7 +1330,7 @@ Format: <code>note delete m/MODULE_CODE INDEX</code></p>
 <p>Deletes the note with the specified INDEX.</p>
 </li>
 <li>
-<p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is used.</p>
+<p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is invoked.</p>
 </li>
 </ul>
 </div>
@@ -1342,17 +1342,17 @@ Format: <code>note delete m/MODULE_CODE INDEX</code></p>
 <li>
 <p><code>note list m/CS2040C</code><br>
 A list of all notes saved in CS2040C module is displayed.<br>
-<code>note delete m/CS2040C 1</code><br>
+<code>note delete 1</code><br>
 Deletes the note that corresponds to INDEX=1 in the list.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-note-code-note-find-coming-in-v1-2-code"><a class="link" href="#find-note-code-note-find-coming-in-v1-2-code">3.6.4. Find note : <code>note find [coming in v1.2]</code></a></h4>
+<h4 id="find-note-code-note-find-coming-in-v1-3-code"><a class="link" href="#find-note-code-note-find-coming-in-v1-3-code">3.6.4. Find note : <code>note find [coming in v1.3]</code></a></h4>
 <div class="paragraph">
-<p>Search and display existing notes from a module using keywords.<br>
-Format: <code>note find m/MODULE_CODE k/KEYWORD [k/KEYWORD]..</code></p>
+<p>Search and display existing notes using keywords.<br>
+Format: <code>note find k/KEYWORD [k/KEYWORD]..</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1376,8 +1376,8 @@ Format: <code>note find m/MODULE_CODE k/KEYWORD [k/KEYWORD]..</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>note find m/CS2113 k/git k/OOP</code><br>
-Lists all notes from CS2113 module which contain both keywords "git" and "OOP".</p>
+<p><code>note find k/git k/OOP</code><br>
+Lists all notes which contain both keywords "git" and "OOP".</p>
 </li>
 </ul>
 </div>
@@ -1385,8 +1385,8 @@ Lists all notes from CS2113 module which contain both keywords "git" and "OOP".<
 <div class="sect3">
 <h4 id="list-notes-code-note-list-code"><a class="link" href="#list-notes-code-note-list-code">3.6.5. List notes : <code>note list</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all notes saved in the module.<br>
-Format: <code>note list m/MODULE_CODE [P]</code></p>
+<p>Shows a list of all saved notes.<br>
+Format: <code>note list [m/MODULE_CODE] [P]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1395,7 +1395,7 @@ Format: <code>note list m/MODULE_CODE [P]</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code><strong>The optional parameter P will be available from v1.3</strong></code><br>
+<code><strong>The optional parameter P will be available from v1.4</strong></code><br>
 - Adding the <code>P</code> parameter allows the user to view notes based on their assigned PRIORITY_LEVEL from highest to lowest.<br>
 - It is not case-sensitive, hence the user can use either lowercase or uppercase.<br>
 - If <code>P</code> is omitted, the list displayed is sorted by the order of creation.
@@ -1409,12 +1409,12 @@ Format: <code>note list m/MODULE_CODE [P]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>note list m/CS1231</code><br>
-This will list all the existing notes from the CS1231 module in the order of their creation.</p>
+<p><code>note list</code><br>
+This will list all existing notes from Trajectory.</p>
 </li>
 <li>
-<p><code>note list m/CS1231 p</code><br>
-This is similar to the previous example, except that the system will display the list from highest to lowest PRIORITY_LEVEL.</p>
+<p><code>note list m/CS1231</code><br>
+This will list all notes saved in CS1231 module.</p>
 </li>
 </ul>
 </div>
@@ -1683,24 +1683,24 @@ e.g. <code>class markattend c/T16 i/A6942069M</code></p>
 e.g. <code>class modattend c/T16 i/A6942069M</code></p>
 </li>
 <li>
-<p><strong>Add a note</strong> <code>note add m/MODULE_CODE</code><br>
+<p><strong>Add a note</strong> <code>note add m/MODULE_CODE [d/DATE]</code><br>
 e.g. <code>note add m/CS2040C</code></p>
 </li>
 <li>
-<p><strong>List notes</strong> <code>note list m/MODULE_CODE</code><br>
+<p><strong>List notes</strong> <code>note list [m/MODULE_CODE]</code><br>
 e.g. <code>note list m/CS2040C</code></p>
 </li>
 <li>
-<p><strong>Delete a note</strong> <code>note delete m/MODULE_CODE INDEX</code> <code>[Coming in v1.2]</code><br>
-e.g. <code>note delete m/CS2040C 8</code></p>
+<p><strong>Delete a note</strong> <code>note delete INDEX</code><br>
+e.g. <code>note delete 8</code></p>
 </li>
 <li>
-<p><strong>Edit a note</strong> <code>note edit m/MODULE_CODE INDEX [p/PRIORITY_LEVEL] [d/DATE]</code> <code>[Coming in v1.3]<br>
-e.g. `note edit m/CS2040C 5 p/3</code></p>
+<p><strong>Edit a note</strong> <code>note edit INDEX [m/MODULE_CODE] [d/DATE]</code> <code>[Coming in v1.3]</code><br>
+e.g. <code>note edit 5 m/CS2040C</code></p>
 </li>
 <li>
-<p><strong>Find a note</strong> <code>note find m/MODULE_CODE k/KEYWORD [k/KEYWORD]..</code> <code>[Coming in v1.2]</code><br>
-e.g. <code>note find m/CS2040C k/bubble</code></p>
+<p><strong>Find a note</strong> <code>note find k/KEYWORD [k/KEYWORD]..</code> <code>[Coming in v1.3]</code><br>
+e.g. <code>note find k/bubble k/queue</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
@@ -1714,4 +1714,4 @@ e.g. <code>note find m/CS2040C k/bubble</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 16:43:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 16:59:49 UTC</div></div></div></body></html>
