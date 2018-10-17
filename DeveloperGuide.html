@@ -34,10 +34,11 @@
 <li><a href="#class-add-feature">3.3. Class Add feature</a></li>
 <li><a href="#class-list-feature">3.4. Class List feature</a></li>
 <li><a href="#gradebook-graph-feature">3.5. Gradebook Graph feature</a></li>
-<li><a href="#notes-data-to-from-google-calendar-feature">3.6. Notes data to/from Google Calendar feature</a></li>
-<li><a href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#proposed-module-bidding-feature">3.6. [Proposed] Module bidding feature</a></li>
+<li><a href="#notes-data-to-from-google-calendar-feature">3.7. Notes data to/from Google Calendar feature</a></li>
+<li><a href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1080,9 +1081,130 @@ If a command fails its execution, it will not call <code>Gradebook#GradebookMana
 </div>
 </div>
 <div class="sect2">
-<h3 id="notes-data-to-from-google-calendar-feature"><a class="link" href="#notes-data-to-from-google-calendar-feature">3.6. Notes data to/from Google Calendar feature</a></h3>
+<h3 id="proposed-module-bidding-feature"><a class="link" href="#proposed-module-bidding-feature">3.6. [Proposed] Module bidding feature</a></h3>
 <div class="sect3">
-<h4 id="feature-description"><a class="link" href="#feature-description">3.6.1. Feature Description:</a></h4>
+<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">3.6.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The module bidding feature is an enhancement that will make it easier to assign students to modules in <code>Trajectory</code>.
+It is designed with the module enrolment limits in mind, and the aim to give students a certain degree of flexibility
+in choosing the modules they want. At the moment, it is planned to store the feature in ModuleManager, but it may be
+abstracted into its own class if it proves to be necessary.</p>
+</div>
+<div class="paragraph">
+<p>The module bidding feature will implement the following features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ModuleManager#startBiddingRound()</code>&#8201;&#8212;&#8201;Starts a bidding round for a module.</p>
+</li>
+<li>
+<p><code>ModuleManager#closeBiddingRound()</code>&#8201;&#8212;&#8201;Closes the bidding round for a module.</p>
+</li>
+<li>
+<p><code>ModuleManager#placeBid()</code>&#8201;&#8212;&#8201;Places a student&#8217;s bid on the module they desire.</p>
+</li>
+<li>
+<p><code>ModuleManager#retractBid()</code>&#8201;&#8212;&#8201;Retracts a student&#8217;s bid from a module for which they previously bid.</p>
+</li>
+<li>
+<p>`ModuleManager#assignSuccessfulStudents()&#8201;&#8212;&#8201;Assigns the students with successful bids to the module.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations will be exposed in the <code>ModuleManager</code> class until there is a need for abstraction.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the module bidding mechanism will behave at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The teacher can start a bidding round for one of his/her modules using the CLI. The command will be routed to
+<code>ModuleManager#startBiddingRound()</code> with the module code to indicate that bidding has opened for that module. This will
+also update the status of the module to inform students that they may now start placing bids.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. A student can place his/her bid for a module with an active bidding round. He/she will need to enter the number
+of points they wish to use in their bid. The input will be parsed to <code>ModuleManager#placeBid()</code> with the module code and
+the student&#8217;s ID.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Should the student decide that he/she is no longer interested in the module, he/she may retract his/her bid by
+using the CLI and entering the module&#8217;s code. This will invoke <code>ModuleManager#retractBid()</code> and the bid will be retracted.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. When the time is past the intended duration of the bidding round, the bidding round can be closed automatically
+via a call to <code>ModuleManager#closeBiddingRound()</code>. When the bidding round has closed, the status will be updated to
+reflect it, and students will no longer be able to place bids for the module.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The teacher may close the bidding round earlier by entering the command in the CLI.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 5. After the bidding round has closed, Trajectory will decide which students are successful in their bid by invoking
+<code>ModuleManager#assignSuccessfulStudents()</code>. This will also assign the successful students to the module and deduct their
+bid points. The students who were unsuccessful in their bid will have their bid points refunded to their account.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes the whole module bidding process:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/moduleBiddingActivityDiagram.png" alt="moduleBiddingActivityDiagram" width="650">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-the-module-bidding-will-work"><a class="link" href="#aspect-how-the-module-bidding-will-work">Aspect: How the module bidding will work</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Teacher has to manually open a bidding round.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement</p>
+</li>
+<li>
+<p>Cons: May result in inconsistencies between the planned start time and the actual start time, thus causing frustration
+to the students.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Teacher can input the start time for a module&#8217;s bidding round</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The actual start time will be consistent and reliable, leading to user (student) satisfaction.</p>
+</li>
+<li>
+<p>Cons: More difficult to implement; Handling date objects is tricky because there are many popular date formats.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notes-data-to-from-google-calendar-feature"><a class="link" href="#notes-data-to-from-google-calendar-feature">3.7. Notes data to/from Google Calendar feature</a></h3>
+<div class="sect3">
+<h4 id="feature-description"><a class="link" href="#feature-description">3.7.1. Feature Description:</a></h4>
 <div class="paragraph">
 <p><strong>EXPORT :</strong><br>
 The user will be able to export notes from this application to a CSV file that follows the formatting required for importing calendar files to Google Calendar. The exporting process can be invoked by the user by entering the command below.</p>
@@ -1163,20 +1285,20 @@ The user will be able to import the data from a CSV file to generate a proper re
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1207,7 +1329,7 @@ The user will be able to import the data from a CSV file to generate a proper re
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -5887,4 +6009,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 17:44:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 17:52:35 UTC</div></div></div></body></html>
