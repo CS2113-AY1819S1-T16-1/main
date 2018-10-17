@@ -468,16 +468,17 @@ Displays the class attendance list for the class T16
 === Grade Management
 ==== Add Grade Component : `gradebook add`
 Creates a grade item to a module code. +
-Format: `gradebook add c/MODULE_CODE i/GRADE_ITEM`
+Format: `gradebook add m/MODULE_CODE  i/ITEM mm/[MAX MARKS] w/[WEIGHTAGE]`
 
 ****
 * Module code must exist
+* Component name must not already exist in Trajectory.
 ****
 
 Examples:
 
-* `gradebook add c/CS2040C g/Assignment 1` +
-Adds gradebook component, Assignment 1, to module CS2040C.
+* `gradebook add m/CS2113 i/Assignment 1 mm/60 w/50` +
+Adds gradebook component, Assignment 1 with maximum marks of 60 and weightage of 50%, to module CS2040C.
 
 ==== Update Grade Component : `gradebook update [coming in v1.3]`
 Updates a grade item. +

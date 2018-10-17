@@ -1605,37 +1605,50 @@ Use case resumes at step 1.
 *Precondition(s)* :
 
 * Module code must exist.
+* Component name must not already exist in Trajectory.
 
 *Guarantees* :
 
-* TBC
+* Gradebook component will not be added if it does not meet validation requirements (Duplicate results, empty inputs etc)
 
 *MSS* :
 
 1. Teacher creates grade component.
-2. System requests for confirmation by displaying input.
-3. Teacher confirms request.
-4. System indicates success message.
+2. System indicates success message.
 +
 Use case ends.
 
 *Extensions* :
 
-* 1a. System detects an error in the entered data.
+* 2a. Teacher enters an invalid command.
 +
-** 1a1. System displays message and format corresponding to error.
-** 1a2. Teacher enters new data.
+** 2a1. System displays the list of valid commands.
 +
-Steps 1a1-1a2 are repeated until the data entered is correct.
-+
-Use case resumes from step 2.
+Use case resumes at step 1.
 
-* *a. At any time, teacher chooses to cancel creating a grade component.
+* 2b. Teacher enters the wrong parameter prefix.
 +
-** *a1. System requests to confirm the cancellation.
-** *a2. Teacher confirms request.
+** 2b1. System displays the correct format for the command.
 +
-Use case ends.
+Use case resumes at step 1.
+
+* 2c. Teacher enters a component name that already exists to module code.
++
+** 2c1. System informs the user that component name already exists to module code.
++
+Use case resumes at step 1.
+
+* 2d. Teacher enters a non-integer input for maximum marks and weightage.
++
+** 2d1. System informs the user of incorrect input.
++
+Use case resumes at step 1.
+
+* 2d. Teacher does not enter any inputs after prefix.
++
+** 2d1. System informs the user of invalid input.
++
+Use case resumes at step 1.
 
 
 [discrete]

@@ -1,14 +1,17 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADEBOOK_ITEM;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADEBOOK_MODULE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADEBOOK_MAXMARKS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADEBOOK_WEIGHTAGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.StorageController;
-import seedu.address.model.gradebook.GradebookComponent;
+import seedu.address.model.gradebook.Gradebook;
+import seedu.address.model.gradebook.GradebookManager;
 
 /**
  * Adds a gradebook component to the address book.
@@ -18,31 +21,32 @@ public class GradebookAddCommand extends Command {
     public static final String COMMAND_WORD = "gradebook add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a gradebook component to Trajectory. "
-            + "Parameters: "
-            + PREFIX_GRADEBOOK_MODULE + "MODULE_CODE  "
+            + "\nParameters: "
+            + PREFIX_MODULECODE + "MODULE_CODE  "
             + PREFIX_GRADEBOOK_ITEM + "ITEM "
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_GRADEBOOK_MODULE + "CS2113 "
-            + PREFIX_GRADEBOOK_ITEM + "Assignment 1";
+            + PREFIX_GRADEBOOK_MAXMARKS + "[MAX MARKS] "
+            + PREFIX_GRADEBOOK_WEIGHTAGE + "[WEIGHTAGE] "
+            + "\nExample: " + COMMAND_WORD + " "
+            + PREFIX_MODULECODE + "CS2113 "
+            + PREFIX_GRADEBOOK_ITEM + "Assignment 1 "
+            + PREFIX_GRADEBOOK_MAXMARKS + "60 "
+            + PREFIX_GRADEBOOK_WEIGHTAGE + "50";
 
-    public static final String MESSAGE_SUCCESS = "\nSuccessfully Added! \nModule Code: %2$s \nGradebook Item: %1$s";
-    public static final String MESSAGE_DUPLICATE_COMPONENT = "This grade component already exist in Trajectory.";
-
-    private final GradebookComponent toAddGradebookItem;
-
-    public GradebookAddCommand (GradebookComponent gradebookComponent) {
+    private final Gradebook toAddGradebookItem;
+    public GradebookAddCommand (Gradebook gradebookComponent) {
         toAddGradebookItem = gradebookComponent;
     }
 
     @Override
     public CommandResult execute (Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        StorageController.retrieveData();
-        StorageController.getGradebookStorage().add(new GradebookComponent(toAddGradebookItem.getGradeItemName(),
-                toAddGradebookItem.getModuleCode()));
-        StorageController.storeData();
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAddGradebookItem.getGradeItemName(),
-                toAddGradebookItem.getModuleCode()));
+        String result = GradebookManager.addGradebookComponent(
+                toAddGradebookItem.getModuleCode(),
+                toAddGradebookItem.getGradeComponentName(),
+                toAddGradebookItem.getGradeComponentMaxMarks(),
+                toAddGradebookItem.getGradeComponentWeightage());
+
+        return new CommandResult(result);
     }
 
     @Override
