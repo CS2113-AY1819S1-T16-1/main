@@ -79,7 +79,7 @@ Edits only the address of the 2nd student to be 14 Jurong East Street 91.
 Selects the student identified by the index number used in the displayed person list. +
 Format: `student select INDEX`
 
-==== Find Student by name/matric no : `student find [coming in v1.2]`
+==== Find Student by name/matric no : `student find` (find by matric no coming in v1.3)
 Find student(s) whose names contain any of the given keywords. +
 Format:  student find [n/STUDENT_NAME] [i/MATRIC_NO]
 ****

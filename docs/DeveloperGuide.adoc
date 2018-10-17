@@ -239,6 +239,59 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+=== User Authentication & Role Based Authentication System
+==== Proposed Implementation
+Trajectory will evolve into a full-fledged LMS, and will come equipped with a user authentication system that supports role-based access control for usage by students, faculty members, administrators and guests.
+
+The implementation will be spread across 2 classes: `UserController`, `AuthenticationController`.
+
+When the user starts up the program, he'll be prompted to input in his email address, followed by his password. The credentials
+are forwarded to `AuthenticationController#authenticate()`, whose job is to search for matching credentials in either the 'local storage' or a future DBMS.
+
+The inputted password is hashed, and compared to the saved hash of a matching account, if found. If the password is verified to match, the user is considered to have logged in, and his details
+are loaded into the `UserController`, which serves as a reference class for other features to access for the details
+of  the logged-in user, which among other thing includes the user ID, the user personal information and assigned role(s). If the password hash doesn't match, the user will be shown an error message.
+
+At this point, the user may execute commands. When viewing user-specific data, just as individual modules for students, the relevant controller  will access `UserController#getLoggedInUserId()` so that
+the module controller can appropriately filter out modules that the user has permission to view or access.
+
+This also applies to actions -- only faculty members are allowed to create modules, and `UserController#getRole()` is queried to check whether the user has that role. An error message will be displayed if the user doesn't have the required role assigned. Users with the 'administrator' role are allowed to create users, and assign roles to them.
+
+The activity diagram right below is a summary of the login process.
+
+image::UserLoginActivityDiagram.png[width="650"]
+
+==== Design Considerations
+
+===== Aspect: Roles
+
+* **Alternative 1 (current choice):** Pre-defined roles with non-changable 'hardcoded' permissions.
+** Pros: Easy to implement.
+** Cons: Limited in expansion. A user with a role cannot do any action belonging to a more powerful role, without being granted the entire set of powers for the higher role.
+* **Alternative 2:** Role-Based Management System
+** Pros: Allows for fine-grained permissions control. Can apply the need-to-know, and need-to-use principle to assign required permissions. For example, the module owner may want to see the gradebook
+but prevent TAs from seeing it, although TAs can assign marks.
+** Cons: Harder to implement.
+
+==== Design Considerations
+
+===== Aspect: How undo & redo executes
+
+* **Alternative 1 (current choice):** Saves the entire address book.
+** Pros: Easy to implement.
+** Cons: May have performance issues in terms of memory usage.
+* **Alternative 2:** Individual command knows how to undo/redo by itself.
+** Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+** Cons: We must ensure that the implementation of each individual command are correct.
+
+===== Aspect: Data structure to support the undo/redo commands
+
+* **Alternative 1 (current choice):** Use a list to store the history of address book states.
+** Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.
+** Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both `HistoryManager` and `VersionedAddressBook`.
+* **Alternative 2:** Use `HistoryManager` for undo/redo
+** Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.
+** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // tag::undoredo[]
 === Undo/Redo feature
 ==== Current Implementation
