@@ -2,7 +2,11 @@ package seedu.address.model.classroom;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
+
+import seedu.address.ui.HtmlTableProcessor;
 
 /**
  * Represents a classroom in the app.
@@ -34,12 +38,11 @@ public class Classroom {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Class name: ")
-                .append(getClassName())
-                .append(" Module Code: ")
-                .append(getModuleCode())
-                .append(" Max Enrollment Size: ")
-                .append(getMaxEnrollment());
+        builder.append(HtmlTableProcessor
+                .renderTableItem(new ArrayList<String>(Arrays
+                        .asList(className.getValue(),
+                                moduleCode.getValue(),
+                                maxEnrollment.getValue()))));
         return builder.toString();
     }
 

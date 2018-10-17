@@ -419,18 +419,18 @@ image::classaddlist.PNG[width="800"]
 // end::undoredo[]
 
 // tag::datatograph[]
-=== Exporting Gradebook data-to-graph feature
+=== Gradebook Graph feature
 ==== Current Implementation
 
-The export-to-graph mechanism is an enhancement that will be released in the later versions, facilitated by 'Trajectory'.
+The gradebook graph mechanism is an enhancement that will be released in the later versions, facilitated by 'Trajectory'.
 It is stored internally in GradebookManager.
 
 Additionally, it implements the following operations:
 
-* `gradebookManager#exportStudentGrades()` -- Exports data of student grades from Array List to graph form
-* `gradebookManager#exportStudentProgress()` -- Exports student data to present progress on module.
+* `gradebookManager#graphModuleSummary()` -- Converts data of all student grades from Array List to graph form
+* `gradebookManager#graphStudentProgress()` -- Converts student data to present progress on module.
 
-These operations are exposed in the `GradebookManager` as `GradebookManager#exportStudentGrades()`, `GradebookManager#exportStudentProgress()` respectively.
+These operations are exposed in the `GradebookManager` as `GradebookManager#graphModuleSummary()`, `GradebookManager#graphStudentProgress()` respectively.
 
 Given below is an example usage scenario and how the gradebook data-to-graph mechanism behaves at each step.
 
@@ -438,12 +438,12 @@ Step 1. The user launches the application for the first time. The StorageControl
 
 Step 2. The user executes `gradebook find m/cs2113 i/Finals` command to find the relevant gradebook component. The `find` command calls `GradebookManager#findGradebookComponent()`, which finds and filters the Array List to the relevant search.
 
-Step 3. The user executes `gradebook export student grades`. GradebookManager#exportStudentGrades will convert the Array List to graph form and display to the user.
+Step 3. The user executes `gradebook graph student`. GradebookManager#graphStudentProgress will convert the Array List to graph form and display to the user.
 
 [NOTE]
 If a command fails its execution, it will not call `Gradebook#GradebookManager()`, so Trajectory state will not be saved into the `GradebookManager`.
 
-Step 4. The user now decides to export graph according to the progress of a student, and that action is done by executing the `gradebook export student grades` command. This command will call `GradebookManager#exportStudentGrades()`, which then displays the graph of the students progress.
+Step 4. The user now decides to export graph according to the progress of a student, and that action is done by executing the `gradebook graph student` command. This command will call `GradebookManager#graphStudentProgress()`, which then displays the graph of the students progress.
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
@@ -469,6 +469,44 @@ image::dataToGraphActivityDiagram.png[width="650"]
 ** Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.
 ** Cons: Requires dealing with commands that needs to interact with storage controller or xml adapters directly but command should not have direct interaction from StorageController.
 // end::datatograph[]
+
+// tag::noteimportexport[]
+=== Notes data to/from Google Calendar
+==== Feature Description:
+*EXPORT :* +
+The user will be able to export notes from this application to a CSV file that follows the formatting required for importing calendar files to Google Calendar. The exporting process can be invoked by the user by entering the command below.
+
+*Command: `note export`*
+
+* The command `note export` will create a file with a .csv extension on the local storage.
+* Invoking the command above by itself will convert all notes data saved in the application to CSV format.
+* It can be extended to perform more specific instructions. The following arguments may be used:
+** `note export [m/MODULE_CODE] [m/MODULE_CODE]...`
+*** Specifying the MODULE_CODE argument allows the user to export notes from one or more selected modules only.
+
+A possible implementation of exporting to CSV is provided below. +
+1. Assuming that notes data are currently present in Trajectory, the user can invoke the `note export` command to begin exporting. +
+2. A parser class will be used to generate the correct formatting for the Google Calendar. +
+3. A CSV API will then be used to handle the writing to CSV. The file will be saved to a default directory in the user's local storage. +
+
+*IMPORT :* +
+The user will be able to import the data from a CSV file to generate a proper representation of the Note model. The importing process can be invoked by the user by entering the command below.
+
+*Command: `note import`*
+
+* The command will populate the notes data in the application from an existing CSV file.
+* It requires that the user specify the directory of the file.
+** Example: `note import C:\MyData\notes.csv`
+* However, importing from an external source will overwrite existing notes data in Trajectory.
+
+A possible implementation of importing from CSV is provided below. +
+1. The user calls the import command to get data from a CSV file. +
+2. A CSV utility class will be used to fetch the file. +
+3. It will then be passed to a parser class that will handle the conversion to the Note model. +
+4. The converted model will be copied to the Note Model list. +
+
+`Due to the nature of Google Calendar's data fields, the Note Management feature needs to be enhanced to have mandatory input fields that satisfies the minimum requirements for Google Calendar imports.`
+// end::noteimportexport[]
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
@@ -1049,11 +1087,11 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |teacher |assign grades of students |keep track of the grades that I have given out to students
 
-|`* * *` |teacher |create notes for modules |keep track of important stuff regarding the module and also my own teaching progress
+|`* * *` |teacher |add notes |keep track of important things and also my own teaching progress
 
-|`* * *` |teacher |delete notes from modules |remove completed tasks or discard those that are no longer needed
+|`* * *` |teacher |delete notes |remove completed tasks or discard those that are no longer needed
 
-|`* * *` |teacher |view saved notes from modules |easily check up on important things I could have forgotten
+|`* * *` |teacher |view saved notes |easily check up on important things I could have forgotten
 
 |`* * *` |teacher |edit notes from modules |efficiently make changes to my notes if needed without deleting and then adding a new one
 
@@ -2309,23 +2347,16 @@ Use case ends.
 +
 Use case resumes at step 1.
 
-* 1b. The module does not exist.
-+
-** 1b1. System displays a message that the module is not found.
-+
-Use case resumes at step 1.
-
 * 3a. The teacher decides to cancel.
 +
 Use case ends.
 
 
 [discrete]
-=== Use case: View Note
+=== Use case: List Notes
 
 *Precondition(s)* :
 
-* Module must exist in data file.
 * Notes must exist in data file.
 
 *Guarantees* :
@@ -2334,8 +2365,8 @@ Use case ends.
 
 *MSS* :
 
-1.  Teacher requests to view the notes saved in a specific module.
-2.  System displays the complete numbered list of notes saved in the module.
+1.  Teacher requests to view the saved notes.
+2.  System displays the complete numbered list of notes.
 +
 Use case ends.
 
@@ -2347,13 +2378,7 @@ Use case ends.
 +
 Use case resumes at step 1.
 
-* 1b. The module does not exist.
-+
-** 1b1. System displays a message that the module is not found.
-+
-Use case resumes at step 1.
-
-* 2b. There are no saved entries of notes in the module.
+* 2b. There are no saved entries of notes.
 +
 ** 2b1. System displays a message that no entries are found.
 +
@@ -2361,11 +2386,10 @@ Use case ends.
 
 
 [discrete]
-=== Use case: Update Note
+=== Use case: Edit Note
 
 *Precondition(s)* :
 
-* Module must exist in data file.
 * Note must exist in data file.
 
 *Guarantees* :
@@ -2374,8 +2398,8 @@ Use case ends.
 
 *MSS* :
 
-1.  Teacher requests to list all notes in a module.
-2.  System displays the complete numbered list of notes saved in the module.
+1.  Teacher requests to list all notes.
+2.  System displays the complete numbered list of notes.
 3.  Teacher requests to edit a specific note in the list.
 4.  System prompts the teacher to enter the modifications.
 5.  Teacher can now modify the text.
@@ -2391,13 +2415,7 @@ Use case ends.
 +
 Use case resumes at step 1.
 
-* 1b. The module does not exist.
-+
-** 1b1. System displays a message that the module is not found.
-+
-Use case resumes at step 1.
-
-* 2a. There are no saved entries of notes in the module.
+* 2a. There are no saved entries of notes.
 +
 ** 2a1. System displays a message that no entries are found.
 +
@@ -2415,25 +2433,18 @@ Use case resumes at step 2.
 +
 Use case ends.
 
-* 5b. The modified note is an empty text.
-+
-** 5b1. System informs the user that the input is invalid.
-+
-Use case resumes at step 4.
-
 
 [discrete]
-=== Use case: Remove Note
+=== Use case: Delete Note
 
 *Precondition(s)* :
 
-* Module must exist in data file.
 * Note must exist in data file.
 
 *MSS* :
 
-1.  Teacher requests to list all notes in a module.
-2.  System displays the complete numbered list of notes saved in the module.
+1.  Teacher requests to list all notes.
+2.  System displays the complete numbered list of notes.
 3.  Teacher requests to delete a specific note in the list.
 4.  System deletes the note and displays a message that it is successfully deleted.
 +
@@ -2444,12 +2455,6 @@ Use case ends.
 * 1a. Teacher enters an invalid command.
 +
 ** 1a1. System displays the list of valid commands.
-+
-Use case resumes at step 1.
-
-* 1b. The module does not exist.
-+
-** 1b1. System displays a message that the module is not found.
 +
 Use case resumes at step 1.
 
@@ -2477,7 +2482,6 @@ Use case resumes at step 2.
 
 *Precondition(s)* :
 
-* Module must exist in data file.
 * Notes must exist in data file.
 
 *Guarantees* :
@@ -2486,8 +2490,8 @@ Use case resumes at step 2.
 
 *MSS* :
 
-1.  Teacher requests to find notes which contains a set of keywords from a module.
-2.  System displays the complete numbered list of notes found with the keyword(s).
+1.  Teacher requests to find notes which contains a set of keywords.
+2.  System displays the complete numbered list of notes found that contains the keyword(s).
 +
 Use case ends.
 
@@ -2496,12 +2500,6 @@ Use case ends.
 * 1a. Teacher enters an invalid command.
 +
 ** 1a1. System displays the list of valid commands.
-+
-Use case resumes at step 1.
-
-* 1b. The module does not exist.
-+
-** 1b1. System displays a message that the module is not found.
 +
 Use case resumes at step 1.
 

@@ -525,10 +525,10 @@ Assigns 10 marks to CS2040C student with matric number A0168111.
 Adds a note to a module. +
 Format: `note add m/MODULE_CODE [p/PRIORITY_LEVEL] [d/DATE]`
 
-NOTE: `*The optional parameters PRIORITY_LEVEL and DATE will be available from v1.3*` +
+NOTE: `*The optional parameter PRIORITY_LEVEL will be available from v1.4*` +
 - PRIORITY_LEVEL = { 1 = LOW, 2 = MEDIUM, 3 = HIGH } +
 - If the PRIORITY_LEVEL is omitted, a default value of 1 (LOW) will be assigned to the created note. +
-- The DATE parameter follows the `DD.MM.YYYY` formatting only.
+- The DATE parameter follows the `DD.MM.YYYY` formatting only. *(Validation coming in v1.3)*
 
 ****
 * Upon entering the `note add` command, the system will prompt the user to type his/her note.
@@ -538,16 +538,16 @@ NOTE: `*The optional parameters PRIORITY_LEVEL and DATE will be available from v
 Examples:
 
 * `note add m/CS2113` +
-This tells the system that the note is to be saved in the CS2113 module with a LOW priority and it has no date.
-* `note add m/CS2113 p/2 d/31.12.2113` +
-This tells the system that the note is to be saved in the CS2113 module with a MEDIUM priority and a date (31 Dec 2113).
+This tells the system that the note is to be saved in the CS2113 module with no date.
+* `note add m/CS2113 d/31.12.2113` +
+This tells the system that the note is to be saved in the CS2113 module with a date (31 Dec 2113).
 
-==== Update note : `note edit [coming in v1.3]`
+==== Edit note : `note edit [coming in v1.3]`
 Edits an existing note. +
-Format: `note edit m/MODULE_CODE INDEX [p/PRIORITY_LEVEL] [d/DATE]`
+Format: `note edit INDEX m/MODULE_CODE [d/DATE]`
 
 * Edits the note with the specified INDEX.
-* The INDEX refers to the corresponding number of each note when `note list` command is used.
+* The INDEX refers to the corresponding number of each note when `note list` command is invoked.
 * Upon entering the `note edit` command, the system will prompt the user to type his/her modifications to the note.
 * The user can choose to cancel anytime during the note editing stage.
 
@@ -555,26 +555,26 @@ Examples:
 
 * `note list m/CS1010` +
 A list of all notes saved in CS1010 module is displayed. +
-`note edit m/CS1010 3 d/10.10.2019` +
-The user will now be able to edit the note that corresponds to INDEX=3 in the list. The modified note will be saved with its assigned DATE changed to 10/10/2019 while its PRIORITY_LEVEL remains unchanged.
+`note edit 3 m/CS1010 d/10.10.2019` +
+The user will now be able to edit the note that corresponds to INDEX=3 in the list. The modified note will be saved with its assigned DATE changed to 10/10/2019.
 
-==== Remove note : `note delete [coming in v1.2]`
+==== Delete note : `note delete`
 Deletes a specific note. +
-Format: `note delete m/MODULE_CODE INDEX`
+Format: `note delete INDEX`
 
 * Deletes the note with the specified INDEX.
-* The INDEX refers to the corresponding number of each note when `note list` command is used.
+* The INDEX refers to the corresponding number of each note when `note list` command is invoked.
 
 Examples:
 
 * `note list m/CS2040C` +
 A list of all notes saved in CS2040C module is displayed. +
-`note delete m/CS2040C 1` +
+`note delete 1` +
 Deletes the note that corresponds to INDEX=1 in the list.
 
-==== Find note : `note find [coming in v1.2]`
-Search and display existing notes from a module using keywords. +
-Format: `note find m/MODULE_CODE k/KEYWORD [k/KEYWORD]..`
+==== Find note : `note find [coming in v1.3]`
+Search and display existing notes using keywords. +
+Format: `note find k/KEYWORD [k/KEYWORD]..`
 
 * Multiple keywords can be accepted.
 * A minimum of one keyword is required for the command to work.
@@ -583,24 +583,24 @@ Format: `note find m/MODULE_CODE k/KEYWORD [k/KEYWORD]..`
 
 Examples:
 
-* `note find m/CS2113 k/git k/OOP` +
-Lists all notes from CS2113 module which contain both keywords "git" and "OOP".
+* `note find k/git k/OOP` +
+Lists all notes which contain both keywords "git" and "OOP".
 
 ==== List notes : `note list`
-Shows a list of all notes saved in the module. +
-Format: `note list m/MODULE_CODE [P]`
+Shows a list of all saved notes. +
+Format: `note list [m/MODULE_CODE] [P]`
 
-NOTE: `*The optional parameter P will be available from v1.3*` +
+NOTE: `*The optional parameter P will be available from v1.4*` +
 - Adding the `P` parameter allows the user to view notes based on their assigned PRIORITY_LEVEL from highest to lowest. +
 - It is not case-sensitive, hence the user can use either lowercase or uppercase. +
 - If `P` is omitted, the list displayed is sorted by the order of creation.
 
 Examples:
 
+* `note list` +
+This will list all existing notes from Trajectory.
 * `note list m/CS1231` +
-This will list all the existing notes from the CS1231 module in the order of their creation.
-* `note list m/CS1231 p` +
-This is similar to the previous example, except that the system will display the list from highest to lowest PRIORITY_LEVEL.
+This will list all notes saved in CS1231 module.
 
 === Viewing help : `help`
 
@@ -722,16 +722,16 @@ e.g. `module enrol i/A0167263X i/A0179821B`
 * *Assign TA* : `module assign [i/MATRIC_NUMBER] [e/EMAIL]` +
 e.g. `module assign i/A0171234B`
 
-* *Add Grade Component* : `gradebook add c/MODULE_CODE i/GRADE_ITEM` +
-e.g. `gradebook add c/CS2040C i/Assignment 1`
+* *Add Grade Component* : `gradebook add m/MODULE_CODE i/ITEM mm/[MAX MARKS] w/[WEIGHTAGE]` +
+e.g. `gradebook add m/CS2040C i/Assignment 1 mm/20 w/10`
 * *Edit Grade Item* : `gradebook edit c/MODULE_CODE i/GRADE_ITEM  m/ MAX_MARKS p/PERCENTAGE OF GRADE` +
 e.g. `gradebook edit c/CS2040C i/Assignment 1 m/20 p/10`
-* *Delete Grade Component* : `gradebook remove c/MODULE_CODE i/GRADE_ITEM` +
-e.g. `gradebook remove m/CS2040C i/Assignment 1`
-* *List Grade Components* : `gradebook list c/MODULE_CODE` +
-e.g. `gradebook list c/CS2040C`
-* *List Grade Components* : `gradebook list grades c/MODULE_CODE` +
-e.g. `gradebook list grades c/CS2040C`
+* *Delete Grade Component* : `gradebook delete m/MODULE_CODE i/GRADE_ITEM` +
+e.g. `gradebook delete m/CS2040C i/Assignment 1`
+* *List Grade Components* : `gradebook list` +
+e.g. `gradebook list`
+* *Find Grade Components* : `gradebook find m/MODULE_CODE i/ITEM` +
+e.g. `gradebook find m/CS2040C i/finals`
 * *Assign Grades* : `gradebook assign c/MODULE_CODE i/MATRIC_NUMBER g/GRADE_ITEM_NAME m/MARKS` +
 e.g. `gradebook assign c/CS2040C i/A0168111 g/Assignment 1 m/10`
 * *Creating a class* `class add c/CLASS_NAME m/MODULE_CODE e/MAX_ENROLLMENT` +
@@ -752,16 +752,16 @@ e.g. `class listattend c/T16`
 e.g. `class markattend c/T16 i/A6942069M`
 * *Modifying class attendance list* `class modattend c/CLASS_NAME i/ADMISSION_NO` +
 e.g. `class modattend c/T16 i/A6942069M`
-* *Add a note* `note add m/MODULE_CODE` +
+* *Add a note* `note add m/MODULE_CODE [d/DATE]` +
 e.g. `note add m/CS2040C`
-* *List notes* `note list m/MODULE_CODE` +
+* *List notes* `note list [m/MODULE_CODE]` +
 e.g. `note list m/CS2040C`
-* *Delete a note* `note delete m/MODULE_CODE INDEX` `[Coming in v1.2]` +
-e.g. `note delete m/CS2040C 8`
-* *Edit a note* `note edit m/MODULE_CODE INDEX [p/PRIORITY_LEVEL] [d/DATE]` `[Coming in v1.3] +
-e.g. `note edit m/CS2040C 5 p/3`
-* *Find a note* `note find m/MODULE_CODE k/KEYWORD [k/KEYWORD]..` `[Coming in v1.2]` +
-e.g. `note find m/CS2040C k/bubble`
+* *Delete a note* `note delete INDEX` +
+e.g. `note delete 8`
+* *Edit a note* `note edit INDEX [m/MODULE_CODE] [d/DATE]` `[Coming in v1.3]` +
+e.g. `note edit 5 m/CS2040C`
+* *Find a note* `note find k/KEYWORD [k/KEYWORD]..` `[Coming in v1.3]` +
+e.g. `note find k/bubble k/queue`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`

@@ -24,6 +24,26 @@ public class ClassroomManager {
     }
 
     /**
+     * Finds a classroom from classroomList
+     */
+    public Classroom findClassroom(String className, String moduleCode) {
+        for (Classroom classroom : classroomList) {
+            if (classroom.getClassName().getValue().equalsIgnoreCase(className)
+                    && classroom.getModuleCode().getValue().equalsIgnoreCase(moduleCode)) {
+                return classroom;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Removes a classroom from classroomList
+     */
+    public void deleteClassroom(Classroom classroom) {
+        classroomList.remove(classroom);
+    }
+
+    /**
      * Gets the classroom list from storage and converts it to a Classroom array list
      */
     private void readClassroomList() {
