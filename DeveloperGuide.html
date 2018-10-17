@@ -32,7 +32,7 @@
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#class-add-feature">3.2. Class Add feature</a></li>
 <li><a href="#class-list-feature">3.3. Class List feature</a></li>
-<li><a href="#exporting-gradebook-data-to-graph-feature">3.4. Exporting Gradebook data-to-graph feature</a></li>
+<li><a href="#gradebook-graph-feature">3.4. Gradebook Graph feature</a></li>
 <li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.6. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
@@ -875,11 +875,11 @@ It makes use the following operations:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-gradebook-data-to-graph-feature"><a class="link" href="#exporting-gradebook-data-to-graph-feature">3.4. Exporting Gradebook data-to-graph feature</a></h3>
+<h3 id="gradebook-graph-feature"><a class="link" href="#gradebook-graph-feature">3.4. Gradebook Graph feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The export-to-graph mechanism is an enhancement that will be released in the later versions, facilitated by 'Trajectory'.
+<p>The gradebook graph mechanism is an enhancement that will be released in the later versions, facilitated by 'Trajectory'.
 It is stored internally in GradebookManager.</p>
 </div>
 <div class="paragraph">
@@ -888,15 +888,15 @@ It is stored internally in GradebookManager.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>gradebookManager#exportStudentGrades()</code>&#8201;&#8212;&#8201;Exports data of student grades from Array List to graph form</p>
+<p><code>gradebookManager#graphModuleSummary()</code>&#8201;&#8212;&#8201;Converts data of all student grades from Array List to graph form</p>
 </li>
 <li>
-<p><code>gradebookManager#exportStudentProgress()</code>&#8201;&#8212;&#8201;Exports student data to present progress on module.</p>
+<p><code>gradebookManager#graphStudentProgress()</code>&#8201;&#8212;&#8201;Converts student data to present progress on module.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>GradebookManager</code> as <code>GradebookManager#exportStudentGrades()</code>, <code>GradebookManager#exportStudentProgress()</code> respectively.</p>
+<p>These operations are exposed in the <code>GradebookManager</code> as <code>GradebookManager#graphModuleSummary()</code>, <code>GradebookManager#graphStudentProgress()</code> respectively.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the gradebook data-to-graph mechanism behaves at each step.</p>
@@ -908,7 +908,7 @@ It is stored internally in GradebookManager.</p>
 <p>Step 2. The user executes <code>gradebook find m/cs2113 i/Finals</code> command to find the relevant gradebook component. The <code>find</code> command calls <code>GradebookManager#findGradebookComponent()</code>, which finds and filters the Array List to the relevant search.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>gradebook export student grades</code>. GradebookManager#exportStudentGrades will convert the Array List to graph form and display to the user.</p>
+<p>Step 3. The user executes <code>gradebook graph student</code>. GradebookManager#graphStudentProgress will convert the Array List to graph form and display to the user.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -923,7 +923,7 @@ If a command fails its execution, it will not call <code>Gradebook#GradebookMana
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides to export graph according to the progress of a student, and that action is done by executing the <code>gradebook export student grades</code> command. This command will call <code>GradebookManager#exportStudentGrades()</code>, which then displays the graph of the students progress.</p>
+<p>Step 4. The user now decides to export graph according to the progress of a student, and that action is done by executing the <code>gradebook graph student</code> command. This command will call <code>GradebookManager#graphStudentProgress()</code>, which then displays the graph of the students progress.</p>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
@@ -5819,4 +5819,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 16:17:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 16:43:22 UTC</div></div></div></body></html>
