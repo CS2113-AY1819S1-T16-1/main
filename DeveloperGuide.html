@@ -30,9 +30,12 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#class-add-feature">3.2. Class Add feature</a></li>
+<li><a href="#class-list-feature">3.3. Class List feature</a></li>
+<li><a href="#exporting-gradebook-data-to-graph-feature">3.4. Exporting Gradebook data-to-graph feature</a></li>
+<li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -717,8 +720,92 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="class-add-feature"><a class="link" href="#class-add-feature">3.2. Class Add feature</a></h3>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The add mechanism is facilitated by <code>ClassroomManager</code> supported by <code>StorageController</code>.
+It makes use of the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ClassroomManager#addClassroom()</code>&#8201;&#8212;&#8201;Adds a new classroomList to the in-memory array list.</p>
+</li>
+<li>
+<p><code>ClassroomManager#readClassroomList()</code>&#8201;&#8212;&#8201;Gets the classroom list from storage and converts it to a Classroom array list.</p>
+</li>
+<li>
+<p><code>ClassroomManager#saveClassroomList()</code>&#8201;&#8212;&#8201;Converts the classroom array list and invokes the StorageController to save the current classroom list to file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are used in the <code>ClassAddCommand</code> class under <code>ClassAddCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the add/list mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time. The <code>StorageController#retrieveData()</code> will retrieve all datasets saved locally.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>class add c/16&#8230;&#8203;</code> command to add a new classroom to Trajectory. The <code>class add</code> command calls the <code>ClassAddCommand#execute()</code>. The <code>ClassroomManager</code> will be instantiated and read the classroom list from the storage and converts the data from XmlAdaptedClassroom to the Classroom data type.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>classroomManager#saveClassroomList()</code> will be called to converts the classroom array list and invokes the StorageController to save the current classroom list to file. This is done by first converting our <code>Classroom</code> object into <code>XmlAdaptedClassroom</code> objects and saving it.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="class-list-feature"><a class="link" href="#class-list-feature">3.3. Class List feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The list mechanism is facilitated by <code>ClassroomManager</code> supported by <code>StorageController</code>.
+It makes use the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ClassroomManager#readClassroomList()</code>&#8201;&#8212;&#8201;Gets the classroom list from storage and converts it to a Classroom array list.</p>
+</li>
+<li>
+<p><code>ClassroomManager#saveClassroomList()</code>&#8201;&#8212;&#8201;Converts the classroom array list and invokes the StorageController to save the current classroom list to file.</p>
+</li>
+<li>
+<p><code>ClassroomManager#getClassroomList()</code>&#8201;&#8212;&#8201;Gets the classroom list from the in-memory array list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are used in the <code>ClassListCommand</code> class under <code>ClassListCommand#execute()</code>..</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the add/list mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time. The <code>StorageController#retrieveData()</code> will retrieve all datasets saved locally.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>class list</code> command to list all classrooms to Trajectory. The <code>class list</code> command calls the <code>ClassListCommand#execute()</code>. The <code>ClassroomManager</code> will be instantiated and read the classroom list from the storage and converts the data from XmlAdaptedClassroom to the Classroom data type.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The classroom list with the corresponding classroom information will be appended to the with the support of the <code>StringBuilder</code> and displayed as a message successfully.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/classaddlist.PNG" alt="classaddlist" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -788,20 +875,150 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="exporting-gradebook-data-to-graph-feature"><a class="link" href="#exporting-gradebook-data-to-graph-feature">3.4. Exporting Gradebook data-to-graph feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The export-to-graph mechanism is an enhancement that will be released in the later versions, facilitated by 'Trajectory'.
+It is stored internally in GradebookManager.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>gradebookManager#exportStudentGrades()</code>&#8201;&#8212;&#8201;Exports data of student grades from Array List to graph form</p>
+</li>
+<li>
+<p><code>gradebookManager#exportStudentProgress()</code>&#8201;&#8212;&#8201;Exports student data to present progress on module.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the <code>GradebookManager</code> as <code>GradebookManager#exportStudentGrades()</code>, <code>GradebookManager#exportStudentProgress()</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the gradebook data-to-graph mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time. The StorageController which interacts with #xmlAdaptedGradebook to retrieve data from Array List using #retrieveData.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>gradebook find m/cs2113 i/Finals</code> command to find the relevant gradebook component. The <code>find</code> command calls <code>GradebookManager#findGradebookComponent()</code>, which finds and filters the Array List to the relevant search.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The user executes <code>gradebook export student grades</code>. GradebookManager#exportStudentGrades will convert the Array List to graph form and display to the user.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution, it will not call <code>Gradebook#GradebookManager()</code>, so Trajectory state will not be saved into the <code>GradebookManager</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. The user now decides to export graph according to the progress of a student, and that action is done by executing the <code>gradebook export student grades</code> command. This command will call <code>GradebookManager#exportStudentGrades()</code>, which then displays the graph of the students progress.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dataToGraphActivityDiagram.png" alt="dataToGraphActivityDiagram" width="650">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-graph-to-data-executes"><a class="link" href="#aspect-how-graph-to-data-executes">Aspect: How graph-to-data executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Individual command knows how to export accordingly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (e.g. only execute command when needed)</p>
+</li>
+<li>
+<p>Cons: Parameters and prefixes must be entered correctly before running command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Saves the entire Trajectory.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Might result in low performance due to high memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-data-to-graph-commands"><a class="link" href="#aspect-data-structure-to-support-the-data-to-graph-commands">Aspect: Data structure to support the data-to-graph commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the data before exporting.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy data structure to use for any graph.</p>
+</li>
+<li>
+<p>Cons: Large list of data might require significant memory.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use `GradebookManager' for data-to-graph export</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+</li>
+<li>
+<p>Cons: Requires dealing with commands that needs to interact with storage controller or xml adapters directly but command should not have direct interaction from StorageController.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -832,7 +1049,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -5602,4 +5819,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 15:20:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 15:27:46 UTC</div></div></div></body></html>
