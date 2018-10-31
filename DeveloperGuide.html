@@ -1225,14 +1225,7 @@ The user will be able to export notes from this application to a CSV file that f
 <div class="ulist">
 <ul>
 <li>
-<p><code>note export [m/MODULE_CODE] [m/MODULE_CODE]&#8230;&#8203;</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Specifying the MODULE_CODE argument allows the user to export notes from one or more selected modules only.</p>
-</li>
-</ul>
-</div>
+<p><code>note export fn/FILE_NAME</code></p>
 </li>
 </ul>
 </div>
@@ -1244,43 +1237,6 @@ The user will be able to export notes from this application to a CSV file that f
 1. Assuming that notes data are currently present in Trajectory, the user can invoke the <code>note export</code> command to begin exporting.<br>
 2. A parser class will be used to generate the correct formatting for the Google Calendar.<br>
 3. A CSV API will then be used to handle the writing to CSV. The file will be saved to a default directory in the user&#8217;s local storage.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>IMPORT :</strong><br>
-The user will be able to import the data from a CSV file to generate a proper representation of the Note model. The importing process can be invoked by the user by entering the command below.</p>
-</div>
-<div class="paragraph">
-<p><strong>Command: <code>note import</code></strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The command will populate the notes data in the application from an existing CSV file.</p>
-</li>
-<li>
-<p>It requires that the user specify the directory of the file.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Example: <code>note import C:\MyData\notes.csv</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>However, importing from an external source will overwrite existing notes data in Trajectory.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>A possible implementation of importing from CSV is provided below.<br>
-1. The user calls the import command to get data from a CSV file.<br>
-2. A CSV utility class will be used to fetch the file.<br>
-3. It will then be passed to a parser class that will handle the conversion to the Note model.<br>
-4. The converted model will be copied to the Note Model list.<br></p>
-</div>
-<div class="paragraph">
-<p><code>Due to the nature of Google Calendar&#8217;s data fields, the Note Management feature needs to be enhanced to have mandatory input fields that satisfies the minimum requirements for Google Calendar imports.</code></p>
 </div>
 </div>
 </div>
@@ -5843,6 +5799,76 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-export-notes" class="discrete">Use case: Export Notes</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Notes must exist in data file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher requests to export notes.</p>
+</li>
+<li>
+<p>System informs the user the number of notes exported.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. There are no notes that can be exported.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. System displays a message that no entries are found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -6067,4 +6093,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 17:23:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 17:27:56 UTC</div></div></div></body></html>
