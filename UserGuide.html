@@ -1795,24 +1795,28 @@ e.g. <code>class markattendance cn/T16 mc/CG1111 i/A6942069M</code></p>
 e.g. <code>class modattendance cn/T16 mc/CG1111 i/A6942069M</code></p>
 </li>
 <li>
-<p><strong>Add a note</strong> <code>note add m/MODULE_CODE [d/DATE]</code><br>
-e.g. <code>note add m/CS2040C</code></p>
+<p><strong>Add a note</strong> <code>note add mc/MODULE_CODE [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code><br>
+e.g. <code>note add mc/CS2040C</code></p>
 </li>
 <li>
-<p><strong>List notes</strong> <code>note list [m/MODULE_CODE]</code><br>
-e.g. <code>note list m/CS2040C</code></p>
+<p><strong>List notes</strong> <code>note list [mc/MODULE_CODE]</code><br>
+e.g. <code>note list mc/CS2040C</code></p>
 </li>
 <li>
 <p><strong>Delete a note</strong> <code>note delete INDEX</code><br>
 e.g. <code>note delete 8</code></p>
 </li>
 <li>
-<p><strong>Edit a note</strong> <code>note edit INDEX [m/MODULE_CODE] [d/DATE]</code> <code>[Coming in v1.3]</code><br>
-e.g. <code>note edit 5 m/CS2040C</code></p>
+<p><strong>Edit a note</strong> <code>note edit INDEX [mc/NEW_MODULE_CODE] [sd/NEW_START_DATE] [st/NEW_START_TIME] [ed/NEW_END_DATE] [et/NEW_END_TIME] [lc/NEW_LOCATION]</code><br>
+e.g. <code>note edit 5 mc/CS2040C</code></p>
 </li>
 <li>
-<p><strong>Find a note</strong> <code>note find k/KEYWORD [k/KEYWORD]..</code> <code>[Coming in v1.3]</code><br>
+<p><strong>Find a note</strong> <code>note find k/KEYWORD [k/MORE_KEYWORDS]..</code><br>
 e.g. <code>note find k/bubble k/queue</code></p>
+</li>
+<li>
+<p><strong>Export notes</strong> <code>note export fn/FILE_NAME</code><br>
+e.g. <code>note export fn/notes</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
@@ -1826,4 +1830,4 @@ e.g. <code>note find k/bubble k/queue</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:56:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 17:08:20 UTC</div></div></div></body></html>
