@@ -23,8 +23,8 @@ public class NoteExportCommand extends Command {
     public static final String MESSAGE_INVALID_FILE_NAME = "Please enter a valid filename.\n"
             + "A valid filename should only contain the following:\n"
             + "- Alphanumeric characters [A-Z][a-z][0-9]\n"
-            + "- Underscores [ _ ]\n"
-            + "- Hyphens [ - ]";
+            + "- Underscores [_]\n"
+            + "- Hyphens [-]";
 
     public static final String MESSAGE_NO_EXPORTABLE_NOTES = "You have no notes that can be exported.";
     public static final String MESSAGE_SUCCESS = "Exported %1$s note(s).";

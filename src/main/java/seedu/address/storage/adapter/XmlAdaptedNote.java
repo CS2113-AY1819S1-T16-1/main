@@ -5,7 +5,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import seedu.address.model.module.ModuleCode;
 import seedu.address.model.note.Note;
+import seedu.address.model.note.NoteDate;
+import seedu.address.model.note.NoteLocation;
+import seedu.address.model.note.NoteText;
+import seedu.address.model.note.NoteTime;
+import seedu.address.model.note.NoteTitle;
 
 /**
  * JAXB-friendly adapted version of the Note.
@@ -70,14 +76,14 @@ public class XmlAdaptedNote {
      * Converts a Note into an {@code XmlAdaptedNote} for JAXB use
      */
     public XmlAdaptedNote(Note note) {
-        this.moduleCode = note.getModuleCode();
-        this.title = note.getTitle();
-        this.startDate = note.getStartDate();
-        this.startTime = note.getStartTime();
-        this.endDate = note.getEndDate();
-        this.endTime = note.getEndTime();
-        this.location = note.getLocation();
-        this.noteText = note.getNoteText();
+        this.moduleCode = note.getModuleCode().toString();
+        this.title = note.getTitle().toString();
+        this.startDate = (note.getStartDate() == null) ? "" : note.getStartDate().toString();
+        this.startTime = note.getStartTime().toString();
+        this.endDate = (note.getEndDate() == null) ? "" : note.getEndDate().toString();
+        this.endTime = note.getEndTime().toString();
+        this.location = note.getLocation().toString();
+        this.noteText = note.getNoteText().toString();
     }
 
     /**
@@ -85,14 +91,15 @@ public class XmlAdaptedNote {
      */
     public Note toModelType() {
         return new Note(
-                moduleCode,
-                title,
-                startDate,
-                startTime,
-                endDate,
-                endTime,
-                location,
-                noteText);
+                new ModuleCode(moduleCode),
+                new NoteTitle(title), (!startDate.trim().isEmpty())
+                ? new NoteDate(startDate) : null,
+                new NoteTime(startTime), (!endDate.trim().isEmpty())
+                ? new NoteDate(endDate) : null,
+                new NoteTime(endTime),
+                new NoteLocation(location),
+                new NoteText(noteText)
+        );
     }
 
     public String getModuleCode() {

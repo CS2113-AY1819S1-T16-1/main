@@ -1,6 +1,12 @@
 package seedu.address.testutil;
 
+import seedu.address.model.module.ModuleCode;
 import seedu.address.model.note.Note;
+import seedu.address.model.note.NoteDate;
+import seedu.address.model.note.NoteLocation;
+import seedu.address.model.note.NoteText;
+import seedu.address.model.note.NoteTime;
+import seedu.address.model.note.NoteTitle;
 
 /**
  * Creates dummy notes for testing.
@@ -8,35 +14,35 @@ import seedu.address.model.note.Note;
 public class NoteBuilder {
     public static final String DEFAULT_MODULE_CODE = "CS2113";
     public static final String DEFAULT_TITLE = "My note";
-    public static final String DEFAULT_START_DATE = "21/12/2113";
+    public static final String DEFAULT_START_DATE = "21-12-2113";
     public static final String DEFAULT_START_TIME = "10:00 AM";
-    public static final String DEFAULT_END_DATE = "22/12/2113";
+    public static final String DEFAULT_END_DATE = "22-12-2113";
     public static final String DEFAULT_END_TIME = "10:00 AM";
     public static final String DEFAULT_LOCATION = "National University of Singapore";
     public static final String DEFAULT_NOTE_TEXT = "CS2113 Rocks!";
 
-    private String moduleCode;
-    private String title;
-    private String startDate;
-    private String startTime;
-    private String endDate;
-    private String endTime;
-    private String location;
-    private String noteText;
+    private ModuleCode moduleCode;
+    private NoteTitle title;
+    private NoteDate startDate;
+    private NoteTime startTime;
+    private NoteDate endDate;
+    private NoteTime endTime;
+    private NoteLocation location;
+    private NoteText noteText;
 
     /**
      * Empty constructor for NoteBuilder that initializes the
      * note with default values.
      */
     public NoteBuilder() {
-        this.moduleCode = DEFAULT_MODULE_CODE;
-        this.title = DEFAULT_TITLE;
-        this.startDate = DEFAULT_START_DATE;
-        this.startTime = DEFAULT_START_TIME;
-        this.endDate = DEFAULT_END_DATE;
-        this.endTime = DEFAULT_END_TIME;
-        this.location = DEFAULT_LOCATION;
-        this.noteText = DEFAULT_NOTE_TEXT;
+        moduleCode = new ModuleCode(DEFAULT_MODULE_CODE);
+        title = new NoteTitle(DEFAULT_TITLE);
+        startDate = new NoteDate(DEFAULT_START_DATE);
+        startTime = new NoteTime(DEFAULT_START_TIME);
+        endDate = new NoteDate(DEFAULT_END_DATE);
+        endTime = new NoteTime(DEFAULT_END_TIME);
+        location = new NoteLocation(DEFAULT_LOCATION);
+        noteText = new NoteText(DEFAULT_NOTE_TEXT);
     }
 
     /**
@@ -50,14 +56,14 @@ public class NoteBuilder {
                        String endTime,
                        String location,
                        String noteText) {
-        this.moduleCode = moduleCode;
-        this.title = title;
-        this.startDate = startDate;
-        this.startTime = startTime;
-        this.endDate = endDate;
-        this.endTime = endTime;
-        this.location = location;
-        this.noteText = noteText;
+        this.moduleCode = new ModuleCode(moduleCode);
+        this.title = new NoteTitle(title);
+        this.startDate = new NoteDate(startDate);
+        this.startTime = new NoteTime(startTime);
+        this.endDate = new NoteDate(endDate);
+        this.endTime = new NoteTime(endTime);
+        this.location = new NoteLocation(location);
+        this.noteText = new NoteText(noteText);
     }
 
     /**
@@ -74,68 +80,84 @@ public class NoteBuilder {
         this.noteText = noteToCopy.getNoteText();
     }
 
-    public String getModuleCode() {
-        return this.moduleCode;
+    /**
+     * Sets the {@code moduleCode} of the {@code Note} that we are building.
+     */
+    public NoteBuilder withModuleCode(String moduleCode) {
+        this.moduleCode = new ModuleCode(moduleCode);
+        return this;
     }
 
-    public void setModuleCode(String moduleCode) {
-        this.moduleCode = moduleCode;
+    /**
+     * Sets the {@code title} of the {@code Note} that we are building.
+     */
+    public NoteBuilder withTitle(String title) {
+        this.title = new NoteTitle(title);
+        return this;
     }
 
-    public String getTitle() {
-        return this.title;
+    /**
+     * Sets the {@code startDate} of the {@code Note} to null.
+     */
+    public NoteBuilder withNullStartDate() {
+        this.startDate = null;
+        return this;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    /**
+     * Sets the {@code endDate} of the {@code Note} to null.
+     */
+    public NoteBuilder withNullEndDate() {
+        this.endDate = null;
+        return this;
     }
 
-    public String getStartDate() {
-        return this.startDate;
+    /**
+     * Sets the {@code startDate} of the {@code Note} that we are building.
+     */
+    public NoteBuilder withStartDate(String startDate) {
+        this.startDate = new NoteDate(startDate);
+        return this;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    /**
+     * Sets the {@code startTime} of the {@code Note} that we are building.
+     */
+    public NoteBuilder withStartTime(String startTime) {
+        this.startTime = new NoteTime(startTime);
+        return this;
     }
 
-    public String getStartTime() {
-        return this.startTime;
+    /**
+     * Sets the {@code endDate} of the {@code Note} that we are building.
+     */
+    public NoteBuilder withEndDate(String endDate) {
+        this.endDate = new NoteDate(endDate);
+        return this;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    /**
+     * Sets the {@code endTime} of the {@code Note} that we are building.
+     */
+    public NoteBuilder withEndTime(String endTime) {
+        this.endTime = new NoteTime(endTime);
+        return this;
     }
 
-    public String getEndDate() {
-        return this.endDate;
+    /**
+     * Sets the {@code location} of the {@code Note} that we are building.
+     */
+    public NoteBuilder withLocation(String location) {
+        this.location = new NoteLocation(location);
+        return this;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getEndTime() {
-        return this.endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getLocation() {
-        return this.location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getNoteText() {
-        return this.noteText;
-    }
-
-    public void setNoteText(String noteText) {
-        this.noteText = noteText;
+    /**
+     * Sets the {@code noteText} of the {@code Note} that we are building.
+     */
+    public NoteBuilder withNoteText(String noteText) {
+        this.noteText = new NoteText(noteText);
+        return this;
     }
 
     /**

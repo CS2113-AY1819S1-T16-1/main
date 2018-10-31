@@ -147,7 +147,7 @@ public class ModuleManager {
      * @return True if the module exists; false otherwise.
      */
     public boolean doesModuleExist(Module module) {
-        return this.modules.stream().anyMatch(m -> m.equals(module));
+        return this.modules.stream().anyMatch(m -> m.isSameModule(module));
     }
 
     /**

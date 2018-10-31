@@ -77,6 +77,24 @@ public class ModuleEditCommand extends Command {
         return new Module(moduleCode, moduleName);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof ModuleEditCommand)) {
+            return false;
+        }
+
+        // state check
+        ModuleEditCommand e = (ModuleEditCommand) other;
+        return moduleCode.equals(e.moduleCode)
+                && editModuleDescriptor.equals(e.editModuleDescriptor);
+    }
+
     /**
      * Stores the details to edit the module with. Each non-empty field value (other than the module code)
      * will replace the corresponding field value of the module.
@@ -116,6 +134,24 @@ public class ModuleEditCommand extends Command {
 
         public void setModuleName(ModuleName moduleName) {
             this.moduleName = moduleName;
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            // short circuit if same object
+            if (other == this) {
+                return true;
+            }
+
+            // instanceof handles nulls
+            if (!(other instanceof EditModuleDescriptor)) {
+                return false;
+            }
+
+            // state check
+            EditModuleDescriptor e = (EditModuleDescriptor) other;
+            return getModuleCode().equals(e.getModuleCode())
+                    && getModuleName().equals(e.getModuleName());
         }
     }
 }

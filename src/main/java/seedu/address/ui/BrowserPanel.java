@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
@@ -14,6 +16,7 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.NewInfoMessageEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.address.model.note.NoteManager;
 import seedu.address.model.person.Person;
 
 /**
@@ -26,6 +29,8 @@ public class BrowserPanel extends UiPart<Region> {
             "https://se-edu.github.io/addressbook-level4/DummySearchPage.html?name=";
 
     private static final String FXML = "BrowserPanel.fxml";
+
+    private static boolean noteListIsLoaded = false;
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -40,6 +45,7 @@ public class BrowserPanel extends UiPart<Region> {
 
         loadDefaultPage();
         initializeCss();
+        initializeWorkerStateListener();
         registerAsAnEventHandler(this);
 
     }
@@ -74,6 +80,26 @@ public class BrowserPanel extends UiPart<Region> {
                 .getResource("/rendering/bootstrap.min.css").toString());
     }
 
+    /**
+     * Adds a listener to automatically scroll to
+     * the bottom of the page whenever the WebView page fully loads.
+     */
+    private void initializeWorkerStateListener() {
+        browser.getEngine().getLoadWorker().stateProperty()
+                .addListener((ObservableValue<? extends Worker.State> observable,
+                              Worker.State oldValue, Worker.State newValue) -> {
+                    if (newValue == Worker.State.SUCCEEDED) {
+                        if (noteListIsLoaded) {
+                            browser.getEngine().executeScript("window.scrollTo(0, document.body.scrollHeight);");
+                        }
+                    }
+                });
+    }
+
+    public boolean isNoteListLoaded() {
+        return noteListIsLoaded;
+    }
+
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
@@ -84,5 +110,8 @@ public class BrowserPanel extends UiPart<Region> {
     private void handleNewInfo(NewInfoMessageEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         browser.getEngine().loadContent(event.message);
+        if (event.message != null) {
+            noteListIsLoaded = event.message.contains(NoteManager.NOTE_PAGE_IDENTIFIER);
+        }
     }
 }

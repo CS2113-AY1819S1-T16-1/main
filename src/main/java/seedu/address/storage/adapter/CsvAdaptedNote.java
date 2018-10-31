@@ -2,7 +2,6 @@ package seedu.address.storage.adapter;
 
 import seedu.address.model.note.Note;
 
-
 /**
  * CSV-friendly version of Note.
  */
@@ -10,6 +9,7 @@ public class CsvAdaptedNote {
 
     private static final String COMMA_DELIM = ",";
     private static final String DOUBLE_QUOTE = "\"";
+    private static final String EMPTY_TITLE = "(No Title)";
 
     private String moduleCode;
     private String title;
@@ -21,14 +21,14 @@ public class CsvAdaptedNote {
     private String noteText;
 
     public CsvAdaptedNote(Note note) {
-        this.moduleCode = note.getModuleCode();
-        this.title = note.getTitle();
-        this.startDate = note.getStartDate();
-        this.startTime = note.getStartTime();
-        this.endDate = note.getEndDate();
-        this.endTime = note.getEndTime();
-        this.location = note.getLocation();
-        this.noteText = adaptToCsv(note.getNoteText());
+        this.moduleCode = note.getModuleCode().toString();
+        this.title = note.getTitle().toString();
+        this.startDate = note.getStartDate().toString();
+        this.startTime = note.getStartTime().toString();
+        this.endDate = note.getEndDate().toString();
+        this.endTime = note.getEndTime().toString();
+        this.location = note.getLocation().toString();
+        this.noteText = adaptToCsv(note.getNoteText().toString());
     }
 
     /**
@@ -51,15 +51,13 @@ public class CsvAdaptedNote {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        if (!moduleCode.isEmpty()) {
-            sb.append(DOUBLE_QUOTE);
-            sb.append(moduleCode + ": " + title);
-            sb.append(DOUBLE_QUOTE);
-        } else {
-            sb.append(DOUBLE_QUOTE);
+        sb.append(DOUBLE_QUOTE);
+        sb.append(moduleCode);
+        if (!title.isEmpty()) {
+            sb.append(": ");
             sb.append(title);
-            sb.append(DOUBLE_QUOTE);
         }
+        sb.append(DOUBLE_QUOTE);
         sb.append(COMMA_DELIM);
         sb.append(startDate);
         sb.append(COMMA_DELIM);

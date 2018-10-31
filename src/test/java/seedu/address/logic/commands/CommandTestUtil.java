@@ -2,7 +2,13 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE_CODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,6 +45,11 @@ public class CommandTestUtil {
     public static final String VALID_MODULE_CODE = "CG1111";
     public static final String VALID_MAX_ENROLLMENT = "20";
 
+    public static final String VALID_MODULE_CODE_CS2040C = "CS2040C";
+    public static final String VALID_MODULE_CODE_MA1508E = "MA1508E";
+    public static final String VALID_MODULE_NAME_CS2040C = "Data Structures & Algorithms";
+    public static final String VALID_MODULE_NAME_MA1508E = "Linear Algebra for Engineering";
+
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
@@ -53,6 +64,11 @@ public class CommandTestUtil {
     public static final String MATRIC_DESC_BOB = " "  + PREFIX_MATRIC + VALID_MATRIC_NO_TAYLOR;
     public static final String COURSE_CODE_DESC_CEG = " " + PREFIX_COURSE_CODE + VALID_COURSE_CODE_CEG;
 
+    public static final String MODULE_CODE_DESC_CS2040C = " " + PREFIX_MODULE_CODE + VALID_MODULE_CODE_CS2040C;
+    public static final String MODULE_CODE_DESC_MA1508E = " " + PREFIX_MODULE_CODE + VALID_MODULE_CODE_MA1508E;
+    public static final String MODULE_NAME_DESC_CS2040C = " " + PREFIX_MODULE_NAME + VALID_MODULE_NAME_CS2040C;
+    public static final String MODULE_NAME_DESC_MA1508E = " " + PREFIX_MODULE_NAME + VALID_MODULE_NAME_MA1508E;
+
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
@@ -60,6 +76,9 @@ public class CommandTestUtil {
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
     public static final String INVALID_MATRIC_NO = " " + PREFIX_MATRIC + "00000000V"; // missing prefix letter
     public static final String INVALID_COURSE_CODE = " " + PREFIX_COURSE_CODE + "ACE"; // course doesn't exist
+
+    public static final String INVALID_MODULE_CODE_DESC = " " + PREFIX_MODULE_CODE + "CG2271&"; // '&' not allowed
+    public static final String INVALID_MODULE_NAME_DESC = " " + PREFIX_MODULE_NAME + "RTOS@"; // '@' not allowed
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

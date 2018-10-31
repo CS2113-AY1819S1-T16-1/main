@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DATE_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_TIME_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE_CODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_END_TIME;
@@ -14,6 +16,11 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.NoteEditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.module.ModuleCode;
+import seedu.address.model.note.NoteDate;
+import seedu.address.model.note.NoteLocation;
+import seedu.address.model.note.NoteTime;
+import seedu.address.model.note.NoteTitle;
 
 /**
  * Parses input arguments and creates a new NoteEditCommand object
@@ -56,45 +63,86 @@ public class NoteEditCommandParser implements Parser<NoteEditCommand> {
                     NoteEditCommand.MESSAGE_USAGE));
         }
 
-        String moduleCode = "";
-        String title = "";
-        String startDate = "";
-        String startTime = "";
-        String endDate = "";
-        String endTime = "";
-        String location = "";
+        ModuleCode moduleCode = null;
+        NoteTitle title = null;
+        NoteDate startDate = null;
+        NoteTime startTime = null;
+        NoteDate endDate = null;
+        NoteTime endTime = null;
+        NoteLocation location = null;
+
+        StringBuilder messageExceptions = new StringBuilder();
+        boolean dateFormatErrorFound = false;
+        boolean timeFormatErrorFound = false;
 
         if (argMultimap.getValue(PREFIX_MODULE_CODE).isPresent()) {
             // TODO: Check validity of input moduleCode value
-            moduleCode = argMultimap.getValue(PREFIX_MODULE_CODE).get();
+            try {
+                moduleCode = ParserUtil.parseModuleCode(argMultimap.getValue(PREFIX_MODULE_CODE).get());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                messageExceptions.append(ModuleCode.MESSAGE_MODULE_CODE_CONSTRAINT);
+                messageExceptions.append("\n\n");
+            }
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_TITLE).isPresent()) {
-            title = argMultimap.getValue(PREFIX_NOTE_TITLE).get();
+            title = new NoteTitle(argMultimap.getValue(PREFIX_NOTE_TITLE).get());
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_START_DATE).isPresent()) {
-            // TODO: Check validity of input startDate value
-            startDate = argMultimap.getValue(PREFIX_NOTE_START_DATE).get();
+            try {
+                startDate = ParserUtil.parseNoteDate(argMultimap.getValue(PREFIX_NOTE_START_DATE).get());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                messageExceptions.append(MESSAGE_INVALID_DATE_FORMAT);
+                messageExceptions.append("\n\n");
+                dateFormatErrorFound = true;
+            }
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_START_TIME).isPresent()) {
-            // TODO: Check validity of input startTime value
-            startTime = argMultimap.getValue(PREFIX_NOTE_START_TIME).get();
+            try {
+                startTime = ParserUtil.parseNoteTime(argMultimap.getValue(PREFIX_NOTE_START_TIME).get());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                messageExceptions.append(MESSAGE_INVALID_TIME_FORMAT);
+                messageExceptions.append("\n\n");
+                timeFormatErrorFound = true;
+            }
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_END_DATE).isPresent()) {
-            // TODO: Check validity of input endDate value
-            endDate = argMultimap.getValue(PREFIX_NOTE_END_DATE).get();
+            try {
+                endDate = ParserUtil.parseNoteDate(argMultimap.getValue(PREFIX_NOTE_END_DATE).get());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                if (!dateFormatErrorFound) {
+                    messageExceptions.append(MESSAGE_INVALID_DATE_FORMAT);
+                    messageExceptions.append("\n\n");
+                }
+            }
+
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_END_TIME).isPresent()) {
-            // TODO: Check validity of input endTime value
-            endTime = argMultimap.getValue(PREFIX_NOTE_END_TIME).get();
+            try {
+                endTime = ParserUtil.parseNoteTime(argMultimap.getValue(PREFIX_NOTE_END_TIME).get());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                if (!timeFormatErrorFound) {
+                    messageExceptions.append(MESSAGE_INVALID_TIME_FORMAT);
+                    messageExceptions.append("\n\n");
+                }
+            }
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_LOCATION).isPresent()) {
-            location = argMultimap.getValue(PREFIX_NOTE_LOCATION).get();
+            location = new NoteLocation(argMultimap.getValue(PREFIX_NOTE_LOCATION).get());
+        }
+
+        if (messageExceptions.length() > 0) {
+            throw new ParseException(messageExceptions.substring(0, messageExceptions.length() - 2));
         }
 
         return new NoteEditCommand(

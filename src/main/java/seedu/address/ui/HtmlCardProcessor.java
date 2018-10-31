@@ -5,7 +5,7 @@ package seedu.address.ui;
  */
 public class HtmlCardProcessor {
 
-    public static final String CARD_NO_TITLE = "&lt;No Title&gt;";
+    public static final String CARD_NO_TITLE = "(No Title)";
 
     /**
      * The top-most tag required to render a card in HTML.

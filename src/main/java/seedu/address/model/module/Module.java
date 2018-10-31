@@ -1,6 +1,10 @@
 package seedu.address.model.module;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import seedu.address.model.person.Person;
 
@@ -10,11 +14,14 @@ import seedu.address.model.person.Person;
 public class Module {
     private ModuleCode moduleCode;
     private ModuleName moduleName;
+    private Set<Module> prerequisites;
     private ArrayList<Person> students;
 
     public Module(ModuleCode moduleCode, ModuleName moduleName) {
         this.moduleCode = moduleCode;
         this.moduleName = moduleName;
+
+        this.prerequisites = new HashSet<>();
         this.students = new ArrayList<>();
     }
 
@@ -26,8 +33,20 @@ public class Module {
         return this.moduleName;
     }
 
-    public ArrayList<Person> getEnrolledStudents() {
-        return this.students;
+    /**
+     * Returns an immutable set of prerequisite modules, which throws
+     * {@code UnsupportedOperationException} if modification is attempted.
+     */
+    public Set<Module> getPrerequisites() {
+        return Collections.unmodifiableSet(prerequisites);
+    }
+
+    /**
+     * Returns an immutable list of enrolled students, which throws
+     * {@code UnsupportedOperationException} if modification is attempted.
+     */
+    public List<Person> getEnrolledStudents() {
+        return Collections.unmodifiableList(students);
     }
 
     public void addStudent(Person student) {

@@ -9,17 +9,28 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_TITLE;
 
+import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.NoteAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.module.ModuleCode;
 import seedu.address.model.note.Note;
+import seedu.address.model.note.NoteDate;
+import seedu.address.model.note.NoteLocation;
+import seedu.address.model.note.NoteText;
+import seedu.address.model.note.NoteTime;
+import seedu.address.model.note.NoteTitle;
 
 
 /**
  * Parses input arguments and creates a new NoteAddCommand object
  */
 public class NoteAddCommandParser implements Parser<NoteAddCommand> {
+
+    public static final String MESSAGE_INVALID_DATE_TIME_DIFFERENCE =
+            "Invalid input! Please make sure the start date/time is earlier than the end date/time.";
+
     /**
      * Parses the given {@code String} of arguments in the context of the NoteAddCommand
      * and returns a NoteAddCommand object for execution.
@@ -37,53 +48,72 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
                         PREFIX_NOTE_END_TIME,
                         PREFIX_NOTE_LOCATION);
 
-        String moduleCode = "";
-        String title = "";
-        String startDate = "";
-        String startTime = "";
-        String endDate = "";
-        String endTime = "";
-        String location = "";
-
-        if (!argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteAddCommand.MESSAGE_USAGE));
+        if (!arePrefixesPresent(argMultimap, PREFIX_MODULE_CODE)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteAddCommand.MESSAGE_USAGE));
         }
 
-        if (argMultimap.getValue(PREFIX_MODULE_CODE).isPresent()) {
-            // TODO: Check validity of input moduleCode value
-            moduleCode = argMultimap.getValue(PREFIX_MODULE_CODE).get();
-        }
+        ModuleCode moduleCode = ParserUtil.parseModuleCode(argMultimap.getValue(PREFIX_MODULE_CODE).get());
+
+        NoteTitle title = new NoteTitle("");
+        NoteDate startDate = null;
+        NoteTime startTime = new NoteTime(NoteTime.DEFAULT_START_TIME.format(NoteTime.TIME_FORMAT));
+        NoteDate endDate = null;
+        NoteTime endTime = new NoteTime(NoteTime.DEFAULT_END_TIME.format(NoteTime.TIME_FORMAT));
+        NoteLocation location = new NoteLocation("");
+        NoteText noteText = new NoteText("");
 
         if (argMultimap.getValue(PREFIX_NOTE_TITLE).isPresent()) {
-            title = argMultimap.getValue(PREFIX_NOTE_TITLE).get();
+            title = new NoteTitle(argMultimap.getValue(PREFIX_NOTE_TITLE).get());
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_START_DATE).isPresent()) {
-            // TODO: Check validity of input startDate value
-            startDate = argMultimap.getValue(PREFIX_NOTE_START_DATE).get();
+            startDate = ParserUtil.parseNoteDate(argMultimap.getValue(PREFIX_NOTE_START_DATE).get());
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_START_TIME).isPresent()) {
-            // TODO: Check validity of input startTime value
-            startTime = argMultimap.getValue(PREFIX_NOTE_START_TIME).get();
+            startTime = ParserUtil.parseNoteTime(argMultimap.getValue(PREFIX_NOTE_START_TIME).get());
+            if (startDate == null) {
+                throw new ParseException(NoteDate.MESSAGE_START_DATE_MISSING_FIELD);
+            }
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_END_DATE).isPresent()) {
-            // TODO: Check validity of input endDate value
-            endDate = argMultimap.getValue(PREFIX_NOTE_END_DATE).get();
+            endDate = ParserUtil.parseNoteDate(argMultimap.getValue(PREFIX_NOTE_END_DATE).get());
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_END_TIME).isPresent()) {
-            // TODO: Check validity of input endTime value
-            endTime = argMultimap.getValue(PREFIX_NOTE_END_TIME).get();
+            endTime = ParserUtil.parseNoteTime(argMultimap.getValue(PREFIX_NOTE_END_TIME).get());
         }
 
         if (argMultimap.getValue(PREFIX_NOTE_LOCATION).isPresent()) {
-            location = argMultimap.getValue(PREFIX_NOTE_LOCATION).get();
+            location = new NoteLocation(argMultimap.getValue(PREFIX_NOTE_LOCATION).get());
         }
 
-        // TODO: Validate date & time difference for 'start' and 'end' here
+        if (startDate == null && endDate != null) {
+            throw new ParseException(NoteDate.MESSAGE_START_DATE_MISSING_FIELD);
+        }
+
+        if (startDate != null && endDate == null) {
+            endDate = new NoteDate(startDate.getDate().format(NoteDate.DATE_FORMAT));
+        }
+
+        if (startDate == null && argMultimap.getValue(PREFIX_NOTE_END_TIME).isPresent()) {
+            throw new ParseException(NoteDate.MESSAGE_START_DATE_MISSING_FIELD);
+        }
+
+        if (startDate != null) {
+            LocalDateTime start = LocalDateTime.of(startDate.getDate(), startTime.getTime());
+            LocalDateTime end = LocalDateTime.of(endDate.getDate(), endTime.getTime());
+
+            // result = 0, equal, valid
+            // result > 0, end > start, valid
+            // result < 0, end < start, invalid
+            int result = end.compareTo(start);
+            if (result < 0) {
+                throw new ParseException(MESSAGE_INVALID_DATE_TIME_DIFFERENCE);
+            }
+        }
 
         Note note = new Note(
                 moduleCode,
@@ -93,7 +123,7 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
                 endDate,
                 endTime,
                 location,
-                "");
+                noteText);
 
         return new NoteAddCommand(note);
     }

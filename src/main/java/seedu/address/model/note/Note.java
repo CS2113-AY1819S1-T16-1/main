@@ -1,28 +1,32 @@
 package seedu.address.model.note;
 
+import java.time.LocalDateTime;
+
+import seedu.address.model.module.ModuleCode;
+
 /**
  * Represents a note in Trajectory.
  */
 public class Note {
 
-    private String moduleCode;
-    private String title;
-    private String startDate;
-    private String startTime;
-    private String endDate;
-    private String endTime;
-    private String location;
-    private String noteText;
+    private ModuleCode moduleCode;
+    private NoteTitle title;
+    private NoteDate startDate;
+    private NoteTime startTime;
+    private NoteDate endDate;
+    private NoteTime endTime;
+    private NoteLocation location;
+    private NoteText noteText;
 
 
-    public Note(String moduleCode,
-                String title,
-                String startDate,
-                String startTime,
-                String endDate,
-                String endTime,
-                String location,
-                String noteText) {
+    public Note(ModuleCode moduleCode,
+                NoteTitle title,
+                NoteDate startDate,
+                NoteTime startTime,
+                NoteDate endDate,
+                NoteTime endTime,
+                NoteLocation location,
+                NoteText noteText) {
         this.moduleCode = moduleCode;
         this.title = title;
         this.startDate = startDate;
@@ -33,67 +37,93 @@ public class Note {
         this.noteText = noteText;
     }
 
-    public String getModuleCode() {
+    // Module Code
+    public ModuleCode getModuleCode() {
         return this.moduleCode;
     }
 
-    public void setModuleCode(String moduleCode) {
+    public void setModuleCode(ModuleCode moduleCode) {
         this.moduleCode = moduleCode;
     }
 
-    public String getTitle() {
+    // Title
+    public NoteTitle getTitle() {
         return this.title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(NoteTitle title) {
         this.title = title;
     }
 
-    public String getStartDate() {
+    // Start Date
+    public NoteDate getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(NoteDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getStartTime() {
+    // Start Time
+    public NoteTime getStartTime() {
         return this.startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(NoteTime startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndDate() {
+    // End Date
+    public NoteDate getEndDate() {
         return this.endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(NoteDate endDate) {
         this.endDate = endDate;
     }
 
-    public String getEndTime() {
+    // End Time
+    public NoteTime getEndTime() {
         return this.endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(NoteTime endTime) {
         this.endTime = endTime;
     }
 
-    public String getLocation() {
+    // Location
+    public NoteLocation getLocation() {
         return this.location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(NoteLocation location) {
         this.location = location;
     }
 
-    public String getNoteText() {
+    // Note Text
+    public NoteText getNoteText() {
         return this.noteText;
     }
 
-    public void setNoteText(String noteText) {
+    public void setNoteText(NoteText noteText) {
         this.noteText = noteText;
+    }
+
+    /**
+     * Combines LocalDate and LocalTime into LocalDateTime.
+     *
+     * @return LocalDateTime object of start date and time
+     */
+    public LocalDateTime getStartDateTime() {
+        return LocalDateTime.of(this.startDate.getDate(), this.startTime.getTime());
+    }
+
+    /**
+     * Combines LocalDate and LocalTime into LocalDateTime.
+     *
+     * @return LocalDateTime object of end date and time
+     */
+    public LocalDateTime getEndDateTime() {
+        return LocalDateTime.of(this.endDate.getDate(), this.endTime.getTime());
     }
 }

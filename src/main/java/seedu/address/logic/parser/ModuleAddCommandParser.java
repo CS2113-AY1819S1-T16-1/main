@@ -15,7 +15,7 @@ import seedu.address.model.module.ModuleName;
 /**
  * Parses input arguments and creates a new ModuleAddCommand object.
  */
-public class ModuleAddCommandParser {
+public class ModuleAddCommandParser implements Parser<ModuleAddCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the ModuleAddCommand

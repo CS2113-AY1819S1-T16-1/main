@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import seedu.address.logic.commands.NoteDeleteCommand;
 import seedu.address.testutil.NoteBuilder;
 
 /**
@@ -20,41 +21,33 @@ public class NoteManagerTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private NoteBuilder note1 = new NoteBuilder(
-            "CS1010",
-            "First note",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "C");
-
-    private NoteBuilder note2 = new NoteBuilder(
-            "CS2040C",
-            "Second note",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "C++");
-
-    private NoteBuilder note3 = new NoteBuilder(
-            "CS2113",
-            "Third note",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "Java");
-
+    private NoteBuilder note1 = new NoteBuilder();
+    private NoteBuilder note2 = new NoteBuilder();
+    private NoteBuilder note3 = new NoteBuilder();
 
     @Before
     public void setUp() {
         noteManager.clearNotes();
         noteManager.saveNoteList();
+    }
+
+    @Test
+    public void addNote_nullNote_throwsNullPointerException() {
+        thrown.expect(NullPointerException.class);
+        noteManager.addNote(null);
+    }
+
+    @Test
+    public void deleteNote_indexOutOfBounds_throwsIndexOutOfBoundsException() {
+        String expectedMessage = NoteDeleteCommand.MESSAGE_INVALID_INDEX;
+
+        noteManager.addNote(note1.build());
+        noteManager.addNote(note2.build());
+        noteManager.saveNoteList();
+
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage(expectedMessage);
+        noteManager.deleteNote(2);
     }
 
     @Test

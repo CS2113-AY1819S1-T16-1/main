@@ -20,12 +20,12 @@ import seedu.address.testutil.NoteBuilder;
  */
 public class NoteEditCommandParserTest {
 
+    private static NoteManager noteManager = NoteManager.getInstance();
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private static NoteManager noteManager = NoteManager.getInstance();
     private NoteEditCommandParser parser = new NoteEditCommandParser();
-
 
     @Before
     public void setUp() {

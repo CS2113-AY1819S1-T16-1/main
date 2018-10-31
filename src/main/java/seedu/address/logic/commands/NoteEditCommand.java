@@ -8,11 +8,18 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_TITLE;
 
+import java.time.LocalDateTime;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.module.ModuleCode;
 import seedu.address.model.note.Note;
+import seedu.address.model.note.NoteDate;
+import seedu.address.model.note.NoteLocation;
 import seedu.address.model.note.NoteManager;
+import seedu.address.model.note.NoteTime;
+import seedu.address.model.note.NoteTitle;
 import seedu.address.ui.NoteTextEditWindow;
 
 /**
@@ -51,23 +58,23 @@ public class NoteEditCommand extends Command {
             "Invalid input! Please make sure the start date/time is earlier than the end date/time.";
 
     private final int index;
-    private final String moduleCode;
-    private final String title;
-    private final String startDate;
-    private final String startTime;
-    private final String endDate;
-    private final String endTime;
-    private final String location;
+    private final ModuleCode moduleCode;
+    private final NoteTitle title;
+    private final NoteDate startDate;
+    private final NoteTime startTime;
+    private final NoteDate endDate;
+    private final NoteTime endTime;
+    private final NoteLocation location;
 
     public NoteEditCommand(
             int index,
-            String moduleCode,
-            String title,
-            String startDate,
-            String startTime,
-            String endDate,
-            String endTime,
-            String location) {
+            ModuleCode moduleCode,
+            NoteTitle title,
+            NoteDate startDate,
+            NoteTime startTime,
+            NoteDate endDate,
+            NoteTime endTime,
+            NoteLocation location) {
         this.index = index;
         this.moduleCode = moduleCode;
         this.title = title;
@@ -89,37 +96,85 @@ public class NoteEditCommand extends Command {
 
         Note noteToEdit = noteManager.getNoteAt(index - 1);
 
-        // TODO: Validate date & time difference for 'start' and 'end' here
+        NoteDate newStartDate;
+        NoteTime newStartTime;
+        NoteDate newEndDate;
+        NoteTime newEndTime;
+
+        if (startDate != null) {
+            newStartDate = startDate;
+        } else {
+            newStartDate = noteToEdit.getStartDate();
+        }
+
+        if (startTime != null) {
+            newStartTime = startTime;
+        } else {
+            newStartTime = noteToEdit.getStartTime();
+        }
+
+        if (endDate != null) {
+            newEndDate = endDate;
+        } else {
+            newEndDate = noteToEdit.getEndDate();
+        }
+
+        if (endTime != null) {
+            newEndTime = endTime;
+        } else {
+            newEndTime = noteToEdit.getEndTime();
+        }
+
+        if (newStartDate != null && newEndDate == null) {
+            newEndDate = new NoteDate(newStartDate.getDate().format(NoteDate.DATE_FORMAT));
+        }
+
+        if (startDate != null) {
+            LocalDateTime newStartDateTime = LocalDateTime.of(newStartDate.getDate(), newStartTime.getTime());
+            LocalDateTime newEndDateTime = LocalDateTime.of(newEndDate.getDate(), newEndTime.getTime());
+
+            // result = 0, equal, valid
+            // result > 0, newEndDateTime > newStartDateTime, valid
+            // result < 0, newEndDateTime < newStartDateTime, invalid
+            int result = newEndDateTime.compareTo(newStartDateTime);
+            if (result < 0) {
+                throw new CommandException(MESSAGE_INVALID_DATE_TIME_DIFFERENCE);
+            }
+        }
 
         NoteTextEditWindow noteTextEditWindow = new NoteTextEditWindow(noteToEdit);
         noteTextEditWindow.showAndWait();
 
         if (!noteTextEditWindow.isCancelled()) {
-            if (!moduleCode.isEmpty()) {
+            if (moduleCode != null) {
                 noteToEdit.setModuleCode(moduleCode);
             }
 
-            if (!title.isEmpty()) {
+            if (title != null) {
                 noteToEdit.setTitle(title);
             }
 
-            if (!startDate.isEmpty()) {
+            if (startDate != null) {
                 noteToEdit.setStartDate(startDate);
             }
 
-            if (!startTime.isEmpty()) {
+            if (startTime != null) {
                 noteToEdit.setStartTime(startTime);
             }
 
-            if (!endDate.isEmpty()) {
+            if (endDate != null) {
                 noteToEdit.setEndDate(endDate);
+            } else {
+                if (startDate != null) {
+                    noteToEdit.setEndDate(new NoteDate(newStartDate.getDate().format(NoteDate.DATE_FORMAT)));
+                }
             }
 
-            if (!endTime.isEmpty()) {
+            if (endTime != null) {
                 noteToEdit.setEndTime(endTime);
             }
 
-            if (!location.isEmpty()) {
+            if (location != null) {
                 noteToEdit.setLocation(location);
             }
 
