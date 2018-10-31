@@ -33,11 +33,12 @@
 <li><a href="#add-module-code-module-add-code">3.3.1. Add Module : <code>module add</code></a></li>
 <li><a href="#update-module-code-module-edit-code">3.3.2. Update module : <code>module edit</code></a></li>
 <li><a href="#remove-module-code-module-delete-code">3.3.3. Remove module : <code>module delete</code></a></li>
-<li><a href="#find-module-code-module-find-coming-in-v1-3-code">3.3.4. Find module : <code>module find [coming in v1.3]</code></a></li>
-<li><a href="#list-modules-code-module-list-code">3.3.5. List modules : <code>module list</code></a></li>
-<li><a href="#archive-module-code-module-archive-coming-in-v1-3-code">3.3.6. Archive module : <code>module archive [coming in v1.3]</code></a></li>
-<li><a href="#enrol-student-code-module-enrol-coming-in-v1-3-code">3.3.7. Enrol Student : <code>module enrol [coming in v1.3]</code></a></li>
-<li><a href="#assign-ta-code-module-assign-coming-in-v2-0-code">3.3.8. Assign TA : <code>module assign [coming in v2.0]</code></a></li>
+<li><a href="#view-module-details-code-module-view-code">3.3.4. View module details: <code>module view</code></a></li>
+<li><a href="#find-module-code-module-find-code">3.3.5. Find module : <code>module find</code></a></li>
+<li><a href="#list-modules-code-module-list-code">3.3.6. List modules : <code>module list</code></a></li>
+<li><a href="#archive-module-code-module-archive-coming-in-v1-4-code">3.3.7. Archive module : <code>module archive [coming in v1.4]</code></a></li>
+<li><a href="#enrol-student-code-module-enrol-code">3.3.8. Enrol Student : <code>module enrol</code></a></li>
+<li><a href="#assign-ta-code-module-assign-coming-in-v2-0-code">3.3.9. Assign TA : <code>module assign [coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#class-management">3.4. Class Management</a>
@@ -405,7 +406,7 @@ Deletes CEG1 from the course directory, if it exists.</p>
 <h4 id="add-module-code-module-add-code"><a class="link" href="#add-module-code-module-add-code">3.3.1. Add Module : <code>module add</code></a></h4>
 <div class="paragraph">
 <p>Adds a module to the system.<br>
-Format: <code>module add n/MODULE_NAME c/MODULE_CODE [p/PREREQUISITES]&#8230;&#8203;</code></p>
+Format: <code>module add mc/MODULE_CODE mn/MODULE_NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -413,12 +414,6 @@ Format: <code>module add n/MODULE_NAME c/MODULE_CODE [p/PREREQUISITES]&#8230;&#8
 <ul>
 <li>
 <p>Module code must be unique.</p>
-</li>
-<li>
-<p>Prerequisite modules should be specified with the respective module codes.</p>
-</li>
-<li>
-<p>Prerequisite modules must exist in the system.</p>
 </li>
 </ul>
 </div>
@@ -430,10 +425,10 @@ Format: <code>module add n/MODULE_NAME c/MODULE_CODE [p/PREREQUISITES]&#8230;&#8
 <div class="ulist">
 <ul>
 <li>
-<p><code>module add n/EPP1 c/CG1111</code></p>
+<p><code>module add mc/CG1111 mn/EPP1</code></p>
 </li>
 <li>
-<p><code>module add n/Software Engineering c/CS2113 p/CS2040C</code></p>
+<p><code>module add mc/CS2113 mn/Software Engineering</code></p>
 </li>
 </ul>
 </div>
@@ -442,7 +437,7 @@ Format: <code>module add n/MODULE_NAME c/MODULE_CODE [p/PREREQUISITES]&#8230;&#8
 <h4 id="update-module-code-module-edit-code"><a class="link" href="#update-module-code-module-edit-code">3.3.2. Update module : <code>module edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing module in the system.<br>
-Format: <code>module edit c/MODULE_CODE [n/MODULE_NAME] [p/PREREQUISITES]&#8230;&#8203;</code></p>
+Format: <code>module edit mc/MODULE_CODE mn/MODULE_NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -452,52 +447,7 @@ Format: <code>module edit c/MODULE_CODE [n/MODULE_NAME] [p/PREREQUISITES]&#8230;
 <p>Edits a module with the specified module code. The module code must exist in the system.</p>
 </li>
 <li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
 <p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing the module prerequisites, the existing prerequisites of the module will be removed i.e adding of prerequisites is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all of the module’s prerequisites by typing <code>p/</code> without specifying any prerequisites after it.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>module edit c/CG1111 n/Engineering Principles and Practices 1</code><br>
-Edits the module name to <code>Engineering Principles and Practices 1</code>.</p>
-</li>
-<li>
-<p><code>module edit c/CS2113 p/</code><br>
-Clears all existing prerequisites for the module.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="remove-module-code-module-delete-code"><a class="link" href="#remove-module-code-module-delete-code">3.3.3. Remove module : <code>module delete</code></a></h4>
-<div class="paragraph">
-<p>Deletes a module from the system.<br>
-Format: <code>module delete c/MODULE_CODE</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The module must already exist in the system.</p>
-</li>
-<li>
-<p>The user will be prompted to confirm the deletion of the module to prevent accidents.</p>
 </li>
 </ul>
 </div>
@@ -509,16 +459,68 @@ Format: <code>module delete c/MODULE_CODE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>module delete c/CS2113</code><br>
+<p><code>module edit mc/CG1111 mn/Engineering Principles and Practices 1</code><br>
+Edits the module name to <code>Engineering Principles and Practices 1</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remove-module-code-module-delete-code"><a class="link" href="#remove-module-code-module-delete-code">3.3.3. Remove module : <code>module delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes a module from the system.<br>
+Format: <code>module delete mc/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module must already exist in the system.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>module delete mc/CS2113</code><br>
 Deletes the module with module code <code>CS2113</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-module-code-module-find-coming-in-v1-3-code"><a class="link" href="#find-module-code-module-find-coming-in-v1-3-code">3.3.4. Find module : <code>module find [coming in v1.3]</code></a></h4>
+<h4 id="view-module-details-code-module-view-code"><a class="link" href="#view-module-details-code-module-view-code">3.3.4. View module details: <code>module view</code></a></h4>
 <div class="paragraph">
-<p>Finds modules whose module codes contain any of the given keywords. This is useful for checking if certain module exists in the system.<br>
+<p>Displays the details of a module in the system.<br>
+Format: <code>module view mc/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The list of students enrolled in the module will also be displayed. This is useful for checking if a student has been enrolled in the module.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:
+* <code>module view mc/CS2113</code><br>
+Displays the details of <code>CS2113</code> including the list of enrolled students.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-module-code-module-find-code"><a class="link" href="#find-module-code-module-find-code">3.3.5. Find module : <code>module find</code></a></h4>
+<div class="paragraph">
+<p>Finds modules whose module code or module name contain any of the given keywords. This is useful for checking if certain module exists in the system.<br>
 Format: <code>module find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
@@ -526,13 +528,10 @@ Format: <code>module find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>The archived module will no longer show up using the base module list command.</p>
+<p>At least one keyword must be provided.</p>
 </li>
 <li>
-<p>The module must already exist in the system.</p>
-</li>
-<li>
-<p>The user will be prompted to confirm archiving the module to prevent accidents.</p>
+<p>The search is case-insensitive.</p>
 </li>
 </ul>
 </div>
@@ -555,17 +554,17 @@ Returns <code>CS2113</code> and <code>CS2040C</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-modules-code-module-list-code"><a class="link" href="#list-modules-code-module-list-code">3.3.5. List modules : <code>module list</code></a></h4>
+<h4 id="list-modules-code-module-list-code"><a class="link" href="#list-modules-code-module-list-code">3.3.6. List modules : <code>module list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all modules in the system.<br>
 Format: <code>module list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="archive-module-code-module-archive-coming-in-v1-3-code"><a class="link" href="#archive-module-code-module-archive-coming-in-v1-3-code">3.3.6. Archive module : <code>module archive [coming in v1.3]</code></a></h4>
+<h4 id="archive-module-code-module-archive-coming-in-v1-4-code"><a class="link" href="#archive-module-code-module-archive-coming-in-v1-4-code">3.3.7. Archive module : <code>module archive [coming in v1.4]</code></a></h4>
 <div class="paragraph">
 <p>Archives a module that is no longer being taught to keep it as a historical record.<br>
-Format: <code>module archive c/MODULE_CODE</code></p>
+Format: <code>module archive mc/MODULE_CODE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -590,24 +589,27 @@ Format: <code>module archive c/MODULE_CODE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>module archive c/CS2113</code><br>
+<p><code>module archive mc/CS2113</code><br>
 Archives the module with module code <code>CS2113</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enrol-student-code-module-enrol-coming-in-v1-3-code"><a class="link" href="#enrol-student-code-module-enrol-coming-in-v1-3-code">3.3.7. Enrol Student : <code>module enrol [coming in v1.3]</code></a></h4>
+<h4 id="enrol-student-code-module-enrol-code"><a class="link" href="#enrol-student-code-module-enrol-code">3.3.8. Enrol Student : <code>module enrol</code></a></h4>
 <div class="paragraph">
 <p>Enrols students into the specified module using their matriculation numbers or email addresses.<br>
-Format: <code>module enrol [i/MATRIC_NUMBER]&#8230;&#8203; [e/EMAIL]&#8230;&#8203;</code></p>
+Format: <code>module enrol mc/MODULE_CODE i/MATRIC_NUMBER&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>At least one of the optional fields must be provided.</p>
+<p>At least one student matriculation number must be provided.</p>
+</li>
+<li>
+<p>Multiple student matriculation numbers may be provided.</p>
 </li>
 <li>
 <p>The student(s) must already exist in the system.</p>
@@ -622,29 +624,21 @@ Format: <code>module enrol [i/MATRIC_NUMBER]&#8230;&#8203; [e/EMAIL]&#8230;&#820
 <div class="ulist">
 <ul>
 <li>
-<p><code>module enrol i/A0161234B</code><br>
-Enrols a student with matric no. <code>A0161234B</code>.</p>
+<p><code>module enrol mc/CS2113 i/A0161234B</code><br>
+Enrols a student with matric no. <code>A0161234B</code> in <code>CS2113</code>.</p>
 </li>
 <li>
-<p><code>module enrol i/A0167263X i/A0179821B</code><br>
-Enrols two students with matric no. <code>A0167263X</code> and <code>A0179821B</code>.</p>
-</li>
-<li>
-<p><code>module enrol e/e0191122@u.nus.edu</code><br>
-Enrols a student with email <code>e0191122@u.nus.edu</code>.</p>
-</li>
-<li>
-<p><code>module enrol e/e0191234@u.nus.edu e/e0161234@u.nus.edu</code><br>
-Enrols two students with email <code>e0191234@u.nus.edu</code> and <code>e0161234@u.nus.edu</code>.</p>
+<p><code>module enrol mc/CS2040C i/A0167263X i/A0179821B</code><br>
+Enrols two students with matric no. <code>A0167263X</code> and <code>A0179821B</code> in <code>CS2040C</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="assign-ta-code-module-assign-coming-in-v2-0-code"><a class="link" href="#assign-ta-code-module-assign-coming-in-v2-0-code">3.3.8. Assign TA : <code>module assign [coming in v2.0]</code></a></h4>
+<h4 id="assign-ta-code-module-assign-coming-in-v2-0-code"><a class="link" href="#assign-ta-code-module-assign-coming-in-v2-0-code">3.3.9. Assign TA : <code>module assign [coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Assigns a student as a TA of the module.<br>
-Format: <code>module assign [i/MATRIC_NUMBER] [e/EMAIL]</code></p>
+Format: <code>module assign mc/MODULE_CODE [i/MATRIC_NUMBER] [e/EMAIL]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -669,11 +663,11 @@ Format: <code>module assign [i/MATRIC_NUMBER] [e/EMAIL]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>module assign i/A0171234B</code><br>
+<p><code>module assign mc/CS2113 i/A0171234B</code><br>
 Assigns the student with matric no. <code>A0171234B</code> as a TA.</p>
 </li>
 <li>
-<p><code>module assign e/e0191234@u.nus.edu</code><br>
+<p><code>module assign mc/CS2113 e/e0191234@u.nus.edu</code><br>
 Assigns the student with email <code>e0191234@u.nus.edu</code> as a TA.</p>
 </li>
 </ul>
@@ -1744,4 +1738,4 @@ e.g. <code>note find k/bubble k/queue</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:28:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:35:01 UTC</div></div></div></body></html>
