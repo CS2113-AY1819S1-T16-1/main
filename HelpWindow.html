@@ -534,6 +534,9 @@ Format: <code>module find KEYWORD [MORE_KEYWORDS]</code></p>
 <li>
 <p>The search is case-insensitive.</p>
 </li>
+<li>
+<p>The search will only match whole words i.e. <code>engin</code> will not return <code>Engineering</code>.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -1696,35 +1699,39 @@ e.g. <code>student delete 2</code></p>
 e.g. <code>student export C:\export</code></p>
 </li>
 <li>
-<p><strong>Add module</strong> : <code>module add n/MODULE_NAME c/MODULE_CODE [p/PREREQUISITES]…​</code><br>
-e.g. <code>module add n/Software Engineering c/CS2113 p/CS2040C</code></p>
+<p><strong>Add module</strong> : <code>module add mc/MODULE_CODE mn/MODULE_NAME</code><br>
+e.g. <code>module add mc/CS2113 p/CS2040C mn/Software Engineering</code></p>
 </li>
 <li>
-<p><strong>Update module</strong> : <code>module edit n/MODULE_NAME c/MODULE_CODE [p/PREREQUISITES]…​</code><br>
-e.g. <code>module edit c/CS2113 p/</code></p>
+<p><strong>Update module</strong> : <code>module edit mc/MODULE_CODE​ mn/MODULE_NAME</code><br>
+e.g. <code>module edit mc/CS2113 mn/Software</code></p>
 </li>
 <li>
-<p><strong>Remove module</strong> : <code>module delete c/MODULE_CODE​</code><br>
-e.g. <code>module delete c/CS2113</code></p>
+<p><strong>Remove module</strong> : <code>module delete mc/MODULE_CODE​</code><br>
+e.g. <code>module delete mc/CS2113</code></p>
+</li>
+<li>
+<p><strong>View module details</strong> : <code>module view mc/MODULE_CODE</code><br>
+e.g. <code>module view mc/CS2113</code></p>
 </li>
 <li>
 <p><strong>Find module by module code</strong> : <code>module find KEYWORD [MORE_KEYWORDS]​</code><br>
-e.g. <code>module find cs2113</code></p>
+e.g. <code>module find cs2113 structures</code></p>
 </li>
 <li>
 <p><strong>List modules</strong> : <code>module list​</code><br></p>
 </li>
 <li>
-<p><strong>Archive module</strong> : <code>module archive c/MODULE_CODE​</code><br>
-e.g. <code>module archive c/CS2113</code></p>
+<p><strong>Archive module</strong> : <code>module archive mc/MODULE_CODE​</code> <code>[coming in v1.4]</code><br>
+e.g. <code>module archive mc/CS2113</code></p>
 </li>
 <li>
-<p><strong>Enrol student in module</strong> : <code>module enrol [i/MATRIC_NUMBER]…​ [e/EMAIL]…​​</code><br>
-e.g. <code>module enrol i/A0167263X i/A0179821B</code></p>
+<p><strong>Enrol student in module</strong> : <code>module enrol mc/MODULE_CODE i/MATRIC_NUMBER…​</code><br>
+e.g. <code>module enrol mc/CS2113 i/A0167263X i/A0179821B</code></p>
 </li>
 <li>
-<p><strong>Assign TA</strong> : <code>module assign [i/MATRIC_NUMBER] [e/EMAIL]</code><br>
-e.g. <code>module assign i/A0171234B</code></p>
+<p><strong>Assign TA</strong> : <code>module assign mc/MODULE_CODE [i/MATRIC_NUMBER] [e/EMAIL]</code> <code>[coming in v2.0]</code><br>
+e.g. <code>module assign mc/CS2113 i/A0171234B</code></p>
 </li>
 <li>
 <p><strong>Add Grade Component</strong> : <code>gradebook add mc/MODULE_CODE cn/COMPONENT_NAME [mm/MAX_MARKS] [w/WEIGHTAGE]</code><br>
@@ -1830,4 +1837,4 @@ e.g. <code>note export fn/notes</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 17:08:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 17:23:44 UTC</div></div></div></body></html>
