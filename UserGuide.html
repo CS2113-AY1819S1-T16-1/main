@@ -69,10 +69,11 @@
 <li><a href="#notes-management">3.6. Notes Management</a>
 <ul class="sectlevel3">
 <li><a href="#add-note-code-note-add-code">3.6.1. Add Note : <code>note add</code></a></li>
-<li><a href="#edit-note-code-note-edit-coming-in-v1-3-code">3.6.2. Edit note : <code>note edit [coming in v1.3]</code></a></li>
+<li><a href="#edit-note-code-note-edit-code">3.6.2. Edit note : <code>note edit</code></a></li>
 <li><a href="#delete-note-code-note-delete-code">3.6.3. Delete note : <code>note delete</code></a></li>
-<li><a href="#find-note-code-note-find-coming-in-v1-3-code">3.6.4. Find note : <code>note find [coming in v1.3]</code></a></li>
+<li><a href="#find-note-code-note-find-code">3.6.4. Find note : <code>note find</code></a></li>
 <li><a href="#list-notes-code-note-list-code">3.6.5. List notes : <code>note list</code></a></li>
+<li><a href="#export-notes-code-note-export-code">3.6.6. Export notes: <code>note export</code></a></li>
 </ul>
 </li>
 <li><a href="#viewing-help-code-help-code-2">3.7. Viewing help : <code>help</code></a></li>
@@ -1251,7 +1252,49 @@ Displays graph which shows result of 'Finals' grade component of all CS2113 stud
 <h4 id="add-note-code-note-add-code"><a class="link" href="#add-note-code-note-add-code">3.6.1. Add Note : <code>note add</code></a></h4>
 <div class="paragraph">
 <p>Adds a note to a module.<br>
-Format: <code>note add m/MODULE_CODE [p/PRIORITY_LEVEL] [d/DATE]</code></p>
+Format: <code>note add m/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The START_DATE and END_DATE parameters allows the following date formats only.<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>d-M-yyyy (e.g. 2-11-2018)<br></p>
+</li>
+<li>
+<p>d/M-yyyy (e.g. 2/11/2018)<br></p>
+</li>
+<li>
+<p>d.M.yyyy (e.g. 2.11.2018)<br></p>
+</li>
+<li>
+<p>d-MMM-yyyy (e.g. 2-Nov-2018)<br></p>
+</li>
+<li>
+<p>d MMM yyyy (e.g. 2 Nov 2018)<br></p>
+</li>
+<li>
+<p>d-MMM-yy (e.g. 2-Nov-18)<br></p>
+</li>
+<li>
+<p>d MMM yy (e.g. 2 Nov 18)<br></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The START_TIME and END_TIME parameters follows the following time format only.<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>h:m AM/PM (e.g. 4:00 PM)<br></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1260,10 +1303,16 @@ Format: <code>note add m/MODULE_CODE [p/PRIORITY_LEVEL] [d/DATE]</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code><strong>The optional parameter PRIORITY_LEVEL will be available from v1.4</strong></code><br>
-- PRIORITY_LEVEL = { 1 = LOW, 2 = MEDIUM, 3 = HIGH }<br>
-- If the PRIORITY_LEVEL is omitted, a default value of 1 (LOW) will be assigned to the created note.<br>
-- The DATE parameter follows the <code>DD.MM.YYYY</code> formatting only. <strong>(Validation coming in v1.3)</strong>
+- MODULE_CODE strictly follows the following:<br>
+<code>Module code should begin with 2 or 3 uppercase letters, followed by a 4-digit number and an optional uppercase letter at the end.</code><br>
+- The date and time fields are <strong>case-insensitive</strong> which means the user can enter <code>2-nOv-2018</code> as date.<br>
+- If dates are specified but not the time, the system defines a default time of <code>12:00 AM</code> for <code>START_DATE</code> and <code>11:59 PM</code> for <code>END_DATE</code>.<br>
+- Specifying an <code>END_DATE</code> or any time parameters requires the <code>START_DATE</code> to be defined. Otherwise, the system will inform the user.<br>
+- The TITLE and LOCATION parameters allows characters up to 30 and 80 maximum respectively. Otherwise, an error message will be displayed.<br>
+- Omitting the TITLE will show a "(No title)" when the note is displayed.<br>
+- Defining the <code>START_DATE</code> but not the <code>END_DATE</code> automatically assigns the same date to it.<br>
+- Entering a <code>START_DATE</code> and <code>START_TIME</code> later than <code>END_DATE</code> and <code>END_TIME</code> is not allowed.<br>
+- Specifying the prefix but with an empty field is not allowed. (e.g. tt/ )
 </td>
 </tr>
 </table>
@@ -1273,10 +1322,13 @@ Format: <code>note add m/MODULE_CODE [p/PRIORITY_LEVEL] [d/DATE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Upon entering the <code>note add</code> command, the system will prompt the user to type his/her note.</p>
+<p>Upon entering the <code>note add</code> command, the system will prompt the user to type his/her note in a new window.<br></p>
 </li>
 <li>
-<p>The user can choose to cancel anytime during the note editing stage.</p>
+<p>To save the note, the user can press <code>CTRL+S</code>. Note that saving blank text field is not allowed.<br></p>
+</li>
+<li>
+<p>The user can choose to cancel anytime during the process by pressing <code>CTRL+Q</code>.</p>
 </li>
 </ul>
 </div>
@@ -1288,21 +1340,21 @@ Format: <code>note add m/MODULE_CODE [p/PRIORITY_LEVEL] [d/DATE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>note add m/CS2113</code><br>
+<p><code>note add mc/CS2113</code><br>
 This tells the system that the note is to be saved in the CS2113 module with no date.</p>
 </li>
 <li>
-<p><code>note add m/CS2113 d/31.12.2113</code><br>
-This tells the system that the note is to be saved in the CS2113 module with a date (31 Dec 2113).</p>
+<p><code>note add mc/CS2113 tt/Lecture sd/2.11.2018 st/4:00 PM et/6:00 pm lc/LT15</code><br>
+This tells the system that the note is to be saved in the CS2113 module with a title named "Lecture", a start date (2 Nov 2018) and end date (2 Nov 2018) from 4PM to 6PM at LT15.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-note-code-note-edit-coming-in-v1-3-code"><a class="link" href="#edit-note-code-note-edit-coming-in-v1-3-code">3.6.2. Edit note : <code>note edit [coming in v1.3]</code></a></h4>
+<h4 id="edit-note-code-note-edit-code"><a class="link" href="#edit-note-code-note-edit-code">3.6.2. Edit note : <code>note edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing note.<br>
-Format: <code>note edit INDEX m/MODULE_CODE [d/DATE]</code></p>
+Format: <code>note edit INDEX [mc/NEW_MODULE_CODE] [sd/NEW_START_DATE] [st/NEW_START_TIME] [ed/NEW_END_DATE] [et/NEW_END_TIME] [lc/NEW_LOCATION]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1316,9 +1368,24 @@ Format: <code>note edit INDEX m/MODULE_CODE [d/DATE]</code></p>
 <p>Upon entering the <code>note edit</code> command, the system will prompt the user to type his/her modifications to the note.</p>
 </li>
 <li>
-<p>The user can choose to cancel anytime during the note editing stage.</p>
+<p>The user can complete his/her edits by pressing <code>CTRL+S</code>.</p>
+</li>
+<li>
+<p>The user can choose to cancel anytime during the editing stage with <code>CTRL+Q</code>.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The system does not allow calling this command when the notes list is not displayed. This is to prevent accidentally editing another note.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1326,10 +1393,10 @@ Format: <code>note edit INDEX m/MODULE_CODE [d/DATE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>note list m/CS1010</code><br>
+<p><code>note list mc/CS1010</code><br>
 A list of all notes saved in CS1010 module is displayed.<br>
-<code>note edit 3 m/CS1010 d/10.10.2019</code><br>
-The user will now be able to edit the note that corresponds to INDEX=3 in the list. The modified note will be saved with its assigned DATE changed to 10/10/2019.</p>
+<code>note edit 3 tt/Changed the title lc/NUS</code><br>
+The user will now be able to edit the note that corresponds to INDEX=3 in the list. The modified note will be saved with its attributes changed accordingly.</p>
 </li>
 </ul>
 </div>
@@ -1365,13 +1432,19 @@ Deletes the note that corresponds to INDEX=1 in the list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-note-code-note-find-coming-in-v1-3-code"><a class="link" href="#find-note-code-note-find-coming-in-v1-3-code">3.6.4. Find note : <code>note find [coming in v1.3]</code></a></h4>
+<h4 id="find-note-code-note-find-code"><a class="link" href="#find-note-code-note-find-code">3.6.4. Find note : <code>note find</code></a></h4>
 <div class="paragraph">
 <p>Search and display existing notes using keywords.<br>
-Format: <code>note find k/KEYWORD [k/KEYWORD]..</code></p>
+Format: <code>note find k/KEYWORD [k/MORE_KEYWORDS]..</code></p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>The command searches for notes that contains <strong>ALL</strong> keywords.<br></p>
+</li>
+<li>
+<p>It only matches with <code>TITLE</code> and the note&#8217;s <code>text content</code>.<br></p>
+</li>
 <li>
 <p>Multiple keywords can be accepted.</p>
 </li>
@@ -1379,10 +1452,10 @@ Format: <code>note find k/KEYWORD [k/KEYWORD]..</code></p>
 <p>A minimum of one keyword is required for the command to work.</p>
 </li>
 <li>
-<p>Keywords are not case-sensitive.</p>
+<p>Keywords are <strong>case-insensitive</strong>.</p>
 </li>
 <li>
-<p>Each keyword must consist only of a single word.</p>
+<p>Each keyword must consist only of a single word (e.g. "Sort", "Git-Hub") and is not separated by spaces.</p>
 </li>
 </ul>
 </div>
@@ -1402,22 +1475,14 @@ Lists all notes which contain both keywords "git" and "OOP".</p>
 <h4 id="list-notes-code-note-list-code"><a class="link" href="#list-notes-code-note-list-code">3.6.5. List notes : <code>note list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all saved notes.<br>
-Format: <code>note list [m/MODULE_CODE] [P]</code></p>
+Format: <code>note list [mc/MODULE_CODE]</code></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<code><strong>The optional parameter P will be available from v1.4</strong></code><br>
-- Adding the <code>P</code> parameter allows the user to view notes based on their assigned PRIORITY_LEVEL from highest to lowest.<br>
-- It is not case-sensitive, hence the user can use either lowercase or uppercase.<br>
-- If <code>P</code> is omitted, the list displayed is sorted by the order of creation.
-</td>
-</tr>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MODULE_CODE</code> field is case-insensitive, hence the user can use either lowercase or uppercase.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1429,8 +1494,31 @@ Format: <code>note list [m/MODULE_CODE] [P]</code></p>
 This will list all existing notes from Trajectory.</p>
 </li>
 <li>
-<p><code>note list m/CS1231</code><br>
+<p><code>note list mc/CS1231</code><br>
 This will list all notes saved in CS1231 module.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="export-notes-code-note-export-code"><a class="link" href="#export-notes-code-note-export-code">3.6.6. Export notes: <code>note export</code></a></h4>
+<div class="paragraph">
+<p>Converts all exportable notes to CSV.<br>
+Format: <code>note export fn/FILE_NAME</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This command creates a &lt;FILE_NAME&gt;.csv file in the user directory.<br></p>
+</li>
+<li>
+<p>Directory: C:\Users\&lt;UserName&gt;\&lt;FILE_NAME&gt;.csv<br></p>
+</li>
+<li>
+<p>The format follows the Google Calendar&#8217;s CSV import formatting. Hence, the user can import their notes to Google Calendar with this command.</p>
+</li>
+<li>
+<p>Only notes with dates are exportable.</p>
 </li>
 </ul>
 </div>
@@ -1738,4 +1826,4 @@ e.g. <code>note find k/bubble k/queue</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:50:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:51:40 UTC</div></div></div></body></html>
