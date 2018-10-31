@@ -2634,7 +2634,7 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">unassign student from class</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove a student from a class to prevent clashes in his/her timetable, or the student has dropped out of school, or if he/she has not paid his/her school fees</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove a student from a class if the student has dropped out of school, or if he/she has not paid his/her school fees</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -4860,14 +4860,9 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <h3 id="use-case-update-class-enrollment-limits" class="discrete">Use case: Update Class Enrollment Limits</h3>
 <div class="paragraph">
-<p><strong>Precondition(s)</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Class must exist in data file.</p>
-</li>
-</ul>
+<p><strong>Precondition(s)</strong> :
+* Module code exists in data file.
+* Class belonging to the module code exists in data file.</p>
 </div>
 <div class="paragraph">
 <p><strong>Guarantees</strong> :</p>
@@ -4918,14 +4913,20 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-class-attendance-list" class="discrete">Use case: Update Class Attendance List</h3>
+<h3 id="use-case-modify-class-attendance-list" class="discrete">Use case: Modify Class Attendance List</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Class must exist in data file.</p>
+<p>Module code exists in data file.</p>
+</li>
+<li>
+<p>Class belonging to the module code exists in data file.</p>
+</li>
+<li>
+<p>Student exists in data file and must be marked present.</p>
 </li>
 </ul>
 </div>
@@ -4985,7 +4986,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Class(es) must exists in data file.</p>
+<p>Class(es) exists in data file.</p>
 </li>
 </ul>
 </div>
@@ -5045,7 +5046,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Module code exists in data file.</p>
+<p>Module code exists in the data file.</p>
+</li>
+<li>
+<p>Class belonging to the module code exists in data file.</p>
 </li>
 </ul>
 </div>
@@ -5120,6 +5124,15 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>Student exists in data file.</p>
 </li>
+<li>
+<p>Module code exists in data file.</p>
+</li>
+<li>
+<p>Class must not be full.</p>
+</li>
+<li>
+<p>Class belonging to the module code exists in data file.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -5192,6 +5205,15 @@ for <code>RemarkCommandParser</code>.</p>
 <ul>
 <li>
 <p>Student exists in data file.</p>
+</li>
+<li>
+<p>Module code exists in data file.</p>
+</li>
+<li>
+<p>Class belonging to the module code exists in data file.</p>
+</li>
+<li>
+<p>Student must be assigned to class before unassigning them.</p>
 </li>
 </ul>
 </div>
@@ -5277,7 +5299,16 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Class must exist in data file.</p>
+<p>Student exists in data file.</p>
+</li>
+<li>
+<p>Module code exists in data file.</p>
+</li>
+<li>
+<p>Class belonging to module code exists in data file.</p>
+</li>
+<li>
+<p>Student must be assigned to class.</p>
 </li>
 </ul>
 </div>
@@ -5350,7 +5381,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Class must exist in data file.</p>
+<p>Module code exists in data file.</p>
+</li>
+<li>
+<p>Class belonging to module code exists in data file.</p>
 </li>
 </ul>
 </div>
@@ -6033,4 +6067,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:19:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:28:56 UTC</div></div></div></body></html>
