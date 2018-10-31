@@ -18,14 +18,13 @@
 <ul class="sectlevel3">
 <li><a href="#add-student-code-student-add-code">3.2.1. Add Student : <code>student add</code></a></li>
 <li><a href="#update-student-code-student-edit-code">3.2.2. Update Student : <code>student edit</code></a></li>
-<li><a href="#select-student-code-select-code">3.2.3. Select Student : <code>select</code></a></li>
-<li><a href="#find-student-by-name-matric-no-code-student-find-code-find-by-matric-no-coming-in-v1-3">3.2.4. Find Student by name/matric no : <code>student find</code> (find by matric no coming in v1.3)</a></li>
-<li><a href="#remove-student-code-student-delete-code">3.2.5. Remove Student : <code>student delete</code></a></li>
-<li><a href="#list-students-code-student-list-code">3.2.6. List Students : <code>student list</code></a></li>
-<li><a href="#export-student-code-student-export-coming-in-v1-3-code">3.2.7. Export Student : <code>student export [coming in v1.3]</code></a></li>
-<li><a href="#add-a-course-code-course-add-code">3.2.8. Add a course : <code>course add</code></a></li>
-<li><a href="#list-all-courses-code-course-list-code">3.2.9. List all courses : <code>course list</code></a></li>
-<li><a href="#remove-course-code-course-delete-code">3.2.10. Remove course : <code>course delete</code></a></li>
+<li><a href="#remove-student-code-student-delete-code">3.2.3. Remove Student : <code>student delete</code></a></li>
+<li><a href="#list-students-code-student-list-code">3.2.4. List Students : <code>student list</code></a></li>
+<li><a href="#export-student-code-student-export-coming-in-v1-4-code">3.2.5. Export Student : <code>student export [coming in v1.4]</code></a></li>
+<li><a href="#add-a-course-code-course-add-code">3.2.6. Add a course : <code>course add</code></a></li>
+<li><a href="#list-all-courses-code-course-list-code">3.2.7. List all courses : <code>course list</code></a></li>
+<li><a href="#list-all-courses-code-course-liststudents-code">3.2.8. List all courses : <code>course liststudents</code></a></li>
+<li><a href="#remove-course-code-course-delete-code">3.2.9. Remove course : <code>course delete</code></a></li>
 </ul>
 </li>
 <li><a href="#module-management">3.3. Module Management</a>
@@ -36,8 +35,8 @@
 <li><a href="#view-module-details-code-module-view-code">3.3.4. View module details: <code>module view</code></a></li>
 <li><a href="#find-module-code-module-find-code">3.3.5. Find module : <code>module find</code></a></li>
 <li><a href="#list-modules-code-module-list-code">3.3.6. List modules : <code>module list</code></a></li>
-<li><a href="#archive-module-code-module-archive-coming-in-v1-4-code">3.3.7. Archive module : <code>module archive [coming in v1.4]</code></a></li>
-<li><a href="#enrol-student-code-module-enrol-code">3.3.8. Enrol Student : <code>module enrol</code></a></li>
+<li><a href="#enrol-student-code-module-enrol-code">3.3.7. Enrol Student : <code>module enrol</code></a></li>
+<li><a href="#archive-module-code-module-archive-coming-in-v1-4-code">3.3.8. Archive module : <code>module archive [coming in v1.4]</code></a></li>
 <li><a href="#assign-ta-code-module-assign-coming-in-v2-0-code">3.3.9. Assign TA : <code>module assign [coming in v2.0]</code></a></li>
 </ul>
 </li>
@@ -78,12 +77,9 @@
 </li>
 <li><a href="#viewing-help-code-help-code-2">3.7. Viewing help : <code>help</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.13. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.10. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.11. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -177,12 +173,26 @@ Format: student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL 
 <div class="ulist">
 <ul>
 <li>
-<p><code>student add n/Tristy i/A0169999Z c/CS1 p/90002334 e/E0111342@u.nus.edu a/522 Tampines North 1</code></p>
+<p><code>student add n/Tristy i/A0169999Z c/CS p/90002334 e/E0111342@u.nus.edu a/522 Tampines North 1</code></p>
 </li>
 <li>
-<p><code>student add n/Megan Nicole c/CEG1 e/E0169113@u.nus.edu a/14 Changi South i/A0177897E p/92667921</code></p>
+<p><code>student add n/Megan Nicole c/CEG e/E0169113@u.nus.edu a/14 Changi South i/A0177897E p/92667921</code></p>
 </li>
 </ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Matriculation number must be unique, and must consist of a letter prefix, followed by 7 numbers, and a letter suffix.</p>
+</li>
+<li>
+<p>Course code must already exist in the system.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -225,64 +235,7 @@ Edits only the address of the 2nd student to be 14 Jurong East Street 91.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="select-student-code-select-code"><a class="link" href="#select-student-code-select-code">3.2.3. Select Student : <code>select</code></a></h4>
-<div class="paragraph">
-<p>Selects the student identified by the index number used in the displayed person list.<br>
-Format: <code>student select INDEX</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="find-student-by-name-matric-no-code-student-find-code-find-by-matric-no-coming-in-v1-3"><a class="link" href="#find-student-by-name-matric-no-code-student-find-code-find-by-matric-no-coming-in-v1-3">3.2.4. Find Student by name/matric no : <code>student find</code> (find by matric no coming in v1.3)</a></h4>
-<div class="paragraph">
-<p>Find student(s) whose names contain any of the given keywords.<br>
-Format:  student find [n/STUDENT_NAME] [i/MATRIC_NO]</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Display a list of students whose name or matric number matches the given keywords.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>student find n/Rachel</code>
-Returns students whose first name or last name contains 'Rachel'.</p>
-</li>
-<li>
-<p><code>student find i/A0168000L</code>
-Return the student whose matriculation no matches 'A0168000L'.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>student list</code><br>
-<code>select 2</code><br>
-Selects the 2nd student in the address book.</p>
-</li>
-<li>
-<p><code>student find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st student in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="remove-student-code-student-delete-code"><a class="link" href="#remove-student-code-student-delete-code">3.2.5. Remove Student : <code>student delete</code></a></h4>
+<h4 id="remove-student-code-student-delete-code"><a class="link" href="#remove-student-code-student-delete-code">3.2.3. Remove Student : <code>student delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified student from the system.<br>
 Format: student delete INDEX</p>
@@ -317,14 +270,14 @@ Deletes the 2nd person in the system</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-students-code-student-list-code"><a class="link" href="#list-students-code-student-list-code">3.2.6. List Students : <code>student list</code></a></h4>
+<h4 id="list-students-code-student-list-code"><a class="link" href="#list-students-code-student-list-code">3.2.4. List Students : <code>student list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students in the system.<br>
-Format: list students</p>
+Format: student list</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="export-student-code-student-export-coming-in-v1-3-code"><a class="link" href="#export-student-code-student-export-coming-in-v1-3-code">3.2.7. Export Student : <code>student export [coming in v1.3]</code></a></h4>
+<h4 id="export-student-code-student-export-coming-in-v1-4-code"><a class="link" href="#export-student-code-student-export-coming-in-v1-4-code">3.2.5. Export Student : <code>student export [coming in v1.4]</code></a></h4>
 <div class="paragraph">
 <p>Exports students to a .csv file<br>
 Format: student export LOCATION</p>
@@ -356,10 +309,24 @@ Exports all students in .csv format to the 'export' folder in C drive.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-a-course-code-course-add-code"><a class="link" href="#add-a-course-code-course-add-code">3.2.8. Add a course : <code>course add</code></a></h4>
+<h4 id="add-a-course-code-course-add-code"><a class="link" href="#add-a-course-code-course-add-code">3.2.6. Add a course : <code>course add</code></a></h4>
 <div class="paragraph">
 <p>Adds a student to the system.<br>
 Format: course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Course code must be unique.</p>
+</li>
+<li>
+<p>Course code may contain letters only.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -367,26 +334,44 @@ Format: course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>course add n/Computer Engineering c/CEG1 f/School of Computing</code></p>
+<p><code>course add n/Computer Engineering c/CEG f/School of Computing</code></p>
 </li>
 <li>
-<p><code>course add n/Computer Science c/CS1 f/School of Computing</code></p>
+<p><code>course add n/Computer Science c/CS f/School of Computing</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-all-courses-code-course-list-code"><a class="link" href="#list-all-courses-code-course-list-code">3.2.9. List all courses : <code>course list</code></a></h4>
+<h4 id="list-all-courses-code-course-list-code"><a class="link" href="#list-all-courses-code-course-list-code">3.2.7. List all courses : <code>course list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all courses in the system.<br>
 Format: course list</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-course-code-course-delete-code"><a class="link" href="#remove-course-code-course-delete-code">3.2.10. Remove course : <code>course delete</code></a></h4>
+<h4 id="list-all-courses-code-course-liststudents-code"><a class="link" href="#list-all-courses-code-course-liststudents-code">3.2.8. List all courses : <code>course liststudents</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all students ordered by course.<br>
+Format: course liststudent</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remove-course-code-course-delete-code"><a class="link" href="#remove-course-code-course-delete-code">3.2.9. Remove course : <code>course delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified course from the system<br>
 Format: course delete c/COURSE_CODE</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Course must exist/</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -394,8 +379,8 @@ Format: course delete c/COURSE_CODE</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>course delete CEG1</code>
-Deletes CEG1 from the course directory, if it exists.</p>
+<p><code>course delete CEG</code>
+Deletes CEG from the course directory, if it exists.</p>
 </li>
 </ul>
 </div>
@@ -565,42 +550,7 @@ Format: <code>module list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="archive-module-code-module-archive-coming-in-v1-4-code"><a class="link" href="#archive-module-code-module-archive-coming-in-v1-4-code">3.3.7. Archive module : <code>module archive [coming in v1.4]</code></a></h4>
-<div class="paragraph">
-<p>Archives a module that is no longer being taught to keep it as a historical record.<br>
-Format: <code>module archive mc/MODULE_CODE</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The archived module will no longer show up using the base module list command.</p>
-</li>
-<li>
-<p>The module must already exist in the system.</p>
-</li>
-<li>
-<p>The user will be prompted to confirm archiving the module to prevent accidents.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>module archive mc/CS2113</code><br>
-Archives the module with module code <code>CS2113</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="enrol-student-code-module-enrol-code"><a class="link" href="#enrol-student-code-module-enrol-code">3.3.8. Enrol Student : <code>module enrol</code></a></h4>
+<h4 id="enrol-student-code-module-enrol-code"><a class="link" href="#enrol-student-code-module-enrol-code">3.3.7. Enrol Student : <code>module enrol</code></a></h4>
 <div class="paragraph">
 <p>Enrols students into the specified module using their matriculation numbers or email addresses.<br>
 Format: <code>module enrol mc/MODULE_CODE i/MATRIC_NUMBER&#8230;&#8203;</code></p>
@@ -634,6 +584,41 @@ Enrols a student with matric no. <code>A0161234B</code> in <code>CS2113</code>.<
 <li>
 <p><code>module enrol mc/CS2040C i/A0167263X i/A0179821B</code><br>
 Enrols two students with matric no. <code>A0167263X</code> and <code>A0179821B</code> in <code>CS2040C</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="archive-module-code-module-archive-coming-in-v1-4-code"><a class="link" href="#archive-module-code-module-archive-coming-in-v1-4-code">3.3.8. Archive module : <code>module archive [coming in v1.4]</code></a></h4>
+<div class="paragraph">
+<p>Archives a module that is no longer being taught to keep it as a historical record.<br>
+Format: <code>module archive mc/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The archived module will no longer show up using the base module list command.</p>
+</li>
+<li>
+<p>The module must already exist in the system.</p>
+</li>
+<li>
+<p>The user will be prompted to confirm archiving the module to prevent accidents.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>module archive mc/CS2113</code><br>
+Archives the module with module code <code>CS2113</code>.</p>
 </li>
 </ul>
 </div>
@@ -1556,105 +1541,21 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
-<div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></h3>
-<div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.11. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -1676,6 +1577,20 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><strong>Add course</strong> : <code>course add c/COURSE_CODE n/COURSE_NAME f/FACULTY_NAME</code><br>
+e.g. <code>course add c/CEG n/Computer Engineering f/FoE</code></p>
+</li>
+<li>
+<p><strong>Delete course</strong> : <code>course delete c/COURSE_CODE</code><br>
+e.g. <code>course delete c/CEG</code></p>
+</li>
+<li>
+<p><strong>List all courses</strong> : <code>course list</code><br></p>
+</li>
+<li>
+<p><strong>List all students ordered by courses</strong> : <code>course liststudents</code><br></p>
+</li>
+<li>
 <p><strong>Add student</strong> : <code>student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL a/ADDRESS</code><br>
 e.g. <code>student add n/Megan Nicole c/CEG e/E0169113@u.nus.edu a/14 Changi South i/A0177897E p/92667921</code></p>
 </li>
@@ -1685,7 +1600,7 @@ e.g. `student edit 1 p/99887890 a/14 Simei Avenue 1</code></p>
 </li>
 <li>
 <p><strong>Finding a student by name/matric no</strong> : <code>student find [n/STUDENT_NAME] [i/MATRIC_NO</code><br>
-e.g. <code>find student Megan Nicole</code></p>
+e.g. <code>student find Megan Nicole</code></p>
 </li>
 <li>
 <p><strong>List all students</strong> : <code>student list</code><br></p>
@@ -1695,7 +1610,7 @@ e.g. <code>find student Megan Nicole</code></p>
 e.g. <code>student delete 2</code></p>
 </li>
 <li>
-<p><strong>Export students</strong> : <code>student export</code><br>
+<p><strong>Export students [COMING IN V1.4]</strong> : <code>student export</code>+
 e.g. <code>student export C:\export</code></p>
 </li>
 <li>
@@ -1722,12 +1637,12 @@ e.g. <code>module find cs2113 structures</code></p>
 <p><strong>List modules</strong> : <code>module list​</code><br></p>
 </li>
 <li>
-<p><strong>Archive module</strong> : <code>module archive mc/MODULE_CODE​</code> <code>[coming in v1.4]</code><br>
-e.g. <code>module archive mc/CS2113</code></p>
-</li>
-<li>
 <p><strong>Enrol student in module</strong> : <code>module enrol mc/MODULE_CODE i/MATRIC_NUMBER…​</code><br>
 e.g. <code>module enrol mc/CS2113 i/A0167263X i/A0179821B</code></p>
+</li>
+<li>
+<p><strong>Archive module</strong> : <code>module archive mc/MODULE_CODE​</code> <code>[coming in v1.4]</code><br>
+e.g. <code>module archive mc/CS2113</code></p>
 </li>
 <li>
 <p><strong>Assign TA</strong> : <code>module assign mc/MODULE_CODE [i/MATRIC_NUMBER] [e/EMAIL]</code> <code>[coming in v2.0]</code><br>
@@ -1828,13 +1743,7 @@ e.g. <code>note export fn/notes</code></p>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 17:27:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 17:36:16 UTC</div></div></div></body></html>
