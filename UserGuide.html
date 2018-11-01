@@ -1240,7 +1240,7 @@ Displays graph which shows result of 'Finals' grade component of all CS2113 stud
 <h4 id="add-note-code-note-add-code"><a class="link" href="#add-note-code-note-add-code">3.6.1. Add Note : <code>note add</code></a></h4>
 <div class="paragraph">
 <p>Adds a note to a module.<br>
-Format: <code>note add m/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
+Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1392,13 +1392,16 @@ The user will now be able to edit the note that corresponds to INDEX=3 in the li
 <div class="sect3">
 <h4 id="delete-note-code-note-delete-code"><a class="link" href="#delete-note-code-note-delete-code">3.6.3. Delete note : <code>note delete</code></a></h4>
 <div class="paragraph">
-<p>Deletes a specific note.<br>
-Format: <code>note delete INDEX</code></p>
+<p>Delete notes.<br>
+Format: <code>note delete INDEX [MORE_INDEXES]..</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the note with the specified INDEX.</p>
+<p>Delete notes with the specified INDEX.</p>
+</li>
+<li>
+<p>The command allows for multiple deletion by entering multiple INDEXES separated by space.</p>
 </li>
 <li>
 <p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is invoked.</p>
@@ -1411,10 +1414,10 @@ Format: <code>note delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>note list m/CS2040C</code><br>
+<p><code>note list mc/CS2040C</code><br>
 A list of all notes saved in CS2040C module is displayed.<br>
-<code>note delete 1</code><br>
-Deletes the note that corresponds to INDEX=1 in the list.</p>
+<code>note delete 2 1</code><br>
+Delete notes that corresponds to INDEX=1 and INDEX=2 from the list.</p>
 </li>
 </ul>
 </div>
@@ -1746,4 +1749,4 @@ e.g. <code>note export fn/notes</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 13:27:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 13:28:46 UTC</div></div></div></body></html>
