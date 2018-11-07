@@ -46,30 +46,39 @@
 <li><a href="#unassigning-student-from-class-code-class-delstudent-code">3.3.15. Unassigning Student From Class : <code>class delstudent</code></a></li>
 <li><a href="#marking-class-attendance-list-code-class-markattendance-code">3.3.16. Marking class attendance list : <code>class markattendance</code></a></li>
 <li><a href="#accessing-class-attendance-list-code-class-listattendance-code">3.3.17. Accessing class attendance list : <code>class listattendance</code></a></li>
-<li><a href="#edit-grade-component-code-gradebook-edit-code">3.3.18. Edit Grade Component : <code>gradebook edit</code></a></li>
-<li><a href="#remove-grade-component-code-gradebook-delete-code">3.3.19. Remove Grade Component : <code>gradebook delete</code></a></li>
-<li><a href="#find-grade-component-code-gradebook-find-code">3.3.20. Find Grade Component : <code>gradebook find</code></a></li>
-<li><a href="#list-grade-components-code-gradebook-list-code">3.3.21. List Grade Components : <code>gradebook list</code></a></li>
-<li><a href="#list-students-grades-code-grade-list-code">3.3.22. List Students Grades : <code>grade list</code></a></li>
-<li><a href="#add-student-grade-code-grade-add-code">3.3.23. Add Student Grade : <code>grade add</code></a></li>
-<li><a href="#display-graph-of-student-grades-code-grade-graph-code">3.3.24. Display Graph of Student Grades : <code>grade graph</code></a></li>
 </ul>
 </li>
-<li><a href="#notes-management">3.4. Notes Management</a>
+<li><a href="#gradebook-management">3.4. Gradebook Management</a>
 <ul class="sectlevel3">
-<li><a href="#add-note-code-note-add-code">3.4.1. Add Note : <code>note add</code></a></li>
-<li><a href="#edit-note-code-note-edit-code">3.4.2. Edit note : <code>note edit</code></a></li>
-<li><a href="#delete-note-code-note-delete-code">3.4.3. Delete note : <code>note delete</code></a></li>
-<li><a href="#find-note-code-note-find-code">3.4.4. Find note : <code>note find</code></a></li>
-<li><a href="#list-notes-code-note-list-code">3.4.5. List notes : <code>note list</code></a></li>
-<li><a href="#export-notes-code-note-export-code">3.4.6. Export notes: <code>note export</code></a></li>
+<li><a href="#add-gradebook-component-code-gradebook-add-code">3.4.1. Add Gradebook Component : <code>gradebook add</code></a></li>
+<li><a href="#edit-gradebook-component-code-gradebook-edit-code">3.4.2. Edit Gradebook Component : <code>gradebook edit</code></a></li>
+<li><a href="#remove-gradebook-component-code-gradebook-delete-code">3.4.3. Remove Gradebook Component : <code>gradebook delete</code></a></li>
+<li><a href="#find-gradebook-component-code-gradebook-find-code">3.4.4. Find Gradebook Component : <code>gradebook find</code></a></li>
+<li><a href="#list-gradebook-components-code-gradebook-list-code">3.4.5. List Gradebook Components : <code>gradebook list</code></a></li>
 </ul>
 </li>
-<li><a href="#viewing-help-code-help-code-2">3.5. Viewing help : <code>help</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.6. Listing entered commands : <code>history</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.7. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.8. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.9. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#grade-management">3.5. Grade Management</a>
+<ul class="sectlevel3">
+<li><a href="#list-students-grades-code-grade-list-code">3.5.1. List Students Grades : <code>grade list</code></a></li>
+<li><a href="#add-student-grade-code-grade-add-code">3.5.2. Add Student Grade : <code>grade add</code></a></li>
+<li><a href="#display-graph-of-student-grades-code-grade-graph-code">3.5.3. Display Graph of Student Grades : <code>grade graph</code></a></li>
+</ul>
+</li>
+<li><a href="#notes-management">3.6. Notes Management</a>
+<ul class="sectlevel3">
+<li><a href="#add-note-code-note-add-code">3.6.1. Add Note : <code>note add</code></a></li>
+<li><a href="#edit-note-code-note-edit-code">3.6.2. Edit note : <code>note edit</code></a></li>
+<li><a href="#delete-note-code-note-delete-code">3.6.3. Delete note : <code>note delete</code></a></li>
+<li><a href="#find-note-code-note-find-code">3.6.4. Find note : <code>note find</code></a></li>
+<li><a href="#list-notes-code-note-list-code">3.6.5. List notes : <code>note list</code></a></li>
+<li><a href="#export-notes-code-note-export-code">3.6.6. Export notes: <code>note export</code></a></li>
+</ul>
+</li>
+<li><a href="#viewing-help-code-help-code-2">3.7. Viewing help : <code>help</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.10. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.11. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -953,13 +962,19 @@ Format: <code>class listattendance cn/T16 mc/CG1111</code></p>
 <ul>
 <li>
 <p><code>class listattendance cn/T16 mc/CG1111</code><br>
-Displays the class attendance list for the class T16 for the module CG1111
-=== Grade Management
-==== Add Grade Component : <code>gradebook add</code>
-Creates a grade item to a module code.<br>
-Format: <code>gradebook add mc/MODULE_CODE cn/COMPONENT_NAME [mm/MAX_MARKS] [w/WEIGHTAGE]</code></p>
+Displays the class attendance list for the class T16 for the module CG1111</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gradebook-management"><a class="link" href="#gradebook-management">3.4. Gradebook Management</a></h3>
+<div class="sect3">
+<h4 id="add-gradebook-component-code-gradebook-add-code"><a class="link" href="#add-gradebook-component-code-gradebook-add-code">3.4.1. Add Gradebook Component : <code>gradebook add</code></a></h4>
+<div class="paragraph">
+<p>Creates a grade item to a module code.<br>
+Format: <code>gradebook add mc/MODULE_CODE cn/COMPONENT_NAME [mm/MAX_MARKS] [w/WEIGHTAGE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -972,7 +987,7 @@ Format: <code>gradebook add mc/MODULE_CODE cn/COMPONENT_NAME [mm/MAX_MARKS] [w/W
 <p>Module code must exist</p>
 </li>
 <li>
-<p>Component name must not already exist in Trajectory.</p>
+<p><a href="http://Component">Component</a> name must not already exist in Trajectory.</p>
 </li>
 <li>
 <p>Accumulated weightage for grade components in module cannot exceed 100%.</p>
@@ -997,9 +1012,9 @@ Adds gradebook component, Assignment 1 with maximum marks of 60, to module CS204
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-grade-component-code-gradebook-edit-code"><a class="link" href="#edit-grade-component-code-gradebook-edit-code">3.3.18. Edit Grade Component : <code>gradebook edit</code></a></h4>
+<h4 id="edit-gradebook-component-code-gradebook-edit-code"><a class="link" href="#edit-gradebook-component-code-gradebook-edit-code">3.4.2. Edit Gradebook Component : <code>gradebook edit</code></a></h4>
 <div class="paragraph">
-<p>Edits a grade item.<br>
+<p>Edits a gradebook item.<br>
 Format: <code>gradebook edit mc/MODULE_CODE cn/COMPONENT_NAME [ei/EDITED_COMPONENT_NAME] [mm/EDITED_MAX_MARKS] [w/EDITED_WEIGHTAGE]</code></p>
 </div>
 <div class="sidebarblock">
@@ -1039,9 +1054,9 @@ Updated maximum marks and weightage of Assignment 1 in CS2113 to 60 and 50% resp
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-grade-component-code-gradebook-delete-code"><a class="link" href="#remove-grade-component-code-gradebook-delete-code">3.3.19. Remove Grade Component : <code>gradebook delete</code></a></h4>
+<h4 id="remove-gradebook-component-code-gradebook-delete-code"><a class="link" href="#remove-gradebook-component-code-gradebook-delete-code">3.4.3. Remove Gradebook Component : <code>gradebook delete</code></a></h4>
 <div class="paragraph">
-<p>Removes a grade item to a module code.<br>
+<p>Removes a gradebook item to a module code.<br>
 Format: <code>gradebook delete mc/MODULE_CODE cn/COMPONENT_NAME</code></p>
 </div>
 <div class="sidebarblock">
@@ -1071,7 +1086,7 @@ Deletes Assignment 1 from module CS2113.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-grade-component-code-gradebook-find-code"><a class="link" href="#find-grade-component-code-gradebook-find-code">3.3.20. Find Grade Component : <code>gradebook find</code></a></h4>
+<h4 id="find-gradebook-component-code-gradebook-find-code"><a class="link" href="#find-gradebook-component-code-gradebook-find-code">3.4.4. Find Gradebook Component : <code>gradebook find</code></a></h4>
 <div class="paragraph">
 <p>Finds gradebook component.<br>
 Format: <code>gradebook find mc/MODULE_CODE cn/COMPONENT_NAME</code></p>
@@ -1103,9 +1118,9 @@ Finds Assignment 1 to module CS2113.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-grade-components-code-gradebook-list-code"><a class="link" href="#list-grade-components-code-gradebook-list-code">3.3.21. List Grade Components : <code>gradebook list</code></a></h4>
+<h4 id="list-gradebook-components-code-gradebook-list-code"><a class="link" href="#list-gradebook-components-code-gradebook-list-code">3.4.5. List Gradebook Components : <code>gradebook list</code></a></h4>
 <div class="paragraph">
-<p>Lists all the grade items in a certain module.<br>
+<p>Lists all the gradebook items in a certain module.<br>
 Format: <code>gradebook list</code></p>
 </div>
 <div class="paragraph">
@@ -1115,13 +1130,16 @@ Format: <code>gradebook list</code></p>
 <ul>
 <li>
 <p><code>gradebook list</code><br>
-Lists all the grade items found in Trajectory.</p>
+Lists all the gradebook items found in Trajectory.</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="grade-management"><a class="link" href="#grade-management">3.5. Grade Management</a></h3>
 <div class="sect3">
-<h4 id="list-students-grades-code-grade-list-code"><a class="link" href="#list-students-grades-code-grade-list-code">3.3.22. List Students Grades : <code>grade list</code></a></h4>
+<h4 id="list-students-grades-code-grade-list-code"><a class="link" href="#list-students-grades-code-grade-list-code">3.5.1. List Students Grades : <code>grade list</code></a></h4>
 <div class="paragraph">
 <p>Lists grades of all students enrolled in all modules.<br>
 Format: <code>grade list</code></p>
@@ -1133,13 +1151,13 @@ Format: <code>grade list</code></p>
 <ul>
 <li>
 <p><code>grade list</code><br>
-Lists all students grades recorded in Trajectory.</p>
+Lists all students grades recorded in Trajectory.<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-student-grade-code-grade-add-code"><a class="link" href="#add-student-grade-code-grade-add-code">3.3.23. Add Student Grade : <code>grade add</code></a></h4>
+<h4 id="add-student-grade-code-grade-add-code"><a class="link" href="#add-student-grade-code-grade-add-code">3.5.2. Add Student Grade : <code>grade add</code></a></h4>
 <div class="paragraph">
 <p>Assigns marks to a student.<br>
 Format: <code>grade add mc/MODULE_CODE cn/COMPONENT_NAME i/MATRIC_NO m/MARKS</code></p>
@@ -1177,7 +1195,7 @@ Assigns 50 marks to CS2113 student with matric number A0167789S for Assignment 1
 </div>
 </div>
 <div class="sect3">
-<h4 id="display-graph-of-student-grades-code-grade-graph-code"><a class="link" href="#display-graph-of-student-grades-code-grade-graph-code">3.3.24. Display Graph of Student Grades : <code>grade graph</code></a></h4>
+<h4 id="display-graph-of-student-grades-code-grade-graph-code"><a class="link" href="#display-graph-of-student-grades-code-grade-graph-code">3.5.3. Display Graph of Student Grades : <code>grade graph</code></a></h4>
 <div class="paragraph">
 <p>Displays graph of all students of one grade component of an existing module.<br>
 Format: <code>grade graph mc/MODULE_CODE cn/COMPONENT_NAME</code></p>
@@ -1213,9 +1231,9 @@ Displays graph which shows result of 'Finals' grade component of all CS2113 stud
 </div>
 </div>
 <div class="sect2">
-<h3 id="notes-management"><a class="link" href="#notes-management">3.4. Notes Management</a></h3>
+<h3 id="notes-management"><a class="link" href="#notes-management">3.6. Notes Management</a></h3>
 <div class="sect3">
-<h4 id="add-note-code-note-add-code"><a class="link" href="#add-note-code-note-add-code">3.4.1. Add Note : <code>note add</code></a></h4>
+<h4 id="add-note-code-note-add-code"><a class="link" href="#add-note-code-note-add-code">3.6.1. Add Note : <code>note add</code></a></h4>
 <div class="paragraph">
 <p>Adds a note to a module.<br>
 Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
@@ -1317,7 +1335,7 @@ This tells the system that the note is to be saved in the CS2113 module with a t
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-note-code-note-edit-code"><a class="link" href="#edit-note-code-note-edit-code">3.4.2. Edit note : <code>note edit</code></a></h4>
+<h4 id="edit-note-code-note-edit-code"><a class="link" href="#edit-note-code-note-edit-code">3.6.2. Edit note : <code>note edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing note.<br>
 Format: <code>note edit INDEX [mc/NEW_MODULE_CODE] [sd/NEW_START_DATE] [st/NEW_START_TIME] [ed/NEW_END_DATE] [et/NEW_END_TIME] [lc/NEW_LOCATION]</code></p>
@@ -1368,7 +1386,7 @@ The user will now be able to edit the note that corresponds to INDEX=3 in the li
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-note-code-note-delete-code"><a class="link" href="#delete-note-code-note-delete-code">3.4.3. Delete note : <code>note delete</code></a></h4>
+<h4 id="delete-note-code-note-delete-code"><a class="link" href="#delete-note-code-note-delete-code">3.6.3. Delete note : <code>note delete</code></a></h4>
 <div class="paragraph">
 <p>Delete notes.<br>
 Format: <code>note delete INDEX [MORE_INDEXES]..</code></p>
@@ -1401,7 +1419,7 @@ Delete notes that corresponds to INDEX=1 and INDEX=2 from the list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-note-code-note-find-code"><a class="link" href="#find-note-code-note-find-code">3.4.4. Find note : <code>note find</code></a></h4>
+<h4 id="find-note-code-note-find-code"><a class="link" href="#find-note-code-note-find-code">3.6.4. Find note : <code>note find</code></a></h4>
 <div class="paragraph">
 <p>Search and display existing notes using keywords.<br>
 Format: <code>note find k/KEYWORD [k/MORE_KEYWORDS]..</code></p>
@@ -1441,7 +1459,7 @@ Lists all notes which contain both keywords "git" and "OOP".</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-notes-code-note-list-code"><a class="link" href="#list-notes-code-note-list-code">3.4.5. List notes : <code>note list</code></a></h4>
+<h4 id="list-notes-code-note-list-code"><a class="link" href="#list-notes-code-note-list-code">3.6.5. List notes : <code>note list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all saved notes.<br>
 Format: <code>note list [mc/MODULE_CODE]</code></p>
@@ -1470,7 +1488,7 @@ This will list all notes saved in CS1231 module.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="export-notes-code-note-export-code"><a class="link" href="#export-notes-code-note-export-code">3.4.6. Export notes: <code>note export</code></a></h4>
+<h4 id="export-notes-code-note-export-code"><a class="link" href="#export-notes-code-note-export-code">3.6.6. Export notes: <code>note export</code></a></h4>
 <div class="paragraph">
 <p>Converts all exportable notes to CSV.<br>
 Format: <code>note export fn/FILE_NAME</code></p>
@@ -1494,14 +1512,14 @@ Format: <code>note export fn/FILE_NAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code-2"><a class="link" href="#viewing-help-code-help-code-2">3.5. Viewing help : <code>help</code></a></h3>
+<h3 id="viewing-help-code-help-code-2"><a class="link" href="#viewing-help-code-help-code-2">3.7. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
 <p>Shows the help page<br>
 Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.6. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -1522,21 +1540,21 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.7. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.8. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.9. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.11. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -1630,25 +1648,45 @@ e.g. <code>module archive mc/CS2113</code></p>
 e.g. <code>module assign mc/CS2113 i/A0171234B</code></p>
 </li>
 <li>
-<p><strong>Add Grade Component</strong> : <code>gradebook add mc/MODULE_CODE cn/COMPONENT_NAME [mm/MAX_MARKS] [w/WEIGHTAGE]</code><br>
+<p><strong>Archive module</strong> : <code>module archive c/MODULE_CODE​</code><br>
+e.g. <code>module archive c/CS2113</code></p>
+</li>
+<li>
+<p><strong>Enrol student in module</strong> : <code>module enrol [i/MATRIC_NUMBER]…​ [e/EMAIL]…​​</code><br>
+e.g. <code>module enrol i/A0167263X i/A0179821B</code></p>
+</li>
+<li>
+<p><strong>Assign TA</strong> : <code>module assign [i/MATRIC_NUMBER] [e/EMAIL]</code><br>
+e.g. <code>module assign i/A0171234B</code></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add Gradebook Component</strong> : <code>gradebook add mc/MODULE_CODE cn/COMPONENT_NAME [mm/MAX_MARKS] [w/WEIGHTAGE]</code><br>
 e.g. <code>gradebook add mc/CS2113 cn/Assignment 1 mm/60</code></p>
 </li>
 <li>
-<p><strong>Edit Grade Component</strong> : <code>gradebook edit mc/MODULE_CODE cn/COMPONENT_NAME [en/EDITED_COMPONENT_NAME] [mm/EDITED_MAX_MARKS] [w/EDITED_WEIGHTAGE]</code><br>
+<p><strong>Edit Gradebook Component</strong> : <code>gradebook edit mc/MODULE_CODE cn/COMPONENT_NAME [en/EDITED_COMPONENT_NAME] [mm/EDITED_MAX_MARKS] [w/EDITED_WEIGHTAGE]</code><br>
 e.g. <code>gradebook edit mc/CS2113 cn/Assignment 1 en/Finals</code></p>
 </li>
 <li>
-<p><strong>Delete Grade Component</strong> : <code>gradebook delete mc/MODULE_CODE cn/COMPONENT_NAME</code><br>
+<p><strong>Delete Gradebook Component</strong> : <code>gradebook delete mc/MODULE_CODE cn/COMPONENT_NAME</code><br>
 e.g. <code>gradebook delete mc/CS2113 cn/Assignment 1</code></p>
 </li>
 <li>
-<p><strong>List Grade Components</strong> : <code>gradebook list</code><br>
+<p><strong>List Gradebook Components</strong> : <code>gradebook list</code><br>
 e.g. <code>gradebook list</code></p>
 </li>
 <li>
-<p><strong>Find Grade Components</strong> : <code>gradebook find mc/MODULE_CODE cn/COMPONENT_NAME</code><br>
+<p><strong>Find Gradebook Components</strong> : <code>gradebook find mc/MODULE_CODE cn/COMPONENT_NAME</code><br>
 e.g. <code>gradebook find mc/CS2113 cn/Assignment 1</code></p>
 </li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>List Students Grades</strong> : <code>grade list</code><br>
 e.g. <code>grade list</code></p>
@@ -1727,4 +1765,4 @@ e.g. <code>note export fn/notes</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 16:03:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 16:35:30 UTC</div></div></div></body></html>

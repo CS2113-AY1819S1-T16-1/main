@@ -2625,31 +2625,31 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add grade components</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add gradebook components</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">differentiate the grade components in a module (E.g. mid term test, finals examination)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit grade components</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit gradebook components</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">modifications is possible to reflect the grade component properly.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete grade components</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete gradebook components</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">incorrect grade components in the module can be removed.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list grade components</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list gradebook components</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view the grade components available in the module.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find grade components</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find gradebook components</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view the information for a specific grade component.</p></td>
 </tr>
 <tr>
@@ -2668,7 +2668,7 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teacher</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">display students grades in a graph</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the progress of students for a particular grade component</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the progress of students for a particular grade component.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -4331,7 +4331,7 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-grade-component" class="discrete">Use case: Add Grade Component</h3>
+<h3 id="use-case-add-gradebook-component" class="discrete">Use case: Add Gradebook Component</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
@@ -4344,10 +4344,10 @@ for <code>RemarkCommandParser</code>.</p>
 <p>Component name must not already exist in Trajectory.</p>
 </li>
 <li>
-<p>Accumulated weightage for grade components in module cannot exceed 100%.</p>
+<p>Accumulated weightage for gradebook components in module cannot exceed 100%.</p>
 </li>
 <li>
-<p>Weightage can be 0 for grade components like Mock Practical Exam.</p>
+<p>Weightage can be 0 for gradebook components like Mock Practical Exam.</p>
 </li>
 </ul>
 </div>
@@ -4367,7 +4367,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher creates grade component.</p>
+<p>Teacher creates gradebook component.</p>
 </li>
 <li>
 <p>System indicates success message.</p>
@@ -4449,14 +4449,14 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-grade-component" class="discrete">Use case: Update Grade Component</h3>
+<h3 id="use-case-update-gradebook-component" class="discrete">Use case: Update Gradebook Component</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Grade component name must exist in existing module.</p>
+<p>Gradebook component name must exist in existing module.</p>
 </li>
 <li>
 <p>Accumulated weightage including the updated weightage must not exceed 100%.</p>
@@ -4482,7 +4482,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher updates grade component.</p>
+<p>Teacher updates gradebook component.</p>
 </li>
 <li>
 <p>System indicates success message.</p>
@@ -4518,14 +4518,14 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-remove-grade-component" class="discrete">Use case: Remove Grade Component</h3>
+<h3 id="use-case-remove-gradebook-component" class="discrete">Use case: Remove Gradebook Component</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Grade component name must exist in existing module.</p>
+<p>Gradebook component name must exist in existing module.</p>
 </li>
 </ul>
 </div>
@@ -4535,7 +4535,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Deleting grade component will also delete any student marks associated to it.</p>
+<p>Deleting gradebook component will also delete any student marks associated to it.</p>
 </li>
 </ul>
 </div>
@@ -4545,7 +4545,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher removes grade component.</p>
+<p>Teacher removes gradebook component.</p>
 </li>
 <li>
 <p>System indicates success message.</p>
@@ -4575,14 +4575,14 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-find-grade-component" class="discrete">Use case: Find Grade Component</h3>
+<h3 id="use-case-find-gradebook-component" class="discrete">Use case: Find Gradebook Component</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Grade component name must exist in existing module.</p>
+<p>Gradebook component name must exist in existing module.</p>
 </li>
 </ul>
 </div>
@@ -4602,10 +4602,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher finds grade component.</p>
+<p>Teacher finds gradebook component.</p>
 </li>
 <li>
-<p>System displays details on selected grade component.</p>
+<p>System displays details on selected gradebook component.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -4645,14 +4645,14 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-grade-components" class="discrete">Use case: List Grade Components</h3>
+<h3 id="use-case-list-gradebook-components" class="discrete">Use case: List Gradebook Components</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Grade component name must exist in existing module.</p>
+<p>Gradebook component name must exist in existing module.</p>
 </li>
 </ul>
 </div>
@@ -4672,7 +4672,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher lists grade component.</p>
+<p>Teacher lists gradebook component.</p>
 </li>
 <li>
 <p>System displays list.</p>
@@ -6239,4 +6239,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 16:03:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 16:35:30 UTC</div></div></div></body></html>
