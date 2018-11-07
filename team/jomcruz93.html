@@ -1,0 +1,881 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Cruz Jomari Evangelista - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Cruz Jomari Evangelista - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-trajectory"><a class="link" href="#project-trajectory">PROJECT: Trajectory</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Trajectory is a lightweight management system for those who need a no-frills solution for managing students, modules, grades, classes and notes. It is built for users who prefer typing (CLI) over GUI interaction and has a GUI created with JavaFX.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&amp;search=jomcruz93">Link to Project Code Dashboard</a></p>
+</li>
+<li>
+<p><strong>Main feature implemented</strong>: Notes Management</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: It allows the user to manage notes within the application.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product&#8217;s utility as users would sometimes need to take notes about important things. It serves to make Trajectory a step closer to becoming a one-stop app for users so that they would not need to rely on several other applications to accomplish their needs.</p>
+</li>
+<li>
+<p>Highlights: Notes saved in Trajectory can be of two types: a plain sticky note or a calendar event. Those of the latter type are exportable to CSV, which may then be imported to Google Calendar.</p>
+</li>
+<li>
+<p>Credits: <a href="https://cs2113-ay1819s1-t16-1.github.io/main/AboutUs.html" class="bare">https://cs2113-ay1819s1-t16-1.github.io/main/AboutUs.html</a> and <a href="https://github.com/nusCS2113-AY1819S1/addressbook-level4" class="bare">https://github.com/nusCS2113-AY1819S1/addressbook-level4</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="notes-management"><a class="link" href="#notes-management">Notes Management</a></h3>
+<div class="sect3">
+<h4 id="add-note-code-note-add-code"><a class="link" href="#add-note-code-note-add-code">Add Note : <code>note add</code></a></h4>
+<div class="paragraph">
+<p>Adds a note to a module.<br>
+Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The START_DATE and END_DATE parameters allows the following date formats only.<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>d-M-yyyy (e.g. 2-11-2018)<br></p>
+</li>
+<li>
+<p>d/M-yyyy (e.g. 2/11/2018)<br></p>
+</li>
+<li>
+<p>d.M.yyyy (e.g. 2.11.2018)<br></p>
+</li>
+<li>
+<p>d-MMM-yyyy (e.g. 2-Nov-2018)<br></p>
+</li>
+<li>
+<p>d MMM yyyy (e.g. 2 Nov 2018)<br></p>
+</li>
+<li>
+<p>d-MMM-yy (e.g. 2-Nov-18)<br></p>
+</li>
+<li>
+<p>d MMM yy (e.g. 2 Nov 18)<br></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The START_TIME and END_TIME parameters follows the following time format only.<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>h:m AM/PM (e.g. 4:00 PM)<br></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+- MODULE_CODE strictly follows the following:<br>
+<code>Module code should begin with 2 or 3 uppercase letters, followed by a 4-digit number and an optional uppercase letter at the end.</code><br>
+- The date and time fields are <strong>case-insensitive</strong> which means the user can enter <code>2-nOv-2018</code> as date.<br>
+- If dates are specified but not the time, the system defines a default time of <code>12:00 AM</code> for <code>START_DATE</code> and <code>11:59 PM</code> for <code>END_DATE</code>.<br>
+- Specifying an <code>END_DATE</code> or any time parameters requires the <code>START_DATE</code> to be defined. Otherwise, the system will inform the user.<br>
+- The TITLE and LOCATION parameters allows characters up to 30 and 80 maximum respectively. Otherwise, an error message will be displayed.<br>
+- Omitting the TITLE will show a "(No title)" when the note is displayed.<br>
+- Defining the <code>START_DATE</code> but not the <code>END_DATE</code> automatically assigns the same date to it.<br>
+- Entering a <code>START_DATE</code> and <code>START_TIME</code> later than <code>END_DATE</code> and <code>END_TIME</code> is not allowed.<br>
+- Specifying the prefix but with an empty field is not allowed. (e.g. tt/ )
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Upon entering the <code>note add</code> command, the system will prompt the user to type his/her note in a new window.<br></p>
+</li>
+<li>
+<p>To save the note, the user can press <code>CTRL+S</code>. Note that saving blank text field is not allowed.<br></p>
+</li>
+<li>
+<p>The user can choose to cancel anytime during the process by pressing <code>CTRL+Q</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>note add mc/CS2113</code><br>
+This tells the system that the note is to be saved in the CS2113 module with no date.</p>
+</li>
+<li>
+<p><code>note add mc/CS2113 tt/Lecture sd/2.11.2018 st/4:00 PM et/6:00 pm lc/LT15</code><br>
+This tells the system that the note is to be saved in the CS2113 module with a title named "Lecture", a start date (2 Nov 2018) and end date (2 Nov 2018) from 4PM to 6PM at LT15.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-note-code-note-edit-code"><a class="link" href="#edit-note-code-note-edit-code">Edit note : <code>note edit</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing note.<br>
+Format: <code>note edit INDEX [mc/NEW_MODULE_CODE] [sd/NEW_START_DATE] [st/NEW_START_TIME] [ed/NEW_END_DATE] [et/NEW_END_TIME] [lc/NEW_LOCATION]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the note with the specified INDEX.</p>
+</li>
+<li>
+<p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is invoked.</p>
+</li>
+<li>
+<p>Upon entering the <code>note edit</code> command, the system will prompt the user to type his/her modifications to the note.</p>
+</li>
+<li>
+<p>The user can complete his/her edits by pressing <code>CTRL+S</code>.</p>
+</li>
+<li>
+<p>The user can choose to cancel anytime during the editing stage with <code>CTRL+Q</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The system does not allow calling this command when the notes list is not displayed. This is to prevent accidentally editing another note.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>note list mc/CS1010</code><br>
+A list of all notes saved in CS1010 module is displayed.<br>
+<code>note edit 3 tt/Changed the title lc/NUS</code><br>
+The user will now be able to edit the note that corresponds to INDEX=3 in the list. The modified note will be saved with its attributes changed accordingly.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-note-code-note-delete-code"><a class="link" href="#delete-note-code-note-delete-code">Delete note : <code>note delete</code></a></h4>
+<div class="paragraph">
+<p>Delete notes.<br>
+Format: <code>note delete INDEX [MORE_INDEXES]..</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delete notes with the specified INDEX.</p>
+</li>
+<li>
+<p>The command allows for multiple deletion by entering multiple INDEXES separated by space.</p>
+</li>
+<li>
+<p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is invoked.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>note list mc/CS2040C</code><br>
+A list of all notes saved in CS2040C module is displayed.<br>
+<code>note delete 2 1</code><br>
+Delete notes that corresponds to INDEX=1 and INDEX=2 from the list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-note-code-note-find-code"><a class="link" href="#find-note-code-note-find-code">Find note : <code>note find</code></a></h4>
+<div class="paragraph">
+<p>Search and display existing notes using keywords.<br>
+Format: <code>note find k/KEYWORD [k/MORE_KEYWORDS]..</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command searches for notes that contains <strong>ALL</strong> keywords.<br></p>
+</li>
+<li>
+<p>It only matches with <code>TITLE</code> and the note&#8217;s <code>text content</code>.<br></p>
+</li>
+<li>
+<p>Multiple keywords can be accepted.</p>
+</li>
+<li>
+<p>A minimum of one keyword is required for the command to work.</p>
+</li>
+<li>
+<p>Keywords are <strong>case-insensitive</strong>.</p>
+</li>
+<li>
+<p>Each keyword must consist only of a single word (e.g. "Sort", "Git-Hub") and is not separated by spaces.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>note find k/git k/OOP</code><br>
+Lists all notes which contain both keywords "git" and "OOP".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-notes-code-note-list-code"><a class="link" href="#list-notes-code-note-list-code">List notes : <code>note list</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all saved notes.<br>
+Format: <code>note list [mc/MODULE_CODE]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MODULE_CODE</code> field is case-insensitive, hence the user can use either lowercase or uppercase.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>note list</code><br>
+This will list all existing notes from Trajectory.</p>
+</li>
+<li>
+<p><code>note list mc/CS1231</code><br>
+This will list all notes saved in CS1231 module.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="export-notes-code-note-export-code"><a class="link" href="#export-notes-code-note-export-code">Export notes: <code>note export</code></a></h4>
+<div class="paragraph">
+<p>Converts all exportable notes to CSV.<br>
+Format: <code>note export fn/FILE_NAME</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This command creates a &lt;FILE_NAME&gt;.csv file in the local storage.<br></p>
+</li>
+<li>
+<p>Directory: [Trajectory&#8217;s path]\data\CSVexport\&lt;FILE_NAME&gt;.csv<br></p>
+</li>
+<li>
+<p>The format follows the Google Calendar&#8217;s CSV import formatting. Hence, the user can import their notes to Google Calendar with this command.</p>
+</li>
+<li>
+<p>Only notes with dates are exportable.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="notes-data-to-google-calendar-feature"><a class="link" href="#notes-data-to-google-calendar-feature">Notes data to Google Calendar feature</a></h3>
+<div class="sect3">
+<h4 id="feature-description"><a class="link" href="#feature-description">Feature Description:</a></h4>
+<div class="paragraph">
+<p><strong>EXPORT :</strong><br>
+The user is able to export notes from this application to a CSV file that follows the formatting required for importing calendar files to Google Calendar. The exporting process can be invoked by the user by entering the command below.</p>
+</div>
+<div class="paragraph">
+<p><strong>Command: <code>note export fn/FILE_NAME</code></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command <code>note export</code> will create a file with a .csv extension on the local storage.
+*</p>
+</li>
+<li>
+<p>Invoking the command above by itself will convert all exportable notes data saved in the application to CSV format.</p>
+</li>
+<li>
+<p>[<em>Coming in V2.0</em>] It can be extended to perform more specific instructions. The following optional arguments may be used:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>note export fn/FILE_NAME [fr/START_DATE to/END_DATE]</code>
+The following command allows the user to export notes from a specific date range.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Implementation of exporting to CSV is provided below.<br>
+1. Assuming that notes data are currently present in Trajectory, the user can invoke the <code>note export</code> command to begin exporting.<br>
+2. For each Note object to be exported, a corresponding CsvAdaptedNote object will be created. It is used to generate the correct formatting for the Google Calendar.<br>
+3. A CSV utility class will then be used to handle the writing to CSV. The file is saved to "/data/CSVexport" folder in the application&#8217;s directory.<br></p>
+</div>
+<h3 id="use-case-add-note" class="discrete">Use case: Add Note</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Module must exist in data file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher requests to add a note to a module.</p>
+</li>
+<li>
+<p>System prompts the teacher to enter his/her note.</p>
+</li>
+<li>
+<p>Teacher types the note.</p>
+</li>
+<li>
+<p>System adds the note to the module and displays a message that it is successfully added.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The teacher decides to cancel.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-list-notes" class="discrete">Use case: List Notes</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Notes must exist in data file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher requests to view the saved notes.</p>
+</li>
+<li>
+<p>System displays the complete numbered list of notes.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. There are no saved entries of notes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. System displays a message that no entries are found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-note" class="discrete">Use case: Edit Note</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Note must exist in data file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher requests to list all notes.</p>
+</li>
+<li>
+<p>System displays the complete numbered list of notes.</p>
+</li>
+<li>
+<p>Teacher requests to edit a specific note in the list.</p>
+</li>
+<li>
+<p>System prompts the teacher to enter the modifications.</p>
+</li>
+<li>
+<p>Teacher can now modify the text.</p>
+</li>
+<li>
+<p>System saves the modified note and displays a message for the successful modification.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Teacher gives an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. There are no saved entries of notes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. System displays a message that no entries are found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. System informs the user that the input is invalid.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>5a. The teacher decides to cancel.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>5a1. System cancels the editing process.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-note" class="discrete">Use case: Delete Note</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Note must exist in data file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher requests to list all notes.</p>
+</li>
+<li>
+<p>System displays the complete numbered list of notes.</p>
+</li>
+<li>
+<p>Teacher requests to delete a specific note in the list.</p>
+</li>
+<li>
+<p>System deletes the note and displays a message that it is successfully deleted.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. There are no saved entries of notes in the module.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. System displays a message that no entries are found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. System informs the user that the input is invalid.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-note" class="discrete">Use case: Find Note</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Notes must exist in data file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher requests to find notes which contains a set of keywords.</p>
+</li>
+<li>
+<p>System displays the complete numbered list of notes found that contains the keyword(s).</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. There are no entries found with the entered keyword(s).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. System displays a message that no entries are found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-export-notes" class="discrete">Use case: Export Notes</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Notes must exist in data file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher requests to export notes.</p>
+</li>
+<li>
+<p>System informs the user the number of notes exported.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. There are no notes that can be exported.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. System displays a message that no entries are found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 16:37:39 UTC</div></div></div></body></html>
