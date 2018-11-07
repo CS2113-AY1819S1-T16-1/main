@@ -30,15 +30,13 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#user-authentication-feature">3.2. User Authentication feature</a></li>
-<li><a href="#class-add-feature">3.3. Class Add feature</a></li>
-<li><a href="#class-list-feature">3.4. Class List feature</a></li>
-<li><a href="#gradebook-graph-feature">3.5. Gradebook Graph feature</a></li>
-<li><a href="#proposed-module-bidding-feature">3.6. [Proposed] Module bidding feature</a></li>
-<li><a href="#notes-data-to-google-calendar-feature">3.7. Notes data to Google Calendar feature</a></li>
-<li><a href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
+<li><a href="#class-list-feature">3.2. Class List feature</a></li>
+<li><a href="#gradebook-graph-feature">3.3. Gradebook Graph feature</a></li>
+<li><a href="#proposed-module-bidding-feature">3.4. [Proposed] Module bidding feature</a></li>
+<li><a href="#notes-data-to-google-calendar-feature">3.5. Notes data to Google Calendar feature</a></li>
+<li><a href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -783,22 +781,15 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.
+=== User Authentication feature
+==== Proposed Implementation
+Trajectory will evolve into a full-fledged LMS, and will come equipped with a user authentication system that supports role-based access control for usage by students, faculty members, administrators and guests.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="user-authentication-feature"><a class="link" href="#user-authentication-feature">3.2. User Authentication feature</a></h3>
-<div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.2.1. Proposed Implementation</a></h4>
-<div class="paragraph">
-<p>Trajectory will evolve into a full-fledged LMS, and will come equipped with a user authentication system that supports role-based access control for usage by students, faculty members, administrators and guests.</p>
 </div>
 <div class="paragraph">
 <p>The implementation will be spread across 2 classes: <code>UserController</code>, <code>AuthenticationController</code>.</p>
@@ -828,8 +819,9 @@ the module controller can appropriately filter out modules that the user has per
 </div>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.1.3. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-roles"><a class="link" href="#aspect-roles">Aspect: Roles</a></h5>
 <div class="ulist">
@@ -856,20 +848,15 @@ the module controller can appropriately filter out modules that the user has per
 but prevent TAs from seeing it, although TAs can assign marks.</p>
 </li>
 <li>
-<p>Cons: Harder to implement.</p>
+<p>Cons: Harder to implement.
+=== Class Add feature
+==== Current Implementation</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="class-add-feature"><a class="link" href="#class-add-feature">3.3. Class Add feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The add mechanism is facilitated by <code>ClassroomManager</code> supported by <code>StorageController</code>.
 It makes use of the following operations:</p>
@@ -904,10 +891,11 @@ It makes use of the following operations:</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="class-list-feature"><a class="link" href="#class-list-feature">3.4. Class List feature</a></h3>
+<h3 id="class-list-feature"><a class="link" href="#class-list-feature">3.2. Class List feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The list mechanism is facilitated by <code>ClassroomManager</code> supported by <code>StorageController</code>.
 It makes use the following operations:</p>
@@ -951,9 +939,9 @@ It makes use the following operations:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="gradebook-graph-feature"><a class="link" href="#gradebook-graph-feature">3.5. Gradebook Graph feature</a></h3>
+<h3 id="gradebook-graph-feature"><a class="link" href="#gradebook-graph-feature">3.3. Gradebook Graph feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The gradebook graph mechanism is an enhancement that will be released in the later versions, facilitated by 'Trajectory'.
 It is stored internally in GradebookManager.</p>
@@ -1011,7 +999,7 @@ If a command fails its execution, it will not call <code>Gradebook#GradebookMana
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-graph-to-data-executes"><a class="link" href="#aspect-how-graph-to-data-executes">Aspect: How graph-to-data executes</a></h5>
 <div class="ulist">
@@ -1081,9 +1069,9 @@ If a command fails its execution, it will not call <code>Gradebook#GradebookMana
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-module-bidding-feature"><a class="link" href="#proposed-module-bidding-feature">3.6. [Proposed] Module bidding feature</a></h3>
+<h3 id="proposed-module-bidding-feature"><a class="link" href="#proposed-module-bidding-feature">3.4. [Proposed] Module bidding feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">3.6.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.4.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The module bidding feature is an enhancement that will make it easier to assign students to modules in <code>Trajectory</code>.
 It is designed with the module enrolment limits in mind, and the aim to give students a certain degree of flexibility
@@ -1164,7 +1152,7 @@ bid points. The students who were unsuccessful in their bid will have their bid 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-the-module-bidding-will-work"><a class="link" href="#aspect-how-the-module-bidding-will-work">Aspect: How the module bidding will work</a></h5>
 <div class="ulist">
@@ -1202,9 +1190,9 @@ to the students.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="notes-data-to-google-calendar-feature"><a class="link" href="#notes-data-to-google-calendar-feature">3.7. Notes data to Google Calendar feature</a></h3>
+<h3 id="notes-data-to-google-calendar-feature"><a class="link" href="#notes-data-to-google-calendar-feature">3.5. Notes data to Google Calendar feature</a></h3>
 <div class="sect3">
-<h4 id="feature-description"><a class="link" href="#feature-description">3.7.1. Feature Description:</a></h4>
+<h4 id="feature-description"><a class="link" href="#feature-description">3.5.1. Feature Description:</a></h4>
 <div class="paragraph">
 <p><strong>EXPORT :</strong><br>
 The user is able to export notes from this application to a CSV file that follows the formatting required for importing calendar files to Google Calendar. The exporting process can be invoked by the user by entering the command below.</p>
@@ -1243,20 +1231,20 @@ The following command allows the user to export notes from a specific date range
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1287,7 +1275,7 @@ The following command allows the user to export notes from a specific date range
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -6241,4 +6229,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 17:04:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 17:33:41 UTC</div></div></div></body></html>
