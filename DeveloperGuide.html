@@ -84,6 +84,12 @@
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
 <li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#gradebook-add">H.4. Gradebook Add</a></li>
+<li><a href="#gradebook-find">H.5. Gradebook Find</a></li>
+<li><a href="#gradebook-delete">H.6. Gradebook Delete</a></li>
+<li><a href="#gradebook-edit">H.7. Gradebook Edit</a></li>
+<li><a href="#grade-list">H.8. Grade List</a></li>
+<li><a href="#grade-graph">H.9. Grade Graph</a></li>
 </ul>
 </li>
 </ul>
@@ -475,13 +481,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
+<img src="images/TrajectoryLogicClassDiagram.png" alt="TrajectoryLogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 6. Structure of the Logic Component</div>
+<div class="title">Figure 6. Structure of Trajectory Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/CS2113-AY1819S1-T16-1/main/blob/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -492,7 +498,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person) and/or raise events.</p>
+<p>The command execution can affect the <code>Model</code> (e.g. deleting a gradebook component) and/or raise events.</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -500,13 +506,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("gradebook delete mc/CS2113 cn/Assignment 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
+<img src="images/GradebookDeleteSDForLogic.png" alt="GradebookDeleteSDForLogic" width="800">
 </div>
-<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>gradebook delete mc/CS2113 cn/Assignment 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -977,7 +983,7 @@ It is stored internally in GradebookManager.</p>
 <p>Step 1. The user launches the application for the first time. The StorageController which interacts with #xmlAdaptedGradebook to retrieve data from Array List using #retrieveData.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>gradebook find m/cs2113 i/Finals</code> command to find the relevant gradebook component. The <code>find</code> command calls <code>GradebookManager#findGradebookComponent()</code>, which finds and filters the Array List to the relevant search.</p>
+<p>Step 2. The user executes <code>gradebook find mc/cs2113 cn/Finals</code> command to find the relevant gradebook component. The <code>find</code> command calls <code>GradebookManager#findGradebookComponent()</code>, which finds and filters the Array List to the relevant search.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The user executes <code>gradebook graph student</code>. GradebookManager#graphStudentProgress will convert the Array List to graph form and display to the user.</p>
@@ -6241,8 +6247,254 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+<p><em>{ more test cases &#8230;&#8203; }</em>
+=== Gradebook List</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Listing all gradebook components to existing module(s) in Trajectory.<br>
+<strong>Parameters (prefix): NIL</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: NIL</p>
+</li>
+<li>
+<p>Test case: <code>gradebook list</code><br>
+Expected: Gradebook list will be displayed on the system with all the gradebook components set to a module. The total number of gradebook components are indicated in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gradebook-add"><a class="link" href="#gradebook-add">H.4. Gradebook Add</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a gradebook component to an existing module in Trajectory.<br>
+<strong>Parameters (prefix):</strong><br>
+Module code (mc/),<br>
+gradebook component name (cn/),<br>
+[optional] maximum marks (mm/),<br>
+[optional] weightage(w/).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Module code must already exist in system. Gradebook component name cannot already exist to module. In this case, take 'CS2113' as a module that already exist in Trajectory.</p>
+</li>
+<li>
+<p>Test case: <code>gradebook add mc/CS2113 cn/Assignment 1</code><br>
+Expected: Gradebook list will be displayed on the system with the newly added gradebook component 'Assignment 1'. The total number of gradebook components are indicated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>gradebook add mc/CS2113 cn/Assignment 1 mm/20</code><br>
+Expected: Gradebook component will not be added into the system as 'Assignment 1' is already found in the system. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect gradebook add commands to try:<br>
+<code>gradebook add</code>,<br>
+<code>gradebook add mc/CS2113 cn/x mm/y</code> (where x is <strong>not</strong> an existing component name to 'CS2113', y is a value <strong>below 0 and above 100</strong>),<br>
+<code>gradebook add mc/CS2113 cn/x w/y</code> (where x is <strong>not</strong> an existing component name to 'CS2113', y is a value <strong>below 0 and above 100</strong>),<br>
+<code>gradebook add mc/CS2113 cn/x w/y</code> (where x is <strong>not</strong> an existing component name to 'CS2113', where y is a value above the remaining weightage available to module code &#8594; Add up all weightage of grade components set to 'CS2113''),<br>
+   Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gradebook-find"><a class="link" href="#gradebook-find">H.5. Gradebook Find</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding a gradebook component to an existing module in Trajectory.<br>
+<strong>Parameters (prefix):</strong><br>
+Module code (mc/),<br>
+gradebook component name (cn/).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Gradebook component name to a module must already exist in system. In this case, take 'Assignment 1' as the gradebook component set to 'CS2113' in Trajectory.</p>
+</li>
+<li>
+<p>Test case: <code>gradebook find mc/CS2113 cn/Assignment 1</code><br>
+Expected: Information of the gradebook component to module will be displayed on the system.</p>
+</li>
+<li>
+<p>Test case: <code>gradebook find mc/CS2113 cn/Finals</code><br>
+Expected: Since gradebook component is not found in the system, error details will be shown in the status message.<br></p>
+</li>
+<li>
+<p>Other incorrect gradebook find commands to try:<br>
+<code>gradebook find</code>,<br>
+<code>gradebook find mc/MA1511 cn/Finals</code><br>
+  Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gradebook-delete"><a class="link" href="#gradebook-delete">H.6. Gradebook Delete</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a gradebook component to an existing module in Trajectory.<br>
+<strong>Parameters (prefix):</strong><br>
+Module code (mc/),<br>
+gradebook component name (cn/).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Gradebook component name to a module must already exist in system. In this case, take 'Assignment 1' as <strong>only</strong> the gradebook component set to 'CS2113' in Trajectory.</p>
+</li>
+<li>
+<p>Test case: <code>gradebook delete mc/CS2113 cn/Assignment 1</code><br>
+Expected: Gradebook list will be displayed on the system with the deleted gradebook component missing from the list. The total number of gradebook components remaining are indicated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>gradebook delete mc/CS2113 cn/Finals</code><br>
+Expected: Since gradebook component is not found in the system, error details will be shown in the status message.<br></p>
+</li>
+<li>
+<p>Other incorrect gradebook delete commands to try:<br>
+<code>gradebook delete</code>,<br>
+<code>gradebook delete mc/MA1511 cn/Finals</code><br>
+   Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gradebook-edit"><a class="link" href="#gradebook-edit">H.7. Gradebook Edit</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a gradebook component to an existing module in Trajectory.<br>
+<strong>Parameters (prefix):</strong><br>
+Module code (mc/),<br>
+gradebook component name (cn/),<br>
+[Optional] edited gradebook component name (en/),<br>
+[Optional] edited maximum marks (mm/),<br>
+[Optional] edited weightage [w/].<br>
+<strong>*Take note that at least one optional parameter must be indicated in the command.</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Gradebook component name to a module must already exist in system. In this case, take 'Assignment 1' as the gradebook components set to 'CS2113' in Trajectory.</p>
+</li>
+<li>
+<p>Test case: <code>gradebook edit mc/CS2113 cn/Assignment 1 mm/20</code><br>
+Expected: Gradebook list will be displayed on the system with the edited gradebook component. The total number of gradebook components is indicated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>gradebook edit mc/CS2113 cn/Finals w/50</code><br>
+Expected: Since gradebook component is not found in the system, error details will be shown in the status message.<br></p>
+</li>
+<li>
+<p>Other incorrect gradebook edit commands to try:<br>
+<code>gradebook edit</code>,<br>
+<code>gradebook edit mc/CS2113 cn/Assignment 1 w/x</code> where x is a value above the remaining weightage available to module code &#8594; Add up all weightage of grade components set to 'CS2113' <br>
+  Expected: Similar to previous.
+=== Grade Add</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Adding marks to a student for grade component to a module. In this case, take 'Assignment 1' with maximum marks of 20 as the gradebook components set to 'CS2113' in Trajectory. Student enrolled to the module has matric no. 'A0169999A' <br>
+<strong>Parameters (prefix):</strong><br>
+Module code (mc/),<br>
+Gradebook component name (cn/),<br>
+Student Matric Number (i/),<br>
+Marks (m/).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Gradebook component name to a module must already exist in system. Student must be enrolled to the module.</p>
+</li>
+<li>
+<p>Test case: <code>grade add mc/CS2113 cn/Assignment 1 i/A0169999A m/15</code><br>
+Expected: Grade list will be displayed. The total number of gradebook components is indicated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>grade add mc/CS2113 cn/Assignment 1 i/A0169999A m/30</code><br>
+Expected: Since the marks indicated is above the maximum marks set of 20, error details will be shown in the status message.<br></p>
+</li>
+<li>
+<p>Other incorrect grade add commands to try:<br>
+<code>grade add</code>,<br>
+<code>grade add mc/CS2113 cn/Assignment 1 i/x m/10</code> where x is a matric number of a student that is not enrolled in module.<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grade-list"><a class="link" href="#grade-list">H.8. Grade List</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Listing all grade of students of an existing gradebook component for module in Trajectory.<br>
+<strong>Parameters (prefix): NIL</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: NIL</p>
+</li>
+<li>
+<p>Test case: <code>grade list</code><br>
+Expected: Grade list will be displayed on the system with all the grade information. The total number of grade components remaining are indicated in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grade-graph"><a class="link" href="#grade-graph">H.9. Grade Graph</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Displaying the graph of all students marks to a gradebook component for a module in Trajectory. In this case, take 'Assignment 1' as the gradebook components set to 'CS2113' in Trajectory. Alse, all marks of students enrolled to the module is already in the system.<br>
+<strong>Parameters (prefix):</strong><br>
+Module code (mc/),<br>
+Gradebook component name (cn/).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: All students enrolled in the module must have their marks recorded. Else, user has no access to graph.</p>
+</li>
+<li>
+<p>Test case: <code>grade graph mc/CS2113 cn/Assignment 1</code><br>
+Expected: Grade graph will be pop up.</p>
+</li>
+<li>
+<p>Other incorrect grade graph commands to try:<br>
+<code>grade graph</code>,<br>
+<code>grade add mc/CS2113 cn/x</code> where x is a grade component is either not associated to module <strong>or</strong> not all marks of students enrolled in module is recorded in Trajectory.<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 08:19:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 13:08:35 UTC</div></div></div></body></html>
