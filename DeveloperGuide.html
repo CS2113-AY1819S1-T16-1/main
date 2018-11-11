@@ -84,12 +84,19 @@
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
 <li><a href="#saving-data">H.3. Saving data</a></li>
-<li><a href="#gradebook-add">H.4. Gradebook Add</a></li>
-<li><a href="#gradebook-find">H.5. Gradebook Find</a></li>
-<li><a href="#gradebook-delete">H.6. Gradebook Delete</a></li>
-<li><a href="#gradebook-edit">H.7. Gradebook Edit</a></li>
-<li><a href="#grade-list">H.8. Grade List</a></li>
-<li><a href="#grade-graph">H.9. Grade Graph</a></li>
+<li><a href="#gradebook-list">H.4. Gradebook List</a></li>
+<li><a href="#gradebook-add">H.5. Gradebook Add</a></li>
+<li><a href="#gradebook-find">H.6. Gradebook Find</a></li>
+<li><a href="#gradebook-delete">H.7. Gradebook Delete</a></li>
+<li><a href="#gradebook-edit">H.8. Gradebook Edit</a></li>
+<li><a href="#grade-list">H.9. Grade List</a></li>
+<li><a href="#grade-graph">H.10. Grade Graph</a></li>
+<li><a href="#adding-a-note">H.11. Adding a note</a></li>
+<li><a href="#deleting-a-note">H.12. Deleting a note</a></li>
+<li><a href="#editing-a-note">H.13. Editing a note</a></li>
+<li><a href="#listing-notes">H.14. Listing notes</a></li>
+<li><a href="#finding-notes-by-keywords">H.15. Finding notes by keywords</a></li>
+<li><a href="#exporting-notes-to-csv">H.16. Exporting notes to CSV</a></li>
 </ul>
 </li>
 </ul>
@@ -1006,11 +1013,11 @@ If a command fails its execution, it will not call <code>Gradebook#GradebookMana
 <p>Step 4. The user now decides to export graph according to the progress of a student, and that action is done by executing the <code>gradebook graph student</code> command. This command will call <code>GradebookManager#graphStudentProgress()</code>, which then displays the graph of the students progress.</p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+<p>The following activity diagram summarizes what happens when a user executes grade graph command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/dataToGraphActivityDiagram.png" alt="dataToGraphActivityDiagram" width="650">
+<img src="images/GradeGraphActivityDiagram.png" alt="GradeGraphActivityDiagram" width="650">
 </div>
 </div>
 </div>
@@ -6249,9 +6256,11 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em>
-=== Gradebook List</p>
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="gradebook-list"><a class="link" href="#gradebook-list">H.4. Gradebook List</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6273,7 +6282,7 @@ Expected: Gradebook list will be displayed on the system with all the gradebook 
 </div>
 </div>
 <div class="sect2">
-<h3 id="gradebook-add"><a class="link" href="#gradebook-add">H.4. Gradebook Add</a></h3>
+<h3 id="gradebook-add"><a class="link" href="#gradebook-add">H.5. Gradebook Add</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6311,7 +6320,7 @@ Expected: Gradebook component will not be added into the system as 'Assignment 1
 </div>
 </div>
 <div class="sect2">
-<h3 id="gradebook-find"><a class="link" href="#gradebook-find">H.5. Gradebook Find</a></h3>
+<h3 id="gradebook-find"><a class="link" href="#gradebook-find">H.6. Gradebook Find</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6345,7 +6354,7 @@ Expected: Since gradebook component is not found in the system, error details wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="gradebook-delete"><a class="link" href="#gradebook-delete">H.6. Gradebook Delete</a></h3>
+<h3 id="gradebook-delete"><a class="link" href="#gradebook-delete">H.7. Gradebook Delete</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6379,7 +6388,7 @@ Expected: Since gradebook component is not found in the system, error details wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="gradebook-edit"><a class="link" href="#gradebook-edit">H.7. Gradebook Edit</a></h3>
+<h3 id="gradebook-edit"><a class="link" href="#gradebook-edit">H.8. Gradebook Edit</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6447,7 +6456,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="grade-list"><a class="link" href="#grade-list">H.8. Grade List</a></h3>
+<h3 id="grade-list"><a class="link" href="#grade-list">H.9. Grade List</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6469,7 +6478,7 @@ Expected: Grade list will be displayed on the system with all the grade informat
 </div>
 </div>
 <div class="sect2">
-<h3 id="grade-graph"><a class="link" href="#grade-graph">H.9. Grade Graph</a></h3>
+<h3 id="grade-graph"><a class="link" href="#grade-graph">H.10. Grade Graph</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6498,5 +6507,210 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-a-note"><a class="link" href="#adding-a-note">H.11. Adding a note</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a note in Trajectory while all notes are listed.<br>
+<strong>Parameters (prefix):</strong><br>
+[optional] MODULE_CODE (mc/),<br>
+[optional] NOTE_TITLE (tt/),<br>
+[optional] NOTE_START_DATE (sd/),<br>
+[optional] NOTE_START_TIME (st/),<br>
+[optional] NOTE_END_DATE (ed/),<br>
+[optional] NOTE_END_TIME (et/),<br>
+[optional] NOTE_LOCATION (lc/)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all notes using <code>note list</code> command. The displayed list can have 0 or more notes. MODULE_CODE must already exist in the system (if specified as parameter). Take 'CS2113' as a module that already exists in Trajectory.</p>
+</li>
+<li>
+<p>Test case: <code>note add</code><br>
+Expected: The application will prompt the user to enter note. Upon saving, the notes list should be displayed with the newly created note at the bottom. If cancelled, the note should not be saved.</p>
+</li>
+<li>
+<p>Test case: <code>note add tt/First note sd/16-11-2018 lc/NUS</code><br>
+Expected: Similar to previous, but the new note should contain more information when displayed.</p>
+</li>
+<li>
+<p>Test case: <code>note add mc/CS2113</code><br>
+Expected: Similar to previous. However, this note will be assigned to 'CS2113' module.</p>
+</li>
+<li>
+<p>Test case: <code>note add mc/GEQ1000</code><br>
+Expected: No note is added. An error message will be shown.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>note add tt/x</code> (where x is a string of characters with character count greater than 30)<br>
+Expected: Same as previous.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 13:55:07 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-note"><a class="link" href="#deleting-a-note">H.12. Deleting a note</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a note in Trajectory while all notes are listed.<br>
+<strong>Parameters (prefix):</strong><br>
+INDEX (no prefix),<br>
+INDEX_RANGE (no prefix)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all notes using <code>note list</code> command. The displayed list contains multiple notes.</p>
+</li>
+<li>
+<p>Test case: <code>note delete 1</code><br>
+Expected: The first note labeled '#1' in the list will be deleted. A message will be displayed upon successful deletion.</p>
+</li>
+<li>
+<p>Test case: <code>note delete 1-3</code><br>
+Expected: The notes #1, #2, and #3 will be deleted from the list. A message will be displayed upon successful deletion.</p>
+</li>
+<li>
+<p>Test case: <code>note delete 0</code><br>
+Expected: No note is deleted. An error message will be shown.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>note delete -1</code>, <code>note delete 3-1</code>, <code>note delete x</code> (where x is larger than the list size)<br>
+Expected: Same as previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-note"><a class="link" href="#editing-a-note">H.13. Editing a note</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a note in Trajectory while all notes are listed.<br>
+<strong>Parameters (prefix):</strong><br>
+INDEX (no prefix),<br>
+[optional] MODULE_CODE (mc/),<br>
+[optional] NOTE_TITLE (tt/),<br>
+[optional] NOTE_START_DATE (sd/),<br>
+[optional] NOTE_START_TIME (st/),<br>
+[optional] NOTE_END_DATE (ed/),<br>
+[optional] NOTE_END_TIME (et/),<br>
+[optional] NOTE_LOCATION (lc/)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all notes using <code>note list</code> command. The displayed list contains multiple notes. MODULE_CODE must already exist in the system (if specified as parameter). Take 'CS2113' as a module that already exists in Trajectory.</p>
+</li>
+<li>
+<p>Test case: <code>note edit 1</code><br>
+Expected: The application will prompt the user to modify the note. Upon saving, the list will be updated. If cancelled, the modifications are discarded.</p>
+</li>
+<li>
+<p>Test case: <code>note edit 1 tt/Modified Title</code><br>
+Expected: Same as previous but the title of the note will also be edited.</p>
+</li>
+<li>
+<p>Test case: <code>note edit x</code> (where x is larger than the list size)<br>
+Expected: No note is edited. An error message will be shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-notes"><a class="link" href="#listing-notes">H.14. Listing notes</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Listing all existing notes in Trajectory.<br>
+<strong>Parameters (prefix):</strong><br>
+[optional] MODULE_CODE (mc/)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Multiples notes are currently saved in Trajectory. At least one note should be assigned to 'CS2113'. Take 'CS2113' as a module that already exists in Trajectory.</p>
+</li>
+<li>
+<p>Test case: <code>note list</code><br>
+Expected: The list of all notes in Trajectory will be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>note list mc/CS2113</code><br>
+Expected: The list of all notes assigned to 'CS2113' module will be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>note list mc/GER1000</code><br>
+Expected: A message indicating that no notes were found should be displayed. The list will not be updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-notes-by-keywords"><a class="link" href="#finding-notes-by-keywords">H.15. Finding notes by keywords</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding notes in Trajectory that matches keyword(s).<br>
+<strong>Parameters (prefix):</strong><br>
+KEYWORD (k/),<br>
+[optional] MORE_KEYWORDS (k/)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Multiples notes are currently saved in Trajectory. At least one note should contain the word "hello" in its title or in the text of the note.</p>
+</li>
+<li>
+<p>Test case: <code>note find k/hello</code><br>
+Expected: The list of all notes containing the word "hello" will be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>note find k/x</code> (where x is a word that does not exist in any note)<br>
+Expected: A message indicating that no notes were found should be displayed. The list will not be updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-notes-to-csv"><a class="link" href="#exporting-notes-to-csv">H.16. Exporting notes to CSV</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Exporting notes in Trajectory.<br>
+<strong>Parameters (prefix):</strong><br>
+FILE_NAME (fn/)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Multiples notes are currently saved in Trajectory. At least one note should have a date &amp; time displayed in its information when <code>note list</code> command is used.</p>
+</li>
+<li>
+<p>Test case: <code>note export fn/test_case1</code><br>
+Expected: A message indicating a successful export will be displayed. A file named "test_case1.csv" will be saved in /data/CSVexport/ directory from Trajectory&#8217;s location.</p>
+</li>
+<li>
+<p>Test case: <code>note export fn/test_case@</code><br>
+Expected: No notes will be exported and no file is created. An error message indicating an invalid filename will be displayed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:17:30 UTC</div></div></div></body></html>
