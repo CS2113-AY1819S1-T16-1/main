@@ -43,14 +43,14 @@
 <li><a href="#class-management">3.4. Class Management</a>
 <ul class="sectlevel3">
 <li><a href="#add-class-code-class-add-code">3.4.1. Add Class : <code>class add</code></a></li>
-<li><a href="#update-class-enrollment-limits-code-class-edit-code">3.4.2. Update Class Enrollment Limits : <code>class edit</code></a></li>
-<li><a href="#update-class-attendance-list-code-class-modattendance-code">3.4.3. Update Class Attendance List : <code>class modattendance</code></a></li>
-<li><a href="#list-class-code-class-list-code">3.4.4. List class : <code>class list</code></a></li>
-<li><a href="#remove-class-code-class-delete-code">3.4.5. Remove class : <code>class delete</code></a></li>
-<li><a href="#assign-student-to-class-code-class-addstudent-code">3.4.6. Assign Student To Class : <code>class addstudent</code></a></li>
-<li><a href="#unassigning-student-from-class-code-class-delstudent-code">3.4.7. Unassigning Student From Class : <code>class delstudent</code></a></li>
-<li><a href="#marking-class-attendance-list-code-class-markattendance-code">3.4.8. Marking class attendance list : <code>class markattendance</code></a></li>
-<li><a href="#accessing-class-attendance-list-code-class-listattendance-code">3.4.9. Accessing class attendance list : <code>class listattendance</code></a></li>
+<li><a href="#list-class-code-class-list-code">3.4.2. List class : <code>class list</code></a></li>
+<li><a href="#update-class-enrollment-limits-code-class-edit-code">3.4.3. Update Class Enrollment Limits : <code>class edit</code></a></li>
+<li><a href="#remove-class-code-class-delete-code">3.4.4. Remove class : <code>class delete</code></a></li>
+<li><a href="#assign-student-to-class-code-class-addstudent-code">3.4.5. Assign Student To Class : <code>class addstudent</code></a></li>
+<li><a href="#unassigning-student-from-class-code-class-delstudent-code">3.4.6. Unassigning Student From Class : <code>class delstudent</code></a></li>
+<li><a href="#marking-class-attendance-list-code-class-markattendance-code">3.4.7. Marking class attendance list : <code>class markattendance</code></a></li>
+<li><a href="#accessing-class-attendance-list-code-class-listattendance-code">3.4.8. Accessing class attendance list : <code>class listattendance</code></a></li>
+<li><a href="#update-class-attendance-list-code-class-modattendance-code">3.4.9. Update Class Attendance List : <code>class modattendance</code></a></li>
 </ul>
 </li>
 <li><a href="#gradebook-management">3.5. Gradebook Management</a>
@@ -706,7 +706,36 @@ Creates a class T16, assigns it to the module CG1111 with the max enrollment siz
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-class-enrollment-limits-code-class-edit-code"><a class="link" href="#update-class-enrollment-limits-code-class-edit-code">3.4.2. Update Class Enrollment Limits : <code>class edit</code></a></h4>
+<h4 id="list-class-code-class-list-code"><a class="link" href="#list-class-code-class-list-code">3.4.2. List class : <code>class list</code></a></h4>
+<div class="paragraph">
+<p>Lists class(es) with information of the class as well as students assigned to class (if any) for the system.<br>
+Format: <code>class list</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Class(es) must exist in order to be listed</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class list</code><br>
+Lists all the class(es) created as well as students assigned to class (if any).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="update-class-enrollment-limits-code-class-edit-code"><a class="link" href="#update-class-enrollment-limits-code-class-edit-code">3.4.3. Update Class Enrollment Limits : <code>class edit</code></a></h4>
 <div class="paragraph">
 <p>Modifies the max enrollment size for a class for the system.<br>
 Format: <code>class edit cn/CLASS_NAME mc/MODULE_CODE e/ENROLLMENT_SIZE</code></p>
@@ -728,8 +757,36 @@ Format: <code>class edit cn/CLASS_NAME mc/MODULE_CODE e/ENROLLMENT_SIZE</code></
 <div class="paragraph">
 <p>Examples:</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="remove-class-code-class-delete-code"><a class="link" href="#remove-class-code-class-delete-code">3.4.4. Remove class : <code>class delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes a class for a module in the system.<br>
+Format: <code>class delete cn/CLASS_NAME mc/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>Module code must exist</p>
+</li>
+<li>
+<p>Class must exist and belong to module code before being able to delete the class</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class delete cn/T16 mc/CG1111</code><br>
+Deletes the class T16 from the module CG1111</p>
+</li>
 <li>
 <p><code>class edit cn/T16 mc/CG1111 e/69</code><br>
 Modifies the new max class enrollment size for the class T16 of module CG1111 to be 69</p>
@@ -738,7 +795,153 @@ Modifies the new max class enrollment size for the class T16 of module CG1111 to
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-class-attendance-list-code-class-modattendance-code"><a class="link" href="#update-class-attendance-list-code-class-modattendance-code">3.4.3. Update Class Attendance List : <code>class modattendance</code></a></h4>
+<h4 id="assign-student-to-class-code-class-addstudent-code"><a class="link" href="#assign-student-to-class-code-class-addstudent-code">3.4.5. Assign Student To Class : <code>class addstudent</code></a></h4>
+<div class="paragraph">
+<p>Assigns a student to a class in the system.<br>
+Format: <code>class addstudent cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Module code must exist</p>
+</li>
+<li>
+<p>Student must exist and enrolled in the module</p>
+</li>
+<li>
+<p>Classroom shouldn&#8217;t be full</p>
+</li>
+<li>
+<p>Class must exist and belong to the module code before assigning a student to the class</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class addstudent cn/T16 mc/CG1111 i/A6942069M</code><br>
+Adds a student of the admission number A6942069M to the class T16 of module CG1111</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="unassigning-student-from-class-code-class-delstudent-code"><a class="link" href="#unassigning-student-from-class-code-class-delstudent-code">3.4.6. Unassigning Student From Class : <code>class delstudent</code></a></h4>
+<div class="paragraph">
+<p>Unassigns a student from the class in the system.<br>
+Format: <code>class delstudent cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Module code must exist</p>
+</li>
+<li>
+<p>Student must exist and enrolled in the module</p>
+</li>
+<li>
+<p>Class must exist and belong to the module code before unassigning a student from the class</p>
+</li>
+<li>
+<p>Student must be assigned to class in order to unassign them from the class</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class delstudent cn/T16 mc/CG1111 i/A6942069M</code><br>
+Removes a student of the admission number A6942069M from the class T16 of module CG1111</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="marking-class-attendance-list-code-class-markattendance-code"><a class="link" href="#marking-class-attendance-list-code-class-markattendance-code">3.4.7. Marking class attendance list : <code>class markattendance</code></a></h4>
+<div class="paragraph">
+<p>Mark the class attendance list for a specified student for the system.<br>
+Format: <code>class markattendance cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Student must exist</p>
+</li>
+<li>
+<p>Module code must exist</p>
+</li>
+<li>
+<p>Class must exist and belong to module before being able to mark student available for class attendance</p>
+</li>
+<li>
+<p>Student must be in the specified class in order to mark student present</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class markattendance cn/T16 mc/CG1111 i/A6942069M</code><br>
+Marks the attendance of the student of the admission number A6942069M for the class T16 for the module CG1111</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="accessing-class-attendance-list-code-class-listattendance-code"><a class="link" href="#accessing-class-attendance-list-code-class-listattendance-code">3.4.8. Accessing class attendance list : <code>class listattendance</code></a></h4>
+<div class="paragraph">
+<p>Access the class attendance list for the system.<br>
+Format: <code>class listattendance cn/CLASS_NAME mc/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Module must exist</p>
+</li>
+<li>
+<p>Class must exist and belong to module before being able to access the class attendance list</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class listattendance cn/T16 mc/CG1111</code><br>
+Displays the class attendance list for the class T16 for the module CG1111</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="update-class-attendance-list-code-class-modattendance-code"><a class="link" href="#update-class-attendance-list-code-class-modattendance-code">3.4.9. Update Class Attendance List : <code>class modattendance</code></a></h4>
 <div class="paragraph">
 <p>Modifies the class attendance list for the system.<br>
 Format: <code>class modattendance cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code></p>
@@ -774,213 +977,6 @@ Format: <code>class modattendance cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code
 <li>
 <p><code>class modattendance cn/T16 mc/CG1111 i/A6942069M</code><br>
 Modifies the attendance of the student of the admission number A6942069M for the class T16 of module CG1111 to be absent</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="list-class-code-class-list-code"><a class="link" href="#list-class-code-class-list-code">3.4.4. List class : <code>class list</code></a></h4>
-<div class="paragraph">
-<p>Lists class(es) with information of the class as well as students assigned to class (if any) for the system.<br>
-Format: <code>class list</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Class(es) must exist in order to be listed</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>class list</code><br>
-Lists all the class(es) created as well as students assigned to class (if any).</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="remove-class-code-class-delete-code"><a class="link" href="#remove-class-code-class-delete-code">3.4.5. Remove class : <code>class delete</code></a></h4>
-<div class="paragraph">
-<p>Deletes a class for a module in the system.<br>
-Format: <code>class delete cn/CLASS_NAME mc/MODULE_CODE</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Module code must exist</p>
-</li>
-<li>
-<p>Class must exist and belong to module code before being able to delete the class</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>class delete cn/CLASS_NAME mc/MODULE_CODE</code><br>
-Deletes the class T16 from the module CG1111</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="assign-student-to-class-code-class-addstudent-code"><a class="link" href="#assign-student-to-class-code-class-addstudent-code">3.4.6. Assign Student To Class : <code>class addstudent</code></a></h4>
-<div class="paragraph">
-<p>Assigns a student to a class in the system.<br>
-Format: <code>class addstudent cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Student must exist in the system</p>
-</li>
-<li>
-<p>Module code must exist</p>
-</li>
-<li>
-<p>Classroom shouldn&#8217;t be full</p>
-</li>
-<li>
-<p>Class must exist and belong to the module code before assigning a student to the class</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>class addstudent cn/T16 mc/CG1111 i/A6942069M</code><br>
-Adds a student of the admission number A6942069M to the class T16 of module CG1111</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="unassigning-student-from-class-code-class-delstudent-code"><a class="link" href="#unassigning-student-from-class-code-class-delstudent-code">3.4.7. Unassigning Student From Class : <code>class delstudent</code></a></h4>
-<div class="paragraph">
-<p>Unassigns a student from the class in the system.<br>
-Format: <code>class delstudent cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Student must exist in the system</p>
-</li>
-<li>
-<p>Module code must exist</p>
-</li>
-<li>
-<p>Class must exist and belong to the module code before unassigning a student from the class</p>
-</li>
-<li>
-<p>Student must be assigned to class in order to unassign them from the class</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>class delstudent cn/T16 mc/CG1111 i/A6942069M</code><br>
-Removes a student of the admission number A6942069M from the class T16 of module CG1111</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="marking-class-attendance-list-code-class-markattendance-code"><a class="link" href="#marking-class-attendance-list-code-class-markattendance-code">3.4.8. Marking class attendance list : <code>class markattendance</code></a></h4>
-<div class="paragraph">
-<p>Mark the class attendance list for a specified student for the system.<br>
-Format: <code>class markattendance cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Student must exist</p>
-</li>
-<li>
-<p>Module code must exist</p>
-</li>
-<li>
-<p>Class must exist and belong to class before being able to mark student available for class attendance</p>
-</li>
-<li>
-<p>Student must be in the specified class in order to mark student present</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>class markattendance cn/T16 mc/CG1111 i/A6942069M</code><br>
-Marks the attendance of the student of the admission number A6942069M for the class T16 for the module CG1111</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="accessing-class-attendance-list-code-class-listattendance-code"><a class="link" href="#accessing-class-attendance-list-code-class-listattendance-code">3.4.9. Accessing class attendance list : <code>class listattendance</code></a></h4>
-<div class="paragraph">
-<p>Access the class attendance list for the system.<br>
-Format: <code>class listattendance cn/T16 mc/CG1111</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Module must exist</p>
-</li>
-<li>
-<p>Class must exist and belong to module before being able to access the class attendance list</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>class listattendance cn/T16 mc/CG1111</code><br>
-Displays the class attendance list for the class T16 for the module CG1111</p>
 </li>
 </ul>
 </div>
@@ -1771,6 +1767,10 @@ e.g. <code>class add cn/T16 mc/CG1111 e/20</code></p>
 e.g. <code>class list</code></p>
 </li>
 <li>
+<p><strong>Modifying class enrollment limits</strong> <code>class edit cn/CLASS_NAME mc/MODULE_CODE e/ENROLLMENT_SIZE</code><br>
+e.g. <code>class edit cn/T16 mc/CG1111 e/69</code></p>
+</li>
+<li>
 <p><strong>Deleting a class</strong> <code>class delete cn/CLASS_NAME mc/MODULE_CODE</code><br>
 e.g. <code>class delete cn/T16 mc/CG1111</code></p>
 </li>
@@ -1781,10 +1781,6 @@ e.g. <code>class addstudent cn/T16 mc/CG1111 i/A6942069M</code></p>
 <li>
 <p><strong>Unassigning a student from class</strong> <code>class delstudent cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code><br>
 e.g. <code>class delstudent cn/T16 mc/CG1111 i/A6942069M</code></p>
-</li>
-<li>
-<p><strong>Modifying class enrollment limits</strong> <code>class edit cn/CLASS_NAME mc/MODULE_CODE e/ENROLLMENT_SIZE</code><br>
-e.g. <code>class edit cn/T16 mc/CG1111 e/69</code></p>
 </li>
 <li>
 <p><strong>Marking class attendance list</strong> <code>class markattendance cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code><br>
@@ -1832,4 +1828,4 @@ e.g. <code>note export fn/notes</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:42:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:52:38 UTC</div></div></div></body></html>
