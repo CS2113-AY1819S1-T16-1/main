@@ -25,7 +25,8 @@
 <li><a href="#update-student-code-student-edit-code">3.2.7. Update Student : <code>student edit</code></a></li>
 <li><a href="#remove-student-code-student-delete-code">3.2.8. Remove Student : <code>student delete</code></a></li>
 <li><a href="#list-students-code-student-list-code">3.2.9. List Students : <code>student list</code></a></li>
-<li><a href="#export-student-code-student-export-coming-in-v2-0-code">3.2.10. Export Student : <code>student export [coming in v2.0]</code></a></li>
+<li><a href="#find-student-code-student-find-code">3.2.10. Find Student : <code>student find</code></a></li>
+<li><a href="#export-student-code-student-export-coming-in-v2-0-code">3.2.11. Export Student : <code>student export [coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#module-management">3.3. Module Management</a>
@@ -177,7 +178,7 @@ Format: <code>course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Course code must be unique.</p>
+<p>Course code must be unique. Capped to 10 letters.</p>
 </li>
 <li>
 <p>Course code may contain letters only.</p>
@@ -225,7 +226,7 @@ Format: <code>course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]</code><
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the student at the specified course code. A course code must be provided to make changes.</p>
+<p>Edits the course at the specified course code. A course code must be provided to make changes.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided</p>
@@ -398,7 +399,42 @@ Format: <code>student list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="export-student-code-student-export-coming-in-v2-0-code"><a class="link" href="#export-student-code-student-export-coming-in-v2-0-code">3.2.10. Export Student : <code>student export [coming in v2.0]</code></a></h4>
+<h4 id="find-student-code-student-find-code"><a class="link" href="#find-student-code-student-find-code">3.2.10. Find Student : <code>student find</code></a></h4>
+<div class="paragraph">
+<p>Finds students whose name contain any of the given keywords.<br>
+Format: <code>name find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one keyword must be provided.</p>
+</li>
+<li>
+<p>The search is case-insensitive.</p>
+</li>
+<li>
+<p>The search will only match whole words i.e. <code>Meg</code> will not return <code>Megan</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>student find Megan</code><br>
+Returns students with the name <code>Megan</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="export-student-code-student-export-coming-in-v2-0-code"><a class="link" href="#export-student-code-student-export-coming-in-v2-0-code">3.2.11. Export Student : <code>student export [coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Exports students to a .csv file<br>
 Format: <code>student export LOCATION</code></p>
@@ -1678,7 +1714,7 @@ e.g. <code>student add n/Megan Nicole c/CEG e/E0169113@u.nus.edu a/14 Changi Sou
 e.g. `student edit 1 p/99887890 a/14 Simei Avenue 1</code></p>
 </li>
 <li>
-<p><strong>Finding a student by name/matric no</strong> : <code>student find STUDENT_NAME</code><br>
+<p><strong>Finding a student by name</strong> : <code>student find STUDENT_NAME</code><br>
 e.g. <code>student find Megan Nicole</code></p>
 </li>
 <li>
@@ -1845,4 +1881,4 @@ e.g. <code>note export fn/notes</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:50:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:52:43 UTC</div></div></div></body></html>
