@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE_CODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE_NAME;
 
@@ -26,12 +27,13 @@ public class ModuleAddCommand extends Command {
             + PREFIX_MODULE_NAME + "Software Engineering & Object-Oriented Programming";
 
     public static final String MESSAGE_SUCCESS = "New module added: %1$s %2$s";
-    private static final String MESSAGE_DUPLICATE_MODULE =
+    public static final String MESSAGE_DUPLICATE_MODULE =
             "A module with module code %1$s already exists in Trajectory.";
 
     private final Module moduleToAdd;
 
     public ModuleAddCommand(Module module) {
+        requireNonNull(module);
         this.moduleToAdd = module;
     }
 

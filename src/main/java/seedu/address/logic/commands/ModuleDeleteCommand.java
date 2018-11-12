@@ -30,6 +30,7 @@ public class ModuleDeleteCommand extends Command {
     private final ModuleCode targetModuleCode;
 
     public ModuleDeleteCommand(ModuleCode moduleCode) {
+        requireNonNull(moduleCode);
         this.targetModuleCode = moduleCode;
     }
 
