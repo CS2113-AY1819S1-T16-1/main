@@ -10,7 +10,9 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Trajectory is a lightweight management system for those who need a no-frills solution for managing students, modules, grades, classes and notes. It is built for users who prefer typing (CLI) over GUI interaction and has a GUI created with JavaFX.</p>
+<p>Trajectory is a lightweight learning management system for those who need a
+no-frills solution for managing students, modules, grades, classes and notes.
+It is built for users who prefer typing (CLI) over GUI interaction and has a GUI created with JavaFX.</p>
 </div>
 </div>
 </div>
@@ -20,14 +22,15 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the capability for faculty members to manage courses and students.</strong></p>
+<p><strong>Major enhancement</strong>: implemented Student and Course Management</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows a faculty member to manage courses and students.</p>
+<p>What it does: allows a faculty member to manage students, and courses within an institution.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because it is specially built for users of an educational institution.</p>
+<p>Justification: Unlike AB4 which has a generalized target audience, the feature I implemented are written for the context of an LMS.
+Built specifically for the needs of teachers, and by extension&#8201;&#8212;&#8201;the needs of an educational institution.</p>
 </li>
 <li>
 <p>Highlights: Cohesiveness with other features as they make use of the student/course APIs for their own use.</p>
@@ -36,13 +39,13 @@
 </div>
 </li>
 <li>
+<p><strong>Minor enhancement</strong>: added the ability for the user to lock/unlock the system to prevent unauthorized use.</p>
+</li>
+<li>
 <p><strong>Minor enhancement</strong>: wrote a custom implementation of the storage-level layer for the team to use.</p>
 </li>
 <li>
 <p><strong>Minor enhancement</strong>: built an utility class for the rendering of data into HTML (Bootstrap).</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: <a href="https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&amp;search=m-aslam-mj2">Project Code Dashboard</a></p>
@@ -78,7 +81,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>WIP</p>
+<p>revamped existing AB4&#8217;s commands to fit the theme of the product (e.g. add to student add)</p>
 </li>
 </ul>
 </div>
@@ -117,9 +120,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -181,7 +181,46 @@ Format: course list</p>
 <h4 id="list-all-courses-code-course-liststudents-code"><a class="link" href="#list-all-courses-code-course-liststudents-code">List all courses : <code>course liststudents</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students ordered by course.<br>
-Format: course liststudent</p>
+Format: course liststudentsfe</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-a-course-code-course-edit-code"><a class="link" href="#edit-a-course-code-course-edit-code">Edit a course : <code>course edit</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing course in the system (by course code).<br>
+Format: course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the student at the specified course code. A course code must be provided to make changes.</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>student edit 1 p/99887890 a/14 Simei Avenue 1</code>
+Edits the phone number and home address of the 1st student to be 99887890 and 14 Simei Avenue 1 respectively.</p>
+</li>
+<li>
+<p><code>student edit 2 a/14 Jurong East Street 91</code>
+Edits only the address of the 2nd student to be 14 Jurong East Street 91.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -251,7 +290,7 @@ Format: student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL 
 <h4 id="update-student-code-student-edit-code"><a class="link" href="#update-student-code-student-edit-code">Update Student : <code>student edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing student in the system.<br>
-Format: student edit INDEX [n/NAME] [i/ADMIN_NUMBER] [c/COURSE_CODE] [p/MOBILE_NUMBER] [e/EMAIL a/ADDRESS]</p>
+Format: student edit INDEX [n/NAME] [c/COURSE_CODE] [p/MOBILE_NUMBER] [e/EMAIL] [a/ADDRESS]</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -329,7 +368,7 @@ Format: student list</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="export-student-code-student-export-coming-in-v1-4-code"><a class="link" href="#export-student-code-student-export-coming-in-v1-4-code">Export Student : <code>student export [coming in v1.4]</code></a></h4>
+<h4 id="export-student-code-student-export-coming-in-v2-0-code"><a class="link" href="#export-student-code-student-export-coming-in-v2-0-code">Export Student : <code>student export [coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Exports students to a .csv file<br>
 Format: student export LOCATION</p>
@@ -366,6 +405,10 @@ e.g. <code>course add c/CEG n/Computer Engineering f/FoE</code></p>
 e.g. <code>course delete c/CEG</code></p>
 </li>
 <li>
+<p><strong>Edit course</strong> : <code>course edit c/COURSE_CODE [n/COURSE_NAME] [f/FACULTY_NAME]</code><br>
+e.g. <code>course edit c/CEG n/Comp Eng</code></p>
+</li>
+<li>
 <p><strong>List all courses</strong> : <code>course list</code><br></p>
 </li>
 <li>
@@ -380,7 +423,7 @@ e.g. <code>student add n/Megan Nicole c/CEG e/E0169113@u.nus.edu a/14 Changi Sou
 e.g. `student edit 1 p/99887890 a/14 Simei Avenue 1</code></p>
 </li>
 <li>
-<p><strong>Finding a student by name/matric no</strong> : <code>student find [n/STUDENT_NAME] [i/MATRIC_NO</code><br>
+<p><strong>Finding a student by name/matric no</strong> : <code>student find STUDENT_NAME</code><br>
 e.g. <code>student find Megan Nicole</code></p>
 </li>
 <li>
@@ -391,7 +434,7 @@ e.g. <code>student find Megan Nicole</code></p>
 e.g. <code>student delete 2</code></p>
 </li>
 <li>
-<p><strong>Export students [COMING IN V1.4]</strong> : <code>student export</code><br>
+<p><strong>Export students [COMING IN V2.0]</strong> : <code>student export</code><br>
 e.g. <code>student export C:\export</code></p>
 </li>
 </ul>
@@ -414,6 +457,24 @@ e.g. <code>student export C:\export</code></p>
 </table>
 <div class="sect2">
 <h3 id="proposed-partially-implemented-user-authentication-feature"><a class="link" href="#proposed-partially-implemented-user-authentication-feature">[PROPOSED, PARTIALLY IMPLEMENTED] User Authentication feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The bare-bones foundation for user authentication already exists in Trajectory, but it&#8217;ll be put in production after V1.4. In the meantime, we have elected to use
+elements from that foundation to serve us in a limited capacity. Trajectory is capable of locking/unlocking access to the system via
+the <code>unlock</code> and <code>lock</code> commands. When the app starts up, the user must type in a password to be able to use the system. Should he decide
+to go on a break, he/she need not worry, as the system can be locked just as easily.</p>
+</div>
+<div class="paragraph">
+<p>This is a sequence diagram of what happens when the user types in the unlock command. Note that you see "Login", as the lock/unlock feature works on top of the user authentication system
+that already exists in code.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LockUnlockSequenceDiagram.png" alt="LockUnlockSequenceDiagram" width="650">
+</div>
+</div>
+</div>
 <div class="sect3">
 <h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
 <div class="paragraph">
@@ -639,92 +700,7 @@ but prevent TAs from seeing it, although TAs can assign marks.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="use-case-add-student"><a class="link" href="#use-case-add-student">Use case: Add Student</a></h3>
-<div class="paragraph">
-<p><strong>Precondition(s)</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>NIL</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Guarantees</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>TBC</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>MSS</strong> :</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Teacher adds student to system.</p>
-</li>
-<li>
-<p>System adds student to system, and show a confirmation message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>2a. Teacher enters an invalid command.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>2a1. System displays the list of valid commands.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2b. Teacher enters improperly formatted command.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>2b1. System displays the proper format for usage of the command.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2c. Student already exists in system.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>2c1. System shows 'duplicate student' message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-add-student-2" class="discrete">Use case: Add Student</h3>
+<h3 id="use-case-add-student" class="discrete">Use case: Add Student</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
@@ -973,6 +949,89 @@ but prevent TAs from seeing it, although TAs can assign marks.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-delete-student" class="discrete">Use case: Delete Student</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NIL</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher deletes student by index.</p>
+</li>
+<li>
+<p>System deletes the student from the system, and shows a confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. Teacher enters improperly formatted command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. System displays the proper format for usage of the command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2c. Invalid index.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2c1. System shows 'invalid index' message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <h3 id="use-case-list-students" class="discrete">Use case: List Students</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
@@ -1056,7 +1115,7 @@ but prevent TAs from seeing it, although TAs can assign marks.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-export-all-students-to-file" class="discrete">Use case: Export All Students To File</h3>
+<h3 id="use-case-export-all-students-to-file-coming-in-v2-0" class="discrete">Use case: Export All Students To File [COMING IN V2.0]</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
@@ -1152,7 +1211,7 @@ but prevent TAs from seeing it, although TAs can assign marks.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-import-students-from-file" class="discrete">Use case: Import students from file</h3>
+<h3 id="use-case-import-students-from-file-coming-in-v2-0" class="discrete">Use case: Import students from file [COMING IN V2.0]</h3>
 <div class="paragraph">
 <p><strong>Precondition(s)</strong> :</p>
 </div>
@@ -1399,12 +1458,178 @@ but prevent TAs from seeing it, although TAs can assign marks.</p>
 </ul>
 </div>
 </li>
-<li>
-<p>2c. There are no courses in the system.</p>
+</ul>
+</div>
+<h3 id="use-case-remove-course" class="discrete">Use case: Remove course</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>2c1. System shows 'no courses in system' message.</p>
+<p>NIL</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher removes course.</p>
+</li>
+<li>
+<p>System removes course from the system, and show a confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. Teacher enters improperly formatted command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. System displays the proper format for usage of the command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2c. Invalid course code</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2c1. System shows 'invalid course code' message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2d. There are students assigned to that course code.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2d1. System shows 'no deletion for course that has registered students' message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-course" class="discrete">Use case: Edit course</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NIL</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TBC</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher edits a course with specified details.</p>
+</li>
+<li>
+<p>System edits course details, and shows a confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. Teacher enters improperly formatted command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. System displays the proper format for usage of the command.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2c. Course does not exist in system.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2c1. System shows 'invalid course' message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -1499,4 +1724,4 @@ but prevent TAs from seeing it, although TAs can assign marks.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:24:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:36:44 UTC</div></div></div></body></html>

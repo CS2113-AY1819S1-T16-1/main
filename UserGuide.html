@@ -19,12 +19,13 @@
 <li><a href="#add-a-course-code-course-add-code">3.2.1. Add a course : <code>course add</code></a></li>
 <li><a href="#list-all-courses-code-course-list-code">3.2.2. List all courses : <code>course list</code></a></li>
 <li><a href="#list-all-courses-code-course-liststudents-code">3.2.3. List all courses : <code>course liststudents</code></a></li>
-<li><a href="#remove-course-code-course-delete-code">3.2.4. Remove course : <code>course delete</code></a></li>
-<li><a href="#add-student-code-student-add-code">3.2.5. Add Student : <code>student add</code></a></li>
-<li><a href="#update-student-code-student-edit-code">3.2.6. Update Student : <code>student edit</code></a></li>
-<li><a href="#remove-student-code-student-delete-code">3.2.7. Remove Student : <code>student delete</code></a></li>
-<li><a href="#list-students-code-student-list-code">3.2.8. List Students : <code>student list</code></a></li>
-<li><a href="#export-student-code-student-export-coming-in-v1-4-code">3.2.9. Export Student : <code>student export [coming in v1.4]</code></a></li>
+<li><a href="#edit-a-course-code-course-edit-code">3.2.4. Edit a course : <code>course edit</code></a></li>
+<li><a href="#remove-course-code-course-delete-code">3.2.5. Remove course : <code>course delete</code></a></li>
+<li><a href="#add-student-code-student-add-code">3.2.6. Add Student : <code>student add</code></a></li>
+<li><a href="#update-student-code-student-edit-code">3.2.7. Update Student : <code>student edit</code></a></li>
+<li><a href="#remove-student-code-student-delete-code">3.2.8. Remove Student : <code>student delete</code></a></li>
+<li><a href="#list-students-code-student-list-code">3.2.9. List Students : <code>student list</code></a></li>
+<li><a href="#export-student-code-student-export-coming-in-v2-0-code">3.2.10. Export Student : <code>student export [coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#module-management">3.3. Module Management</a>
@@ -84,7 +85,6 @@
 <li><a href="#listing-entered-commands-code-history-code">3.9. Listing entered commands : <code>history</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.10. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.11. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.12. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -211,11 +211,50 @@ Format: course list</p>
 <h4 id="list-all-courses-code-course-liststudents-code"><a class="link" href="#list-all-courses-code-course-liststudents-code">3.2.3. List all courses : <code>course liststudents</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students ordered by course.<br>
-Format: course liststudent</p>
+Format: course liststudentsfe</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-course-code-course-delete-code"><a class="link" href="#remove-course-code-course-delete-code">3.2.4. Remove course : <code>course delete</code></a></h4>
+<h4 id="edit-a-course-code-course-edit-code"><a class="link" href="#edit-a-course-code-course-edit-code">3.2.4. Edit a course : <code>course edit</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing course in the system (by course code).<br>
+Format: course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the student at the specified course code. A course code must be provided to make changes.</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>student edit 1 p/99887890 a/14 Simei Avenue 1</code>
+Edits the phone number and home address of the 1st student to be 99887890 and 14 Simei Avenue 1 respectively.</p>
+</li>
+<li>
+<p><code>student edit 2 a/14 Jurong East Street 91</code>
+Edits only the address of the 2nd student to be 14 Jurong East Street 91.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remove-course-code-course-delete-code"><a class="link" href="#remove-course-code-course-delete-code">3.2.5. Remove course : <code>course delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified course from the system<br>
 Format: course delete c/COURSE_CODE</p>
@@ -244,7 +283,7 @@ Deletes CEG from the course directory, if it exists.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-student-code-student-add-code"><a class="link" href="#add-student-code-student-add-code">3.2.5. Add Student : <code>student add</code></a></h4>
+<h4 id="add-student-code-student-add-code"><a class="link" href="#add-student-code-student-add-code">3.2.6. Add Student : <code>student add</code></a></h4>
 <div class="paragraph">
 <p>Adds a student to the system.<br>
 Format: student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL a/ADDRESS</p>
@@ -278,10 +317,10 @@ Format: student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL 
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-student-code-student-edit-code"><a class="link" href="#update-student-code-student-edit-code">3.2.6. Update Student : <code>student edit</code></a></h4>
+<h4 id="update-student-code-student-edit-code"><a class="link" href="#update-student-code-student-edit-code">3.2.7. Update Student : <code>student edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing student in the system.<br>
-Format: student edit INDEX [n/NAME] [i/ADMIN_NUMBER] [c/COURSE_CODE] [p/MOBILE_NUMBER] [e/EMAIL a/ADDRESS]</p>
+Format: student edit INDEX [n/NAME] [c/COURSE_CODE] [p/MOBILE_NUMBER] [e/EMAIL] [a/ADDRESS]</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -317,7 +356,7 @@ Edits only the address of the 2nd student to be 14 Jurong East Street 91.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-student-code-student-delete-code"><a class="link" href="#remove-student-code-student-delete-code">3.2.7. Remove Student : <code>student delete</code></a></h4>
+<h4 id="remove-student-code-student-delete-code"><a class="link" href="#remove-student-code-student-delete-code">3.2.8. Remove Student : <code>student delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified student from the system.<br>
 Format: student delete INDEX</p>
@@ -352,14 +391,14 @@ Deletes the 2nd person in the system</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-students-code-student-list-code"><a class="link" href="#list-students-code-student-list-code">3.2.8. List Students : <code>student list</code></a></h4>
+<h4 id="list-students-code-student-list-code"><a class="link" href="#list-students-code-student-list-code">3.2.9. List Students : <code>student list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students in the system.<br>
 Format: student list</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="export-student-code-student-export-coming-in-v1-4-code"><a class="link" href="#export-student-code-student-export-coming-in-v1-4-code">3.2.9. Export Student : <code>student export [coming in v1.4]</code></a></h4>
+<h4 id="export-student-code-student-export-coming-in-v2-0-code"><a class="link" href="#export-student-code-student-export-coming-in-v2-0-code">3.2.10. Export Student : <code>student export [coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Exports students to a .csv file<br>
 Format: student export LOCATION</p>
@@ -1604,14 +1643,8 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.11. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>Trajectory data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.12. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
@@ -1639,6 +1672,10 @@ e.g. <code>course add c/CEG n/Computer Engineering f/FoE</code></p>
 e.g. <code>course delete c/CEG</code></p>
 </li>
 <li>
+<p><strong>Edit course</strong> : <code>course edit c/COURSE_CODE [n/COURSE_NAME] [f/FACULTY_NAME]</code><br>
+e.g. <code>course edit c/CEG n/Comp Eng</code></p>
+</li>
+<li>
 <p><strong>List all courses</strong> : <code>course list</code><br></p>
 </li>
 <li>
@@ -1653,7 +1690,7 @@ e.g. <code>student add n/Megan Nicole c/CEG e/E0169113@u.nus.edu a/14 Changi Sou
 e.g. `student edit 1 p/99887890 a/14 Simei Avenue 1</code></p>
 </li>
 <li>
-<p><strong>Finding a student by name/matric no</strong> : <code>student find [n/STUDENT_NAME] [i/MATRIC_NO</code><br>
+<p><strong>Finding a student by name/matric no</strong> : <code>student find STUDENT_NAME</code><br>
 e.g. <code>student find Megan Nicole</code></p>
 </li>
 <li>
@@ -1664,7 +1701,7 @@ e.g. <code>student find Megan Nicole</code></p>
 e.g. <code>student delete 2</code></p>
 </li>
 <li>
-<p><strong>Export students [COMING IN V1.4]</strong> : <code>student export</code><br>
+<p><strong>Export students [COMING IN V2.0]</strong> : <code>student export</code><br>
 e.g. <code>student export C:\export</code></p>
 </li>
 <li>
@@ -1828,4 +1865,4 @@ e.g. <code>note export fn/notes</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:24:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:36:44 UTC</div></div></div></body></html>
