@@ -30,7 +30,7 @@
 <p>What it does: It allows the user to manage notes within the application.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product&#8217;s utility as users would sometimes need to take notes about important things. It serves to make Trajectory a step closer to becoming a one-stop app for users so that they would not need to rely on several other applications to accomplish their needs.</p>
+<p>Justification: This feature improves the product&#8217;s utility as users would sometimes need to take notes about important things. It serves to make Trajectory a step closer to becoming a one-stop app for target users so that they would not need to rely on several other applications to accomplish their needs.</p>
 </li>
 <li>
 <p>Highlights: Notes saved in Trajectory can be of two types: a plain sticky note or a calendar event. Those of the latter type are exportable to CSV, which may then be imported to Google Calendar.</p>
@@ -43,6 +43,20 @@
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhancement to User-Experience:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implemented Auto-complete when typing commands from the command text field (Pull request <a href="https://github.com/CS2113-AY1819S1-T16-1/main/pull/313">#313</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -67,7 +81,7 @@
 <h4 id="add-note-code-note-add-code"><a class="link" href="#add-note-code-note-add-code">Add Note : <code>note add</code></a></h4>
 <div class="paragraph">
 <p>Adds a note to a module.<br>
-Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
+Format: <code>note add [mc/MODULE_CODE] [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -122,7 +136,7 @@ Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME]
 <code>Module code should begin with 2 or 3 uppercase letters, followed by a 4-digit number and an optional uppercase letter at the end.</code><br>
 - The date and time fields are <strong>case-insensitive</strong> which means the user can enter <code>2-nOv-2018</code> as date.<br>
 - If dates are specified but not the time, the system defines a default time of <code>12:00 AM</code> for <code>START_DATE</code> and <code>11:59 PM</code> for <code>END_DATE</code>.<br>
-- Specifying an <code>END_DATE</code> or any time parameters requires the <code>START_DATE</code> to be defined. Otherwise, the system will inform the user.<br>
+- Specifying an <code>END_DATE</code> or any time parameters requires the <code>START_DATE</code> to be defined. Otherwise, the system will show an error message.<br>
 - The TITLE and LOCATION parameters allows characters up to 30 and 80 maximum respectively. Otherwise, an error message will be displayed.<br>
 - Omitting the TITLE will show a "(No title)" when the note is displayed.<br>
 - Defining the <code>START_DATE</code> but not the <code>END_DATE</code> automatically assigns the same date to it.<br>
@@ -155,12 +169,12 @@ Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME]
 <div class="ulist">
 <ul>
 <li>
-<p><code>note add mc/CS2113</code><br>
-This tells the system that the note is to be saved in the CS2113 module with no date.</p>
+<p><code>note add</code><br>
+This creates a note in Trajectory without any other information except for the note&#8217;s content itself.</p>
 </li>
 <li>
 <p><code>note add mc/CS2113 tt/Lecture sd/2.11.2018 st/4:00 PM et/6:00 pm lc/LT15</code><br>
-This tells the system that the note is to be saved in the CS2113 module with a title named "Lecture", a start date (2 Nov 2018) and end date (2 Nov 2018) from 4PM to 6PM at LT15.</p>
+This tells the system that the note is to be saved in the CS2113 module with a title "Lecture", a start date (2 Nov 2018) and end date (2 Nov 2018) from 4PM to 6PM at LT15.</p>
 </li>
 </ul>
 </div>
@@ -225,10 +239,13 @@ Format: <code>note delete INDEX [MORE_INDEXES]..</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Delete notes with the specified INDEX.</p>
+<p>Delete one or more notes with the specified INDEX.</p>
 </li>
 <li>
 <p>The command allows for multiple deletion by entering multiple INDEXES separated by space.</p>
+</li>
+<li>
+<p>Entering a range of INDEXES separated by a hyphen (e.g. 2-4) is also allowed.</p>
 </li>
 <li>
 <p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is invoked.</p>
@@ -241,10 +258,10 @@ Format: <code>note delete INDEX [MORE_INDEXES]..</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>note list mc/CS2040C</code><br>
-A list of all notes saved in CS2040C module is displayed.<br>
-<code>note delete 2 1</code><br>
-Delete notes that corresponds to INDEX=1 and INDEX=2 from the list.</p>
+<p><code>note list</code><br>
+A list of all notes is displayed.<br>
+<code>note delete 2 1 4-6</code><br>
+Delete notes that are numbered #1, #2, #4, #5, and #6 from the list.</p>
 </li>
 </ul>
 </div>
@@ -258,10 +275,10 @@ Format: <code>note find k/KEYWORD [k/MORE_KEYWORDS]..</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>The command searches for notes that contains <strong>ALL</strong> keywords.<br></p>
+<p>The command searches for notes that contains <strong>ALL</strong> of the keywords.<br></p>
 </li>
 <li>
-<p>It only matches with <code>TITLE</code> and the note&#8217;s <code>text content</code>.<br></p>
+<p>It only matches with <code>TITLE</code> and the note&#8217;s text.<br></p>
 </li>
 <li>
 <p>Multiple keywords can be accepted.</p>
@@ -330,13 +347,41 @@ Format: <code>note export fn/FILE_NAME</code></p>
 <p>This command creates a &lt;FILE_NAME&gt;.csv file in the local storage.<br></p>
 </li>
 <li>
-<p>Directory: [Trajectory&#8217;s path]\data\CSVexport\&lt;FILE_NAME&gt;.csv<br></p>
+<p>Directory: {Trajectory&#8217;s path}/data/CSVexport/&lt;FILE_NAME&gt;.csv<br></p>
 </li>
 <li>
-<p>The format follows the Google Calendar&#8217;s CSV import formatting. Hence, the user can import their notes to Google Calendar with this command.</p>
+<p>The format follows the Google Calendar&#8217;s CSV import formatting. Hence, the user can import their CSV notes to Google Calendar with this command.</p>
 </li>
 <li>
 <p>Only notes with dates are exportable.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add a note</strong> <code>note add [mc/MODULE_CODE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code><br>
+e.g. <code>note add tt/Consultation lc/NUS Techno Edge</code></p>
+</li>
+<li>
+<p><strong>List notes</strong> <code>note list [mc/MODULE_CODE]</code><br>
+e.g. <code>note list mc/CS2113</code></p>
+</li>
+<li>
+<p><strong>Delete a note</strong> <code>note delete INDEX</code><br>
+e.g. <code>note delete 8</code></p>
+</li>
+<li>
+<p><strong>Edit a note</strong> <code>note edit INDEX [mc/NEW_MODULE_CODE] [sd/NEW_START_DATE] [st/NEW_START_TIME] [ed/NEW_END_DATE] [et/NEW_END_TIME] [lc/NEW_LOCATION]</code><br>
+e.g. <code>note edit 5 ed/30-12-2018</code></p>
+</li>
+<li>
+<p><strong>Find a note</strong> <code>note find k/KEYWORD [k/MORE_KEYWORDS]..</code><br>
+e.g. <code>note find k/bubble k/queue</code></p>
+</li>
+<li>
+<p><strong>Export notes</strong> <code>note export fn/FILE_NAME</code><br>
+e.g. <code>note export fn/notes</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -362,8 +407,9 @@ Format: <code>note export fn/FILE_NAME</code></p>
 <div class="sect3">
 <h4 id="feature-description"><a class="link" href="#feature-description">Feature Description:</a></h4>
 <div class="paragraph">
-<p><strong>EXPORT :</strong><br>
-The user is able to export notes from this application to a CSV file that follows the formatting required for importing calendar files to Google Calendar. The exporting process can be invoked by the user by entering the command below.</p>
+<p><strong>EXPORTING NOTES TO CSV :</strong><br>
+The user is able to export notes from this application to a CSV file that follows the formatting required for importing calendar files to Google Calendar.<br>
+The exporting process can be invoked by the user with the following command:</p>
 </div>
 <div class="paragraph">
 <p><strong>Command: <code>note export fn/FILE_NAME</code></strong></p>
@@ -392,9 +438,17 @@ The following command allows the user to export notes from a specific date range
 </div>
 <div class="paragraph">
 <p>Implementation of exporting to CSV is provided below.<br>
-1. Assuming that notes data are currently present in Trajectory, the user can invoke the <code>note export</code> command to begin exporting.<br>
+1. Assuming that exportable notes data are currently present in Trajectory, the user can invoke the <code>note export</code> command to begin exporting.<br>
 2. For each Note object to be exported, a corresponding CsvAdaptedNote object will be created. It is used to generate the correct formatting for the Google Calendar.<br>
 3. A CSV utility class will then be used to handle the writing to CSV. The file is saved to "/data/CSVexport" folder in the application&#8217;s directory.<br></p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the note exporting process:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/NoteExportSequenceDiagram.png" alt="NoteExportSequenceDiagram" width="1000">
+</div>
 </div>
 <h3 id="use-case-add-note" class="discrete">Use case: Add Note</h3>
 <div class="paragraph">
@@ -423,7 +477,7 @@ The following command allows the user to export notes from a specific date range
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher requests to add a note to a module.</p>
+<p>Teacher requests to add a note.</p>
 </li>
 <li>
 <p>System prompts the teacher to enter his/her note.</p>
@@ -450,6 +504,19 @@ The following command allows the user to export notes from a specific date range
 <ul>
 <li>
 <p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The module code specified does not exist in Trajectory.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. System informs user that module does not exist.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -544,6 +611,9 @@ The following command allows the user to export notes from a specific date range
 <li>
 <p>Note must exist in data file.</p>
 </li>
+<li>
+<p>Module must exist in data file.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -629,6 +699,19 @@ The following command allows the user to export notes from a specific date range
 </div>
 </li>
 <li>
+<p>3b. The module code specified does not exist in Trajectory.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. System informs user that module does not exist.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>5a. The teacher decides to cancel.</p>
 <div class="ulist">
 <ul>
@@ -666,10 +749,10 @@ The following command allows the user to export notes from a specific date range
 <p>System displays the complete numbered list of notes.</p>
 </li>
 <li>
-<p>Teacher requests to delete a specific note in the list.</p>
+<p>Teacher requests to delete one or more notes in the list.</p>
 </li>
 <li>
-<p>System deletes the note and displays a message that it is successfully deleted.</p>
+<p>System deletes the note(s) and displays a message for successful deletion.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -791,7 +874,7 @@ The following command allows the user to export notes from a specific date range
 </div>
 </li>
 <li>
-<p>2b. There are no entries found with the entered keyword(s).</p>
+<p>2b. There are no entries found that contains the keyword(s).</p>
 <div class="ulist">
 <ul>
 <li>
@@ -813,6 +896,9 @@ The following command allows the user to export notes from a specific date range
 <ul>
 <li>
 <p>Notes must exist in data file.</p>
+</li>
+<li>
+<p>Notes must contain a start date and end date.</p>
 </li>
 </ul>
 </div>
@@ -878,4 +964,4 @@ The following command allows the user to export notes from a specific date range
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 09:00:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:51:25 UTC</div></div></div></body></html>

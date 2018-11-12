@@ -1292,7 +1292,7 @@ Displays graph which shows result of 'Finals' grade component of all CS2113 stud
 <h4 id="add-note-code-note-add-code"><a class="link" href="#add-note-code-note-add-code">3.7.1. Add Note : <code>note add</code></a></h4>
 <div class="paragraph">
 <p>Adds a note to a module.<br>
-Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
+Format: <code>note add [mc/MODULE_CODE] [tt/TITLE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1347,7 +1347,7 @@ Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME]
 <code>Module code should begin with 2 or 3 uppercase letters, followed by a 4-digit number and an optional uppercase letter at the end.</code><br>
 - The date and time fields are <strong>case-insensitive</strong> which means the user can enter <code>2-nOv-2018</code> as date.<br>
 - If dates are specified but not the time, the system defines a default time of <code>12:00 AM</code> for <code>START_DATE</code> and <code>11:59 PM</code> for <code>END_DATE</code>.<br>
-- Specifying an <code>END_DATE</code> or any time parameters requires the <code>START_DATE</code> to be defined. Otherwise, the system will inform the user.<br>
+- Specifying an <code>END_DATE</code> or any time parameters requires the <code>START_DATE</code> to be defined. Otherwise, the system will show an error message.<br>
 - The TITLE and LOCATION parameters allows characters up to 30 and 80 maximum respectively. Otherwise, an error message will be displayed.<br>
 - Omitting the TITLE will show a "(No title)" when the note is displayed.<br>
 - Defining the <code>START_DATE</code> but not the <code>END_DATE</code> automatically assigns the same date to it.<br>
@@ -1380,12 +1380,12 @@ Format: <code>note add mc/MODULE_CODE [tt/TITLE] [sd/START_DATE] [st/START_TIME]
 <div class="ulist">
 <ul>
 <li>
-<p><code>note add mc/CS2113</code><br>
-This tells the system that the note is to be saved in the CS2113 module with no date.</p>
+<p><code>note add</code><br>
+This creates a note in Trajectory without any other information except for the note&#8217;s content itself.</p>
 </li>
 <li>
 <p><code>note add mc/CS2113 tt/Lecture sd/2.11.2018 st/4:00 PM et/6:00 pm lc/LT15</code><br>
-This tells the system that the note is to be saved in the CS2113 module with a title named "Lecture", a start date (2 Nov 2018) and end date (2 Nov 2018) from 4PM to 6PM at LT15.</p>
+This tells the system that the note is to be saved in the CS2113 module with a title "Lecture", a start date (2 Nov 2018) and end date (2 Nov 2018) from 4PM to 6PM at LT15.</p>
 </li>
 </ul>
 </div>
@@ -1450,10 +1450,13 @@ Format: <code>note delete INDEX [MORE_INDEXES]..</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Delete notes with the specified INDEX.</p>
+<p>Delete one or more notes with the specified INDEX.</p>
 </li>
 <li>
 <p>The command allows for multiple deletion by entering multiple INDEXES separated by space.</p>
+</li>
+<li>
+<p>Entering a range of INDEXES separated by a hyphen (e.g. 2-4) is also allowed.</p>
 </li>
 <li>
 <p>The INDEX refers to the corresponding number of each note when <code>note list</code> command is invoked.</p>
@@ -1466,10 +1469,10 @@ Format: <code>note delete INDEX [MORE_INDEXES]..</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>note list mc/CS2040C</code><br>
-A list of all notes saved in CS2040C module is displayed.<br>
-<code>note delete 2 1</code><br>
-Delete notes that corresponds to INDEX=1 and INDEX=2 from the list.</p>
+<p><code>note list</code><br>
+A list of all notes is displayed.<br>
+<code>note delete 2 1 4-6</code><br>
+Delete notes that are numbered #1, #2, #4, #5, and #6 from the list.</p>
 </li>
 </ul>
 </div>
@@ -1483,10 +1486,10 @@ Format: <code>note find k/KEYWORD [k/MORE_KEYWORDS]..</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>The command searches for notes that contains <strong>ALL</strong> keywords.<br></p>
+<p>The command searches for notes that contains <strong>ALL</strong> of the keywords.<br></p>
 </li>
 <li>
-<p>It only matches with <code>TITLE</code> and the note&#8217;s <code>text content</code>.<br></p>
+<p>It only matches with <code>TITLE</code> and the note&#8217;s text.<br></p>
 </li>
 <li>
 <p>Multiple keywords can be accepted.</p>
@@ -1555,10 +1558,10 @@ Format: <code>note export fn/FILE_NAME</code></p>
 <p>This command creates a &lt;FILE_NAME&gt;.csv file in the local storage.<br></p>
 </li>
 <li>
-<p>Directory: [Trajectory&#8217;s path]\data\CSVexport\&lt;FILE_NAME&gt;.csv<br></p>
+<p>Directory: {Trajectory&#8217;s path}/data/CSVexport/&lt;FILE_NAME&gt;.csv<br></p>
 </li>
 <li>
-<p>The format follows the Google Calendar&#8217;s CSV import formatting. Hence, the user can import their notes to Google Calendar with this command.</p>
+<p>The format follows the Google Calendar&#8217;s CSV import formatting. Hence, the user can import their CSV notes to Google Calendar with this command.</p>
 </li>
 <li>
 <p>Only notes with dates are exportable.</p>
@@ -1795,13 +1798,17 @@ e.g. <code>class listattendance cn/T16 mc/CG1111</code></p>
 <p><strong>Modifying class attendance list</strong> <code>class modattendance cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO</code><br>
 e.g. <code>class modattendance cn/T16 mc/CG1111 i/A6942069M</code></p>
 </li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><strong>Add a note</strong> <code>note add mc/MODULE_CODE [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code><br>
-e.g. <code>note add mc/CS2040C</code></p>
+<p><strong>Add a note</strong> <code>note add [mc/MODULE_CODE] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [lc/LOCATION]</code><br>
+e.g. <code>note add tt/Consultation lc/NUS Techno Edge</code></p>
 </li>
 <li>
 <p><strong>List notes</strong> <code>note list [mc/MODULE_CODE]</code><br>
-e.g. <code>note list mc/CS2040C</code></p>
+e.g. <code>note list mc/CS2113</code></p>
 </li>
 <li>
 <p><strong>Delete a note</strong> <code>note delete INDEX</code><br>
@@ -1809,7 +1816,7 @@ e.g. <code>note delete 8</code></p>
 </li>
 <li>
 <p><strong>Edit a note</strong> <code>note edit INDEX [mc/NEW_MODULE_CODE] [sd/NEW_START_DATE] [st/NEW_START_TIME] [ed/NEW_END_DATE] [et/NEW_END_TIME] [lc/NEW_LOCATION]</code><br>
-e.g. <code>note edit 5 mc/CS2040C</code></p>
+e.g. <code>note edit 5 ed/30-12-2018</code></p>
 </li>
 <li>
 <p><strong>Find a note</strong> <code>note find k/KEYWORD [k/MORE_KEYWORDS]..</code><br>
@@ -1825,4 +1832,4 @@ e.g. <code>note export fn/notes</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 09:00:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:51:25 UTC</div></div></div></body></html>

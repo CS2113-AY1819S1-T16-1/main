@@ -90,7 +90,7 @@
 <li><a href="#grade-list">F.9. Grade List</a></li>
 <li><a href="#grade-graph">F.10. Grade Graph</a></li>
 <li><a href="#adding-a-note">F.11. Adding a note</a></li>
-<li><a href="#deleting-a-note">F.12. Deleting a note</a></li>
+<li><a href="#deleting-notes">F.12. Deleting notes</a></li>
 <li><a href="#editing-a-note">F.13. Editing a note</a></li>
 <li><a href="#listing-notes">F.14. Listing notes</a></li>
 <li><a href="#finding-notes-by-keywords">F.15. Finding notes by keywords</a></li>
@@ -1254,8 +1254,9 @@ to the students.</p>
 <div class="sect3">
 <h4 id="feature-description"><a class="link" href="#feature-description">3.7.1. Feature Description:</a></h4>
 <div class="paragraph">
-<p><strong>EXPORT :</strong><br>
-The user is able to export notes from this application to a CSV file that follows the formatting required for importing calendar files to Google Calendar. The exporting process can be invoked by the user by entering the command below.</p>
+<p><strong>EXPORTING NOTES TO CSV :</strong><br>
+The user is able to export notes from this application to a CSV file that follows the formatting required for importing calendar files to Google Calendar.<br>
+The exporting process can be invoked by the user with the following command:</p>
 </div>
 <div class="paragraph">
 <p><strong>Command: <code>note export fn/FILE_NAME</code></strong></p>
@@ -1284,9 +1285,17 @@ The following command allows the user to export notes from a specific date range
 </div>
 <div class="paragraph">
 <p>Implementation of exporting to CSV is provided below.<br>
-1. Assuming that notes data are currently present in Trajectory, the user can invoke the <code>note export</code> command to begin exporting.<br>
+1. Assuming that exportable notes data are currently present in Trajectory, the user can invoke the <code>note export</code> command to begin exporting.<br>
 2. For each Note object to be exported, a corresponding CsvAdaptedNote object will be created. It is used to generate the correct formatting for the Google Calendar.<br>
 3. A CSV utility class will then be used to handle the writing to CSV. The file is saved to "/data/CSVexport" folder in the application&#8217;s directory.<br></p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the note exporting process:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/NoteExportSequenceDiagram.png" alt="NoteExportSequenceDiagram" width="1000">
+</div>
 </div>
 </div>
 </div>
@@ -5148,7 +5157,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Teacher requests to add a note to a module.</p>
+<p>Teacher requests to add a note.</p>
 </li>
 <li>
 <p>System prompts the teacher to enter his/her note.</p>
@@ -5175,6 +5184,19 @@ b. Require developers to download those libraries manually (this creates extra w
 <ul>
 <li>
 <p>1a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The module code specified does not exist in Trajectory.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. System informs user that module does not exist.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -5269,6 +5291,9 @@ b. Require developers to download those libraries manually (this creates extra w
 <li>
 <p>Note must exist in data file.</p>
 </li>
+<li>
+<p>Module must exist in data file.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -5354,6 +5379,19 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </li>
 <li>
+<p>3b. The module code specified does not exist in Trajectory.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. System informs user that module does not exist.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>5a. The teacher decides to cancel.</p>
 <div class="ulist">
 <ul>
@@ -5391,10 +5429,10 @@ b. Require developers to download those libraries manually (this creates extra w
 <p>System displays the complete numbered list of notes.</p>
 </li>
 <li>
-<p>Teacher requests to delete a specific note in the list.</p>
+<p>Teacher requests to delete one or more notes in the list.</p>
 </li>
 <li>
-<p>System deletes the note and displays a message that it is successfully deleted.</p>
+<p>System deletes the note(s) and displays a message for successful deletion.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -5516,7 +5554,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </li>
 <li>
-<p>2b. There are no entries found with the entered keyword(s).</p>
+<p>2b. There are no entries found that contains the keyword(s).</p>
 <div class="ulist">
 <ul>
 <li>
@@ -5538,6 +5576,9 @@ b. Require developers to download those libraries manually (this creates extra w
 <ul>
 <li>
 <p>Notes must exist in data file.</p>
+</li>
+<li>
+<p>Notes must contain a start date and end date.</p>
 </li>
 </ul>
 </div>
@@ -6118,11 +6159,11 @@ Expected: Same as previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-note"><a class="link" href="#deleting-a-note">F.12. Deleting a note</a></h3>
+<h3 id="deleting-notes"><a class="link" href="#deleting-notes">F.12. Deleting notes</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a note in Trajectory while all notes are listed.<br>
+<p>Deleting notes in Trajectory while all notes are listed.<br>
 <strong>Parameters (prefix):</strong><br>
 INDEX (no prefix),<br>
 INDEX_RANGE (no prefix)</p>
@@ -6278,4 +6319,4 @@ Expected: No notes will be exported and no file is created. An error message ind
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 09:00:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:51:25 UTC</div></div></div></body></html>
