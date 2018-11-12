@@ -16,19 +16,12 @@ Trajectory is a lightweight management system for those who need a no-frills sol
 * *Major enhancement*: added *the ability to display a graph command for student grades*
 ** What it does: Allows the teacher to display a graph to show results of all students of a particular grade component in a module.
 ** Justification: This feature allows the teacher to monitor the progress of students conveniently through the use of a graph instead of a list of numbers.
-** Highlights: This enhancement requires an in-depth analysis of design as it gathers information from several features like Student Management, Module Management and Gradebook Management. Additionally, the data for the x and y axis (marks and number of students) respectively involves the use of a hash-map which involves comprehensive coding.
+** Highlights: This enhancement requires an in-depth analysis of design as it gathers information from several features like Student Management, Module Management and Gradebook Management.
 ** Credits: http://tutorials.jenkov.com/javafx/linechart.html
             https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/LineChart.html
 * *Minor enhancement*: Added features for Gradebook Management and Grade Management
-** Gradebook Management
-*** Create gradebook component
-*** Read/Find gradebook component
-*** Update gradebook component
-*** Delete gradebook component
-** Grade Management
-*** Create student grade
-*** Delete student grade
-
+** Gradebook Management (Create, Find, Update, Delete, List Gradebook Component)
+** Grade Management (Create, Delete, List Student Grade)
 * *Other contributions*:
 
 ** Project management:
@@ -50,12 +43,6 @@ Trajectory is a lightweight management system for those who need a no-frills sol
 
 include::../UserGuide.adoc[tag=gradebook]
 
-include::../UserGuide.adoc[tag=grade]
-
-include::../UserGuide.adoc[tag=gradebookcommandsummary]
-
-include::../UserGuide.adoc[tag=gradecommandsummary]
-
 == Contributions to the Developer Guide
 
 |===
@@ -66,14 +53,5 @@ include::../DeveloperGuide.adoc[tag=logiccomponent]
 
 include::../DeveloperGuide.adoc[tag=graph]
 
-include::../DeveloperGuide.adoc[tag=gradebookuserstories]
-
-include::../DeveloperGuide.adoc[tag=gradeuserstories]
-
 include::../DeveloperGuide.adoc[tag=gradebookusecase]
 
-include::../DeveloperGuide.adoc[tag=gradeusecase]
-
-include::../DeveloperGuide.adoc[tag=gradebookmanualtesting]
-
-include::../DeveloperGuide.adoc[tag=grademanualtesting]

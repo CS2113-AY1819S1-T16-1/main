@@ -424,6 +424,10 @@ Step 2. The user executes `class add c/16...` command to add a new classroom to 
 
 Step 3. The `classroomManager#saveClassroomList()` will be called to converts the classroom array list and invokes the StorageController to save the current classroom list to file. This is done by first converting our `Classroom` object into `XmlAdaptedClassroom` objects and saving it.
 
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+image::sequencediagramclassadd.png[width="800"]
+
 === Class List feature
 ==== Current Implementation
 
@@ -447,10 +451,6 @@ Step 3. The classroom list with the corresponding classroom information will be 
 The following activity diagram summarizes what happens when a user executes a new command:
 
 image::classaddlist.PNG[width="800"]
-
-The following sequence diagram summarizes what happens when a user executes a new command:
-
-image::classaddsequencediagram.PNG[width="800"]
 
 // end::classmanagementbrief[]
 
@@ -929,7 +929,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -968,7 +968,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -992,7 +992,7 @@ Use case resumes at step 1.
 Use case resumes at step 1.
 
 [discrete]
-
+// end::studcourseusecases[]
 === Use case: Add Student
 *Precondition(s)* :
 
@@ -1000,7 +1000,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1039,7 +1039,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1077,7 +1077,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1115,7 +1115,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1154,7 +1154,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1192,7 +1192,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1238,7 +1238,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1284,7 +1284,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1324,7 +1324,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1358,7 +1358,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1403,7 +1403,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1444,7 +1444,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -1472,7 +1472,7 @@ Use case resumes at step 1.
 ** 2c1. System shows 'no courses in system' message.
 +
 Use case resumes at step 1.
-// end::studcourseusecases[]
+
 
 
 [discrete]
@@ -1849,14 +1849,10 @@ Use case resumes at step 1.
 === Use case: Add Gradebook Component
 *Precondition(s)* :
 
-* Module code must exist
-* Component name must not already exist in Trajectory.
+* Gradebook component name NOT exist in existing module.
 * Accumulated weightage for gradebook components in module cannot exceed 100%.
-* Weightage can be 0 for gradebook components like Mock Practical Exam.
 
-*Guarantees* :
-
-* Gradebook component will not be added if it does not meet validation requirements.
+*Guarantees* : NIL
 
 *MSS* :
 
@@ -1879,24 +1875,6 @@ Use case resumes at step 1.
 +
 Use case resumes at step 1.
 
-* 2c. Teacher enters a component name that already exists to module code.
-+
-** 2c1. System informs the user that component name already exists to module code.
-+
-Use case resumes at step 1.
-
-* 2d. Teacher enters a non-integer input for maximum marks and weightage.
-+
-** 2d1. System informs the user of incorrect input.
-+
-Use case resumes at step 1.
-
-* 2d. Teacher does not enter any inputs after prefix.
-+
-** 2d1. System informs the user of invalid input.
-+
-Use case resumes at step 1.
-
 
 [discrete]
 === Use case: Update Gradebook Component
@@ -1906,9 +1884,7 @@ Use case resumes at step 1.
 * Accumulated weightage including the updated weightage must not exceed 100%.
 * At least one optional parameter must be included in command.
 
-*Guarantees* :
-
-* TBC
+*Guarantees* : NIL
 
 *MSS* :
 
@@ -1961,9 +1937,7 @@ Use case resumes at step 1.
 
 * Gradebook component name must exist in existing module.
 
-*Guarantees* :
-
-* TBC
+*Guarantees* : NIL
 
 *MSS* :
 
@@ -1992,9 +1966,7 @@ Use case resumes at step 1.
 
 * Gradebook component name must exist in existing module.
 
-*Guarantees* :
-
-* NIL
+*Guarantees* : NIL
 
 *MSS* :
 
@@ -2019,9 +1991,7 @@ Use case resumes from step 1.
 
 * Students must be enrolled to the module.
 
-*Guarantees* :
-
-* TBC
+*Guarantees* : NIL
 
 *MSS* :
 
@@ -2050,9 +2020,7 @@ Use case resumes from step 1.
 * Grade component name must exist in existing module.
 * Marks assigned to student for the particular gradebook component must not exceed its maximum marks.
 
-*Guarantees* :
-
-* TBC
+*Guarantees* : NIL
 
 *MSS* :
 
@@ -2080,9 +2048,7 @@ Use case resumes from step 1.
 * Grade component name must exist in existing module.
 * Marks of all students taking the module should be added in.
 
-*Guarantees* :
-
-* TBC
+*Guarantees* : NIL
 
 *MSS* :
 
@@ -2103,7 +2069,6 @@ Steps 1a1-1a2 are repeated until the data entered is correct.
 Use case resumes from step 1.
 // end::gradeusecase[]
 
-// tag::classmanagementdepth[]
 [discrete]
 === Use case: Add Class
 
@@ -2113,7 +2078,7 @@ Use case resumes from step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2140,7 +2105,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2168,7 +2133,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2196,7 +2161,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2220,6 +2185,7 @@ Use case resumes at step 1.
 +
 Use case resumes at step 1.
 
+// tag::classmanagementdepth[]
 [discrete]
 === Use case: Assign Student To Class
 
@@ -2232,7 +2198,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2268,7 +2234,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2310,7 +2276,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2345,7 +2311,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2373,7 +2339,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2392,7 +2358,7 @@ Use case ends.
 Use case resumes at step 1.
 // end::classmanagementdepth[]
 
-// tag::notesmanagementusecases[]
+// tag::jomcruz93pppusecases1[]
 [discrete]
 === Use case: Add Note
 
@@ -2402,7 +2368,7 @@ Use case resumes at step 1.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2429,7 +2395,7 @@ Use case resumes at step 1.
 * 3a. The teacher decides to cancel.
 +
 Use case ends.
-
+// end::jomcruz93pppusecases1[]
 
 [discrete]
 === Use case: List Notes
@@ -2440,7 +2406,7 @@ Use case ends.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2463,7 +2429,7 @@ Use case resumes at step 1.
 +
 Use case ends.
 
-
+// tag::jomcruz93pppusecases2[]
 [discrete]
 === Use case: Edit Note
 
@@ -2474,7 +2440,7 @@ Use case ends.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2521,11 +2487,15 @@ Use case ends.
 
 
 [discrete]
-=== Use case: Delete Note
+=== Use case: Delete Notes
 
 *Precondition(s)* :
 
 * Note must exist in data file.
+
+*Guarantees* :
+
+* NIL
 
 *MSS* :
 
@@ -2564,7 +2534,7 @@ Use case resumes at step 2.
 
 
 [discrete]
-=== Use case: Find Note
+=== Use case: Find Notes
 
 *Precondition(s)* :
 
@@ -2572,7 +2542,7 @@ Use case resumes at step 2.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2605,7 +2575,7 @@ Use case ends.
 
 *Guarantees* :
 
-* TBC
+* NIL
 
 *MSS* :
 
@@ -2627,7 +2597,8 @@ Use case resumes at step 1.
 ** 2b1. System displays a message that no entries are found.
 +
 Use case ends.
-// end::notesmanagementusecases[]
+// end::jomcruz93pppusecases2[]
+
 
 [appendix]
 == Non Functional Requirements
@@ -2819,11 +2790,11 @@ mc/MODULE_CODE, +
 e/MAX_ENROLLMENT
 
 .. Prerequisites: Module code must exist before creating a class for the module.
-.. Test case: `class add cn/T16 mc/CG1111 e/20` +
-   Expected: A new class T16 of module code CG1111 and enrollment size of 20 will be created and reflected in the system.
-.. Test case: `class add cn/T16 mc/CG1111 e/9999` +
+.. Test case: `class add cn/T16 mc/CS2113 e/20` +
+   Expected: A new class T16 of module code CS2113 and enrollment size of 20 will be created and reflected in the system.
+.. Test case: `class add cn/T16 mc/CS2113 e/9999` +
    Expected: A message will be displayed to show that enrollment size should be of 1-425 and it should not be blank.
-.. Test case: `class add cn/T1600 mc/CG1111 e/20` +
+.. Test case: `class add cn/T1600 mc/CS2113 e/20` +
    Expected: A message will be displayed to show that class name should only contain between 1 to 3 alphanumeric characters and it should not be blank.
 .. Other incorrect class add commands to try: `class add`, +
     `class add cn/T16 mc/XXYYYY e/20` (where XXYYYY is a valid module code that does not exist), +
@@ -2852,9 +2823,9 @@ mc/MODULE_CODE, +
 e/ENROLLMENT_SIZE
 
 .. Prerequisites: Module code must exist before deleting a class for the module. The classroom must also belong to the module code.
-.. Test case: `class edit cn/T16 mc/CG1111 e/69` +
-   Expected: The max enrollment size of class T16 of module code CG1111 will be updated to 69 and reflected in the system.
-.. Test case: `class edit cn/T16 mc/CG1111 e/9999` +
+.. Test case: `class edit cn/T16 mc/CS2113 e/69` +
+   Expected: The max enrollment size of class T16 of module code CS2113 will be updated to 69 and reflected in the system.
+.. Test case: `class edit cn/T16 mc/CS2113 e/9999` +
    Expected: A message will be displayed to show that enrollment size should be of 1-425 and it should not be blank.
 .. Other incorrect class edit commands to try: `class edit`, +
     `class edit cn/T16 mc/XXYYYY e/20` (where XXYYYY is a valid module code that does not exist), +
@@ -2871,8 +2842,8 @@ cn/CLASS_NAME, +
  mc/MODULE_CODE
 
 .. Prerequisites: Module code must exist before deleting a class for the module. The classroom must also belong to the module code.
-.. Test case: `class delete cn/T16 mc/CG1111` +
-   Expected: The class T16 of module code CG1111 deleted and reflected in the system.
+.. Test case: `class delete cn/T16 mc/CS2113` +
+   Expected: The class T16 of module code CS2113 deleted and reflected in the system.
 .. Other incorrect class delete commands to try: `class delete`, +
    `class delete cn/VVV mc/XXYYYY` (where VVV is a valid class name not belonging to a valid module XXYYYY) +
    Expected: A message will be displayed to show `Invalid command format!`, +
@@ -2887,8 +2858,8 @@ mc/MODULE_CODE, +
 i/MATRIC_NO
 
 .. Prerequisites: Student must exist in the system, module code must exist, student must be enrolled in the module, class cannot be full and class must exist and belong to the module code before assigning a student to the class.
-.. Test case: `class addstudent cn/T16 mc/CS2113 i/A0168000B` +
-   Expected: A new student of matric number A0168000B will be assigned to the classroom T16 of module CS2113 and be reflected in the system.
+.. Test case: `class addstudent cn/T16 mc/CS2113 i/A0168372L` +
+   Expected: A new student of matric number A0168372L will be assigned to the classroom T16 of module CS2113 and be reflected in the system.
 .. Other incorrect class addstudent commands to try: `class addstudent`, +
   `class addstudent cn/VVV mc/ZZZZZZ i/XXXXXXXXX` (where XXXXXXXXX is a valid matric number that does not exist, VVV and ZZZZZZ is a valid existing class), +
   `class addstudent cn/VVV mc/ZZZZZZ i/XXXXXXXXX` (where XXXXXXXXX is an existing student matric number enrolled into ZZZZZZ, VVV is a valid class name format but do not belong to an existing module ZZZZZZ), +
@@ -2909,8 +2880,8 @@ i/MATRIC_NO
 
 .. Prerequisites: Student must exist in the system, module code must exist, student must be enrolled in the module, class must exist and belong to the module code
 and student must be assigned to the class before unassigning a student from the class.
-.. Test case: `class delstudent cn/T16 mc/CS2113 i/A0168000B` +
-   Expected: The student of matric number A0168000B will be unassigned from the classroom T16 of module CS2113 and be reflected in the system.
+.. Test case: `class delstudent cn/T16 mc/CS2113 i/A0168372L` +
+   Expected: The student of matric number A0168372L will be unassigned from the classroom T16 of module CS2113 and be reflected in the system.
 .. Other incorrect class delstudent commands to try: `class delstudent`, +
   `class delstudent cn/VVV mc/ZZZZZZ i/XXXXXXXXX` (where XXXXXXXXX is a valid matric number format that does not exist, VVV and ZZZZZZ is a valid existing class), +
   `class delstudent cn/VVV mc/ZZZZZZ i/XXXXXXXXX` (where XXXXXXXXX is an existing student matric number enrolled into ZZZZZZ, VVV is a valid class name not belonging to an existing module ZZZZZZ), +
@@ -2930,8 +2901,8 @@ mc/MODULE_CODE, +
 i/MATRIC_NO
 
 .. Prerequisites: Student must exist in the system, module code must exist, class must exist and belong to the module code, student must belong to class before marking the student present for the class.
-.. Test case: `class markattendance cn/T16 mc/CS2113 i/A0168000B` +
-   Expected: The student of matric number A0168000B from the classroom T16 of module CS2113 will be marked present and be reflected in the system.
+.. Test case: `class markattendance cn/T16 mc/CS2113 i/A0168372L` +
+   Expected: The student of matric number A0168372L from the classroom T16 of module CS2113 will be marked present and be reflected in the system.
 .. Other incorrect class markattendance commands to try: `class markattendance`, +
  `class markattendance cn/VVV mc/ZZZZZZ i/XXXXXXXXX` (where XXXXXXXXX is a valid matric number format but does not exist, VVV and ZZZZZZ is a valid existing class), +
  `class markattendance cn/VVV mc/ZZZZZZ i/XXXXXXXXX` (where XXXXXXXXX is an existing student matric number enrolled into ZZZZZZ, VVV is a valid class name not belonging to an existing module ZZZZZZ), +
@@ -2968,8 +2939,8 @@ mc/MODULE_CODE, +
 i/MATRIC_NO
 
 .. Prerequisites: Module must exist, class must exist and belong to the module code, student must exist and belong to the class and marked present before being able to modify their attendance to absent.
-.. Test case: `class modattendance cn/T16 mc/CS2113 i/A0168000B` +
-   Expected: The student of matric number A0168000B from the classroom T16 of module CS2113 will be marked absent and be reflected in the system.
+.. Test case: `class modattendance cn/T16 mc/CS2113 i/A0168372L` +
+   Expected: The student of matric number A0168372L from the classroom T16 of module CS2113 will be marked absent and be reflected in the system.
 .. Other incorrect class modattendance commands to try: `class modattendance`, +
 `class modattendance cn/VVV mc/ZZZZZZ i/XXXXXXXXX` (where XXXXXXXXX is a valid matric number that does not exist, VVV and ZZZZZZ is a valid existing class), +
 `class modattendance cn/VVV mc/ZZZZZZ i/XXXXXXXXX` (where XXXXXXXXX is an existing student matric number enrolled into ZZZZZZ, VVV is a valid class name not belonging to an existing module ZZZZZZ), +

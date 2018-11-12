@@ -17,6 +17,10 @@ import seedu.address.model.course.CourseCode;
 import seedu.address.model.course.CourseManager;
 import seedu.address.model.course.CourseName;
 import seedu.address.model.course.FacultyName;
+import seedu.address.model.gradebook.Gradebook;
+import seedu.address.model.gradebook.GradebookManager;
+import seedu.address.model.grades.Grades;
+import seedu.address.model.grades.GradesManager;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.ModuleCode;
 import seedu.address.model.module.ModuleManager;
@@ -44,6 +48,8 @@ public class DebugCommand extends Command {
 
         ModuleManager moduleManager = ModuleManager.getInstance();
         ClassroomManager classroomManager = ClassroomManager.getInstance();
+        GradebookManager gradebookManager = new GradebookManager();
+        GradesManager gradesManager = new GradesManager();
 
         StorageController.wipeAllProductionData();
         StorageController.createFiles();
@@ -157,6 +163,32 @@ public class DebugCommand extends Command {
 
 
         classroomManager.saveClassroomList();
+
+        //populated data for Gradebook
+        gradebookManager.clearGradebook();
+        Gradebook gradebook = new Gradebook("CS2113", "Assignment 1", 100, 50);
+        Gradebook gradebook1 = new Gradebook("GEQ1000", "Finals", 50, 20);
+        Gradebook gradebook2 = new Gradebook("MA1508E", "Mid Term", 30, 10);
+        Gradebook gradebook3 = new Gradebook("CS1010", "Practical Exam", 60, 30);
+
+        gradebookManager.addGradebookComponent(gradebook);
+        gradebookManager.addGradebookComponent(gradebook1);
+        gradebookManager.addGradebookComponent(gradebook2);
+        gradebookManager.addGradebookComponent(gradebook3);
+        gradebookManager.saveGradebookList();
+
+        //populated data for Gradebook
+        gradesManager.clearGrade();
+        Grades grades = new Grades("CS2113", "Assignment 1", "A0168372L", 50);
+        Grades grades1 = new Grades("CS2113", "Assignment 1", "A0166371K", 20);
+
+        gradesManager.addGrade(grades);
+        gradesManager.addGrade(grades1);
+        gradesManager.saveGradeList();
+
+
+
+
 
 
         return new CommandResult("DEBUG COMMAND EXECUTED. ",

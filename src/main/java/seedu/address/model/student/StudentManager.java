@@ -45,13 +45,15 @@ public class StudentManager {
         int index = 1;
         sb.append(HtmlTableProcessor.getH3Representation("Student List"));
         sb.append(HtmlTableProcessor.renderTableStart(new ArrayList<String>(
-                Arrays.asList("Index", "Matric No", "Full Name", "Email Address", "Course Code", "Course Name"))));
+                Arrays.asList("Index", "Matric No", "Full Name",
+                        "Phone No", "Email Address", "Course Code", "Course Name"))));
 
         sb.append(HtmlTableProcessor.getTableItemStart());
         for (Person p: studentModel.getAddressBook().getPersonList()) {
             sb.append(HtmlTableProcessor
                     .renderTableItem(new ArrayList<String>(Arrays
                             .asList(index + "", p.getMatricNo().toString(), p.getName().toString(),
+                                    p.getPhone().toString(),
                                     p.getEmail().toString(), p.getCourseCode().toString(),
                                     CourseManager.getInstance()
                                             .getCourse(p.getCourseCode().courseCode).getCourseName().courseName))));

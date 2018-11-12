@@ -35,22 +35,6 @@ public class StudentAddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newPerson_success() {
-        //TBC
-       /* Person validPerson = new PersonBuilder().build();
-
-
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        StudentManager.getInstance().initializeModel(expectedModel);
-        expectedModel.addPerson(validPerson);
-        expectedModel.commitAddressBook();
-
-        StudentManager.getInstance().initializeModel(model);
-        assertCommandSuccess(new StudentAddCommand(validPerson), model, commandHistory,
-                String.format(StudentAddCommand.MESSAGE_SUCCESS, validPerson), expectedModel);*/
-    }
-
-    @Test
     public void execute_duplicatePerson_throwsCommandException() {
         Person personInList = model.getAddressBook().getPersonList().get(0);
         assertCommandFailure(new StudentAddCommand(personInList), model, commandHistory,

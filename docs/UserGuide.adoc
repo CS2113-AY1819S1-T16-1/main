@@ -53,7 +53,7 @@ Format: `help`
 // tag::studandcoursemanagement[]
 ==== Add a course : `course add`
 Adds a student to the system. +
-Format: course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME
+Format: `course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME`
 ****
 * Course code must be unique.
 * Course code may contain letters only.
@@ -65,15 +65,15 @@ Examples:
 
 ==== List all courses : `course list`
 Shows a list of all courses in the system. +
-Format: course list
+Format: `course list`
 
-==== List all courses : `course liststudents`
+==== List all students by course : `course liststudents`
 Shows a list of all students ordered by course. +
-Format: course liststudentsfe
+Format: `course liststudents`
 
 ==== Edit a course : `course edit`
 Edits an existing course in the system (by course code). +
-Format: course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]
+Format: `course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]`
 ****
 * Edits the student at the specified course code. A course code must be provided to make changes.
 * At least one of the optional fields must be provided
@@ -81,14 +81,14 @@ Format: course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]
 ****
 Examples:
 
-* `student edit 1 p/99887890 a/14 Simei Avenue 1`
-Edits the phone number and home address of the 1st student to be 99887890 and 14 Simei Avenue 1 respectively.
-* `student edit 2 a/14 Jurong East Street 91`
-Edits only the address of the 2nd student to be 14 Jurong East Street 91.
+* `course edit c/CEG  f/FOE`
+Edits the faculty name for CEG to 'FOE'
+* `course edit c/CS n/Computer Science`
+Edits the course name for CS to 'Computer Science'
 
 ==== Remove course : `course delete`
 Deletes the specified course from the system +
-Format: course delete c/COURSE_CODE
+Format: `course delete c/COURSE_CODE`
 
 ****
 * Course must exist.
@@ -99,9 +99,11 @@ Examples:
 * `course delete c/CEG`
 Deletes CEG from the course directory, if it exists.
 
+// end::studandcoursemanagement[]
+
 ==== Add Student : `student add`
 Adds a student to the system. +
-Format: student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL a/ADDRESS
+Format: `student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL a/ADDRESS
 
 Examples:
 
@@ -115,7 +117,7 @@ Examples:
 
 ==== Update Student : `student edit`
 Edits an existing student in the system. +
-Format: student edit INDEX [n/NAME] [c/COURSE_CODE] [p/MOBILE_NUMBER] [e/EMAIL] [a/ADDRESS]
+Format: `student edit INDEX [n/NAME] [c/COURSE_CODE] [p/MOBILE_NUMBER] [e/EMAIL] [a/ADDRESS]`
 ****
 * Edits the student at the specified INDEX. The index refers to the index number shown in the displayed student list. The index must be a must be a positive integer 1,2,3,...
 * At least one of the optional fields must be provided
@@ -131,7 +133,7 @@ Edits only the address of the 2nd student to be 14 Jurong East Street 91.
 
 ==== Remove Student : `student delete`
 Deletes the specified student from the system. +
-Format: student delete INDEX
+Format: `student delete INDEX`
 
 Examples:
 
@@ -146,11 +148,11 @@ Deletes the 2nd person in the system
 
 ==== List Students : `student list`
 Shows a list of all students in the system. +
-Format: student list
+Format: `student list`
 
 ==== Export Student : `student export [coming in v2.0]`
 Exports students to a .csv file +
-Format: student export LOCATION
+Format: `student export LOCATION`
 ****
 * Directory must be writable.
 * There must be at least 1 student in the system.
@@ -160,7 +162,7 @@ Examples:
 * `student export C:\export`
 Exports all students in .csv format to the 'export' folder in C drive.
 
-// end::studandcoursemanagement[]
+
 
 // tag::modulemanagement[]
 === Module Management
@@ -288,7 +290,6 @@ Assigns the student with matric no. `A0171234B` as a TA.
 * `module assign mc/CS2113 e/e0191234@u.nus.edu` +
 Assigns the student with email `e0191234@u.nus.edu` as a TA.
 
-
 // tag::classmanagementdepth[]
 === Class Management
 ==== Add Class : `class add`
@@ -345,6 +346,7 @@ Deletes the class T16 from the module CG1111
 * `class edit cn/T16 mc/CG1111 e/69` +
 Modifies the new max class enrollment size for the class T16 of module CG1111 to be 69
 
+// tag::classmanagementdepth[]
 ==== Assign Student To Class : `class addstudent`
 Assigns a student to a class in the system. +
 Format: `class addstudent cn/CLASS_NAME mc/MODULE_CODE i/MATRIC_NO`
@@ -433,10 +435,7 @@ Format: `gradebook add mc/MODULE_CODE cn/COMPONENT_NAME [mm/MAX_MARKS] [w/WEIGHT
 
 ****
 * Inputs are case sensitive.
-* Module code must exist
-* Gradebook Component name must not already exist in Trajectory.
-* Accumulated weightage for grade components in module cannot exceed 100%.
-* Weightage can be 0 for grade components like Mock Practical Exam.
+* Gradebook component name must NOT exist in existing module.
 ****
 
 Examples:
@@ -452,7 +451,6 @@ Format: `gradebook edit mc/MODULE_CODE cn/COMPONENT_NAME [ei/EDITED_COMPONENT_NA
 * Inputs are case sensitive.
 * Grade component name must exist in existing module.
 * Accumulated weightage including the updated weightage must not exceed 100%.
-* At least one optional parameter must be included in command.
 ****
 
 Examples:

@@ -30,8 +30,6 @@ Trajectory is a lightweight management system for those who need a no-frills sol
 
 include::../UserGuide.adoc[tag=notesmanagementfeatures]
 
-include::../UserGuide.adoc[tag=notescommandsummary]
-
 == Contributions to the Developer Guide
 |===
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
@@ -39,4 +37,6 @@ include::../UserGuide.adoc[tag=notescommandsummary]
 
 include::../DeveloperGuide.adoc[tag=notesexportimplementation]
 
-include::../DeveloperGuide.adoc[tag=notesmanagementusecases]
+include::../DeveloperGuide.adoc[tag=jomcruz93pppusecases1]
+
+include::../DeveloperGuide.adoc[tag=jomcruz93pppusecases2]

@@ -23,11 +23,11 @@ Trajectory is a lightweight management system for those who need a no-frills sol
 
 ** Project management:
 *** Friendly reminder for team to update documentation for `v1.2` on GitHub
+*** Fix checkstyle issues on a global scale
+*** Updated the diagram for UI segment in developer guide
 ** Community:
-*** Contributed to issue discussions (examples:  https://github.com/CS2113-AY1819S1-T16-1/main/issues/280#issuecomment-435569592)
-*** Reported bugs and suggestions for other teams in the class (examples: https://github.com/CS2113-AY1819S1-W13-4/main)
-
-_{you can add/remove categories in the list above}_
+*** Contributed to issue discussions (link:https://github.com/CS2113-AY1819S1-T16-1/main/issues/280#issuecomment-435569592[#280])
+*** Reported bugs and suggestions for other teams in the class (link:https://github.com/CS2113-AY1819S1-W13-4/main[W13-4])
 
 == Contributions to the User Guide
 
@@ -47,5 +47,3 @@ include::../UserGuide.adoc[tag=classmanagementdepth]
 include::../DeveloperGuide.adoc[tag=classmanagementbrief]
 
 include::../DeveloperGuide.adoc[tag=classmanagementdepth]
-
-include::../DeveloperGuide.adoc[tag=classmanualtest]
