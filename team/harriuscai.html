@@ -33,7 +33,7 @@
 <p>Justification: This feature is a key component in any learning management system such as Trajectory because the users <strong>need</strong> to keep track of their various modules.</p>
 </li>
 <li>
-<p>Highlights: <strong>To be filled in</strong></p>
+<p>Highlights: High cohesiveness with the other features in Trajectory because <code>Module</code> is an integral part of any learning management system.</p>
 </li>
 </ul>
 </div>
@@ -42,41 +42,24 @@
 <p><strong>Minor enhancement</strong>: updated the main parser to allow multi-word commands without breaking existing commands.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Minor enhancement</strong>: implemented a MVC-like pattern for interaction between classes in the <code>Model</code> and <code>Storage</code> layers for the team to adopt.</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did cosmetic tweaks to enable 3 levels of depth in the User Guide: <a href="https://github.com/CS2113-AY1819S1-T16-1/main/pull/36">#36</a></p>
+</li>
+<li>
+<p>Rearranged the <code>Gradebook</code> and <code>Class</code> sections of the use cases in the Developer Guide to be consistent with the user stories. <a href="https://github.com/CS2113-AY1819S1-T16-1/main/pull/36">#36</a></p>
+</li>
+<li>
+<p>Updated some project-specific sections in the Developer Guide and User Guide. <a href="https://github.com/CS2113-AY1819S1-T16-1/main/pull/36">#36</a></p>
 </li>
 </ul>
 </div>
@@ -88,28 +71,6 @@
 <li>
 <p>Reviewed the majority of the PRs opened by my team members</p>
 </li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
-</li>
 </ul>
 </div>
 </li>
@@ -117,9 +78,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +94,242 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="module-management"><a class="link" href="#module-management">Module Management</a></h3>
+<div class="sect3">
+<h4 id="add-module-code-module-add-code"><a class="link" href="#add-module-code-module-add-code">Add Module : <code>module add</code></a></h4>
+<div class="paragraph">
+<p>Adds a module to the system.<br>
+Format: <code>module add mc/MODULE_CODE mn/MODULE_NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Module code must be unique.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>module add mc/CG1111 mn/EPP1</code></p>
+</li>
+<li>
+<p><code>module add mc/CS2113 mn/Software Engineering</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="update-module-code-module-edit-code"><a class="link" href="#update-module-code-module-edit-code">Update module : <code>module edit</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing module in the system.<br>
+Format: <code>module edit mc/MODULE_CODE mn/MODULE_NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits a module with the specified module code. The module code must exist in the system.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>module edit mc/CG1111 mn/Engineering Principles and Practices 1</code><br>
+Edits the module name to <code>Engineering Principles and Practices 1</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remove-module-code-module-delete-code"><a class="link" href="#remove-module-code-module-delete-code">Remove module : <code>module delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes a module from the system.<br>
+Format: <code>module delete mc/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module must already exist in the system.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>module delete mc/CS2113</code><br>
+Deletes the module with module code <code>CS2113</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-module-details-code-module-view-code"><a class="link" href="#view-module-details-code-module-view-code">View module details: <code>module view</code></a></h4>
+<div class="paragraph">
+<p>Displays the details of a module in the system.<br>
+Format: <code>module view mc/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The list of students enrolled in the module will also be displayed. This is useful for checking if a student has been enrolled in the module.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>module view mc/CS2113</code><br>
+Displays the details of <code>CS2113</code> including the list of enrolled students.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-module-code-module-find-code"><a class="link" href="#find-module-code-module-find-code">Find module : <code>module find</code></a></h4>
+<div class="paragraph">
+<p>Finds modules whose module code or module name contain any of the given keywords. This is useful for checking if certain module exists in the system.<br>
+Format: <code>module find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one keyword must be provided.</p>
+</li>
+<li>
+<p>The search is case-insensitive.</p>
+</li>
+<li>
+<p>The search will only match whole words i.e. <code>engin</code> will not return <code>Engineering</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>module find cs2113</code><br>
+Returns <code>CS2113</code>.</p>
+</li>
+<li>
+<p><code>module find cs2113 CS2040c</code><br>
+Returns <code>CS2113</code> and <code>CS2040C</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-modules-code-module-list-code"><a class="link" href="#list-modules-code-module-list-code">List modules : <code>module list</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all modules in the system.<br>
+Format: <code>module list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="enrol-student-code-module-enrol-code"><a class="link" href="#enrol-student-code-module-enrol-code">Enrol Student : <code>module enrol</code></a></h4>
+<div class="paragraph">
+<p>Enrols students into the specified module using their matriculation numbers or email addresses.<br>
+Format: <code>module enrol mc/MODULE_CODE i/MATRIC_NUMBER&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one student matriculation number must be provided.</p>
+</li>
+<li>
+<p>Multiple student matriculation numbers may be provided.</p>
+</li>
+<li>
+<p>The student(s) must already exist in the system.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>module enrol mc/CS2113 i/A0161234B</code><br>
+Enrols a student with matric no. <code>A0161234B</code> in <code>CS2113</code>.</p>
+</li>
+<li>
+<p><code>module enrol mc/CS2040C i/A0167263X i/A0179821B</code><br>
+Enrols two students with matric no. <code>A0167263X</code> and <code>A0179821B</code> in <code>CS2040C</code>.</p>
+</li>
+<li>
+<p><strong>Add module</strong> : <code>module add mc/MODULE_CODE mn/MODULE_NAME</code><br>
+e.g. <code>module add mc/CS2113 mn/Software Engineering</code></p>
+</li>
+<li>
+<p><strong>Update module</strong> : <code>module edit mc/MODULE_CODE​ mn/MODULE_NAME</code><br>
+e.g. <code>module edit mc/CS2113 mn/Software</code></p>
+</li>
+<li>
+<p><strong>Remove module</strong> : <code>module delete mc/MODULE_CODE​</code><br>
+e.g. <code>module delete mc/CS2113</code></p>
+</li>
+<li>
+<p><strong>View module details</strong> : <code>module view mc/MODULE_CODE</code><br>
+e.g. <code>module view mc/CS2113</code></p>
+</li>
+<li>
+<p><strong>Find module by module code</strong> : <code>module find KEYWORD [MORE_KEYWORDS]​</code><br>
+e.g. <code>module find cs2113 structures</code></p>
+</li>
+<li>
+<p><strong>List modules</strong> : <code>module list​</code><br></p>
+</li>
+<li>
+<p><strong>Enrol student in module</strong> : <code>module enrol mc/MODULE_CODE i/MATRIC_NUMBER…​</code><br>
+e.g. <code>module enrol mc/CS2113 i/A0167263X i/A0179821B</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -151,5 +345,370 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="proposed-module-bidding-feature"><a class="link" href="#proposed-module-bidding-feature">[Proposed] Module bidding feature</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The module bidding feature is an enhancement that will make it easier to assign students to modules in <code>Trajectory</code>.
+It is designed with the module enrolment limits in mind, and the aim to give students a certain degree of flexibility
+in choosing the modules they want. At the moment, it is planned to store the feature in ModuleManager, but it may be
+abstracted into its own class if it proves to be necessary.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:28:12 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>The module bidding feature will implement the following features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ModuleManager#startBiddingRound()</code>&#8201;&#8212;&#8201;Starts a bidding round for a module.</p>
+</li>
+<li>
+<p><code>ModuleManager#closeBiddingRound()</code>&#8201;&#8212;&#8201;Closes the bidding round for a module.</p>
+</li>
+<li>
+<p><code>ModuleManager#placeBid()</code>&#8201;&#8212;&#8201;Places a student&#8217;s bid on the module they desire.</p>
+</li>
+<li>
+<p><code>ModuleManager#retractBid()</code>&#8201;&#8212;&#8201;Retracts a student&#8217;s bid from a module for which they previously bid.</p>
+</li>
+<li>
+<p>`ModuleManager#assignSuccessfulStudents()&#8201;&#8212;&#8201;Assigns the students with successful bids to the module.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations will be exposed in the <code>ModuleManager</code> class until there is a need for abstraction.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the module bidding mechanism will behave at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The teacher can start a bidding round for one of his/her modules using the CLI. The command will be routed to
+<code>ModuleManager#startBiddingRound()</code> with the module code to indicate that bidding has opened for that module. This will
+also update the status of the module to inform students that they may now start placing bids.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. A student can place his/her bid for a module with an active bidding round. He/she will need to enter the number
+of points they wish to use in their bid. The input will be parsed to <code>ModuleManager#placeBid()</code> with the module code and
+the student&#8217;s ID.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Should the student decide that he/she is no longer interested in the module, he/she may retract his/her bid by
+using the CLI and entering the module&#8217;s code. This will invoke <code>ModuleManager#retractBid()</code> and the bid will be retracted.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. When the time is past the intended duration of the bidding round, the bidding round can be closed automatically
+via a call to <code>ModuleManager#closeBiddingRound()</code>. When the bidding round has closed, the status will be updated to
+reflect it, and students will no longer be able to place bids for the module.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The teacher may close the bidding round earlier by entering the command in the CLI.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 5. After the bidding round has closed, Trajectory will decide which students are successful in their bid by invoking
+<code>ModuleManager#assignSuccessfulStudents()</code>. This will also assign the successful students to the module and deduct their
+bid points. The students who were unsuccessful in their bid will have their bid points refunded to their account.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes the whole module bidding process:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/moduleBiddingActivityDiagram.png" alt="moduleBiddingActivityDiagram" width="650">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-the-module-bidding-will-work"><a class="link" href="#aspect-how-the-module-bidding-will-work">Aspect: How the module bidding will work</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Teacher has to manually open a bidding round.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement</p>
+</li>
+<li>
+<p>Cons: May result in inconsistencies between the planned start time and the actual start time, thus causing frustration
+to the students.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Teacher can input the start time for a module&#8217;s bidding round</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The actual start time will be consistent and reliable, leading to user (student) satisfaction.</p>
+</li>
+<li>
+<p>Cons: More difficult to implement; Handling date objects is tricky because there are many popular date formats.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-view-module-details" class="discrete">Use case: View module details</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The module should already exist in Trajectory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NIL</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher wants to see the details of a particular module in the system.</p>
+</li>
+<li>
+<p>System displays all the information about that module.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. System displays the command&#8217;s correct usage.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-module" class="discrete">Use case: Find module</h3>
+<div class="paragraph">
+<p><strong>Precondition(s)</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At least one module should exist in Trajectory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NIL</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong> :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Teacher searches for a module with some module codes as keywords.</p>
+</li>
+<li>
+<p>System lists all the active modules that match any of the keywords.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. Teacher enters an invalid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. System displays the list of valid commands.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. Teacher enters keywords that do not match any modules.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. System informs the user that no active modules were found.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="module-management-2"><a class="link" href="#module-management-2">Module Management</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a module</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The module must not already exist.</p>
+</li>
+<li>
+<p>Test case: <code>module add mc/NM2212 mn/Visual Design</code><br>
+Expected: This module will be added into the system.</p>
+</li>
+<li>
+<p>Test case: <code>module add mc/NNNNNN mn/Visual Design</code><br>
+Expected: The module code is not valid. You will not be able to add the module.</p>
+</li>
+<li>
+<p>Test case: <code>module add mc/NM2212 mn/Visual!@@$%#</code><br>
+Expected: The module name contains special characters that are not allowed. You will not be able to add the module.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing a module</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There must be a module with code NM2212.</p>
+</li>
+<li>
+<p>Test case: <code>module edit mc/NM2212 mn/VD</code><br>
+Expected: The module name will be changed to VD.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting a module</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There must be a module with code NM2212.</p>
+</li>
+<li>
+<p>Test case: <code>module delete mc/NM2212</code><br>
+Expected: The module name will be changed to VD.</p>
+</li>
+<li>
+<p>Test case: <code>module delete mc/NE1000 mn/Non-existent module</code><br>
+Expected: The module with code NE1000 cannot be found. You won&#8217;t be able to delete it.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Listing modules</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: NONE.</p>
+</li>
+<li>
+<p>Test case: <code>module list</code><br>
+Expected: The list of modules in the system will be displayed. If there are no modules, the output should be blank.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Finding a module</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There should be a module with the word <code>Design</code>, either in the module code or module name.</p>
+</li>
+<li>
+<p>Test case: <code>module find design</code><br>
+Expected: The list of modules with the word <code>Design</code> in the name will be displayed.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Enrolling a student into a module</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There should be a student with matric no. A0168000B, and a module with module code NM2212.</p>
+</li>
+<li>
+<p>Test case: <code>module enrol mc/NM2212 i/A0168000B</code><br>
+Expected: The student with matric no. A0168000B will be enrolled in the module. The module details will be displayed.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Viewing a module&#8217;s details</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There should be a module with module code NM2212.</p>
+</li>
+<li>
+<p>Test case: <code>module view mc/NM2212</code><br>
+Expected: The module details for NM2212 will be displayed, including the list of students enrolled in the module.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:43:36 UTC</div></div></div></body></html>
