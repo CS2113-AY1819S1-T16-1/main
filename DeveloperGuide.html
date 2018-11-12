@@ -4135,28 +4135,15 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="ulist">
 <ul>
 <li>
-<p>Module code must exist</p>
-</li>
-<li>
-<p>Component name must not already exist in Trajectory.</p>
+<p>Gradebook component name NOT exist in existing module.</p>
 </li>
 <li>
 <p>Accumulated weightage for gradebook components in module cannot exceed 100%.</p>
 </li>
-<li>
-<p>Weightage can be 0 for gradebook components like Mock Practical Exam.</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Guarantees</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Gradebook component will not be added if it does not meet validation requirements.</p>
-</li>
-</ul>
+<p><strong>Guarantees</strong> : NIL</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong> :</p>
@@ -4205,45 +4192,6 @@ b. Require developers to download those libraries manually (this creates extra w
 </ul>
 </div>
 </li>
-<li>
-<p>2c. Teacher enters a component name that already exists to module code.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>2c1. System informs the user that component name already exists to module code.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2d. Teacher enters a non-integer input for maximum marks and weightage.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>2d1. System informs the user of incorrect input.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2d. Teacher does not enter any inputs after prefix.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>2d1. System informs the user of invalid input.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
 </ul>
 </div>
 <h3 id="use-case-update-gradebook-component" class="discrete">Use case: Update Gradebook Component</h3>
@@ -4264,14 +4212,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Guarantees</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>NIL</p>
-</li>
-</ul>
+<p><strong>Guarantees</strong> : NIL</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong> :</p>
@@ -4384,14 +4325,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Guarantees</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>NIL</p>
-</li>
-</ul>
+<p><strong>Guarantees</strong> : NIL</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong> :</p>
@@ -4454,14 +4388,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Guarantees</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>NIL</p>
-</li>
-</ul>
+<p><strong>Guarantees</strong> : NIL</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong> :</p>
@@ -4511,14 +4438,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Guarantees</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>NIL</p>
-</li>
-</ul>
+<p><strong>Guarantees</strong> : NIL</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong> :</p>
@@ -4580,14 +4500,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Guarantees</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>NIL</p>
-</li>
-</ul>
+<p><strong>Guarantees</strong> : NIL</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong> :</p>
@@ -4646,14 +4559,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Guarantees</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>NIL</p>
-</li>
-</ul>
+<p><strong>Guarantees</strong> : NIL</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong> :</p>
@@ -6273,15 +6179,15 @@ e/MAX_ENROLLMENT</p>
 <p>Prerequisites: Module code must exist before creating a class for the module.</p>
 </li>
 <li>
-<p>Test case: <code>class add cn/T16 mc/CG1111 e/20</code><br>
-Expected: A new class T16 of module code CG1111 and enrollment size of 20 will be created and reflected in the system.</p>
+<p>Test case: <code>class add cn/T16 mc/CS2113 e/20</code><br>
+Expected: A new class T16 of module code CS2113 and enrollment size of 20 will be created and reflected in the system.</p>
 </li>
 <li>
-<p>Test case: <code>class add cn/T16 mc/CG1111 e/9999</code><br>
+<p>Test case: <code>class add cn/T16 mc/CS2113 e/9999</code><br>
 Expected: A message will be displayed to show that enrollment size should be of 1-425 and it should not be blank.</p>
 </li>
 <li>
-<p>Test case: <code>class add cn/T1600 mc/CG1111 e/20</code><br>
+<p>Test case: <code>class add cn/T1600 mc/CS2113 e/20</code><br>
 Expected: A message will be displayed to show that class name should only contain between 1 to 3 alphanumeric characters and it should not be blank.</p>
 </li>
 <li>
@@ -6340,11 +6246,11 @@ e/ENROLLMENT_SIZE</p>
 <p>Prerequisites: Module code must exist before deleting a class for the module. The classroom must also belong to the module code.</p>
 </li>
 <li>
-<p>Test case: <code>class edit cn/T16 mc/CG1111 e/69</code><br>
-Expected: The max enrollment size of class T16 of module code CG1111 will be updated to 69 and reflected in the system.</p>
+<p>Test case: <code>class edit cn/T16 mc/CS2113 e/69</code><br>
+Expected: The max enrollment size of class T16 of module code CS2113 will be updated to 69 and reflected in the system.</p>
 </li>
 <li>
-<p>Test case: <code>class edit cn/T16 mc/CG1111 e/9999</code><br>
+<p>Test case: <code>class edit cn/T16 mc/CS2113 e/9999</code><br>
 Expected: A message will be displayed to show that enrollment size should be of 1-425 and it should not be blank.</p>
 </li>
 <li>
@@ -6378,8 +6284,8 @@ cn/CLASS_NAME,<br>
 <p>Prerequisites: Module code must exist before deleting a class for the module. The classroom must also belong to the module code.</p>
 </li>
 <li>
-<p>Test case: <code>class delete cn/T16 mc/CG1111</code><br>
-Expected: The class T16 of module code CG1111 deleted and reflected in the system.</p>
+<p>Test case: <code>class delete cn/T16 mc/CS2113</code><br>
+Expected: The class T16 of module code CS2113 deleted and reflected in the system.</p>
 </li>
 <li>
 <p>Other incorrect class delete commands to try: <code>class delete</code>,<br>
@@ -6411,8 +6317,8 @@ i/MATRIC_NO</p>
 <p>Prerequisites: Student must exist in the system, module code must exist, student must be enrolled in the module, class cannot be full and class must exist and belong to the module code before assigning a student to the class.</p>
 </li>
 <li>
-<p>Test case: <code>class addstudent cn/T16 mc/CS2113 i/A0168000B</code><br>
-Expected: A new student of matric number A0168000B will be assigned to the classroom T16 of module CS2113 and be reflected in the system.</p>
+<p>Test case: <code>class addstudent cn/T16 mc/CS2113 i/A0168372L</code><br>
+Expected: A new student of matric number A0168372L will be assigned to the classroom T16 of module CS2113 and be reflected in the system.</p>
 </li>
 <li>
 <p>Other incorrect class addstudent commands to try: <code>class addstudent</code>,<br>
@@ -6450,8 +6356,8 @@ i/MATRIC_NO</p>
 and student must be assigned to the class before unassigning a student from the class.</p>
 </li>
 <li>
-<p>Test case: <code>class delstudent cn/T16 mc/CS2113 i/A0168000B</code><br>
-Expected: The student of matric number A0168000B will be unassigned from the classroom T16 of module CS2113 and be reflected in the system.</p>
+<p>Test case: <code>class delstudent cn/T16 mc/CS2113 i/A0168372L</code><br>
+Expected: The student of matric number A0168372L will be unassigned from the classroom T16 of module CS2113 and be reflected in the system.</p>
 </li>
 <li>
 <p>Other incorrect class delstudent commands to try: <code>class delstudent</code>,<br>
@@ -6488,8 +6394,8 @@ i/MATRIC_NO</p>
 <p>Prerequisites: Student must exist in the system, module code must exist, class must exist and belong to the module code, student must belong to class before marking the student present for the class.</p>
 </li>
 <li>
-<p>Test case: <code>class markattendance cn/T16 mc/CS2113 i/A0168000B</code><br>
-Expected: The student of matric number A0168000B from the classroom T16 of module CS2113 will be marked present and be reflected in the system.</p>
+<p>Test case: <code>class markattendance cn/T16 mc/CS2113 i/A0168372L</code><br>
+Expected: The student of matric number A0168372L from the classroom T16 of module CS2113 will be marked present and be reflected in the system.</p>
 </li>
 <li>
 <p>Other incorrect class markattendance commands to try: <code>class markattendance</code>,<br>
@@ -6560,8 +6466,8 @@ i/MATRIC_NO</p>
 <p>Prerequisites: Module must exist, class must exist and belong to the module code, student must exist and belong to the class and marked present before being able to modify their attendance to absent.</p>
 </li>
 <li>
-<p>Test case: <code>class modattendance cn/T16 mc/CS2113 i/A0168000B</code><br>
-Expected: The student of matric number A0168000B from the classroom T16 of module CS2113 will be marked absent and be reflected in the system.</p>
+<p>Test case: <code>class modattendance cn/T16 mc/CS2113 i/A0168372L</code><br>
+Expected: The student of matric number A0168372L from the classroom T16 of module CS2113 will be marked absent and be reflected in the system.</p>
 </li>
 <li>
 <p>Other incorrect class modattendance commands to try: <code>class modattendance</code>,<br>
@@ -7031,4 +6937,4 @@ Expected: No notes will be exported and no file is created. An error message ind
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:57:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:09:57 UTC</div></div></div></body></html>
