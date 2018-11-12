@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Trajectory - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Trajectory - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Trajectory</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2113-AY1819S1-T16-1/main.git"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Trajectory - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>T16-1</code>      Since: <code>Aug 2018</code>      Licence: <code>MIT</code></p>
@@ -18,7 +18,7 @@
 <ul class="sectlevel3">
 <li><a href="#add-a-course-code-course-add-code">3.2.1. Add a course : <code>course add</code></a></li>
 <li><a href="#list-all-courses-code-course-list-code">3.2.2. List all courses : <code>course list</code></a></li>
-<li><a href="#list-all-courses-code-course-liststudents-code">3.2.3. List all courses : <code>course liststudents</code></a></li>
+<li><a href="#list-all-students-by-course-code-course-liststudents-code">3.2.3. List all students by course : <code>course liststudents</code></a></li>
 <li><a href="#edit-a-course-code-course-edit-code">3.2.4. Edit a course : <code>course edit</code></a></li>
 <li><a href="#remove-course-code-course-delete-code">3.2.5. Remove course : <code>course delete</code></a></li>
 <li><a href="#add-student-code-student-add-code">3.2.6. Add Student : <code>student add</code></a></li>
@@ -170,7 +170,7 @@
 <h4 id="add-a-course-code-course-add-code"><a class="link" href="#add-a-course-code-course-add-code">3.2.1. Add a course : <code>course add</code></a></h4>
 <div class="paragraph">
 <p>Adds a student to the system.<br>
-Format: course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME</p>
+Format: <code>course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -204,21 +204,21 @@ Format: course_add n/COURSE_NAME c/COURSE_CODE f/FACULTY_NAME</p>
 <h4 id="list-all-courses-code-course-list-code"><a class="link" href="#list-all-courses-code-course-list-code">3.2.2. List all courses : <code>course list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all courses in the system.<br>
-Format: course list</p>
+Format: <code>course list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-all-courses-code-course-liststudents-code"><a class="link" href="#list-all-courses-code-course-liststudents-code">3.2.3. List all courses : <code>course liststudents</code></a></h4>
+<h4 id="list-all-students-by-course-code-course-liststudents-code"><a class="link" href="#list-all-students-by-course-code-course-liststudents-code">3.2.3. List all students by course : <code>course liststudents</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students ordered by course.<br>
-Format: course liststudentsfe</p>
+Format: <code>course liststudents</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="edit-a-course-code-course-edit-code"><a class="link" href="#edit-a-course-code-course-edit-code">3.2.4. Edit a course : <code>course edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing course in the system (by course code).<br>
-Format: course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]</p>
+Format: <code>course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -243,12 +243,12 @@ Format: course edit c/COURSE_CODE [f/FACULTY_NAME] [n/COURSE NAME]</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>student edit 1 p/99887890 a/14 Simei Avenue 1</code>
-Edits the phone number and home address of the 1st student to be 99887890 and 14 Simei Avenue 1 respectively.</p>
+<p><code>course edit c/CEG  f/FOE</code>
+Edits the faculty name for CEG to 'FOE'</p>
 </li>
 <li>
-<p><code>student edit 2 a/14 Jurong East Street 91</code>
-Edits only the address of the 2nd student to be 14 Jurong East Street 91.</p>
+<p><code>course edit c/CS n/Computer Science</code>
+Edits the course name for CS to 'Computer Science'</p>
 </li>
 </ul>
 </div>
@@ -257,7 +257,7 @@ Edits only the address of the 2nd student to be 14 Jurong East Street 91.</p>
 <h4 id="remove-course-code-course-delete-code"><a class="link" href="#remove-course-code-course-delete-code">3.2.5. Remove course : <code>course delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified course from the system<br>
-Format: course delete c/COURSE_CODE</p>
+Format: <code>course delete c/COURSE_CODE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -286,7 +286,7 @@ Deletes CEG from the course directory, if it exists.</p>
 <h4 id="add-student-code-student-add-code"><a class="link" href="#add-student-code-student-add-code">3.2.6. Add Student : <code>student add</code></a></h4>
 <div class="paragraph">
 <p>Adds a student to the system.<br>
-Format: student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL a/ADDRESS</p>
+Format: `student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL a/ADDRESS</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -320,7 +320,7 @@ Format: student add n/NAME i/ADMIN_NUMBER c/COURSE_CODE p/MOBILE_NUMBER e/EMAIL 
 <h4 id="update-student-code-student-edit-code"><a class="link" href="#update-student-code-student-edit-code">3.2.7. Update Student : <code>student edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing student in the system.<br>
-Format: student edit INDEX [n/NAME] [c/COURSE_CODE] [p/MOBILE_NUMBER] [e/EMAIL] [a/ADDRESS]</p>
+Format: <code>student edit INDEX [n/NAME] [c/COURSE_CODE] [p/MOBILE_NUMBER] [e/EMAIL] [a/ADDRESS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -359,7 +359,7 @@ Edits only the address of the 2nd student to be 14 Jurong East Street 91.</p>
 <h4 id="remove-student-code-student-delete-code"><a class="link" href="#remove-student-code-student-delete-code">3.2.8. Remove Student : <code>student delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified student from the system.<br>
-Format: student delete INDEX</p>
+Format: <code>student delete INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -394,14 +394,14 @@ Deletes the 2nd person in the system</p>
 <h4 id="list-students-code-student-list-code"><a class="link" href="#list-students-code-student-list-code">3.2.9. List Students : <code>student list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students in the system.<br>
-Format: student list</p>
+Format: <code>student list</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="export-student-code-student-export-coming-in-v2-0-code"><a class="link" href="#export-student-code-student-export-coming-in-v2-0-code">3.2.10. Export Student : <code>student export [coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Exports students to a .csv file<br>
-Format: student export LOCATION</p>
+Format: <code>student export LOCATION</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1865,4 +1865,4 @@ e.g. <code>note export fn/notes</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:34:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:56:29 UTC</div></div></div></body></html>
